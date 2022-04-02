@@ -45,7 +45,7 @@ public class EscopetaRaycast : MonoBehaviour
         {
             for (int i = 0; i < disparos; i++)
             {
-
+                #region Coment_0
                 /*if (Physics.Raycast(camara.position, DireccionDeBalas(), out golpe, rangoDisparo, ~(2 << 8)))
                 {
                     if (golpe.collider.GetComponent<ValorSalud>() != null)
@@ -70,13 +70,18 @@ public class EscopetaRaycast : MonoBehaviour
                     CrearLaser(golpe.point);
                     FindObjectOfType<AudioCerebro>().Play("Disparo");
                 }*/
+                #endregion
 
                 CrearLaser(camara.position + DireccionDeBalas() * rangoDisparo);
+
+                #region Coment_1
                 /*else
                 {
                     //FindObjectOfType<AudioCerebro>().Play("Disparo");
                     CrearLaser(camara.position + DireccionDeBalas() * rangoDisparo);
                 }*/
+                #endregion
+
                 esperaTiempo = 0;
             }
         }
@@ -110,7 +115,7 @@ public class EscopetaRaycast : MonoBehaviour
 
     IEnumerator DesaparecerLaser(LineRenderer lr)
     {
-        float tiempoLaser = 1;
+        float tiempoLaser = 0.95f;
 
         for (int i = 0; 0 < tiempoLaser; i++)
         {
