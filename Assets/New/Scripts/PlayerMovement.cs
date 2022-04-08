@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         float x;
         float z;
         bool jumpPressed = false;
+        Debug.Log(jumpPressed);
 
 #if ENABLE_INPUT_SYSTEM
         var delta = movement.ReadValue<Vector2>();
