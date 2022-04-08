@@ -171,7 +171,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
             ""id"": ""666107a3-0ab3-4f70-8554-5b5430ee0373"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""4114c800-b863-4471-b669-6aa3b1a64006"",
                     ""expectedControlType"": ""Button"",
@@ -184,11 +184,11 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""746997c7-e69c-4828-85cd-85381f9b5dc0"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -205,7 +205,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
-        m_MenusPause_Newaction = m_MenusPause.FindAction("New action", throwIfNotFound: true);
+        m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -322,12 +322,12 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     // Menus&Pause
     private readonly InputActionMap m_MenusPause;
     private IMenusPauseActions m_MenusPauseActionsCallbackInterface;
-    private readonly InputAction m_MenusPause_Newaction;
+    private readonly InputAction m_MenusPause_Pause;
     public struct MenusPauseActions
     {
         private @InputSystemActions m_Wrapper;
         public MenusPauseActions(@InputSystemActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_MenusPause_Newaction;
+        public InputAction @Pause => m_Wrapper.m_MenusPause_Pause;
         public InputActionMap Get() { return m_Wrapper.m_MenusPause; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -337,16 +337,16 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_MenusPauseActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnNewaction;
+                @Pause.started -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_MenusPauseActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -360,6 +360,6 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     }
     public interface IMenusPauseActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

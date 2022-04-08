@@ -27,7 +27,7 @@ public class Debugger : MonoBehaviour
         int.TryParse(speedField.text, out value);
         playerMoves.speed = value;
         int.TryParse(gravsField.text, out value);
-        playerMoves.gravity = value;
+        playerMoves.gravity = value*-1;
         int.TryParse(jumpField.text, out value);
         playerMoves.jumpHeight = value;
 

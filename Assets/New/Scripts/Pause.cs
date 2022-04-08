@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    InputSystemActions inputStm;
     public bool paused;
     public GameObject pauseHud;
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        inputStm = new InputSystemActions();
+        inputStm.MenusPause.Pause.performed += _ => Buttoners();
+    }
     void Start()
     {
         Resume();
@@ -15,22 +22,12 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shortcut();
-    }
 
-    void Shortcut()
+    }
+    void Buttoners()
     {
-
-        if (paused)
-        {
-            Paused();
-        }
-        else if (!paused)
-        {
-            Resume();
-        }
+        Paused();
     }
-
     public void Paused()
     {
         Time.timeScale = 0;
@@ -45,5 +42,14 @@ public class Pause : MonoBehaviour
         pauseHud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
 
+    }
+    private void OnEnable()
+    {
+        inputStm.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputStm.Disable();
     }
 }
