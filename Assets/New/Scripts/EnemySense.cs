@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySense : MonoBehaviour
 {
     public Transform rotOrigin;
-    public float range;
+    public float range, minRange;
     public float angle;
 
     private RaycastHit wall, floor;
@@ -15,7 +15,7 @@ public class EnemySense : MonoBehaviour
 
     public GameObject[] rangePoints;
     [HideInInspector]
-    public bool dead, detect;
+    public bool dead, detect, feel;
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +63,15 @@ public class EnemySense : MonoBehaviour
         {
             detect = true;
         }
+        if (tryWall > minRange)
+        {
+            feel = false;
+        }
+        else if (tryWall <= tryObjetive)
+        {
+            feel = true;
+        }
+
     }
     void Sides()
     {
@@ -71,7 +80,7 @@ public class EnemySense : MonoBehaviour
         {
             angle -= 360;
         }
-        if (angle <= 90&& angle >= -90)
+        if (angle <= 90 && angle >= -90)
         {
             totalRange = range / 1;
         }

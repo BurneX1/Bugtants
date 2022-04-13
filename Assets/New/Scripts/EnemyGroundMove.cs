@@ -7,7 +7,11 @@ public class EnemyGroundMove : MonoBehaviour
 {
     public NavMeshAgent intel;
     //public ValorSalud valores;
+    public bool instantChase;
+    [HideInInspector]
     public bool calm;
+    public enum Status{patrolling, chasing, retreating };
+    public Status stat;
     [HideInInspector]
     public float saveSpeed, saveAcc, saveLife;
     public EnemySense radium;
@@ -87,19 +91,31 @@ public class EnemyGroundMove : MonoBehaviour
                 tranquilo = false;
             }
             */
+
         }
         else
         {
             intel.SetDestination(radium.objetive.transform.position);
             if (saveSpeed == 0)
             {
-                Mirar();
+                Look();
             }
         }
-
+        if (radium.detect&&!radium.feel)
+        {
+            stat = Status.chasing;
+        }
+        else if(!radium.detect&&radium.feel)
+        {
+            stat = Status.patrolling;
+        }
+        else if (radium.feel)
+        {
+            stat = Status.retreating;
+        }
     }
 
-    void Mirar()
+    void Look()
     {
         if (pinner == 0 || (saveSpeed == 0 && calm == false))
         {
@@ -132,7 +148,7 @@ public class EnemyGroundMove : MonoBehaviour
 
 
 
-    #region GizmosNoTocar
+    #region GizmosDontTouch
 
     void OnDrawGizmos()
     {
@@ -143,7 +159,7 @@ public class EnemyGroundMove : MonoBehaviour
                 pastPatrol = patrolPoint.Length;
                 locker = false;
             }
-            ControlarPuntos();
+            ControlPoints();
             if (patrolPoint.Length != 0)
             {
                 ControlPatrol();
@@ -171,7 +187,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
     }
 
-    void ControlarPuntos()
+    void ControlPoints()
     {
         if (pastPatrol != patrolPoint.Length)
         {
@@ -181,11 +197,11 @@ public class EnemyGroundMove : MonoBehaviour
                 {
                     if (i > patrolPoint.Length - 1)
                     {
-                        DestruirPuntos(i);
+                        DestroyPoints(i);
                     }
                 }
-                NuevosPuntos();
-                GuardaPuntos();
+                NewPoints();
+                SavePoints();
             }
             else if (pastPatrol < patrolPoint.Length)
             {
@@ -193,8 +209,8 @@ public class EnemyGroundMove : MonoBehaviour
                 {
                     if (i > pastPatrol - 1)
                     {
-                        AnadirPuntos(i);
-                        GuardaPuntos();
+                        AddPoints(i);
+                        SavePoints();
                     }
                 }
             }
@@ -211,31 +227,31 @@ public class EnemyGroundMove : MonoBehaviour
         }
     }
 
-    void AnadirPuntos(int numero)
+    void AddPoints(int numero)
     {
-        NuevosPuntos();
-        GameObject nuevoGO = new GameObject();
-        nuevoGO.name = "Punto de Patrulla " + numero;
-        nuevoGO.tag = "Punto de patrulla";
-        nuevoGO.transform.parent = patroller.transform;
-        nuevoGO.transform.position = patroller.transform.position;
-        CapsuleCollider colision = nuevoGO.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
+        NewPoints();
+        GameObject newGO = new GameObject();
+        newGO.name = "Punto de Patrulla " + numero;
+        newGO.tag = "Punto de patrulla";
+        newGO.transform.parent = patroller.transform;
+        newGO.transform.position = patroller.transform.position;
+        CapsuleCollider colision = newGO.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
         colision.isTrigger = true;
         colision.radius = 0.1f;
         colision.height = 0.75f;
 
-        patrolPoint[numero] = nuevoGO;
+        patrolPoint[numero] = newGO;
     }
-    void DestruirPuntos(int numero)
+    void DestroyPoints(int numero)
     {
         DestroyImmediate(savePatrol[numero]);
     }
     
-    void NuevosPuntos()
+    void NewPoints()
     {
         savePatrol = new GameObject[patrolPoint.Length];
     }
-    void GuardaPuntos()
+    void SavePoints()
     {
         for (int i = 0; i < savePatrol.Length; i++)
         {
