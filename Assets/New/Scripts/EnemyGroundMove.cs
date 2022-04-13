@@ -137,12 +137,12 @@ public class EnemyGroundMove : MonoBehaviour
         if (intel.speed != 0)
         {
             //sonidoMovimiento.SetActive(true);
-            animator.SetBool("SeMueve", true);
+            animator.SetBool("Moving", true);
         }
         else if (intel.speed == 0)
         {
             //sonidoMovimiento.SetActive(false);
-            animator.SetBool("SeMueve", false);
+            animator.SetBool("Moving", false);
         }
     }
 
@@ -222,8 +222,8 @@ public class EnemyGroundMove : MonoBehaviour
     {
         for (int i = 0; i < savePatrol.Length; i++)
         {
-            patrolPoint[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/Punto de Patrulla " + i);
-            savePatrol[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/Punto de Patrulla " + i);
+            patrolPoint[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
+            savePatrol[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
         }
     }
 
@@ -231,8 +231,8 @@ public class EnemyGroundMove : MonoBehaviour
     {
         NewPoints();
         GameObject newGO = new GameObject();
-        newGO.name = "Punto de Patrulla " + numero;
-        newGO.tag = "Punto de patrulla";
+        newGO.name = "PatrolPoint" + numero;
+        newGO.tag = "PatrolPoint";
         newGO.transform.parent = patroller.transform;
         newGO.transform.position = patroller.transform.position;
         CapsuleCollider colision = newGO.AddComponent(typeof(CapsuleCollider)) as CapsuleCollider;
