@@ -64,7 +64,7 @@ public class EnemyGroundMove : MonoBehaviour
 
     void Movement()
     {
-        if (calm)
+        if (stat == Status.patrolling)
         {
             if (patrolNumber > patrolPoint.Length - 1)
             {
@@ -93,7 +93,7 @@ public class EnemyGroundMove : MonoBehaviour
             */
 
         }
-        else
+        else if(stat == Status.chasing)
         {
             intel.SetDestination(radium.objetive.transform.position);
             if (saveSpeed == 0)
@@ -171,8 +171,8 @@ public class EnemyGroundMove : MonoBehaviour
                     Gizmos.color = Color.yellow;
                     Gizmos.DrawWireSphere(patrolPoint[i].transform.position, 0.5f);
                     Gizmos.color = Color.red;
-                    Vector3 tamañoAltura = new Vector3(0.1f, 1, 0.1f), precaucion = new Vector3(0, -0.5f, 0);
-                    Gizmos.DrawWireCube(patrolPoint[i].transform.position + precaucion, tamañoAltura);
+                    Vector3 heightSize = new Vector3(0.1f, 1, 0.1f), precaution = new Vector3(0, -0.5f, 0);
+                    Gizmos.DrawWireCube(patrolPoint[i].transform.position + precaution, heightSize);
                 }
             }
 
@@ -227,11 +227,11 @@ public class EnemyGroundMove : MonoBehaviour
         }
     }
 
-    void AddPoints(int numero)
+    void AddPoints(int number)
     {
         NewPoints();
         GameObject newGO = new GameObject();
-        newGO.name = "PatrolPoint" + numero;
+        newGO.name = "PatrolPoint " + number;
         newGO.tag = "PatrolPoint";
         newGO.transform.parent = patroller.transform;
         newGO.transform.position = patroller.transform.position;
@@ -240,7 +240,7 @@ public class EnemyGroundMove : MonoBehaviour
         colision.radius = 0.1f;
         colision.height = 0.75f;
 
-        patrolPoint[numero] = newGO;
+        patrolPoint[number] = newGO;
     }
     void DestroyPoints(int numero)
     {

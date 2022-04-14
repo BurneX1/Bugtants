@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Debugger : MonoBehaviour
 {
     public enum Attributes { speed, gravity, jumpHeight };
+    public GameObject[] parts;
     public InputField speedField, gravsField, jumpField;
     public PlayerMovement playerMoves;
     // Start is called before the first frame update

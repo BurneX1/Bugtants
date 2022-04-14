@@ -6,12 +6,13 @@ public class EnemySense : MonoBehaviour
 {
     public Transform rotOrigin;
     public float range, minRange;
-    public float angle;
-
     private RaycastHit wall, floor;
-    public float rotY, rotX, startLook, tryWall, tryObjetive, totalRange;
+    [HideInInspector]
+    public float startLook, tryWall, tryObjetive, totalRange, angle;
     [HideInInspector]
     public GameObject objetive;
+    [HideInInspector]
+    public Vector3 retreatPos;
 
     public GameObject[] rangePoints;
     [HideInInspector]
@@ -33,6 +34,7 @@ public class EnemySense : MonoBehaviour
             Looking();
             Sensing();
             Sides();
+            RetreatZone();
         }
     }
     void Looking()
@@ -89,7 +91,10 @@ public class EnemySense : MonoBehaviour
             totalRange = range / 4;
         }
     }
+    void RetreatZone()
+    {
 
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -117,6 +122,7 @@ public class EnemySense : MonoBehaviour
         }
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, range/4);
-
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, minRange);
     }
 }
