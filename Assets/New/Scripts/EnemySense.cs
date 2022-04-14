@@ -65,11 +65,11 @@ public class EnemySense : MonoBehaviour
         {
             detect = true;
         }
-        if (tryWall > minRange)
+        if (tryObjetive > minRange)
         {
             feel = false;
         }
-        else if (tryWall <= tryObjetive)
+        else if (tryObjetive <= minRange)
         {
             feel = true;
         }

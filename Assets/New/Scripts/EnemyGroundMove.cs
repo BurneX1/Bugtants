@@ -57,7 +57,7 @@ public class EnemyGroundMove : MonoBehaviour
             if (radium.objetive != null)
             {
                 Movement();
-                Animate();
+                //Animate();
             }
         }
     }
@@ -105,7 +105,7 @@ public class EnemyGroundMove : MonoBehaviour
         {
             stat = Status.chasing;
         }
-        else if(!radium.detect&&radium.feel)
+        else if(!radium.detect&&!radium.feel)
         {
             stat = Status.patrolling;
         }
