@@ -11,6 +11,10 @@ public class EnemyGroundMove : MonoBehaviour
     public bool instantChase;
     [HideInInspector]
     public bool calm;
+    [HideInInspector]
+    public int statNumber;
+    // patrolling = 1, chasing = 0, retreating = -1
+
     public enum Status{patrolling, chasing, retreating };
     public Status stat;
     [HideInInspector]
@@ -111,14 +115,17 @@ public class EnemyGroundMove : MonoBehaviour
         if (radium.detect&&!radium.feel)
         {
             stat = Status.chasing;
+            statNumber = 0;
         }
         else if(!radium.detect&&!radium.feel)
         {
             stat = Status.patrolling;
+            statNumber = 1;
         }
         else if (radium.feel)
         {
             stat = Status.retreating;
+            statNumber = -1;
         }
     }
 

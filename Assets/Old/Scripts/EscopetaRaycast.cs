@@ -71,6 +71,14 @@ public class EscopetaRaycast : MonoBehaviour
                     FindObjectOfType<AudioCerebro>().Play("Disparo");
                 }*/
                 #endregion
+                if (Physics.Raycast(camara.position, DireccionDeBalas(), out golpe, rangoDisparo, ~(2 << 6)))
+                {
+                    if (golpe.collider.GetComponent<EnemyLife>() != null)
+                    {
+                        golpe.collider.GetComponent<EnemyLife>().ChangeLife(-daño);
+                    }
+                    CrearLaser(golpe.point);
+                }
 
                 CrearLaser(camara.position + DireccionDeBalas() * rangoDisparo);
 
