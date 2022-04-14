@@ -11,8 +11,7 @@ public class EnemySense : MonoBehaviour
     public float startLook, tryWall, tryObjetive, totalRange, angle;
     [HideInInspector]
     public GameObject objetive;
-    [HideInInspector]
-    public Vector3 retreatPos;
+    public GameObject retreatPos;
 
     public GameObject[] rangePoints;
     [HideInInspector]
@@ -34,7 +33,6 @@ public class EnemySense : MonoBehaviour
             Looking();
             Sensing();
             Sides();
-            RetreatZone();
         }
     }
     void Looking()
@@ -90,10 +88,6 @@ public class EnemySense : MonoBehaviour
         {
             totalRange = range / 4;
         }
-    }
-    void RetreatZone()
-    {
-
     }
     void OnDrawGizmos()
     {
