@@ -62,6 +62,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""463dda0e-bd4a-428c-ab5a-16cef0bdcd2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +172,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4662ea02-38c2-4f8c-a43d-a890760c4b3d"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -203,6 +223,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Atack = m_GamePlay.FindAction("Atack", throwIfNotFound: true);
         m_GamePlay_Movement = m_GamePlay.FindAction("Movement", throwIfNotFound: true);
         m_GamePlay_Interact = m_GamePlay.FindAction("Interact", throwIfNotFound: true);
+        m_GamePlay_Run = m_GamePlay.FindAction("Run", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -269,6 +290,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Atack;
     private readonly InputAction m_GamePlay_Movement;
     private readonly InputAction m_GamePlay_Interact;
+    private readonly InputAction m_GamePlay_Run;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -277,6 +299,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Atack => m_Wrapper.m_GamePlay_Atack;
         public InputAction @Movement => m_Wrapper.m_GamePlay_Movement;
         public InputAction @Interact => m_Wrapper.m_GamePlay_Interact;
+        public InputAction @Run => m_Wrapper.m_GamePlay_Run;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -298,6 +321,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnInteract;
+                @Run.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -314,6 +340,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -357,6 +386,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnAtack(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {

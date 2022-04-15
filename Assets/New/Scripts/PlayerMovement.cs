@@ -23,6 +23,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    public InputAction IPST;
+
+    float x;
+    float z;
+    bool jumpPressed = false;
+
 #if ENABLE_INPUT_SYSTEM
     InputAction movement;
     InputAction jump;
@@ -43,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
         jump = new InputAction("PlayerJump", binding: "<Gamepad>/a");
         jump.AddBinding("<Keyboard>/space");
 
+        IPST = new InputAction("Run", binding: "<Gamepad/a>");
+        IPST.AddBinding("<Keyboard>/LeftShift");
+
         movement.Enable();
         jump.Enable();
     }
@@ -51,9 +60,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x;
-        float z;
-        bool jumpPressed = false;
+        
         Debug.Log(jumpPressed);
 
 #if ENABLE_INPUT_SYSTEM
@@ -65,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         jumpPressed = Input.GetButtonDown("Jump");
+
 #endif
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -86,5 +94,21 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnEnable()
+    {
+        IPST.Enable();
+    }
+
+    private void OnDisable()
+    {
+        IPST.Disable();
+    }
+
+    void Run()
+    {
+        velocity = velocity * 2;
+        Debug.Log("test"); 
     }
 }
