@@ -29,8 +29,8 @@ public class EnemyMidDistance : MonoBehaviour
             Vector2 pointer = new Vector2(transform.position.x, transform.position.z);
             bullet.transform.position = bulletPosition.transform.position;
             rec = (playerPointer - pointer).normalized * bulletSpeed;
-            bullet.GetComponent<BulletTime>().angler = rec;
-            bulletAngle = Mathf.Atan2(rec.y, rec.x);
+            bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, 0, rec.y);
+            bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
             bullet.GetComponent<BulletTime>().tagName = "Player";
             if (bulletAngle < 0)
@@ -39,7 +39,7 @@ public class EnemyMidDistance : MonoBehaviour
                 bulletAngle = 360 + bulletAngle;
 
             }
-            bullet.transform.eulerAngles = new Vector3(0, bulletAngle, 0);
+            bullet.transform.eulerAngles = new Vector3(0, bulletAngle-90, 0);
             Instantiate(bullet);
             timer = 0;
         }

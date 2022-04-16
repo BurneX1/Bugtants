@@ -14,7 +14,7 @@ public class BulletTime : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(angler.x, 0, angler.y);
+        rb.velocity = new Vector3(angler.x, angler.y, angler.z);
     }
 
     // Update is called once per frame
