@@ -27,6 +27,10 @@ public class DamageOnTriger : MonoBehaviour
         if(timer <= 0 && doDmg == true)
         {
             Debug.Log("Hit * to " + other.gameObject + "  " + damage);
+            if(other.gameObject.GetComponent<Life>())
+            {
+                other.gameObject.GetComponent<Life>().ReduceLife(damage);
+            }
             timer = timePerDmg;
         }
     }
