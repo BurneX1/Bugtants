@@ -5,16 +5,23 @@ using UnityEngine.UI;
 
 public class Debugger : MonoBehaviour
 {
-    public enum Attributes { speed, gravity, jumpHeight };
     public GameObject[] parts;
-    public InputField speedField, gravsField, jumpField;
-    public PlayerMovement playerMoves;
+    public InputField speedField, gravsField, jumpField, shootrtField, bulletspdField, crouchField, runField;
+    private PlayerMovement playerMoves;
+    private ShootPlayer shootPlayer;
     // Start is called before the first frame update
     void Start()
     {
-        speedField.text = "" + playerMoves.speed;
+        playerMoves = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        shootPlayer = GameObject.FindGameObjectWithTag("PlayerShoot").GetComponent<ShootPlayer>();
+        speedField.text = "" + playerMoves.saveSpeed;
         gravsField.text = "" + (playerMoves.gravity * -1);
         jumpField.text = "" + playerMoves.jumpHeight;
+        shootrtField.text = "" + shootPlayer.maxTimer;
+        bulletspdField.text = "" + shootPlayer.bulletSpeed;
+        crouchField.text = "" + playerMoves.crouchChange;
+        runField.text = "" + playerMoves.multiplierSpeed;
+
     }
 
     // Update is called once per frame
@@ -24,29 +31,22 @@ public class Debugger : MonoBehaviour
     }
     void NumberChange()
     {
-        int value;
-        int.TryParse(speedField.text, out value);
-        playerMoves.speed = value;
-        int.TryParse(gravsField.text, out value);
+        float value;
+        float.TryParse(speedField.text, out value);
+        playerMoves.saveSpeed = value;
+        float.TryParse(gravsField.text, out value);
         playerMoves.gravity = value*-1;
-        int.TryParse(jumpField.text, out value);
+        float.TryParse(jumpField.text, out value);
         playerMoves.jumpHeight = value;
+        float.TryParse(shootrtField.text, out value);
+        shootPlayer.maxTimer = value;
+        float.TryParse(bulletspdField.text, out value);
+        shootPlayer.bulletSpeed = value;
+        float.TryParse(crouchField.text, out value);
+        playerMoves.crouchChange = value;
+        float.TryParse(runField.text, out value);
+        playerMoves.multiplierSpeed = value;
 
     }
-    /*public void SpeedModify(bool positive, Attributes att)
-    {
-        float count;
-        if (positive)
-        {
-            count = 1;
-        }
-        else
-        {
-            count = -1;
-        }
-        if (att == Attributes.speed)
-        {
-            playerMoves.speed += count;
-        }
-    }*/
+
 }

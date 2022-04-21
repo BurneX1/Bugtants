@@ -8,22 +8,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    InputSystemActions inputStm;
     public CharacterController controller;
-
-    public float speed = 12f;
+    public CrouchSeen seeCrouch;
+    public GameObject sight;
+    public float saveSpeed, crouchChange;
+    private float speed = 12f;
+    public float multiplierSpeed;
     public float gravity = -10f;
     public float jumpHeight = 2f;
-
+    bool running, crouching;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    
+    [HideInInspector]
+    public float altitude;
 
     Vector3 velocity;
     bool isGrounded;
 
-    public InputAction IPST;
 
     float x;
     float z;
@@ -32,9 +35,18 @@ public class PlayerMovement : MonoBehaviour
 #if ENABLE_INPUT_SYSTEM
     InputAction movement;
     InputAction jump;
+    void Awake()
+    {
+        inputStm = new InputSystemActions();
+        inputStm.GamePlay.Run.performed += ctx => running = true;
+        inputStm.GamePlay.Run.canceled += ctx => running = false;
+        inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
+        inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
 
+    }
     void Start()
     {
+        speed = saveSpeed;
         movement = new InputAction("PlayerMovement", binding: "<Gamepad>/leftStick");
         movement.AddCompositeBinding("Dpad")
             .With("Up", "<Keyboard>/w")
@@ -45,12 +57,9 @@ public class PlayerMovement : MonoBehaviour
             .With("Left", "<Keyboard>/leftArrow")
             .With("Right", "<Keyboard>/d")
             .With("Right", "<Keyboard>/rightArrow");
-        
+
         jump = new InputAction("PlayerJump", binding: "<Gamepad>/a");
         jump.AddBinding("<Keyboard>/space");
-
-        IPST = new InputAction("Run", binding: "<Gamepad/a>");
-        IPST.AddBinding("<Keyboard>/LeftShift");
 
         movement.Enable();
         jump.Enable();
@@ -60,7 +69,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Movement();
+        MovementStat();
+        HeightStat();
+    }
+
+    void Movement()
+    {
         Debug.Log(jumpPressed);
 
 #if ENABLE_INPUT_SYSTEM
@@ -86,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if(jumpPressed && isGrounded)
+        if (jumpPressed && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -98,17 +113,49 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        IPST.Enable();
+        inputStm.Enable();
     }
-
     private void OnDisable()
     {
-        IPST.Disable();
+        inputStm.Disable();
     }
 
-    void Run()
+    void MovementStat()
     {
-        velocity = velocity * 2;
-        Debug.Log("test"); 
+        if (running)
+        {
+            speed = saveSpeed * multiplierSpeed;
+        }
+        else
+        {
+            speed = saveSpeed;
+        }
+    }
+    void HeightStat()
+    {
+        if (crouching)
+        {
+            controller.height = 1.8f - crouchChange * 2;
+            controller.center = new Vector3(0, -crouchChange, 0);
+            sight.transform.localPosition = new Vector3(0, -crouchChange * 2, 0);
+            altitude = crouchChange;
+        }
+        else
+        {
+            if (seeCrouch.can)
+            {
+                controller.height = 1.8f;
+                controller.center = new Vector3(0, 0, 0);
+                sight.transform.localPosition = new Vector3(0, 0, 0);
+                altitude = crouchChange;
+            }
+            else
+            {
+                controller.height = 1.8f - crouchChange * 2;
+                controller.center = new Vector3(0, -crouchChange, 0);
+                sight.transform.localPosition = new Vector3(0, -crouchChange * 2, 0);
+
+            }
+        }
     }
 }
