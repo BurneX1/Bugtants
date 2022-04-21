@@ -9,10 +9,11 @@ public class ShootPlayer : MonoBehaviour
     public float maxTimer, bulletSpeed;
     private float timer, bulletAngle;
     private Vector3 rec;
-
+    private Pause pauseScript;
     // Start is called before the first frame update
     void Awake()
     {
+        pauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Atack.performed += _ => Shoot();
     }
@@ -24,6 +25,7 @@ public class ShootPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!pauseScript.paused)
         Delay();
     }
     void Delay()
@@ -33,7 +35,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Shoot()
     {
-        if (timer >= maxTimer)
+        if (timer >= maxTimer&&!pauseScript.paused)
         {
             bullet.transform.position = transform.position;
             rec = (transform.position - targetPosition.transform.position).normalized * -bulletSpeed;

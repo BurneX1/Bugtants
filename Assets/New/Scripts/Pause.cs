@@ -34,14 +34,14 @@ public class Pause : MonoBehaviour
         pauseHud.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
+        paused = true;
     }
     public void Resume()
     {
         Time.timeScale = 1;
         pauseHud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-
+        paused = false;
     }
     private void OnEnable()
     {
