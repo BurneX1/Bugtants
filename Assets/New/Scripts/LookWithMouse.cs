@@ -16,14 +16,22 @@ public class LookWithMouse : MonoBehaviour
 
     float xRotation = 0f;
 
+    private Pause pauseScript;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        pauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (!pauseScript.paused)
+        SeeCamera();
+    }
+    void SeeCamera()
     {
 #if ENABLE_INPUT_SYSTEM
         float mouseX = 0, mouseY = 0;
