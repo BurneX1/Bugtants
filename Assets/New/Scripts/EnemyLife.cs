@@ -32,6 +32,7 @@ public class EnemyLife : MonoBehaviour
                 objectDesperate.GetComponent<LifeSpan>().maxTimer = timeLifeSpan;
                 Instantiate(objectDesperate);
                 desperate = false;
+                objectDesperate.transform.position = new Vector3(0, 0, 0);
             }
             dead = true;
             if (destroyable)

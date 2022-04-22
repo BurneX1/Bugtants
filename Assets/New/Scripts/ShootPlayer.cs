@@ -51,6 +51,8 @@ public class ShootPlayer : MonoBehaviour
             }
             bullet.transform.eulerAngles = transform.eulerAngles;
             Instantiate(bullet);
+            bullet.transform.position = new Vector3(0, 0, 0);
+            bullet.transform.eulerAngles = new Vector3(0, 0, 0);
             timer = 0;
         }
 
