@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Interacter : MonoBehaviour
 {
     public bool instaPick;
+    public bool dsblOnPick;
     public UnityEvent effectList;
     public string[] tagList;
     [HideInInspector]
@@ -30,9 +31,17 @@ public class Interacter : MonoBehaviour
             {
                 if (other.gameObject.tag == tagList[i])
                 {
+                    whoCall = other.gameObject;
                     CallEfects();
                 }
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject == whoCall)
+        {
+            whoCall = null;
         }
     }
 
@@ -49,6 +58,10 @@ public class Interacter : MonoBehaviour
     private void CallEfects()
     {
         effectList.Invoke();
+        if (dsblOnPick)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
 
