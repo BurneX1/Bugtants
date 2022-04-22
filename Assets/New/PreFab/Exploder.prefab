@@ -303,7 +303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
+  timeLifeSpan: 3
   destroyable: 1
+  desperate: 1
+  objectDesperate: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
 --- !u!114 &2885942110906221348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,7 +1031,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 7762d2afcd5af4041ac738734efefbeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
