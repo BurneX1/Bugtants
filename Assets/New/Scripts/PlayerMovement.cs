@@ -19,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 2f;
     bool running, crouching;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance;
     public LayerMask groundMask;
     [HideInInspector]
     public float altitude;
 
     Vector3 velocity;
-    bool isGrounded;
+    public bool isGrounded;
 
 
     float x;
@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         inputStm.GamePlay.Run.canceled += ctx => running = false;
         inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
         inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
+        inputStm.GamePlay.Jump.performed += _ => Jumping();
 
     }
     void Start()
@@ -73,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         MovementStat();
         HeightStat();
     }
+    void FixedUpdate()
+    {
+        Jumper();
+    }
 
     void Movement()
     {
@@ -89,26 +94,15 @@ public class PlayerMovement : MonoBehaviour
         jumpPressed = Input.GetButtonDown("Jump");
 
 #endif
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
 
-        if (jumpPressed && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, 1 << 3);
+
     }
 
     private void OnEnable()
@@ -120,6 +114,21 @@ public class PlayerMovement : MonoBehaviour
         inputStm.Disable();
     }
 
+    void Jumper()
+    {
+        /*if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }*/
+    }
+    void Jumping()
+    {
+        if (isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+    }
     void MovementStat()
     {
         if (running)

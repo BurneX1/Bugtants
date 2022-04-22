@@ -376,14 +376,15 @@ MonoBehaviour:
   saveSpeed: 4
   crouchChange: 0.2
   multiplierSpeed: 2
-  gravity: -200
-  jumpHeight: 0.65
+  gravity: -10
+  jumpHeight: 1
   groundCheck: {fileID: 738646681763345176}
-  groundDistance: 0.1
+  groundDistance: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   altitude: 0
+  isGrounded: 0
 --- !u!1 &738646681763345175
 GameObject:
   m_ObjectHideFlags: 0

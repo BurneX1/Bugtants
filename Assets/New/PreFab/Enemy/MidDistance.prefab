@@ -387,14 +387,14 @@ MonoBehaviour:
   radium: {fileID: 9101950414706916795}
   moveSound: {fileID: 0}
   patrolPoint:
-  - {fileID: 9101950415606751213}
-  - {fileID: 9101950415939020330}
-  - {fileID: 9101950416375978967}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   patroller: {fileID: 9101950414486837381}
   savePatrol:
-  - {fileID: 9101950415606751213}
-  - {fileID: 9101950415939020330}
-  - {fileID: 9101950416375978967}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   detectPatrol: {fileID: 9101950415855010351}
   animator: {fileID: 0}
 --- !u!114 &9101950414631697825
@@ -427,7 +427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
+  timeLifeSpan: 0
   destroyable: 1
+  desperate: 0
+  objectDesperate: {fileID: 0}
 --- !u!1 &9101950414650371069
 GameObject:
   m_ObjectHideFlags: 0

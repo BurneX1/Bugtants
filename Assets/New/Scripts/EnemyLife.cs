@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyLife : MonoBehaviour
 {
     public int life;
-    public bool destroyable;
+    public float timeLifeSpan;
+    public bool destroyable, desperate;
+    public GameObject objectDesperate;
     private bool dead;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,13 @@ public class EnemyLife : MonoBehaviour
         life += value;
         if (life <= 0)
         {
+            if (desperate)
+            {
+                objectDesperate.transform.position = transform.position;
+                objectDesperate.GetComponent<LifeSpan>().maxTimer = timeLifeSpan;
+                Instantiate(objectDesperate);
+                desperate = false;
+            }
             dead = true;
             if (destroyable)
             {
