@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9008a067f4d626c4d8bc4bc48f04bb89, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
@@ -599,22 +599,22 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2.58
     min: 0
     max: 4
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.763
     min: 0
     max: 1
   radius:
     m_OverrideState: 1
-    m_Value: 2.22
+    m_Value: 1.86
     min: 0.25
     max: 5
   spatialBilateralAggressiveness:
     m_OverrideState: 1
-    m_Value: 0.664
+    m_Value: 0.749
     min: 0
     max: 1
   temporalAccumulation:
@@ -637,15 +637,15 @@ MonoBehaviour:
       m_Bits: 4294967295
   m_StepCount:
     m_OverrideState: 1
-    m_Value: 24
+    m_Value: 20
     min: 2
     max: 32
   m_FullResolution:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 102
+    m_Value: 116
     min: 16
     max: 256
   m_BilateralUpsample:
@@ -653,16 +653,16 @@ MonoBehaviour:
     m_Value: 1
   m_DirectionCount:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
     min: 1
     max: 6
   m_RayLength:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 20
     min: 0.01
   m_SampleCount:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 8
     min: 1
     max: 64
   m_Denoise:
@@ -670,7 +670,7 @@ MonoBehaviour:
     m_Value: 1
   m_DenoiserRadius:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.65
     min: 0.001
     max: 1
 --- !u!114 &587073328940131521
