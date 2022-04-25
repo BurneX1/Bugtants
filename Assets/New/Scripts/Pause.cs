@@ -7,12 +7,14 @@ public class Pause : MonoBehaviour
     InputSystemActions inputStm;
     public bool paused;
     public GameObject pauseHud;
+    private MP_System mpScript;
     // Start is called before the first frame update
 
     void Awake()
     {
         inputStm = new InputSystemActions();
         inputStm.MenusPause.Pause.performed += _ => Buttoners();
+        mpScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MP_System>();
     }
     void Start()
     {
@@ -51,5 +53,10 @@ public class Pause : MonoBehaviour
     private void OnDisable()
     {
         inputStm.Disable();
+    }
+
+    public void Recharge()
+    { 
+        mpScript.FullRecharge(); 
     }
 }

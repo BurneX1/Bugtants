@@ -7,13 +7,15 @@ public class ShootPlayer : MonoBehaviour
     InputSystemActions inputStm;
     public GameObject bullet, targetPosition;
     public float maxTimer, bulletSpeed;
-    private float timer, bulletAngle;
+    public float timer, bulletAngle;
     private Vector3 rec;
     private Pause pauseScript;
+    private MP_System mpScript;
     // Start is called before the first frame update
     void Awake()
     {
         pauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
+        mpScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MP_System>();
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Atack.performed += _ => Shoot();
     }
@@ -35,7 +37,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Shoot()
     {
-        if (timer >= maxTimer&&!pauseScript.paused)
+        if (timer >= maxTimer&&!pauseScript.paused&&mpScript.ActualMP>=10)
         {
             bullet.transform.position = transform.position;
             rec = (transform.position - targetPosition.transform.position).normalized * -bulletSpeed;
@@ -53,6 +55,7 @@ public class ShootPlayer : MonoBehaviour
             Instantiate(bullet);
             bullet.transform.position = new Vector3(0, 0, 0);
             bullet.transform.eulerAngles = new Vector3(0, 0, 0);
+            mpScript.BasicAttack();
             timer = 0;
         }
 
