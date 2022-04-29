@@ -141,8 +141,8 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if (stat == Status.looking)
         {
-            intel.speed = saveSpeed * 0;
-            intel.SetDestination(radium.retreatPos.transform.position);
+            intel.speed = 0;
+            intel.SetDestination(transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             intel.autoRepath = true;
         }
@@ -180,6 +180,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
         if (Vector3.Distance(intel.destination, transform.position) < 0.1f)
         {
+            intel.speed = 0;
             stunned = true;
             Debug.Log("Failed");
         }
