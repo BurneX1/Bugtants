@@ -13,6 +13,7 @@ public class EnemyScarab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
     }
 
     // Update is called once per frame
@@ -28,13 +29,14 @@ public class EnemyScarab : MonoBehaviour
         if ((timer >= maxTimer && enemySee.crash && !preparing)&&!movement.charge)
         {
             saveSpeed = movement.saveSpeed;
-            movement.saveSpeed = 0;
-            preparing = true;
+            movement.charging = 0;
             Debug.Log("Prepare");
             timer = 0;
+            preparing = true;
         }
         else if (timer >= 2f && preparing)
         {
+            movement.charging = 1;
             movement.saveSpeed = saveSpeed;
             Debug.Log("Charged");
             movement.stunnedMaxTimer = stunnerTime;
