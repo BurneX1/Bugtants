@@ -18,7 +18,7 @@ public class EnemyGroundMove : MonoBehaviour
     public enum Status { patrolling, chasing, retreating, looking, charging };
     public Status stat;
     [HideInInspector]
-    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer;
+    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer, charging;
     private float stunnedTimer;
     public EnemySense radium;
     private int pinner, marker;
@@ -40,6 +40,7 @@ public class EnemyGroundMove : MonoBehaviour
         {
             guardarVida = valores.vida;
         }*/
+        charging = 1;
         stunnedTimer = 0;
         pinner = 0;
         marker = 0;
@@ -90,7 +91,7 @@ public class EnemyGroundMove : MonoBehaviour
         marker = 0;
         if (stat == Status.patrolling)
         {
-            intel.speed = saveSpeed;
+            intel.speed = saveSpeed * charging;
             intel.autoRepath = true;
             pinner = 0;
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
@@ -127,7 +128,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if(stat == Status.chasing)
         {
-            intel.speed = saveSpeed;
+            intel.speed = saveSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
             intel.autoRepath = true;
@@ -170,9 +171,9 @@ public class EnemyGroundMove : MonoBehaviour
     }
     void Charge()
     {
-        intel.speed = saveSpeed * 2;
         if (marker == 0)
         {
+            intel.speed = saveSpeed * 2 * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
@@ -181,22 +182,26 @@ public class EnemyGroundMove : MonoBehaviour
         if (Vector3.Distance(intel.destination, transform.position) < 0.1f)
         {
             intel.speed = 0;
+            charging = 0;
             stunned = true;
             Debug.Log("Failed");
         }
         else if (radium.hear)
         {
+            charging = 1;
             Debug.Log("Targetted");
             charge = false;
         }
     }
     void Stunned()
     {
-        stunnedTimer += Time.deltaTime;
         intel.speed = 0;
+        stunnedTimer += Time.deltaTime;
+        charging = 0;
         Debug.Log("InRest");
         if (stunnedTimer >= stunnedMaxTimer)
         {
+            charging = 1;
             stunnedTimer = 0;
             stunned = false;
             charge = false;

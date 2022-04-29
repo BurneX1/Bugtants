@@ -34,16 +34,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5ab44aadfb1804db5fd470983ac1b8, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.9721451, y: 0.98766696, z: 1, w: -0.007037297}
+    m_Value: {x: 0.9039487, y: 0.94458675, z: 1, w: -0.007037297}
   gamma:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.9006843, y: 0.9192, z: 1, w: -0.17593235}
   gain:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 1, y: 0.8008312, z: 0.8337081, w: -0.3384939}
 --- !u!114 &-7123166113386044056
 MonoBehaviour:
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1

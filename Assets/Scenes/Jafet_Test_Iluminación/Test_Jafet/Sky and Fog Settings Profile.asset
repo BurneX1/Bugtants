@@ -22,10 +22,10 @@ MonoBehaviour:
     m_Value: 1
   colorMode:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   color:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -66,8 +66,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   albedo:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.0010679747, g: 0.2830189, b: 0.042747706, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -120,6 +120,55 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   filter:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-7924316640672694646
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddcec8a8eb2d684d833ac8f5d26aebd, type: 3}
+  m_Name: HDShadowSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  maxShadowDistance:
+    m_OverrideState: 1
+    m_Value: 500
+    min: 0
+  directionalTransmissionMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 1
+  cascadeShadowSplitCount:
+    m_OverrideState: 0
+    m_Value: 4
+    min: 1
+    max: 4
+  cascadeShadowSplit0:
+    m_OverrideState: 0
+    m_Value: 0.05
+  cascadeShadowSplit1:
+    m_OverrideState: 0
+    m_Value: 0.15
+  cascadeShadowSplit2:
+    m_OverrideState: 0
+    m_Value: 0.3
+  cascadeShadowBorder0:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder1:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder2:
+    m_OverrideState: 0
+    m_Value: 0
+  cascadeShadowBorder3:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-4185394392961561897
@@ -284,6 +333,7 @@ MonoBehaviour:
   - {fileID: 5492039012913291860}
   - {fileID: -8931185904394235265}
   - {fileID: -502701957002684342}
+  - {fileID: -7924316640672694646}
 --- !u!114 &5492039012913291860
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -296,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   rotation:
     m_OverrideState: 0

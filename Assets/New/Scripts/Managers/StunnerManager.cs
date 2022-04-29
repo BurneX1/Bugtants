@@ -58,7 +58,7 @@ public class StunnerManager : MonoBehaviour
 
         enLifeScript.life = life;
         meleeScript.maxTimer = maxTimer;
-        enGrdScript.intel.speed = speed;
+        enGrdScript.saveSpeed = speed;
 
 
         enScbScript.stunnerTime = stunnerTime;
