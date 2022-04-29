@@ -20,7 +20,7 @@ public class Exploder : MonoBehaviour
 
     void Explode()
     {
-        if (movement.statNumber == -1)
+        if (movement.statNumber == 2)
         {
             suicide.ChangeLife(-suicide.life);
         }

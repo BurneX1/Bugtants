@@ -10,17 +10,18 @@ public class EnemyGroundMove : MonoBehaviour
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
-    public bool calm;
+    public bool calm, stunned, charge;
     [HideInInspector]
     public int statNumber;
-    // patrolling = 1, chasing = 0, retreating = -1
+    // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4
 
-    public enum Status{patrolling, chasing, retreating };
+    public enum Status { patrolling, chasing, retreating, looking, charging };
     public Status stat;
     [HideInInspector]
-    public float saveSpeed, saveAcc, saveLife;
+    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer;
+    private float stunnedTimer;
     public EnemySense radium;
-    private int pinner;
+    private int pinner, marker;
     public GameObject moveSound;
     public GameObject[] patrolPoint;
     public GameObject patroller;
@@ -39,7 +40,11 @@ public class EnemyGroundMove : MonoBehaviour
         {
             guardarVida = valores.vida;
         }*/
+        stunnedTimer = 0;
         pinner = 0;
+        marker = 0;
+        charge = false;
+        stunned = false;
         if (patrolPoint.Length != 0)
         {
             ControlPatrol();
@@ -59,8 +64,22 @@ public class EnemyGroundMove : MonoBehaviour
         {
             if (radium.objetive != null)
             {
-                Movement();
-                Look();
+                if (!stunned)
+                {
+                    if (!charge)
+                    {
+                        Movement();
+                    }
+                    else
+                    {
+                        Charge();
+                    }
+                    Look();
+                }
+                else
+                {
+                    Stunned();
+                }
                 //Animate();
             }
         }
@@ -68,9 +87,11 @@ public class EnemyGroundMove : MonoBehaviour
 
     void Movement()
     {
+        marker = 0;
         if (stat == Status.patrolling)
         {
             intel.speed = saveSpeed;
+            intel.autoRepath = true;
             pinner = 0;
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
             if (patrolNumber > patrolPoint.Length - 1)
@@ -90,6 +111,10 @@ public class EnemyGroundMove : MonoBehaviour
                     patrolNumber += 1;
                 }
             }
+            else
+            {
+                intel.SetDestination(transform.position);
+            }
             /*
             if (radar.detectar || guardarVida != valores.vida)
             {
@@ -105,19 +130,29 @@ public class EnemyGroundMove : MonoBehaviour
             intel.speed = saveSpeed;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
+            intel.autoRepath = true;
         }
         else if (stat == Status.retreating)
         {
-            intel.speed = saveSpeed*0.75f;
+            intel.speed = backSpeed;
             intel.SetDestination(radium.retreatPos.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            intel.autoRepath = true;
         }
-        if (radium.detect&&!radium.feel)
+        else if (stat == Status.looking)
+        {
+            intel.speed = saveSpeed * 0;
+            intel.SetDestination(radium.retreatPos.transform.position);
+            modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            intel.autoRepath = true;
+        }
+
+        if (radium.detect && !radium.feel && !radium.hear)
         {
             stat = Status.chasing;
             statNumber = 0;
         }
-        else if(!radium.detect&&!radium.feel)
+        else if (!radium.detect && !radium.feel && !radium.hear)
         {
             stat = Status.patrolling;
             statNumber = 1;
@@ -125,13 +160,50 @@ public class EnemyGroundMove : MonoBehaviour
         else if (radium.feel)
         {
             stat = Status.retreating;
-            statNumber = -1;
+            statNumber = 2;
+        }
+        else if (radium.hear)
+        {
+            stat = Status.looking;
+            statNumber = 3;
         }
     }
-
+    void Charge()
+    {
+        intel.speed = saveSpeed * 2;
+        if (marker == 0)
+        {
+            intel.autoRepath = false;
+            intel.SetDestination(radium.objetive.transform.position);
+            modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            marker++;
+        }
+        if (Vector3.Distance(intel.destination, transform.position) < 0.1f)
+        {
+            stunned = true;
+            Debug.Log("Failed");
+        }
+        else if (radium.hear)
+        {
+            Debug.Log("Targetted");
+            charge = false;
+        }
+    }
+    void Stunned()
+    {
+        stunnedTimer += Time.deltaTime;
+        intel.speed = 0;
+        Debug.Log("InRest");
+        if (stunnedTimer >= stunnedMaxTimer)
+        {
+            stunnedTimer = 0;
+            stunned = false;
+            charge = false;
+        }
+    }
     void Look()
     {
-        if (stat == Status.retreating || stat == Status.chasing)
+        if (stat == Status.retreating || stat == Status.chasing || stat == Status.looking)
         {
             pinner++;
 

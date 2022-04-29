@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject sight;
     public float saveSpeed, crouchChange;
     private float speed = 12f;
-    public float multiplierSpeed;
+    public float multiplierSpeed, dividerSpeed;
     public float gravity = -10f;
     public float jumpHeight = 2f;
     bool running, crouching;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        Debug.Log(jumpPressed);
+        //Debug.Log(jumpPressed);
 
 #if ENABLE_INPUT_SYSTEM
         var delta = movement.ReadValue<Vector2>();
@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jumping()
     {
-        if (isGrounded)
+        if (isGrounded&&!crouching)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -131,14 +131,19 @@ public class PlayerMovement : MonoBehaviour
     }
     void MovementStat()
     {
-        if (running)
+        if (crouching)
+        {
+            speed = saveSpeed / dividerSpeed;
+        }
+        else if (running&&!crouching)
         {
             speed = saveSpeed * multiplierSpeed;
         }
-        else
+        else if (!running&&!crouching)
         {
             speed = saveSpeed;
         }
+
     }
     void HeightStat()
     {
