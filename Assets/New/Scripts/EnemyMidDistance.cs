@@ -23,7 +23,7 @@ public class EnemyMidDistance : MonoBehaviour
     void Shoot()
     {
         timer += Time.deltaTime;
-        if (timer >= maxTimer && movement.statNumber == -1)
+        if (timer >= maxTimer && (movement.statNumber == 2|| movement.statNumber == 3))
         {
             Vector2 playerPointer = new Vector2(movement.radium.objetive.transform.position.x, movement.radium.objetive.transform.position.z);
             Vector2 pointer = new Vector2(transform.position.x, transform.position.z);

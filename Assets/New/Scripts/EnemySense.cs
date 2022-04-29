@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySense : MonoBehaviour
 {
     public Transform rotOrigin;
-    public float range, minRange;
+    public float range, retreatRange, quietRange, crashRange;
     private RaycastHit wall, floor;
     [HideInInspector]
     public float startLook, tryWall, tryObjetive, totalRange, angle;
@@ -15,7 +15,7 @@ public class EnemySense : MonoBehaviour
 
     public GameObject[] rangePoints;
     [HideInInspector]
-    public bool dead, detect, feel;
+    public bool dead, detect, feel, hear, crash;
 
     // Start is called before the first frame update
     void Start()
@@ -63,14 +63,31 @@ public class EnemySense : MonoBehaviour
         {
             detect = true;
         }
-        if (tryObjetive > minRange)
+        if (tryObjetive > retreatRange)
         {
             feel = false;
         }
-        else if (tryObjetive <= minRange)
+        else if (tryObjetive <= retreatRange)
         {
             feel = true;
         }
+        if (tryObjetive > quietRange)
+        {
+            hear = false;
+        }
+        else if (tryObjetive <= quietRange)
+        {
+            hear = true;
+        }
+        if (tryObjetive > crashRange)
+        {
+            crash = false;
+        }
+        else if (tryObjetive <= crashRange)
+        {
+            crash = true;
+        }
+
 
     }
     void Sides()
@@ -114,9 +131,13 @@ public class EnemySense : MonoBehaviour
         {
             Gizmos.DrawLine(draw, rangePoints[i].transform.position);
         }
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, range/4);
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, minRange);
+        Gizmos.DrawWireSphere(transform.position, retreatRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, quietRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, crashRange);
+
+
     }
 }

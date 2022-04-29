@@ -18,6 +18,7 @@ public class ShootPlayer : MonoBehaviour
         mpScript = GameObject.FindGameObjectWithTag("Player").GetComponent<MP_System>();
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Atack.performed += _ => Shoot();
+        inputStm.GamePlay.Recharge.performed += _ => Recharge();
     }
     void Start()
     {
@@ -60,7 +61,10 @@ public class ShootPlayer : MonoBehaviour
         }
 
     }
-
+    void Recharge()
+    {
+        mpScript.FullRecharge();
+    }
     private void OnEnable()
     {
         inputStm.Enable();
