@@ -34,17 +34,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5ab44aadfb1804db5fd470983ac1b8, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   lift:
-    m_OverrideState: 1
-    m_Value: {x: 0.9039487, y: 0.94458675, z: 1, w: -0.007037297}
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: -0.05132592}
   gamma:
     m_OverrideState: 0
-    m_Value: {x: 0.9006843, y: 0.9192, z: 1, w: -0.17593235}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.20530367}
   gain:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 0.8008312, z: 0.8337081, w: -0.3384939}
+    m_Value: {x: 1, y: 1, z: 1, w: -1}
 --- !u!114 &-7123166113386044056
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -599,17 +599,17 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 2.01
+    m_Value: 2.58
     min: 0
     max: 4
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.695
+    m_Value: 0.763
     min: 0
     max: 1
   radius:
     m_OverrideState: 1
-    m_Value: 1.17
+    m_Value: 1.86
     min: 0.25
     max: 5
   spatialBilateralAggressiveness:
@@ -702,17 +702,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b24b200358312b4fa1004e2431c2f1f, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   shadows:
-    m_OverrideState: 1
-    m_Value: {x: 0.89393055, y: 0.91202646, z: 1, w: 0.004972458}
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: -0.05132592}
   midtones:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.11963418}
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
   highlights:
     m_OverrideState: 0
-    m_Value: {x: 0.8746522, y: 1, z: 0.94450265, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
@@ -1014,16 +1014,16 @@ MonoBehaviour:
     max: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.1415466
+    m_Value: 0.2905662
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.44049242
+    m_Value: 0.4424532
   cascadeShadowSplit2:
     m_OverrideState: 1
     m_Value: 0.63254726
   cascadeShadowBorder0:
     m_OverrideState: 1
-    m_Value: 0.68283695
+    m_Value: 0.56718993
   cascadeShadowBorder1:
     m_OverrideState: 1
     m_Value: 0.5682122
@@ -1032,7 +1032,7 @@ MonoBehaviour:
     m_Value: 0.6964225
   cascadeShadowBorder3:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.3722723
 --- !u!114 &3528313543346374807
 MonoBehaviour:
   m_ObjectHideFlags: 3
