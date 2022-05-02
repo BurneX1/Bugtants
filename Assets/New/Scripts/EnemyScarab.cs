@@ -6,6 +6,7 @@ public class EnemyScarab : MonoBehaviour
 {
     public EnemyGroundMove movement;
     public EnemySense enemySee;
+    public int chargeDamage;
     public float stunnerTime;
     private bool preparing;
     public float maxTimer;

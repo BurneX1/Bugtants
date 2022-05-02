@@ -23,17 +23,24 @@ public class StunnerManager : MonoBehaviour
     public int patrolPoints;
     [Tooltip("Vida del enemigo")]
     public int life;
+    [Tooltip("La cantidad que reduce la vida del jugador al golpear")]
+    public int damage;
+    [Tooltip("La cantidad que reduce la vida del jugador al embestir")]
+    public int damageStun;
     [Tooltip("Rango de espera entre golpes (no poner valor 0 o explota tu compu).")]
     public float maxTimer;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
     [Tooltip("Tiempo en que el enemigo estará aturdido y el tiempo que da al jugador al aturdirlo")]
     public float stunnerTime;
+    [Tooltip("Tiempo en que se muestra el estado golpeado")]
+    public float feedbackMaxTimer;
     [Tooltip("Rango de espera entre embestidas (no poner valor 0 o explota tu compu).")]
     public float maxTimerScarab;
     // Start is called before the first frame update
     void Start()
     {
+        enLifeScript.life = life;
         locker = true;
     }
 
@@ -41,6 +48,7 @@ public class StunnerManager : MonoBehaviour
     void Update()
     {
         StatAlocate();
+        DeathCondition();
     }
 
     void OnDrawGizmos()
@@ -56,12 +64,24 @@ public class StunnerManager : MonoBehaviour
         enSenScript.crashRange = crashRange;
         enGrdScript.patrolPoint = new GameObject[patrolPoints];
 
-        enLifeScript.life = life;
+        meleeScript.damage = damage;
         meleeScript.maxTimer = maxTimer;
         enGrdScript.saveSpeed = speed;
-
+        enGrdScript.chargeDamage = damageStun;
+        enLifeScript.feedMaxTimer = feedbackMaxTimer;
 
         enScbScript.stunnerTime = stunnerTime;
         enScbScript.maxTimer = maxTimerScarab;
+    }
+    void DeathCondition()
+    {
+        if (enLifeScript.dead)
+        {
+            enGrdScript.saveSpeed = 0;
+            enGrdScript.enabled = false;
+            enSenScript.enabled = false;
+            meleeScript.enabled = false;
+            enScbScript.enabled = false;
+        }
     }
 }

@@ -331,7 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 6754140617189883553}
   range: 10
-  minRange: 6
+  retreatRange: 0
+  quietRange: 0
+  crashRange: 0
   startLook: 0
   tryWall: 0
   tryObjetive: 0
@@ -348,6 +350,8 @@ MonoBehaviour:
   dead: 0
   detect: 0
   feel: 0
+  hear: 0
+  crash: 0
 --- !u!1 &6754140616775990501
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +476,7 @@ GameObject:
   - component: {fileID: 6754140617189883554}
   m_Layer: 0
   m_Name: GroundEnemyBase
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +531,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6754140617189883557}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27
   m_Height: 1.6
@@ -549,11 +553,16 @@ MonoBehaviour:
   modelsee: {fileID: 6754140617189883557}
   instantChase: 0
   calm: 0
+  stunned: 0
+  charge: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
+  backSpeed: 0
   saveAcc: 0
   saveLife: 0
+  stunnedMaxTimer: 0
+  charging: 0
   radium: {fileID: 6754140616672744739}
   moveSound: {fileID: 0}
   patrolPoint: []

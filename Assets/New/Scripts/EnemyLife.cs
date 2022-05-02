@@ -5,25 +5,49 @@ using UnityEngine;
 public class EnemyLife : MonoBehaviour
 {
     public int life;
-    public float timeLifeSpan;
+    public float timeLifeSpan, feedMaxTimer;
+    private float feedTimer;
     public bool destroyable, desperate;
     public GameObject objectDesperate;
-    private bool dead;
+    public GameObject model;
+    private Material actualMat;
+    public Material damagedMat;
+    [HideInInspector]
+    public bool dead;
+    private bool damagedFeed;
     // Start is called before the first frame update
     void Start()
     {
+        actualMat = model.GetComponent<MeshRenderer>().material;
+        feedTimer = 0;
         dead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Feedback();
     }
-
+    void Feedback()
+    {
+        if (feedTimer > 0)
+        {
+            feedTimer -= Time.deltaTime;
+            model.GetComponent<MeshRenderer>().material = damagedMat;
+        }
+        else if (actualMat != model.GetComponent<MeshRenderer>().material)
+        {
+            feedTimer = 0;
+            model.GetComponent<MeshRenderer>().material = actualMat;
+        }
+    }
     public void ChangeLife(int value)
     {
         life += value;
+        if (value < 0)
+        {
+            feedTimer = feedMaxTimer;
+        }
         if (life <= 0)
         {
             if (desperate)

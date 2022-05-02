@@ -22,6 +22,7 @@ public class EnemyGroundMove : MonoBehaviour
     private float stunnedTimer;
     public EnemySense radium;
     private int pinner, marker;
+    public int chargeDamage;
     public GameObject moveSound;
     public GameObject[] patrolPoint;
     public GameObject patroller;
@@ -191,6 +192,10 @@ public class EnemyGroundMove : MonoBehaviour
             charging = 1;
             Debug.Log("Targetted");
             charge = false;
+            if (radium.objetive.GetComponent<Life>() != null)
+            {
+                radium.objetive.GetComponent<Life>().ReduceLife(chargeDamage);
+            }
         }
     }
     void Stunned()

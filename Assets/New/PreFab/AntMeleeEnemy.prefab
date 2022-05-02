@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 7242720922725904221}
   m_Layer: 0
   m_Name: AntMeleeEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +617,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922725904220}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27
   m_Height: 1.6
@@ -642,8 +642,10 @@ MonoBehaviour:
   frontDetectRange: 4
   attackRange: 2
   patrolPoints: 0
-  life: 2
+  life: 10
+  damage: 2
   maxTimer: 0.5
+  feedbackMaxTimer: 1
   speed: 8
 --- !u!114 &7242720922725904195
 MonoBehaviour:
@@ -661,13 +663,18 @@ MonoBehaviour:
   modelsee: {fileID: 7242720922725904220}
   instantChase: 0
   calm: 0
+  stunned: 0
+  charge: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
+  stunnedMaxTimer: 0
+  charging: 0
   radium: {fileID: 7242720923297581006}
+  chargeDamage: 0
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 7242720922889788837}
@@ -688,9 +695,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 2
   timeLifeSpan: 0
+  feedMaxTimer: 1
   destroyable: 1
   desperate: 0
   objectDesperate: {fileID: 0}
+  model: {fileID: 7242720921808763399}
+  damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
+  dead: 0
 --- !u!114 &7242720922725904221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,6 +716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 7242720922725904195}
   maxTimer: 0.5
+  stunned: 0
+  damage: 2
 --- !u!1 &7242720922755196109
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +982,7 @@ MonoBehaviour:
   range: 4
   retreatRange: 0
   quietRange: 2
+  crashRange: 0
   startLook: 0
   tryWall: 0
   tryObjetive: 0
@@ -986,6 +1000,7 @@ MonoBehaviour:
   detect: 0
   feel: 0
   hear: 0
+  crash: 0
 --- !u!1 &7242720923306330673
 GameObject:
   m_ObjectHideFlags: 0

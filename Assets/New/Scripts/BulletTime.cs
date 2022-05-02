@@ -10,6 +10,8 @@ public class BulletTime : MonoBehaviour
     public Vector3 angler;
     [HideInInspector]
     public string tagName;
+    [HideInInspector]
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,16 @@ public class BulletTime : MonoBehaviour
     {
         if (other.CompareTag(tagName))
         {
+            if (other.GetComponent<Life>() != null)
+            {
+                other.GetComponent<Life>().ReduceLife(damage);
+            }
+            else if(other.GetComponent<EnemyLife>() != null)
+            {
+                other.GetComponent<EnemyLife>().ChangeLife(-damage);
+            }
             Destroy(gameObject);
+            damage = 0;
         }
     }
 }
