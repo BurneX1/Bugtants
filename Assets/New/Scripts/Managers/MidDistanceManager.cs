@@ -21,17 +21,22 @@ public class MidDistanceManager : MonoBehaviour
     public int patrolPoints;
     [Tooltip("Vida del enemigo")]
     public int life;
+    [Tooltip("La cantidad que sus balas reduce la vida del jugador")]
+    public int damage;
     [Tooltip("Rango de espera entre disparos (no poner valor 0 o explota tu compu).")]
     public float maxTimer;
-    [Tooltip("Velocidad de la bala).")]
+    [Tooltip("Velocidad de la bala.")]
     public float bullSpeed;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
+    [Tooltip("Tiempo en que se muestra el estado golpeado")]
+    public float feedbackMaxTimer;
     [Tooltip("Velocidad del retroceso del enemigo.")]
     public float backSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        enLifeScript.life = life;
         locker = true;
     }
 
@@ -39,6 +44,7 @@ public class MidDistanceManager : MonoBehaviour
     void Update()
     {
         StatAlocate();
+        DeathCondition();
     }
 
     void OnDrawGizmos()
@@ -55,12 +61,24 @@ public class MidDistanceManager : MonoBehaviour
 
         enGrdScript.patrolPoint = new GameObject[patrolPoints];
 
-        enLifeScript.life = life;
 
         enMidScript.maxTimer = maxTimer;
         enMidScript.bulletSpeed = bullSpeed;
+        enMidScript.damage = damage;
+        enLifeScript.feedMaxTimer = feedbackMaxTimer;
 
         enGrdScript.intel.speed = speed;
         enGrdScript.backSpeed = backSpeed;
+    }
+    void DeathCondition()
+    {
+        if (enLifeScript.dead)
+        {
+            enGrdScript.saveSpeed = 0;
+            enGrdScript.enabled = false;
+            enSenScript.enabled = false;
+            enMidScript.enabled = false;
+
+        }
     }
 }

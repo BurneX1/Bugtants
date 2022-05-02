@@ -8,6 +8,7 @@ public class MeleeAttack : MonoBehaviour
     public float maxTimer;
     [HideInInspector]
     public bool stunned;
+    public int damage;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class MeleeAttack : MonoBehaviour
         if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3))
         {
             Debug.Log("Attacked");
+            movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
             timer = 0;
         }
     }

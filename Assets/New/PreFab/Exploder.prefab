@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 2885942110906221348}
   m_Layer: 6
   m_Name: Exploder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110906221346}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27
   m_Height: 1.6
@@ -278,11 +278,15 @@ MonoBehaviour:
   enGrdScript: {fileID: 2885942110906221345}
   enSenScript: {fileID: 2885942110924576187}
   enLifeScript: {fileID: 2885942110906221349}
+  explodeScript: {fileID: 2885942110906221348}
   frontDetectRange: 8
   explodeRange: 1.5
   patrolPoints: 0
-  life: 4
+  life: 10
+  damage: 10
   speed: 10
+  feedbackMaxTimer: 1
+  timeLifeSpan: 3
 --- !u!114 &2885942110906221345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,13 +303,18 @@ MonoBehaviour:
   modelsee: {fileID: 2885942110906221346}
   instantChase: 0
   calm: 0
+  stunned: 0
+  charge: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
+  stunnedMaxTimer: 0
+  charging: 0
   radium: {fileID: 2885942110924576187}
+  chargeDamage: 0
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 2885942110856297751}
@@ -326,9 +335,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 4
   timeLifeSpan: 3
+  feedMaxTimer: 1
   destroyable: 1
-  desperate: 1
-  objectDesperate: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
+  desperate: 0
+  objectDesperate: {fileID: 0}
+  model: {fileID: 2885942111808217662}
+  damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
+  dead: 0
 --- !u!114 &2885942110906221348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 2885942110906221345}
   suicide: {fileID: 2885942110906221349}
+  suicidalBomb: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
+  timeLifeSpan: 3
+  damage: 10
 --- !u!1 &2885942110924576180
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +406,7 @@ MonoBehaviour:
   range: 8
   retreatRange: 1.5
   quietRange: 0
+  crashRange: 0
   startLook: 0
   tryWall: 0
   tryObjetive: 0
@@ -407,6 +424,7 @@ MonoBehaviour:
   detect: 0
   feel: 0
   hear: 0
+  crash: 0
 --- !u!1 &2885942110955405363
 GameObject:
   m_ObjectHideFlags: 0

@@ -173,6 +173,7 @@ MonoBehaviour:
   range: 8
   retreatRange: 5
   quietRange: 5.5
+  crashRange: 0
   startLook: 0
   tryWall: 0
   tryObjetive: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   detect: 0
   feel: 0
   hear: 0
+  crash: 0
 --- !u!1 &2337306152987320071
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +336,7 @@ GameObject:
   - component: {fileID: 2337306153023611735}
   m_Layer: 6
   m_Name: MidDistance
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +392,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306153023611731}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27
   m_Height: 1.6
@@ -416,10 +418,12 @@ MonoBehaviour:
   idleRange: 5.5
   retreatRange: 5
   patrolPoints: 0
-  life: 4
+  life: 16
+  damage: 2
   maxTimer: 2
   bullSpeed: 5
   speed: 5
+  feedbackMaxTimer: 1
   backSpeed: 3
 --- !u!114 &2337306153023611730
 MonoBehaviour:
@@ -437,13 +441,18 @@ MonoBehaviour:
   modelsee: {fileID: 2337306153023611731}
   instantChase: 0
   calm: 0
+  stunned: 0
+  charge: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
   backSpeed: 3
   saveAcc: 0
   saveLife: 0
+  stunnedMaxTimer: 0
+  charging: 0
   radium: {fileID: 2337306152964645707}
+  chargeDamage: 0
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 2337306153180776053}
@@ -466,6 +475,7 @@ MonoBehaviour:
   bulletPosition: {fileID: 2337306153141076752}
   maxTimer: 2
   bulletSpeed: 5
+  damage: 2
   movement: {fileID: 2337306153023611730}
 --- !u!114 &2337306153023611735
 MonoBehaviour:
@@ -481,9 +491,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 4
   timeLifeSpan: 0
+  feedMaxTimer: 1
   destroyable: 1
   desperate: 0
   objectDesperate: {fileID: 0}
+  model: {fileID: 2337306152945644710}
+  damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
+  dead: 0
 --- !u!1 &2337306153141076752
 GameObject:
   m_ObjectHideFlags: 0

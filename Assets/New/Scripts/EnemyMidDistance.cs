@@ -6,6 +6,7 @@ public class EnemyMidDistance : MonoBehaviour
 {
     public GameObject bullet, bulletPosition;
     public float maxTimer, bulletSpeed;
+    public int damage;
     public EnemyGroundMove movement;
     private float timer, bulletAngle;
     private Vector2 rec;
@@ -30,6 +31,7 @@ public class EnemyMidDistance : MonoBehaviour
             bullet.transform.position = bulletPosition.transform.position;
             rec = (playerPointer - pointer).normalized * bulletSpeed;
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, 0, rec.y);
+            bullet.GetComponent<BulletTime>().damage = damage;
             bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
             bullet.GetComponent<BulletTime>().tagName = "Player";

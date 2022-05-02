@@ -19,13 +19,18 @@ public class MeleeManager : MonoBehaviour
     public int patrolPoints;
     [Tooltip("Vida del enemigo")]
     public int life;
+    [Tooltip("La cantidad que reduce la vida del jugador al golpear")]
+    public int damage;
     [Tooltip("Rango de espera entre golpes (no poner valor 0 o explota tu compu).")]
     public float maxTimer;
+    [Tooltip("Tiempo en que se muestra el estado golpeado")]
+    public float feedbackMaxTimer;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
+        enLifeScript.life = life;
         locker = true;
     }
 
@@ -33,6 +38,7 @@ public class MeleeManager : MonoBehaviour
     void Update()
     {
         StatAlocate();
+        DeathCondition();
     }
 
     void OnDrawGizmos()
@@ -47,9 +53,21 @@ public class MeleeManager : MonoBehaviour
         enSenScript.quietRange = attackRange;
 
         enGrdScript.patrolPoint = new GameObject[patrolPoints];
+        enLifeScript.feedMaxTimer = feedbackMaxTimer;
 
-        enLifeScript.life = life;
         meleeScript.maxTimer = maxTimer;
+        meleeScript.damage = damage;
         enGrdScript.intel.speed = speed;
+    }
+    void DeathCondition()
+    {
+        if (enLifeScript.dead)
+        {
+            enGrdScript.saveSpeed = 0;
+            enGrdScript.enabled = false;
+            enSenScript.enabled = false;
+            meleeScript.enabled = false;
+
+        }
     }
 }

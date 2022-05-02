@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 3534966813682343014}
   - component: {fileID: 3534966813682343008}
   - component: {fileID: 3534966813682343019}
+  - component: {fileID: 1203151411392970730}
   m_Layer: 0
   m_Name: ScarabEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,10 +101,13 @@ MonoBehaviour:
   attackRange: 1.5
   crashRange: 6
   patrolPoints: 0
-  life: 10
+  life: 40
+  damage: 4
+  damageStun: 10
   maxTimer: 1
   speed: 6
   stunnerTime: 3
+  feedbackMaxTimer: 1
   maxTimerScarab: 4
 --- !u!114 &3534966813682343018
 MonoBehaviour:
@@ -119,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 3534966813682343014}
   enemySee: {fileID: 3534966814232967143}
+  chargeDamage: 0
   stunnerTime: 3
   maxTimer: 4
 --- !u!114 &3534966813682343014
@@ -141,12 +146,14 @@ MonoBehaviour:
   charge: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 0
+  saveSpeed: 6
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
+  charging: 0
   radium: {fileID: 3534966814232967143}
+  chargeDamage: 10
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 3534966814945068927}
@@ -167,9 +174,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 10
   timeLifeSpan: 0
+  feedMaxTimer: 1
   destroyable: 1
   desperate: 0
   objectDesperate: {fileID: 0}
+  model: {fileID: 3534966814405745890}
+  damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
+  dead: 0
 --- !u!114 &3534966813682343019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +196,21 @@ MonoBehaviour:
   movement: {fileID: 3534966813682343014}
   maxTimer: 1
   stunned: 0
+  damage: 4
+--- !u!136 &1203151411392970730
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534966813682343009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3534966813952926774
 GameObject:
   m_ObjectHideFlags: 0

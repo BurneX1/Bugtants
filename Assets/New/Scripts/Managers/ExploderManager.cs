@@ -8,6 +8,7 @@ public class ExploderManager : MonoBehaviour
     public EnemyGroundMove enGrdScript;
     public EnemySense enSenScript;
     public EnemyLife enLifeScript;
+    public Exploder explodeScript;
     private bool locker = false;
     [Header("Scripts editables")]
     [Tooltip("Lineas azules, es la distancia en la que puede detectar al jugador a frente")]
@@ -18,11 +19,18 @@ public class ExploderManager : MonoBehaviour
     public int patrolPoints;
     [Tooltip("Vida del enemigo")]
     public int life;
+    [Tooltip("La cantidad que reduce la vida del jugador mediante su explosión")]
+    public int damage;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
+    [Tooltip("Tiempo en que se muestra el estado golpeado")]
+    public float feedbackMaxTimer;
+    [Tooltip("Tiempo que tendrá el charco lenteador.")]
+    public float timeLifeSpan;
     // Start is called before the first frame update
     void Start()
     {
+        enLifeScript.life = life;
         locker = true;
     }
 
@@ -30,6 +38,7 @@ public class ExploderManager : MonoBehaviour
     void Update()
     {
         StatAlocate();
+        DeathCondition();
     }
 
     void OnDrawGizmos()
@@ -44,9 +53,21 @@ public class ExploderManager : MonoBehaviour
         enSenScript.retreatRange = explodeRange;
 
         enGrdScript.patrolPoint = new GameObject[patrolPoints];
-
-        enLifeScript.life = life;
+        enLifeScript.feedMaxTimer = feedbackMaxTimer;
 
         enGrdScript.intel.speed = speed;
+        explodeScript.timeLifeSpan = timeLifeSpan;
+        explodeScript.damage = damage;
+    }
+    void DeathCondition()
+    {
+        if (enLifeScript.dead)
+        {
+            enGrdScript.saveSpeed = 0;
+            enGrdScript.enabled = false;
+            enSenScript.enabled = false;
+            explodeScript.enabled = false;
+
+        }
     }
 }
