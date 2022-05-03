@@ -13,12 +13,13 @@ public class PlayerView : MonoBehaviour
     public Image lifeBar;
     public Text lifeTxt;
 
-
-    [Tooltip("This attribute would be diseabled in code while MP_System script still manage the maná UI")]
     [Header("[Mana Stuff]")]
     public Image manaBar;
-    [Tooltip("This attribute would be diseabled in code while MP_System script still manage the maná UI")]
     public Text manaTxt;
+
+    [Header("[Stamina Stuff]")]
+    public Image stmBar;
+    public Text stmTxt;
 
     private PlayerController c_ctrll;
 
@@ -38,28 +39,24 @@ public class PlayerView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LifeRefresh();
-        //ManaRefresh()
+        BarRefresh(lifeBar, c_ctrll.c_life.actualHealth, c_ctrll.c_life.maxHealth, lifeTxt, "" + c_ctrll.c_life.actualHealth + "");
+        BarRefresh(manaBar, c_ctrll.c_mp.actualMP, c_ctrll.c_mp.maxMP, manaTxt, "" + c_ctrll.c_mp.actualMP + "");
+        BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + c_ctrll.c_stm.actStamina + "");
     }
 
-    private void LifeRefresh()
+    private void BarRefresh(Image box, float act, float max)
     {
-        lifeTxt.text = "" + c_ctrll.c_life.actualHealth + "";
-        float act = c_ctrll.c_life.actualHealth;
-        float max = c_ctrll.c_life.maxHealth;
-        if(lifeBar.fillAmount != act / max)
+        if (box.fillAmount != act / max)
         {
-            lifeBar.fillAmount =   Mathf.Lerp(lifeBar.fillAmount, act / max,Time.deltaTime*uiReactSpd);
+            box.fillAmount = Mathf.Lerp(box.fillAmount, act / max, Time.deltaTime * uiReactSpd);
         }
     }
-    private void ManaRefresh()
+    private void BarRefresh(Image box, float act, float max, Text txt, string writeTxt)
     {
-        manaTxt.text = "" + c_ctrll.c_life.actualHealth + "";
-        float act = c_ctrll.c_mp.ActualMP;
-        float max = c_ctrll.c_mp.MaxMP;
-        if (manaBar.fillAmount != act / max)
+        txt.text = writeTxt;
+        if (box.fillAmount != act / max)
         {
-            manaBar.fillAmount = Mathf.Lerp(manaBar.fillAmount, act / max, Time.deltaTime * uiReactSpd);
+            box.fillAmount = Mathf.Lerp(box.fillAmount, act / max, Time.deltaTime * uiReactSpd);
         }
     }
 

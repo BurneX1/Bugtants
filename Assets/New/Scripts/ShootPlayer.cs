@@ -39,7 +39,7 @@ public class ShootPlayer : MonoBehaviour
 
     void Shoot()
     {
-        if (timer >= maxTimer&&!pauseScript.paused&&mpScript.ActualMP>=10)
+        if (timer >= maxTimer&&!pauseScript.paused&&mpScript.actualMP>=10)
         {
             bullet.transform.position = transform.position;
             rec = (transform.position - targetPosition.transform.position).normalized * -bulletSpeed;

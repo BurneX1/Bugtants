@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     public Life c_life;
     [HideInInspector]
     public MP_System c_mp;
+    [HideInInspector]
+    public Stamina c_stm;
+
+    private float stMultiplier;
 
     void Awake()
     {
@@ -17,6 +21,7 @@ public class PlayerController : MonoBehaviour
         c_ray = gameObject.GetComponent<FrontRayCaster>();
         c_life = gameObject.GetComponent<Life>();
         c_mp = gameObject.GetComponent<MP_System>();
+        c_stm = gameObject.GetComponent<Stamina>();
         //-------------------------<<<//
 
 
@@ -24,21 +29,26 @@ public class PlayerController : MonoBehaviour
         inputStm = new InputSystemActions();
 
         inputStm.GamePlay.Interact.performed += _ => c_ray.Interact();
-        inputStm.GamePlay.Interact.performed += _ => Debug.Log("KeyPress");
         inputStm.GamePlay.Crouch.performed += ctx => Debug.Log(ctx);
+        inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
+        inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;
         //-------------------------<<<//
 
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("1.- " + -5%1);
+        Debug.Log("2.- " + -4 % 1);
+        Debug.Log("3.- " + 3 % 1);
+        Debug.Log("4.- " + 3 % 1);
+        Debug.Log("5.- " + -1 % 1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        c_stm.ConstModify(stMultiplier);
     }
 
 
