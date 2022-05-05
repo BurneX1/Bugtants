@@ -89,6 +89,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""27e5c488-8956-416e-89a4-94d8942a2c63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,6 +232,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""Recharge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d24f3389-30be-47c5-a96c-153740ba7030"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -266,6 +286,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Run = m_GamePlay.FindAction("Run", throwIfNotFound: true);
         m_GamePlay_Crouch = m_GamePlay.FindAction("Crouch", throwIfNotFound: true);
         m_GamePlay_Recharge = m_GamePlay.FindAction("Recharge", throwIfNotFound: true);
+        m_GamePlay_Heal = m_GamePlay.FindAction("Heal", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -335,6 +356,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Run;
     private readonly InputAction m_GamePlay_Crouch;
     private readonly InputAction m_GamePlay_Recharge;
+    private readonly InputAction m_GamePlay_Heal;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -346,6 +368,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_GamePlay_Run;
         public InputAction @Crouch => m_Wrapper.m_GamePlay_Crouch;
         public InputAction @Recharge => m_Wrapper.m_GamePlay_Recharge;
+        public InputAction @Heal => m_Wrapper.m_GamePlay_Heal;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -376,6 +399,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Recharge.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRecharge;
                 @Recharge.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRecharge;
                 @Recharge.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnRecharge;
+                @Heal.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -401,6 +427,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Recharge.started += instance.OnRecharge;
                 @Recharge.performed += instance.OnRecharge;
                 @Recharge.canceled += instance.OnRecharge;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -447,6 +476,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {

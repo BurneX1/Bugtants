@@ -10,12 +10,30 @@ public class Stamina : MonoBehaviour
     public float actStamina;
     public float increaseSpd;
 
+    public bool empty;
 
     private void Awake()
     {
         actStamina = maxStamina;
         increaseSpd = Mathf.Abs(increaseSpd);
     }
+    void Update()
+    {
+        StaminaIdentify();
+    }
+
+    void StaminaIdentify()
+    {
+        if (actStamina <= 1)
+        {
+            empty = true;
+        }
+        else
+        {
+            empty = false;
+        }
+    }
+
     public void SpecificReduse(float amount)
     {
         amount = Mathf.Abs(amount);

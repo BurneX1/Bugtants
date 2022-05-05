@@ -12,20 +12,23 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public CrouchSeen seeCrouch;
     public GameObject sight;
-    public float saveSpeed, crouchChange;
-    private float speed = 12f;
+    public float saveSpeed, crouchChange, staminaJumpCost;
+    private float speed = 12f, divideMulti;
     public float multiplierSpeed, dividerSpeed;
     public float gravity = -10f;
     public float jumpHeight = 2f;
-    bool running, crouching;
+    bool tryCrouching;
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
     [HideInInspector]
     public float altitude;
 
+    private Stamina staminaCount;
+    
     Vector3 velocity;
-    public bool isGrounded;
+    [HideInInspector]
+    public bool isGrounded, moving, running, crouching;
 
 
     float x;
@@ -40,9 +43,11 @@ public class PlayerMovement : MonoBehaviour
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Run.performed += ctx => running = true;
         inputStm.GamePlay.Run.canceled += ctx => running = false;
-        inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
-        inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
+        inputStm.GamePlay.Crouch.performed += ctx => tryCrouching = true;
+        inputStm.GamePlay.Crouch.canceled += ctx => tryCrouching = false;
         inputStm.GamePlay.Jump.performed += _ => Jumping();
+        inputStm.GamePlay.Movement.performed += ctx => moving = true;
+        inputStm.GamePlay.Movement.canceled += ctx => moving = false;
 
     }
     void Start()
@@ -64,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         movement.Enable();
         jump.Enable();
+        staminaCount = gameObject.GetComponent<Stamina>();
     }
 #endif
 
@@ -123,9 +129,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jumping()
     {
-        if (isGrounded&&!crouching)
+        if (isGrounded && !tryCrouching && staminaCount.actStamina >= staminaJumpCost)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            staminaCount.actStamina -= staminaJumpCost;
         }
 
     }
@@ -135,24 +142,32 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = saveSpeed / dividerSpeed;
         }
-        else if (running&&!crouching)
+        else if (running && !crouching)
         {
-            speed = saveSpeed * multiplierSpeed;
+            speed = saveSpeed * (multiplierSpeed / divideMulti);
         }
         else if (!running&&!crouching)
         {
             speed = saveSpeed;
         }
-
+        if (staminaCount.empty)
+        {
+            divideMulti = multiplierSpeed;
+        }
+        else
+        {
+            divideMulti = 1;
+        }
     }
     void HeightStat()
     {
-        if (crouching)
+        if (tryCrouching)
         {
             controller.height = 1.8f - crouchChange * 2;
             controller.center = new Vector3(0, -crouchChange, 0);
             sight.transform.localPosition = new Vector3(0, -crouchChange * 2, 0);
             altitude = crouchChange;
+            crouching = true;
         }
         else
         {
@@ -162,13 +177,14 @@ public class PlayerMovement : MonoBehaviour
                 controller.center = new Vector3(0, 0, 0);
                 sight.transform.localPosition = new Vector3(0, 0, 0);
                 altitude = crouchChange;
+                crouching = false;
             }
             else
             {
                 controller.height = 1.8f - crouchChange * 2;
                 controller.center = new Vector3(0, -crouchChange, 0);
                 sight.transform.localPosition = new Vector3(0, -crouchChange * 2, 0);
-
+                crouching = true;
             }
         }
     }

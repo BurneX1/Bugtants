@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public MP_System c_mp;
     [HideInInspector]
     public Stamina c_stm;
+    [HideInInspector]
+    public PlayerMovement c_mov;
 
     private float stMultiplier;
 
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
         c_life = gameObject.GetComponent<Life>();
         c_mp = gameObject.GetComponent<MP_System>();
         c_stm = gameObject.GetComponent<Stamina>();
+        c_mov = gameObject.GetComponent<PlayerMovement>();
         //-------------------------<<<//
 
 
@@ -30,8 +33,10 @@ public class PlayerController : MonoBehaviour
 
         inputStm.GamePlay.Interact.performed += _ => c_ray.Interact();
         inputStm.GamePlay.Crouch.performed += ctx => Debug.Log(ctx);
-        inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
-        inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;
+        inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
+        /*inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
+        inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;*/
+
         //-------------------------<<<//
 
     }
@@ -48,7 +53,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ModifyStamina();
+        StaminaCondition();
+    }
+
+    void ModifyStamina()
+    {
         c_stm.ConstModify(stMultiplier);
+    }
+    void StaminaCondition()
+    {
+        if (c_mov.moving && c_mov.running && !c_mov.crouching && !c_stm.empty)
+        {
+            stMultiplier = -1;
+        }
+        else if (c_mov.moving && c_mov.running && !c_mov.crouching && c_stm.empty)
+        {
+            stMultiplier = 0;
+        }
+        else
+        {
+            stMultiplier = 1;
+        }
     }
 
 

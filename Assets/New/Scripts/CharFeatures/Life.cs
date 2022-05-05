@@ -40,6 +40,9 @@ public class Life : MonoBehaviour
         maxHealth += plusLife;
     }
 
-
+    public void MaxLifeTest()
+    {
+        actualHealth = maxHealth;
+    }
 
 }

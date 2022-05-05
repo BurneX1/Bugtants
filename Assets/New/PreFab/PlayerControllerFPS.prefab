@@ -382,6 +382,7 @@ MonoBehaviour:
   sight: {fileID: 3453356189653129573}
   saveSpeed: 5
   crouchChange: 0.2
+  staminaJumpCost: 20
   multiplierSpeed: 2
   dividerSpeed: 4
   gravity: -50
@@ -393,6 +394,8 @@ MonoBehaviour:
     m_Bits: 8
   altitude: 0
   isGrounded: 0
+  moving: 0
+  running: 0
 --- !u!114 &4231970520236883910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +456,7 @@ MonoBehaviour:
   c_life: {fileID: 0}
   c_mp: {fileID: 0}
   c_stm: {fileID: 0}
+  c_mov: {fileID: 0}
 --- !u!114 &9024624746984558824
 MonoBehaviour:
   m_ObjectHideFlags: 0
