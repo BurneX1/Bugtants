@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
     
     Vector3 velocity;
     [HideInInspector]
-    public bool isGrounded, moving, running, crouching;
-
+    public bool isGrounded, moving, running, crouching, runningWall;
+    private bool jumper;
 
     float x;
     float z;
@@ -103,9 +103,27 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-
+        if (velocity.y < 0)
+        {
+            jumper = false;
+        }
+        if (isGrounded && !jumper)
+        {
+            velocity.y = 0;
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+        if (controller.velocity.x != 0 || controller.velocity.z != 0)
+        {
+            Debug.Log("Hold");
+            runningWall = true;
+        }
+        else
+        {
+            runningWall = false;
+        }
         controller.Move(velocity * Time.deltaTime);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, 1 << 3);
 
@@ -133,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             staminaCount.actStamina -= staminaJumpCost;
+            jumper = true;
         }
 
     }
