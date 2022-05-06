@@ -204,7 +204,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh39624
+  m_Name: pb_Mesh36284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &433280566
 AudioListener:
   m_ObjectHideFlags: 0
@@ -934,6 +934,11 @@ MonoBehaviour:
   tagList:
   - Player
   whoCall: {fileID: 0}
+--- !u!1 &789238948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5715762535882524927, guid: 573ac53c334415945bf239de2c2f0511, type: 3}
+  m_PrefabInstance: {fileID: 946429273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &793812867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1285,8 @@ MonoBehaviour:
   - {x: 2.81, y: 0, z: 2.27}
   - {x: -3.13, y: 0, z: 2.27}
   cyclic: 0
+  movSpd: 0
+  waitTime: 0
 --- !u!1 &885417527
 GameObject:
   m_ObjectHideFlags: 0
@@ -32899,9 +32906,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 738646681595172702, guid: 573ac53c334415945bf239de2c2f0511, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 738646681744756154, guid: 573ac53c334415945bf239de2c2f0511, type: 3}
       propertyPath: m_Name
       value: PlayerControllerFPS
+      objectReference: {fileID: 0}
+    - target: {fileID: 738646681744756154, guid: 573ac53c334415945bf239de2c2f0511, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 738646681744756156, guid: 573ac53c334415945bf239de2c2f0511, type: 3}
       propertyPath: m_RootOrder
@@ -33502,6 +33517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195167712}
   - component: {fileID: 1195167711}
+  - component: {fileID: 1195167713}
   - component: {fileID: 1195167710}
   - component: {fileID: 1195167709}
   m_Layer: 0
@@ -33537,8 +33553,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positions:
-  - {x: -2.81, y: 0, z: 0}
+  - {x: 0, y: 0, z: -2.45}
   cyclic: 0
+  movSpd: 1
+  waitTime: 1
 --- !u!195 &1195167711
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -33569,13 +33587,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195167708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.77, y: 3.915, z: 11.81}
+  m_LocalPosition: {x: 16.08, y: 3.915, z: 11.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1440590926}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1195167713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195167708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73371d8ddb76b024ea377334dbd5cf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254997878
 GameObject:
   m_ObjectHideFlags: 0
@@ -35111,6 +35141,7 @@ GameObject:
   - component: {fileID: 2105562495}
   - component: {fileID: 2105562501}
   - component: {fileID: 2105562502}
+  - component: {fileID: 2105562504}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -35273,3 +35304,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c_life: {fileID: 0}
   c_mp: {fileID: 0}
+  c_stm: {fileID: 0}
+  c_mov: {fileID: 0}
+--- !u!114 &2105562504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105562494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a3d9011a1ca914f864bb3fea7e5ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgTagsArray:
+  - Enemy
+  dmg: 1
+  hitBox: {fileID: 789238948}
+  delayStartatack: 0.5
+  atkDuration: 1.5

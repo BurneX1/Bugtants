@@ -21,6 +21,6 @@ public class FlyEnemyCtrll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        c_mov.Patrol();
     }
 }
