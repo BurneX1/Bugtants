@@ -9,10 +9,18 @@ public class AIMovement : MonoBehaviour
 
     private NavMeshAgent agnt;
     private Vector3[] patrolPoints = new Vector3[1];
+    private int current;
+    private int dir;
+    private float timer = 0;
+
     public Vector3[] positions;
 
     public bool cyclic;
-    private int indexer;
+    [Range(0.01f, 50)]
+    public float movSpd;
+    [Range(0.01f, 50)]
+    public float waitTime;
+    
     private void Awake()
     {
         agnt = gameObject.GetComponent<NavMeshAgent>();
@@ -31,9 +39,41 @@ public class AIMovement : MonoBehaviour
         
     }
 
-    public void Patrol(Vector3[] points)
+    public void Patrol()
     {
+        if (new Vector3(transform.position.x, transform.position.y) != new Vector3(patrolPoints[current].x,transform.position.y, patrolPoints[current].z))
+        {
+            agnt.speed = movSpd;
+            
+        }
+        else
+        {
+            agnt.speed = 0;
+            StopTimer();
+        }
+    }
 
+    private void StopTimer()
+    {
+        timer += Time.deltaTime;
+        if (timer >= waitTime)
+        {
+            timer = 0;
+            NextPoint();
+        }
+    }
+
+    public void NextPoint()
+    {
+        if (current >= patrolPoints.Length - 1 && cyclic == false)
+        {
+            dir = -1;
+        }
+        else if (current <= 0)
+        {
+            dir = 1;
+        }
+        current = (current + dir) % patrolPoints.Length;
     }
 
     public void MovePoint(Vector3 target)
