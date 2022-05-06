@@ -23,17 +23,20 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     [HideInInspector]
     public float altitude;
-
+    
     private Stamina staminaCount;
     
     Vector3 velocity;
     [HideInInspector]
-    public bool isGrounded, moving, running, crouching, runningWall;
+    public bool isGrounded, moving, running, crouching, runningWall, stunned;
     private bool jumper;
 
     float x;
     float z;
     bool jumpPressed = false;
+
+    [HideInInspector]
+    public GameObject poseser;
 
 #if ENABLE_INPUT_SYSTEM
     InputAction movement;
@@ -76,15 +79,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        MovementStat();
-        HeightStat();
-    }
-    void FixedUpdate()
-    {
-        Jumper();
-    }
+        if (poseser == null)
+        {
+            Movement();
+            MovementStat();
+            HeightStat();
+        }
 
+    }
     void Movement()
     {
         //Debug.Log(jumpPressed);
@@ -138,16 +140,9 @@ public class PlayerMovement : MonoBehaviour
         inputStm.Disable();
     }
 
-    void Jumper()
-    {
-        /*if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }*/
-    }
     void Jumping()
     {
-        if (isGrounded && !tryCrouching && staminaCount.actStamina >= staminaJumpCost)
+        if (isGrounded && !tryCrouching && staminaCount.actStamina >= staminaJumpCost && poseser == null)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             staminaCount.actStamina -= staminaJumpCost;
