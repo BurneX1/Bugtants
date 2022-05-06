@@ -15,12 +15,19 @@ public class EnemyLife : MonoBehaviour
     [HideInInspector]
     public bool dead;
     private bool damagedFeed;
+    private SoundActive sounds;
+
     // Start is called before the first frame update
     void Start()
     {
         actualMat = model.GetComponent<MeshRenderer>().material;
         feedTimer = 0;
         dead = false;
+        if (gameObject.GetComponent<SoundActive>() != null)
+        {
+            sounds = gameObject.GetComponent<SoundActive>();
+        }
+
     }
 
     // Update is called once per frame
@@ -47,6 +54,11 @@ public class EnemyLife : MonoBehaviour
         if (value < 0)
         {
             feedTimer = feedMaxTimer;
+            if (sounds != null)
+            {
+                sounds.SoundStop(2);
+                sounds.SoundPlay(2);
+            }
         }
         if (life <= 0)
         {
