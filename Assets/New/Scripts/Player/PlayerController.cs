@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Stamina c_stm;
     [HideInInspector]
     public PlayerMovement c_mov;
+    private AtackMele c_atk;
 
     private float stMultiplier;
 
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         c_mp = gameObject.GetComponent<MP_System>();
         c_stm = gameObject.GetComponent<Stamina>();
         c_mov = gameObject.GetComponent<PlayerMovement>();
+        c_atk = gameObject.GetComponent<AtackMele>();
         //-------------------------<<<//
 
 
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Interact.performed += _ => c_ray.Interact();
         inputStm.GamePlay.Crouch.performed += ctx => Debug.Log(ctx);
         inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
+        inputStm.GamePlay.MeleAtack.performed += _ => c_atk.Attack();
         /*inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
         inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;*/
 
@@ -43,11 +46,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("1.- " + -5%1);
-        Debug.Log("2.- " + -4 % 1);
-        Debug.Log("3.- " + 3 % 1);
-        Debug.Log("4.- " + 3 % 1);
-        Debug.Log("5.- " + -1 % 1);
+
     }
 
     // Update is called once per frame
