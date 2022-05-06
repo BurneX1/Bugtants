@@ -98,6 +98,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MeleAtack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1e4f1cd-3120-49dc-a98f-eb916cccbcf1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -243,6 +252,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40a14370-92c7-4e24-acfa-bee99cd78851"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleAtack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -287,6 +307,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Crouch = m_GamePlay.FindAction("Crouch", throwIfNotFound: true);
         m_GamePlay_Recharge = m_GamePlay.FindAction("Recharge", throwIfNotFound: true);
         m_GamePlay_Heal = m_GamePlay.FindAction("Heal", throwIfNotFound: true);
+        m_GamePlay_MeleAtack = m_GamePlay.FindAction("MeleAtack", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -357,6 +378,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Crouch;
     private readonly InputAction m_GamePlay_Recharge;
     private readonly InputAction m_GamePlay_Heal;
+    private readonly InputAction m_GamePlay_MeleAtack;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -369,6 +391,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_GamePlay_Crouch;
         public InputAction @Recharge => m_Wrapper.m_GamePlay_Recharge;
         public InputAction @Heal => m_Wrapper.m_GamePlay_Heal;
+        public InputAction @MeleAtack => m_Wrapper.m_GamePlay_MeleAtack;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -402,6 +425,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Heal.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnHeal;
+                @MeleAtack.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
+                @MeleAtack.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
+                @MeleAtack.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -430,6 +456,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @MeleAtack.started += instance.OnMeleAtack;
+                @MeleAtack.performed += instance.OnMeleAtack;
+                @MeleAtack.canceled += instance.OnMeleAtack;
             }
         }
     }
@@ -477,6 +506,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnRecharge(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnMeleAtack(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {
