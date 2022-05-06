@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EventSeen : MonoBehaviour
 {
-    public GameObject location, newLocation;
+    public GameObject[] location;
+    public GameObject[] newLocation;
     public bool destroyable;
     private bool alt;
     public Detecter zoneA, zoneB;
@@ -18,6 +19,8 @@ public class EventSeen : MonoBehaviour
     void Update()
     {
         ZoneDetecter();
+        if (location == null)
+        { Debug.Log("N"); }
     }
 
     void ZoneDetecter()
@@ -36,21 +39,31 @@ public class EventSeen : MonoBehaviour
             {
                 if (alt = location != null)
                 {
-                    Destroy(location);
+                    
+                    for (int i = 0; i < location.Length; i++)
+                    { Destroy(location[i]); }
 
+                    for (int i =0;i<newLocation.Length;i++)
+                    { newLocation[i].SetActive (true); }
+                    
                 }
             }
             else
             {
                 if (alt)
                 {
-                    location.SetActive(true);
-                    newLocation.SetActive(false);
+                    for (int i = 0; i < location.Length; i++)
+                    { location[i].SetActive(true); }
+                    
+                    for (int i = 0; i < newLocation.Length; i++)
+                    { newLocation[i].SetActive(false); }
                 }
                 else
                 {
-                    location.SetActive(false);
-                    newLocation.SetActive(true);
+                    for (int i = 0; i < location.Length; i++)
+                    { location[i].SetActive(false); }
+                    for (int i = 0; i < newLocation.Length; i++)
+                    { newLocation[i].SetActive(true); }
                 }
 
             }
