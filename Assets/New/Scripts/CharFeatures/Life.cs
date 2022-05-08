@@ -25,11 +25,11 @@ public class Life : MonoBehaviour
         if(actualHealth>0)
         {
             actualHealth = actualHealth - damage;
-            if (sounds != null)
+            /*if (sounds != null)
             {
-                sounds.SoundStop(1);
-                sounds.SoundPlay(1);
-            }
+                sounds.SoundStop(1,1);
+                sounds.SoundPlay(1,1);
+            }*/
         }
     }
 

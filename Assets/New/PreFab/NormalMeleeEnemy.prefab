@@ -648,10 +648,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audSrc:
-  - {fileID: 2388706131591731734}
   audClip:
   - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
+  - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
+  - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
+  - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
+  - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
+  audComp:
+  - audSrc: {fileID: 0}
+    location: {fileID: 3671106164134046319}
+    soundDistance: {x: 0, y: 0.5}
+  - audSrc: {fileID: 0}
+    location: {fileID: 3671106164646871528}
+    soundDistance: {x: 0, y: 0.1}
 --- !u!1 &3671106164771048709
 GameObject:
   m_ObjectHideFlags: 0

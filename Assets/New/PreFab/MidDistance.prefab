@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 2337306153023611730}
   - component: {fileID: 2337306153023611729}
   - component: {fileID: 2337306153023611735}
+  - component: {fileID: 3445008092586068149}
   m_Layer: 6
   m_Name: MidDistance
   m_TagString: Enemy
@@ -498,6 +499,30 @@ MonoBehaviour:
   model: {fileID: 2337306152945644710}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
   dead: 0
+--- !u!114 &3445008092586068149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337306153023611731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audClip:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  audComp:
+  - audSrc: {fileID: 0}
+    location: {fileID: 2337306152964645700}
+    soundDistance: {x: 0, y: 0.5}
+  - audSrc: {fileID: 0}
+    location: {fileID: 2337306153023611731}
+    soundDistance: {x: 0, y: 0.1}
 --- !u!1 &2337306153141076752
 GameObject:
   m_ObjectHideFlags: 0

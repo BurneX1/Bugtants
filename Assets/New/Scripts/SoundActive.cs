@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class SoundActive : MonoBehaviour
 {
-    public AudioSource[] audSrc;
+    [Tooltip("Numero de sonidos de cuanto podra tener")]
     public AudioClip[] audClip;
-    // Start is called before the first frame update
-    void Start()
-    {
-        for(int i = 0; i < audSrc.Length; i++)
-        {
-            audSrc[i].clip = audClip[i];
-        }
-    }
+    [Tooltip("Numero de Audiosources")]
+    public AudioSourceComponent[] audComp;
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Awake()
     {
-        
+        for(int i = 0; i < audComp.Length; i++)
+        {
+            audComp[i].audSrc= audComp[i].location.AddComponent(typeof(AudioSource)) as AudioSource;
+            audComp[i].audSrc.rolloffMode = AudioRolloffMode.Linear;
+            audComp[i].audSrc.minDistance = audComp[i].soundDistance.x;
+            audComp[i].audSrc.maxDistance = audComp[i].soundDistance.y;
+        }
     }
 
     // SoundPlay() Reproduce el sonido
-    public void SoundPlay(int value)
+    public void SoundPlay(int value, int clip)
     {
-        if (!audSrc[value].isPlaying)
+        if (!audComp[value].audSrc.isPlaying)
         {
-            audSrc[value].Play();
+            audComp[value].audSrc.Play();
         }
     }
     // SoundStop() Detiene el sonido
-    public void SoundStop(int value)
+    public void SoundStop(int value, int clip)
     {
-        if (audSrc[value].isPlaying)
+        if (audComp[value].audSrc.isPlaying)
         {
-            audSrc[value].Stop();
+            audComp[value].audSrc.Stop();
         }
     }
 }

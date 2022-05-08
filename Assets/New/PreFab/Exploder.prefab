@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 2885942110906221345}
   - component: {fileID: 2885942110906221349}
   - component: {fileID: 2885942110906221348}
+  - component: {fileID: 5633346433866812195}
   m_Layer: 6
   m_Name: Exploder
   m_TagString: Enemy
@@ -359,6 +360,30 @@ MonoBehaviour:
   suicidalBomb: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
   timeLifeSpan: 3
   damage: 10
+--- !u!114 &5633346433866812195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2885942110906221346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audClip:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  audComp:
+  - audSrc: {fileID: 0}
+    location: {fileID: 2885942110924576180}
+    soundDistance: {x: 0, y: 0.5}
+  - audSrc: {fileID: 0}
+    location: {fileID: 2885942110906221346}
+    soundDistance: {x: 0, y: 0.1}
 --- !u!1 &2885942110924576180
 GameObject:
   m_ObjectHideFlags: 0

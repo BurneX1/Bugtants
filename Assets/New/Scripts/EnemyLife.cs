@@ -54,11 +54,11 @@ public class EnemyLife : MonoBehaviour
         if (value < 0)
         {
             feedTimer = feedMaxTimer;
-            if (sounds != null)
+            /*if (sounds != null)
             {
-                sounds.SoundStop(2);
-                sounds.SoundPlay(2);
-            }
+                sounds.SoundStop(2,1);
+                sounds.SoundPlay(2,1);
+            }*/
         }
         if (life <= 0)
         {
