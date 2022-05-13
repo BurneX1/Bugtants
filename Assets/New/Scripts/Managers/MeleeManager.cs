@@ -27,6 +27,9 @@ public class MeleeManager : MonoBehaviour
     public float feedbackMaxTimer;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
+    [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
+    public float vigilanceTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,20 +47,28 @@ public class MeleeManager : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!locker)
+        {
             StatAlocate();
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.Modifying();
+        }
+
     }
 
     void StatAlocate()
     {
-        enSenScript.range = frontDetectRange;
-        enSenScript.quietRange = attackRange;
+        if (!enLifeScript.dead)
+        {
+            enSenScript.range = frontDetectRange;
+            enSenScript.quietRange = attackRange;
 
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
-        enLifeScript.feedMaxTimer = feedbackMaxTimer;
+            enLifeScript.feedMaxTimer = feedbackMaxTimer;
 
-        meleeScript.maxTimer = maxTimer;
-        meleeScript.damage = damage;
-        enGrdScript.intel.speed = speed;
+            meleeScript.maxTimer = maxTimer;
+            meleeScript.damage = damage;
+            enGrdScript.saveSpeed = speed;
+            enGrdScript.patrolMaxTime = vigilanceTimer;
+        }
     }
     void DeathCondition()
     {

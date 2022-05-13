@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980585570414665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -8, z: 1.25}
+  m_LocalPosition: {x: 0, y: -10, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 2076980585626069147}
-  range: 8
+  range: 10
   retreatRange: 0
   quietRange: 2
   crashRange: 0
@@ -439,7 +439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586297716615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 1.25}
+  m_LocalPosition: {x: -10, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -469,7 +469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586360879526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 1.25}
+  m_LocalPosition: {x: 10, y: 0, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -499,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586488569592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 1.25}
+  m_LocalPosition: {x: 0, y: 10, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -573,9 +573,9 @@ MonoBehaviour:
   enAttScript: {fileID: 2076980586613715904}
   enSenScript: {fileID: 2076980585633062622}
   enLifeScript: {fileID: 2076980586613715907}
-  frontDetectRange: 8
-  life: 12
-  damage: 4
+  frontDetectRange: 10
+  life: 200
+  damage: 3
   speedSuction: 2
   damageRate: 2
   feedbackMaxTimer: 1
@@ -594,7 +594,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speedSuction: 2
   damageRate: 2
-  damage: 4
+  damage: 3
   initial: {fileID: 2076980585626069147}
   final: {fileID: 2076980586070652103}
   locate: {fileID: 2076980585633062622}
@@ -658,11 +658,11 @@ MonoBehaviour:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2076980586048613278}
-    soundDistance: {x: 0, y: 0.5}
+    soundDistance: {x: 0, y: 20}
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2076980586048613278}
-    soundDistance: {x: 0, y: 0.5}
+    soundDistance: {x: 0, y: 20}
 --- !u!1 &2076980586881757799
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980587126435938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.25}
+  m_LocalPosition: {x: 0, y: 0, z: 11.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}

@@ -569,8 +569,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualMP: 100
   maxMP: 100
-  mp_Text: {fileID: 2050364050464554689}
-  mp_Indicator: {fileID: 3615413576704565223}
 --- !u!114 &738430648573955453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,6 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f2362d050d0d048ad33d46cd0da2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 0}
   c_life: {fileID: 0}
   c_mp: {fileID: 0}
   c_stm: {fileID: 0}
@@ -1011,7 +1010,7 @@ MonoBehaviour:
   bulletSpeed: 20
   timer: 0
   bulletAngle: 0
-  damage: 4
+  damage: 25
 --- !u!1 &3425979595987332551
 GameObject:
   m_ObjectHideFlags: 0

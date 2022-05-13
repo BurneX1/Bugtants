@@ -27,6 +27,8 @@ public class ExploderManager : MonoBehaviour
     public float feedbackMaxTimer;
     [Tooltip("Tiempo que tendrá el charco lenteador.")]
     public float timeLifeSpan;
+    [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
+    public float vigilanceTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class ExploderManager : MonoBehaviour
         enGrdScript.intel.speed = speed;
         explodeScript.timeLifeSpan = timeLifeSpan;
         explodeScript.damage = damage;
+        enGrdScript.patrolMaxTime = vigilanceTimer;
     }
     void DeathCondition()
     {

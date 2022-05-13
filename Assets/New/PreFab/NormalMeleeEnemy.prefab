@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106163764397494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.46, z: 0}
+  m_LocalPosition: {x: 0, y: 21.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106164026056513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.54, z: 0}
+  m_LocalPosition: {x: 0, y: -18.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -330,9 +330,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 3671106164646871532}
-  range: 6
+  range: 20
   retreatRange: 0
-  quietRange: 2
+  quietRange: 1
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -376,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106164243181549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 1.46, z: 0}
+  m_LocalPosition: {x: 20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -557,14 +557,15 @@ MonoBehaviour:
   enSenScript: {fileID: 3671106164134046318}
   enLifeScript: {fileID: 3671106164646871529}
   meleeScript: {fileID: 3671106164646871522}
-  frontDetectRange: 6
-  attackRange: 2
+  frontDetectRange: 20
+  attackRange: 1
   patrolPoints: 0
-  life: 20
-  damage: 3
+  life: 150
+  damage: 6
   maxTimer: 0.5
   feedbackMaxTimer: 1
-  speed: 5
+  speed: 4
+  vigilanceTimer: 2
 --- !u!114 &3671106164646871535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,13 +580,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 3671106164646871533}
   modelsee: {fileID: 3671106164646871528}
+  patrolMaxTime: 2
   instantChase: 0
   calm: 0
   stunned: 0
   charge: 0
+  touch: 0
+  moving: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 0
+  saveSpeed: 4
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
@@ -599,6 +603,18 @@ MonoBehaviour:
   savePatrol: []
   detectPatrol: {fileID: 3671106165231849666}
   animator: {fileID: 0}
+  waysWalk:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysIdle:
+    whatSound: 4
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysCharge:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &3671106164646871529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,7 +651,11 @@ MonoBehaviour:
   movement: {fileID: 3671106164646871535}
   maxTimer: 0.5
   stunned: 0
-  damage: 3
+  damage: 6
+  waysOnAttack:
+    whatSound: 1
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &6474423816826379705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,11 +678,11 @@ MonoBehaviour:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 3671106164134046319}
-    soundDistance: {x: 0, y: 0.5}
+    soundDistance: {x: 0, y: 20}
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 3671106164646871528}
-    soundDistance: {x: 0, y: 0.1}
+    soundDistance: {x: 0, y: 20}
 --- !u!1 &3671106164771048709
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106165166996556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 6}
+  m_LocalPosition: {x: 0, y: 1.46, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -1437,7 +1457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106165748571754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 1.46, z: 0}
+  m_LocalPosition: {x: -20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}

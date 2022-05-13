@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922498797553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 4}
+  m_LocalPosition: {x: 0, y: 1.46, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -420,14 +420,15 @@ MonoBehaviour:
   enSenScript: {fileID: 7242720923297581006}
   enLifeScript: {fileID: 7242720922725904194}
   meleeScript: {fileID: 7242720922725904221}
-  frontDetectRange: 4
-  attackRange: 2
+  frontDetectRange: 20
+  attackRange: 1
   patrolPoints: 0
-  life: 10
-  damage: 2
+  life: 150
+  damage: 4
   maxTimer: 0.5
   feedbackMaxTimer: 1
-  speed: 8
+  speed: 6
+  vigilanceTimer: 0
 --- !u!114 &7242720922725904195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,13 +443,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 7242720922725904198}
   modelsee: {fileID: 7242720922725904220}
+  patrolMaxTime: 0
   instantChase: 0
   calm: 0
   stunned: 0
   charge: 0
+  touch: 0
+  moving: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 0
+  saveSpeed: 6
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
@@ -462,6 +466,18 @@ MonoBehaviour:
   savePatrol: []
   detectPatrol: {fileID: 7242720923550980238}
   animator: {fileID: 0}
+  waysWalk:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysIdle:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
+  waysCharge:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &7242720922725904194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +514,11 @@ MonoBehaviour:
   movement: {fileID: 7242720922725904195}
   maxTimer: 0.5
   stunned: 0
-  damage: 2
+  damage: 4
+  waysOnAttack:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
 --- !u!114 &6851071659835633764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,11 +540,11 @@ MonoBehaviour:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 7242720923297581001}
-    soundDistance: {x: 0, y: 0.1}
+    soundDistance: {x: 0, y: 20}
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 7242720922725904220}
-    soundDistance: {x: 0, y: 5}
+    soundDistance: {x: 0, y: 20}
 --- !u!1 &7242720922755196109
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922776164013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 1.46, z: 0}
+  m_LocalPosition: {x: -20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -644,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923106700785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 1.46, z: 0}
+  m_LocalPosition: {x: 20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -674,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923148518603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.54, z: 0}
+  m_LocalPosition: {x: 0, y: -18.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -704,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923230932199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.46, z: 0}
+  m_LocalPosition: {x: 0, y: 21.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -786,9 +806,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 7242720922725904199}
-  range: 4
+  range: 20
   retreatRange: 0
-  quietRange: 2
+  quietRange: 1
   crashRange: 0
   startLook: 0
   tryWall: 0

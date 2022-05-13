@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110537819241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 8}
+  m_LocalPosition: {x: 0, y: 1.46, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110650883776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.46, z: 0}
+  m_LocalPosition: {x: 20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -280,14 +280,15 @@ MonoBehaviour:
   enSenScript: {fileID: 2885942110924576187}
   enLifeScript: {fileID: 2885942110906221349}
   explodeScript: {fileID: 2885942110906221348}
-  frontDetectRange: 8
+  frontDetectRange: 20
   explodeRange: 1.5
   patrolPoints: 0
-  life: 10
-  damage: 10
+  life: 150
+  damage: 16
   speed: 10
   feedbackMaxTimer: 1
   timeLifeSpan: 3
+  vigilanceTimer: 0
 --- !u!114 &2885942110906221345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,10 +303,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 2885942110906221351}
   modelsee: {fileID: 2885942110906221346}
+  patrolMaxTime: 0
   instantChase: 0
   calm: 0
   stunned: 0
   charge: 0
+  touch: 0
+  moving: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
@@ -322,6 +326,18 @@ MonoBehaviour:
   savePatrol: []
   detectPatrol: {fileID: 2885942111430252237}
   animator: {fileID: 0}
+  waysWalk:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysIdle:
+    whatSound: 3
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysCharge:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &2885942110906221349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +375,7 @@ MonoBehaviour:
   suicide: {fileID: 2885942110906221349}
   suicidalBomb: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
   timeLifeSpan: 3
-  damage: 10
+  damage: 16
 --- !u!114 &5633346433866812195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,11 +397,11 @@ MonoBehaviour:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2885942110924576180}
-    soundDistance: {x: 0, y: 0.5}
+    soundDistance: {x: 0, y: 20}
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2885942110906221346}
-    soundDistance: {x: 0, y: 0.1}
+    soundDistance: {x: 0, y: 20}
 --- !u!1 &2885942110924576180
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 2885942110906221350}
-  range: 8
+  range: 20
   retreatRange: 1.5
   quietRange: 0
   crashRange: 0
@@ -618,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110971471726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.46, z: 0}
+  m_LocalPosition: {x: 0, y: 21.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -648,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110992128317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.54, z: 0}
+  m_LocalPosition: {x: 0, y: -18.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -1195,7 +1211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942111985338632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 1.46, z: 0}
+  m_LocalPosition: {x: -20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}

@@ -37,6 +37,9 @@ public class StunnerManager : MonoBehaviour
     public float feedbackMaxTimer;
     [Tooltip("Rango de espera entre embestidas (no poner valor 0 o explota tu compu).")]
     public float maxTimerScarab;
+    [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
+    public float vigilanceTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +75,7 @@ public class StunnerManager : MonoBehaviour
 
         enScbScript.stunnerTime = stunnerTime;
         enScbScript.maxTimer = maxTimerScarab;
+        enGrdScript.patrolMaxTime = vigilanceTimer;
     }
     void DeathCondition()
     {

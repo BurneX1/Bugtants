@@ -24,7 +24,7 @@ public class SoundActive : MonoBehaviour
             audComp[i].newSound.transform.position = audComp[i].location.transform.position;
             audComp[i].audSrc = audComp[i].newSound.AddComponent(typeof(AudioSource)) as AudioSource;
             audComp[i].audSrc.rolloffMode = AudioRolloffMode.Linear;
-
+            audComp[i].audSrc.spatialBlend = 1;
             audComp[i].audSrc.minDistance = audComp[i].soundDistance.x;
             audComp[i].audSrc.maxDistance = audComp[i].soundDistance.y;
         }
@@ -35,6 +35,7 @@ public class SoundActive : MonoBehaviour
     {
         if (!audComp[value].audSrc.isPlaying)
         {
+            audComp[value].audSrc.clip = audClip[clip];
             audComp[value].audSrc.Play();
         }
     }
@@ -43,6 +44,7 @@ public class SoundActive : MonoBehaviour
     {
         if (audComp[value].audSrc.isPlaying)
         {
+            audComp[value].audSrc.clip = audClip[clip];
             audComp[value].audSrc.Stop();
         }
     }

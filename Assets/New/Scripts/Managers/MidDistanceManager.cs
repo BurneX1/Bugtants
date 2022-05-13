@@ -33,6 +33,9 @@ public class MidDistanceManager : MonoBehaviour
     public float feedbackMaxTimer;
     [Tooltip("Velocidad del retroceso del enemigo.")]
     public float backSpeed;
+    [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
+    public float vigilanceTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +72,7 @@ public class MidDistanceManager : MonoBehaviour
 
         enGrdScript.intel.speed = speed;
         enGrdScript.backSpeed = backSpeed;
+        enGrdScript.patrolMaxTime = vigilanceTimer;
     }
     void DeathCondition()
     {

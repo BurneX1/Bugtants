@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 2337306153023611739}
-  range: 8
+  range: 20
   retreatRange: 5
   quietRange: 5.5
   crashRange: 0
@@ -373,7 +373,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.27
-  m_Speed: 5
+  m_Speed: 7
   m_Acceleration: 500
   avoidancePriority: 50
   m_AngularSpeed: 450
@@ -415,17 +415,18 @@ MonoBehaviour:
   enGrdScript: {fileID: 2337306153023611730}
   enSenScript: {fileID: 2337306152964645707}
   enLifeScript: {fileID: 2337306153023611735}
-  frontDetectRange: 8
+  frontDetectRange: 20
   idleRange: 5.5
   retreatRange: 5
   patrolPoints: 0
-  life: 16
+  life: 250
   damage: 2
-  maxTimer: 2
-  bullSpeed: 5
-  speed: 5
+  maxTimer: 1.5
+  bullSpeed: 4
+  speed: 7
   feedbackMaxTimer: 1
   backSpeed: 3
+  vigilanceTimer: 0
 --- !u!114 &2337306153023611730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,10 +441,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 2337306153023611732}
   modelsee: {fileID: 2337306153023611731}
+  patrolMaxTime: 0
   instantChase: 0
   calm: 0
   stunned: 0
   charge: 0
+  touch: 0
+  moving: 0
   statNumber: 0
   stat: 0
   saveSpeed: 0
@@ -460,6 +464,18 @@ MonoBehaviour:
   savePatrol: []
   detectPatrol: {fileID: 2337306154416741599}
   animator: {fileID: 0}
+  waysWalk:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysIdle:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysCharge:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &2337306153023611729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,8 +490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3577984631709007136, guid: d98b898500a2e574a8adce10dad9ea4b, type: 3}
   bulletPosition: {fileID: 2337306153141076752}
-  maxTimer: 2
-  bulletSpeed: 5
+  maxTimer: 1.5
+  bulletSpeed: 4
   damage: 2
   movement: {fileID: 2337306153023611730}
 --- !u!114 &2337306153023611735
@@ -520,11 +536,11 @@ MonoBehaviour:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2337306152964645700}
-    soundDistance: {x: 0, y: 0.5}
+    soundDistance: {x: 0, y: 20}
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
     location: {fileID: 2337306153023611731}
-    soundDistance: {x: 0, y: 0.1}
+    soundDistance: {x: 0, y: 20}
 --- !u!1 &2337306153141076752
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +852,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306153782518500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 1.46, z: 0}
+  m_LocalPosition: {x: -20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2337306154558646507}
@@ -1048,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306154198981023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 1.46, z: 0}
+  m_LocalPosition: {x: 20, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2337306154558646507}
@@ -1078,7 +1094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306154303394583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 8}
+  m_LocalPosition: {x: 0, y: 1.46, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2337306154558646507}
@@ -1220,7 +1236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306154666994433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.54, z: 0}
+  m_LocalPosition: {x: 0, y: -18.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2337306154558646507}
@@ -1280,7 +1296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2337306155045769670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.46, z: 0}
+  m_LocalPosition: {x: 0, y: 21.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2337306154558646507}

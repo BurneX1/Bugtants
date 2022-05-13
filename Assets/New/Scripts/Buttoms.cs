@@ -11,12 +11,22 @@ public class Buttoms : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void ShowCanvas(GameObject on)
+    {
+        on.SetActive(true);
+    }
+    public void HideCanvas(GameObject off)
+    {
+        off.SetActive(false);
+    }
 
 
     public void ExitGame()
     {
         Application.Quit();
     }
+
+
 
     public void ActivateCanvas(string canvasName)
     {

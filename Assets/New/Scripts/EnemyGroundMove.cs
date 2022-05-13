@@ -7,10 +7,12 @@ public class EnemyGroundMove : MonoBehaviour
 {
     public NavMeshAgent intel;
     public GameObject modelsee;
+
+    public float patrolMaxTime;
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
-    public bool calm, stunned, charge;
+    public bool calm, stunned, charge, touch, moving;
     [HideInInspector]
     public int statNumber;
     // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4
@@ -19,7 +21,7 @@ public class EnemyGroundMove : MonoBehaviour
     public Status stat;
     [HideInInspector]
     public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer, charging;
-    private float stunnedTimer;
+    private float stunnedTimer, patrolTimer;
     public EnemySense radium;
     private int pinner, marker;
     public int chargeDamage;
@@ -27,12 +29,13 @@ public class EnemyGroundMove : MonoBehaviour
     public GameObject[] patrolPoint;
     public GameObject patroller;
     private int pastPatrol, patrolNumber, proximity;
-    [HideInInspector]
     public GameObject[] savePatrol;
     public Detecter detectPatrol;
     private bool locker = true, lockerDraw = false;
 
     public Animator animator;
+
+    public WaysToSound waysWalk, waysIdle, waysCharge;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,10 +56,16 @@ public class EnemyGroundMove : MonoBehaviour
         }
         lockerDraw = true;
         patrolNumber = 0;
-        saveSpeed = intel.speed;
         saveAcc = intel.acceleration;
         patroller.transform.parent = null;
         locker = true;
+        patrolTimer = 0;
+        if (gameObject.GetComponent<SoundActive>() != null)
+        {
+            waysWalk.sounds = gameObject.GetComponent<SoundActive>();
+            waysIdle.sounds = gameObject.GetComponent<SoundActive>();
+            waysCharge.sounds = gameObject.GetComponent<SoundActive>();
+        }
     }
 
     // Update is called once per frame
@@ -82,7 +91,7 @@ public class EnemyGroundMove : MonoBehaviour
                 {
                     Stunned();
                 }
-                //Animate();
+                Animate();
             }
         }
     }
@@ -90,8 +99,16 @@ public class EnemyGroundMove : MonoBehaviour
     void Movement()
     {
         marker = 0;
-        if (stat == Status.patrolling)
+        if (stat == Status.patrolling && !touch)
         {
+            if(patrolPoint.Length == 0)
+            {
+                moving = false;
+            }
+            else
+            {
+                moving = true;
+            }
             intel.speed = saveSpeed * charging;
             intel.autoRepath = true;
             pinner = 0;
@@ -110,7 +127,7 @@ public class EnemyGroundMove : MonoBehaviour
                 intel.SetDestination(patrolPoint[patrolNumber].transform.position);
                 if (patrolPoint[patrolNumber] == detectPatrol.registeredObject)
                 {
-                    patrolNumber += 1;
+                    touch = true;
                 }
             }
             else
@@ -127,8 +144,23 @@ public class EnemyGroundMove : MonoBehaviour
             */
 
         }
+        else if(stat == Status.patrolling && touch)
+        {
+            moving = false;
+            intel.speed = 0;
+            patrolTimer += Time.deltaTime;
+            if (patrolTimer >= patrolMaxTime)
+            {
+                patrolNumber += 1;
+                patrolTimer = 0;
+                charging = 1;
+                touch = false;
+            }
+
+        }
         else if(stat == Status.chasing)
         {
+            moving = true;
             intel.speed = saveSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
@@ -136,6 +168,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if (stat == Status.retreating)
         {
+            moving = true;
             intel.speed = backSpeed;
             intel.SetDestination(radium.retreatPos.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
@@ -143,6 +176,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if (stat == Status.looking)
         {
+            moving = false;
             intel.speed = 0;
             intel.SetDestination(transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
@@ -172,6 +206,7 @@ public class EnemyGroundMove : MonoBehaviour
     }
     void Charge()
     {
+        moving = true;
         if (marker == 0)
         {
             intel.speed = saveSpeed * 2 * charging;
@@ -200,6 +235,7 @@ public class EnemyGroundMove : MonoBehaviour
     }
     void Stunned()
     {
+        moving = false;
         intel.speed = 0;
         stunnedTimer += Time.deltaTime;
         charging = 0;
@@ -245,15 +281,24 @@ public class EnemyGroundMove : MonoBehaviour
 
     void Animate()
     {
-        if (intel.speed != 0)
+        if (moving)
         {
-            //sonidoMovimiento.SetActive(true);
-            animator.SetBool("Moving", true);
+            //animator.SetBool("Moving", true);
+            if (!charge && !stunned)
+            {
+                waysWalk.ActiveWhenStopped();
+            }
+            else if (charge && !stunned)
+            {
+                waysCharge.ActiveWhenStopped();
+            }
+
         }
-        else if (intel.speed == 0)
+        else
         {
-            //sonidoMovimiento.SetActive(false);
-            animator.SetBool("Moving", false);
+            waysIdle.ActiveWhenStopped();
+
+            //animator.SetBool("Moving", false);
         }
     }
 
@@ -262,6 +307,10 @@ public class EnemyGroundMove : MonoBehaviour
     #region GizmosDontTouch
 
     void OnDrawGizmos()
+    {
+        Modifying();
+    }
+    public void Modifying()
     {
         if (lockerDraw == false)
         {
@@ -297,7 +346,6 @@ public class EnemyGroundMove : MonoBehaviour
             }
         }
     }
-
     void ControlPoints()
     {
         if (pastPatrol != patrolPoint.Length)
