@@ -107,6 +107,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeScene"",
+                    ""type"": ""Button"",
+                    ""id"": ""d706e5d3-aaba-4d98-9fa3-6911839d0a52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,6 +272,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""MeleAtack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58f69e73-6af2-4910-b705-447950edb95e"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeScene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -308,6 +328,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Recharge = m_GamePlay.FindAction("Recharge", throwIfNotFound: true);
         m_GamePlay_Heal = m_GamePlay.FindAction("Heal", throwIfNotFound: true);
         m_GamePlay_MeleAtack = m_GamePlay.FindAction("MeleAtack", throwIfNotFound: true);
+        m_GamePlay_ChangeScene = m_GamePlay.FindAction("ChangeScene", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -379,6 +400,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Recharge;
     private readonly InputAction m_GamePlay_Heal;
     private readonly InputAction m_GamePlay_MeleAtack;
+    private readonly InputAction m_GamePlay_ChangeScene;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -392,6 +414,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Recharge => m_Wrapper.m_GamePlay_Recharge;
         public InputAction @Heal => m_Wrapper.m_GamePlay_Heal;
         public InputAction @MeleAtack => m_Wrapper.m_GamePlay_MeleAtack;
+        public InputAction @ChangeScene => m_Wrapper.m_GamePlay_ChangeScene;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -428,6 +451,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @MeleAtack.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
                 @MeleAtack.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
                 @MeleAtack.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnMeleAtack;
+                @ChangeScene.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -459,6 +485,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @MeleAtack.started += instance.OnMeleAtack;
                 @MeleAtack.performed += instance.OnMeleAtack;
                 @MeleAtack.canceled += instance.OnMeleAtack;
+                @ChangeScene.started += instance.OnChangeScene;
+                @ChangeScene.performed += instance.OnChangeScene;
+                @ChangeScene.canceled += instance.OnChangeScene;
             }
         }
     }
@@ -507,6 +536,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnRecharge(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
         void OnMeleAtack(InputAction.CallbackContext context);
+        void OnChangeScene(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {
