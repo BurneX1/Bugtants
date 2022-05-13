@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New PlayerData", menuName = "Data/PlayerData")]
-public class PlayerData : ScriptableObject
+public class PlayerData : ScriptablePersistentObject
 {
     [Header("Player Properties")]
     public int maxLife;

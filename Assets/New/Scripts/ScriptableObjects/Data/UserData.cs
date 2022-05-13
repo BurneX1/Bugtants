@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New UserData", menuName = "Data/UserData")]
-public class UserData : ScriptableObject
+public class UserData : ScriptablePersistentObject
 {
     [Range(0.01f,100)]
     public float GenVolume = 0.01f;
