@@ -23,8 +23,10 @@ public class AIMovement : MonoBehaviour
     
     private void Awake()
     {
+        current = 0;
         agnt = gameObject.GetComponent<NavMeshAgent>();
         SettPoints();
+        MovePoint(patrolPoints[current]);
     }
 
     // Start is called before the first frame update
@@ -41,10 +43,10 @@ public class AIMovement : MonoBehaviour
 
     public void Patrol()
     {
-        if (new Vector3(transform.position.x, transform.position.y) != new Vector3(patrolPoints[current].x,transform.position.y, patrolPoints[current].z))
+        if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y,transform.position.z), new Vector3(patrolPoints[current].x, transform.position.y, patrolPoints[current].z)) > 2.5f)
         {
             agnt.speed = movSpd;
-            
+            Debug.Log(Vector3.Distance(new Vector3(transform.position.x, transform.position.y), new Vector3(patrolPoints[current].x, transform.position.y, patrolPoints[current].z)));
         }
         else
         {
@@ -74,6 +76,7 @@ public class AIMovement : MonoBehaviour
             dir = 1;
         }
         current = (current + dir) % patrolPoints.Length;
+        MovePoint(patrolPoints[current]);
     }
 
     public void MovePoint(Vector3 target)
