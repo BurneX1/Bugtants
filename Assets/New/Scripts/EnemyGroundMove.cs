@@ -296,7 +296,10 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else
         {
-            waysIdle.ActiveWhenStopped();
+            if (stat != Status.looking)
+            {
+                waysIdle.ActiveWhenStopped();
+            }
 
             //animator.SetBool("Moving", false);
         }
