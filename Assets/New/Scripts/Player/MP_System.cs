@@ -8,11 +8,37 @@ public class MP_System : MonoBehaviour
     //--VALORES--//
     public float actualMP;
     public float maxMP;
-    public Text mp_Text;
-    public Image mp_Indicator;
 
 
+    private void Awake()
+    {
+        actualMP = maxMP;
+
+    }
     public void FullRecharge() { actualMP = 100; }
     public void BasicAttack() { actualMP -= 10; }
+
+    public void ReduceMP(int amount)
+    {
+        amount = Mathf.Abs(amount);
+        actualMP = actualMP - amount;
+
+        if (actualMP < 0)
+        {
+            actualMP = 0;
+        }
+    }
+
+    public void AddMP(int recovery)
+    {
+        recovery = Mathf.Abs(recovery);
+        actualMP = actualMP + recovery;
+
+        if (actualMP > maxMP)
+        {
+            actualMP = maxMP;
+        }
+    }
+
 
 }

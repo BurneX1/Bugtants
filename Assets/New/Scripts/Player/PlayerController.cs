@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerData playerData;
+
     private InputSystemActions inputStm;
     private FrontRayCaster c_ray;
     [HideInInspector]
@@ -76,10 +78,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LoadData()
+    {
+        c_life.maxHealth = playerData.maxLife;
+        c_stm.increaseSpd = playerData.staminaRegenSpd;
+        c_mp.maxMP = playerData.maxMana;
+    }
 
     private void OnEnable()
     {
         inputStm.Enable();
+
+        if(playerData)
+        {
+            LoadData();
+        }
     }
     private void OnDisable()
     {
