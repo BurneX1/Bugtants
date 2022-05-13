@@ -10,6 +10,8 @@ public class Buttoms : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+
+
     public void ExitGame()
     {
         Application.Quit();

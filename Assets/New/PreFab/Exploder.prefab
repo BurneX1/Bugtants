@@ -373,15 +373,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audClip:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: f630ea1d399510f418a52e952947f02a, type: 3}
+  - {fileID: 8300000, guid: 0b6ec7b574cd2994f8652431019e86b2, type: 3}
+  - {fileID: 8300000, guid: 321faa29fb6b8a847835101e8816fa77, type: 3}
+  - {fileID: 8300000, guid: 1eca118db3d57e74ea8e1c33577379ab, type: 3}
   audComp:
   - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
     location: {fileID: 2885942110924576180}
     soundDistance: {x: 0, y: 0.5}
   - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
     location: {fileID: 2885942110906221346}
     soundDistance: {x: 0, y: 0.1}
 --- !u!1 &2885942110924576180
