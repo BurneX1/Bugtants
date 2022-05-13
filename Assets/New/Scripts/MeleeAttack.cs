@@ -33,11 +33,11 @@ public class MeleeAttack : MonoBehaviour
         if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3))
         {
             // Eso es en donde activa los sonidos si tiene sonidos insertados
-            /*if (sounds != null)
+            if (sounds != null)
             {
                 sounds.SoundStop(0,0);
                 sounds.SoundPlay(0,0);
-            }*/
+            }
             Debug.Log("Attacked");
             movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
             timer = 0;

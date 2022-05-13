@@ -14,8 +14,17 @@ public class SoundActive : MonoBehaviour
     {
         for(int i = 0; i < audComp.Length; i++)
         {
-            audComp[i].audSrc= audComp[i].location.AddComponent(typeof(AudioSource)) as AudioSource;
+            audComp[i].newSound = new GameObject
+            {
+                name = "Sfx " + "(" + i + ")",
+                tag = "SoundSFX"
+            };
+
+            audComp[i].newSound.transform.parent = audComp[i].location.transform;
+            audComp[i].newSound.transform.position = audComp[i].location.transform.position;
+            audComp[i].audSrc = audComp[i].newSound.AddComponent(typeof(AudioSource)) as AudioSource;
             audComp[i].audSrc.rolloffMode = AudioRolloffMode.Linear;
+
             audComp[i].audSrc.minDistance = audComp[i].soundDistance.x;
             audComp[i].audSrc.maxDistance = audComp[i].soundDistance.y;
         }
