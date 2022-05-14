@@ -12,22 +12,24 @@ public class SoundActive : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        for(int i = 0; i < audComp.Length; i++)
+        foreach (AudioSourceComponent audines in audComp)
         {
-            audComp[i].newSound = new GameObject
+            audines.newSound = new GameObject
             {
-                name = "Sfx " + "(" + i + ")",
+                name = "Sfx",
                 tag = "SoundSFX"
             };
 
-            audComp[i].newSound.transform.parent = audComp[i].location.transform;
-            audComp[i].newSound.transform.position = audComp[i].location.transform.position;
-            audComp[i].audSrc = audComp[i].newSound.AddComponent(typeof(AudioSource)) as AudioSource;
-            audComp[i].audSrc.rolloffMode = AudioRolloffMode.Linear;
-            audComp[i].audSrc.spatialBlend = 1;
-            audComp[i].audSrc.minDistance = audComp[i].soundDistance.x;
-            audComp[i].audSrc.maxDistance = audComp[i].soundDistance.y;
+            audines.newSound.transform.parent = audines.location.transform;
+            audines.newSound.transform.position = audines.location.transform.position;
+            audines.audSrc = audines.newSound.AddComponent(typeof(AudioSource)) as AudioSource;
+            audines.audSrc.rolloffMode = AudioRolloffMode.Linear;
+            audines.audSrc.spatialBlend = 1;
+            audines.audSrc.playOnAwake = false;
+            audines.audSrc.minDistance = audines.soundDistance.x;
+            audines.audSrc.maxDistance = audines.soundDistance.y;
         }
+
     }
 
     // SoundPlay() Reproduce el sonido
