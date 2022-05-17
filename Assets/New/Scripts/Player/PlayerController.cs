@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public PlayerData playerData;
@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Stamina c_stm;
     [HideInInspector]
-    public PlayerMovement c_mov;
+    public Movement c_mov;
     private AtackMele c_atk;
+    [HideInInspector]
+    public Jump c_jmp;
 
     private float stMultiplier;
 
@@ -27,7 +29,8 @@ public class PlayerController : MonoBehaviour
         c_life = gameObject.GetComponent<Life>();
         c_mp = gameObject.GetComponent<MP_System>();
         c_stm = gameObject.GetComponent<Stamina>();
-        c_mov = gameObject.GetComponent<PlayerMovement>();
+        c_mov = gameObject.GetComponent<Movement>();
+        c_jmp = gameObject.GetComponent<Jump>();
         c_atk = gameObject.GetComponent<AtackMele>();
         //-------------------------<<<//
 
@@ -39,6 +42,11 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Crouch.performed += ctx => Debug.Log(ctx);
         inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
         inputStm.GamePlay.MeleAtack.performed += _ => c_atk.Attack();
+        //inputStm.GamePlay.Movement.performed += ctx => Debug.Log(ctx.ToString());//c_mov.Move();
+        inputStm.GamePlay.Movement.performed += ctx => c_mov.Move(ctx.ReadValue<Vector2>());
+        inputStm.GamePlay.Jump.performed += _ => c_jmp.Jumping();
+        //inputStm.GamePlay.Run.performed += _ => c_mov.Move();
+
         /*inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
         inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;*/
 
@@ -48,7 +56,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Vector2 pal= new Vector2(0,0);
+        Debug.Log(pal);
     }
 
     // Update is called once per frame
@@ -60,11 +69,11 @@ public class PlayerController : MonoBehaviour
 
     void ModifyStamina()
     {
-        c_stm.ConstModify(stMultiplier);
+        //c_stm.ConstModify(stMultiplier);
     }
     void StaminaCondition()
     {
-        if (c_mov.moving && c_mov.running && !c_mov.crouching && !c_stm.empty && c_mov.runningWall)
+        /*if (c_mov.moving && c_mov.running && !c_mov.crouching && !c_stm.empty && c_mov.runningWall)
         {
             stMultiplier = -1;
         }
@@ -75,14 +84,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             stMultiplier = 1;
-        }
+        }*/
     }
 
     public void LoadData()
     {
-        c_life.maxHealth = playerData.maxLife;
+        /*c_life.maxHealth = playerData.maxLife;
         c_stm.increaseSpd = playerData.staminaRegenSpd;
-        c_mp.maxMP = playerData.maxMana;
+        c_mp.maxMP = playerData.maxMana;*/
     }
 
     private void OnEnable()

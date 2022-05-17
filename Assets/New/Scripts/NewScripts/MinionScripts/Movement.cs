@@ -1,23 +1,22 @@
 using UnityEngine;
 
-public class Movement
+public class Movement : MonoBehaviour
 {
-    public void Walk(int value)
+    public Rigidbody rigid;
+    public float speed, spdBuff;
+
+    void Awake()
     {
-
-    }
-    public void Run(int value)
-    {
-
-    }
-
-    public void Jump(int value)
-    {
-
-    }
-    public void Crouch(int value)
-    {
-
+        rigid = gameObject.GetComponent<Rigidbody>();
     }
 
+    /*public void Update()
+    {
+        Move();
+    }*/
+    public void Move(Vector2 direction)
+    {
+        float tmpSpd = speed + spdBuff;
+        rigid.velocity = new Vector3(tmpSpd * direction.x, rigid.velocity.y, tmpSpd * direction.y);
+    }
 }
