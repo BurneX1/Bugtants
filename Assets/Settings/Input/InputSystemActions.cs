@@ -116,6 +116,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""9bb358b3-40a8-4102-8fb9-04fe80f19cf2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,28 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""ChangeScene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b35d3843-028c-4f18-b04d-c11634c84ce8"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80129a2f-82f3-4134-8f70-c3fd20b979b4"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -318,6 +349,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Heal = m_GamePlay.FindAction("Heal", throwIfNotFound: true);
         m_GamePlay_MeleAtack = m_GamePlay.FindAction("MeleAtack", throwIfNotFound: true);
         m_GamePlay_ChangeScene = m_GamePlay.FindAction("ChangeScene", throwIfNotFound: true);
+        m_GamePlay_ChangeWeapon = m_GamePlay.FindAction("ChangeWeapon", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -390,6 +422,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Heal;
     private readonly InputAction m_GamePlay_MeleAtack;
     private readonly InputAction m_GamePlay_ChangeScene;
+    private readonly InputAction m_GamePlay_ChangeWeapon;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -404,6 +437,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Heal => m_Wrapper.m_GamePlay_Heal;
         public InputAction @MeleAtack => m_Wrapper.m_GamePlay_MeleAtack;
         public InputAction @ChangeScene => m_Wrapper.m_GamePlay_ChangeScene;
+        public InputAction @ChangeWeapon => m_Wrapper.m_GamePlay_ChangeWeapon;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +477,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeScene.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
+                @ChangeWeapon.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
+                @ChangeWeapon.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
+                @ChangeWeapon.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -477,6 +514,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeScene.started += instance.OnChangeScene;
                 @ChangeScene.performed += instance.OnChangeScene;
                 @ChangeScene.canceled += instance.OnChangeScene;
+                @ChangeWeapon.started += instance.OnChangeWeapon;
+                @ChangeWeapon.performed += instance.OnChangeWeapon;
+                @ChangeWeapon.canceled += instance.OnChangeWeapon;
             }
         }
     }
@@ -526,6 +566,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnHeal(InputAction.CallbackContext context);
         void OnMeleAtack(InputAction.CallbackContext context);
         void OnChangeScene(InputAction.CallbackContext context);
+        void OnChangeWeapon(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {
