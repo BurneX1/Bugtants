@@ -4,34 +4,54 @@ using UnityEngine;
 
 public class BulletTime : MonoBehaviour
 {
-    private float timer;
+    private float timer, baseSpeed;
+    private int modDam;
     private Rigidbody rb;
     [HideInInspector]
     public Vector3 angler;
     [HideInInspector]
     public string tagName;
-    [HideInInspector]
     public int damage;
+    [HideInInspector]
+    public bool cannon;
+    public float modifier, speed;
     // Start is called before the first frame update
     void Start()
     {
+        baseSpeed = speed;
+        modDam = damage;
         rb = GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(angler.x, angler.y, angler.z);
+        rb.velocity = new Vector3(angler.x * speed, angler.y * speed, angler.z * speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Timerling();
+        if (cannon)
+            CannonBullet();
+        else
+            NormalBullet();
+
     }
-    
-    void Timerling()
+
+    void NormalBullet()
     {
         timer += Time.deltaTime;
         if (timer > 3)
         {
             Destroy(gameObject);
         }
+    }
+
+    void CannonBullet()
+    {
+        rb.velocity = new Vector3(angler.x * speed, angler.y * speed, angler.z * speed);
+        speed -= Time.deltaTime * modifier;
+        //(250 / 10 = 25)
+        //(10 * 25) / (20 / 2)
+        damage = ((int)speed * modDam) / ((int)baseSpeed / 2);
+        if (speed <= 0)
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider other)
@@ -46,8 +66,13 @@ public class BulletTime : MonoBehaviour
             {
                 other.GetComponent<EnemyLife>().ChangeLife(-damage);
             }
-            Destroy(gameObject);
             damage = 0;
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("FloorAndWall"))
+        {
+            damage = 0;
+            Destroy(gameObject);
         }
     }
 }

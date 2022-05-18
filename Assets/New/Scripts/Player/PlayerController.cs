@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private AtackMele c_atk;
     [HideInInspector]
     public Jump c_jmp;
-
     private float stMultiplier;
 
     void Awake()
@@ -43,10 +42,12 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
         inputStm.GamePlay.MeleAtack.performed += _ => c_atk.Attack();
         //inputStm.GamePlay.Movement.performed += ctx => Debug.Log(ctx.ToString());//c_mov.Move();
-        inputStm.GamePlay.Movement.performed += ctx => c_mov.Move(ctx.ReadValue<Vector2>());
+        inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
+        inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += _ => c_jmp.Jumping();
-        //inputStm.GamePlay.Run.performed += _ => c_mov.Move();
+        //inputStm.GamePlay.Atack.performed += _ => c_jmp.Jumping();
 
+        //inputStm.GamePlay.Run.performed += _ => c_mov.Move();
         /*inputStm.GamePlay.Run.performed += _ => stMultiplier = -1;
         inputStm.GamePlay.Run.canceled += _ => stMultiplier = 1;*/
 
@@ -56,8 +57,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 pal= new Vector2(0,0);
-        Debug.Log(pal);
     }
 
     // Update is called once per frame
@@ -65,6 +64,9 @@ public class PlayerController : MonoBehaviour
     {
         ModifyStamina();
         StaminaCondition();
+        if (c_mov.direction != Vector2.zero)
+            c_mov.Move();
+
     }
 
     void ModifyStamina()

@@ -7,7 +7,8 @@ public class ShootPlayer : MonoBehaviour
     InputSystemActions inputStm;
     public GameObject bullet, targetPosition;
     public float maxTimer, bulletSpeed;
-    public float timer, bulletAngle;
+    public float timer, bulletAngle, mod;
+    public bool cannon;
     public int damage;
     private Vector3 rec;
     private Pause pauseScript;
@@ -36,15 +37,18 @@ public class ShootPlayer : MonoBehaviour
     {
         timer += Time.deltaTime;
     }
-
     void Shoot()
     {
         if (timer >= maxTimer&&!pauseScript.paused&&mpScript.actualMP>=10)
         {
             bullet.transform.position = transform.position;
-            rec = (transform.position - targetPosition.transform.position).normalized * -bulletSpeed;
+            rec = (targetPosition.transform.position - transform.position).normalized;
+            bullet.GetComponent<BulletTime>().speed = bulletSpeed;
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
             bullet.GetComponent<BulletTime>().damage = damage;
+            bullet.GetComponent<BulletTime>().cannon = cannon;
+            if(cannon)
+                bullet.GetComponent<BulletTime>().modifier = mod;
             bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
             bullet.GetComponent<BulletTime>().tagName = "Enemy";

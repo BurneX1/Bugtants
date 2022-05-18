@@ -4,7 +4,7 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody rigid;
     public float speed, spdBuff;
-
+    public Vector2 direction;
     void Awake()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     {
         Move();
     }*/
-    public void Move(Vector2 direction)
+    public void Move()
     {
         float tmpSpd = speed + spdBuff;
         rigid.velocity = new Vector3(tmpSpd * direction.x, rigid.velocity.y, tmpSpd * direction.y);
