@@ -464,7 +464,7 @@ MonoBehaviour:
   frontDetectRange: 20
   attackRange: 1
   patrolPoints: 0
-  life: 150
+  life: 100
   damage: 6
   maxTimer: 0.5
   feedbackMaxTimer: 1
@@ -915,8 +915,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
+  otherTouch: 0
   registeredObject: {fileID: 0}
+  anotherRegisteredObject: {fileID: 0}
   tagName: PatrolPoint
+  anotherTagName: 
 --- !u!1 &3671106165423918453
 GameObject:
   m_ObjectHideFlags: 0

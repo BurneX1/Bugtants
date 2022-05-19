@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class BulletTime : MonoBehaviour
 {
-    private float timer, baseSpeed;
-    private int modDam;
+    private float timer, multiScale;
+    public int modDam, distance;
     private Rigidbody rb;
     [HideInInspector]
-    public Vector3 angler;
+    public Vector3 angler, start, current;
     [HideInInspector]
     public string tagName;
     public int damage;
+    public Shells[] shells;
     [HideInInspector]
     public bool cannon;
-    public float modifier, speed;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        baseSpeed = speed;
+        start = transform.position;
+        transform.localScale = new Vector3(0.75f, 0.75f, 1);
+        for (int i = 0; i < shells.Length; i++)
+        {
+            shells[i].tagName = tagName;
+        }
         modDam = damage;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(angler.x * speed, angler.y * speed, angler.z * speed);
@@ -45,34 +51,72 @@ public class BulletTime : MonoBehaviour
 
     void CannonBullet()
     {
+        current = transform.position;
+        distance = (int)Vector3.Distance(start, current);
         rb.velocity = new Vector3(angler.x * speed, angler.y * speed, angler.z * speed);
-        speed -= Time.deltaTime * modifier;
-        //(250 / 10 = 25)
-        //(10 * 25) / (20 / 2)
-        damage = ((int)speed * modDam) / ((int)baseSpeed / 2);
-        if (speed <= 0)
+        /*switch (distance)
+        {
+            case 0 | 1:
+                damage = (int)(modDam * 1.5f);
+                multiScale = 0;
+                    break;
+            case 2 | 3:
+                damage = modDam;
+                multiScale = 0.5f;
+                break;
+            case 4 | 5 | 6 | 7:
+                damage = modDam / 2;
+                multiScale = 1;
+                break;
+        }*/
+        if (distance <= 1)
+        {
+            damage = (int)(modDam * 1.5f);
+            multiScale = 0;
+        }
+        else if (distance <= 3 && distance > 1)
+        {
+            damage = modDam;
+            multiScale = 0.5f;
+
+        }
+        else if (distance <= 7 && distance > 3)
+        {
+            damage = modDam / 2;
+            multiScale = 1;
+        }
+        foreach(Shells shellers in shells)
+        {
+            shellers.damage = damage;
+        }
+        transform.localScale = new Vector3(0.75f + multiScale, 0.75f + multiScale, 1);
+        if (distance >= 8)
             Destroy(gameObject);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagName))
+        if (!cannon)
         {
-            if (other.GetComponent<Life>() != null)
+            if (other.CompareTag(tagName))
             {
-                other.GetComponent<Life>().ReduceLife(damage);
+                if (other.GetComponent<Life>() != null)
+                {
+                    other.GetComponent<Life>().ReduceLife(damage);
+                }
+                else if (other.GetComponent<EnemyLife>() != null)
+                {
+                    other.GetComponent<EnemyLife>().ChangeLife(-damage);
+                }
+                damage = 0;
+                Destroy(gameObject);
             }
-            else if(other.GetComponent<EnemyLife>() != null)
+            else if (other.CompareTag("FloorAndWall"))
             {
-                other.GetComponent<EnemyLife>().ChangeLife(-damage);
+                damage = 0;
+                Destroy(gameObject);
             }
-            damage = 0;
-            Destroy(gameObject);
         }
-        else if (other.CompareTag("FloorAndWall"))
-        {
-            damage = 0;
-            Destroy(gameObject);
-        }
+        
     }
 }

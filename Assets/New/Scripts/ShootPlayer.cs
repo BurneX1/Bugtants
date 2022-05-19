@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShootPlayer : MonoBehaviour
 {
     InputSystemActions inputStm;
-    public GameObject bullet, targetPosition;
+    public GameObject bull, shotbull, targetPosition;
+    private GameObject bullet;
     public float maxTimer, bulletSpeed;
     public float timer, bulletAngle, mod;
     public bool cannon;
@@ -41,6 +42,10 @@ public class ShootPlayer : MonoBehaviour
     {
         if (timer >= maxTimer&&!pauseScript.paused&&mpScript.actualMP>=10)
         {
+            if (cannon)
+                bullet = shotbull;
+            else
+                bullet = bull;
             bullet.transform.position = transform.position;
             rec = (targetPosition.transform.position - transform.position).normalized;
             bullet.GetComponent<BulletTime>().speed = bulletSpeed;
