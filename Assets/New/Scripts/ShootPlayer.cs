@@ -52,8 +52,6 @@ public class ShootPlayer : MonoBehaviour
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
             bullet.GetComponent<BulletTime>().damage = damage;
             bullet.GetComponent<BulletTime>().cannon = cannon;
-            if(cannon)
-                bullet.GetComponent<BulletTime>().modifier = mod;
             bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
             bullet.GetComponent<BulletTime>().tagName = "Enemy";
