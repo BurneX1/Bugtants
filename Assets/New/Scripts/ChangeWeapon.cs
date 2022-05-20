@@ -17,9 +17,6 @@ public class ChangeWeapon : MonoBehaviour
 
         inputActions.GamePlay.ChangeWeapon1.performed += ctx => WeaponChanger(1);
         inputActions.GamePlay.ChangeWeapon2.performed += ctx => WeaponChanger(2);
-
-        inputActions.GamePlay.ChangeWeapon1.performed += ctx => weapons.cannon = true;
-        inputActions.GamePlay.ChangeWeapon2.performed += ctx => weapons.cannon = false;
     }
     IEnumerator ChangeWepon_Logic()
     {
@@ -37,29 +34,36 @@ public class ChangeWeapon : MonoBehaviour
     }
     void WeaponChanger(int weaponNumber)
     {
-        switch (weaponNumber)
+        if (!weapons.waiting)
         {
-            case 1:
-                if (!weapons.cannon)
-                {
-                    weapons.waiting = true;
-                    weapons.cannon = true;
-                    W_2.SetActive(false);
-                    StartCoroutine(ChangeWepon_Logic());
-                    W_1.SetActive(true);
+            switch (weaponNumber)
+            {
+                case 1:
+                    if (!weapons.cannon)
+                    {
+                        weapons.waiting = true;
+                        weapons.cannon = true;
+                        W_2.SetActive(false);
+                        StartCoroutine(ChangeWepon_Logic());
+                        W_1.SetActive(true);
 
-                }
-                break;
-            case 2:
-                if (weapons.cannon)
-                {
-                    weapons.waiting = true;
-                    weapons.cannon = false;
-                    W_1.SetActive(false);
-                    StartCoroutine(ChangeWepon_Logic());
-                    W_2.SetActive(true);
-                }
-                break;
+                    }
+                    break;
+                case 2:
+                    if (weapons.cannon)
+                    {
+                        weapons.waiting = true;
+                        weapons.cannon = false;
+                        W_1.SetActive(false);
+                        StartCoroutine(ChangeWepon_Logic());
+                        W_2.SetActive(true);
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            return;
         }
     }
     private void OnEnable()

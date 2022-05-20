@@ -38,10 +38,13 @@ public class FrontRayCaster : MonoBehaviour
     public void Interact()
     {
         FrontCast();
-
-        if(frontObj == null)
+        if (frontObj == null)
         {
             return;
+        }
+        if (frontObj)
+        {
+
         }
 
         if(frontObj.gameObject.GetComponent<Interacter>())
