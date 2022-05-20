@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 {
     InputSystemActions inputStm;
     public CharacterController controller;
+    public WaysToSound walkSnd, jumpSnd, crouchSnd;
     public CrouchSeen seeCrouch;
     public GameObject sight;
     public float saveSpeed, crouchChange, staminaJumpCost;
@@ -30,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool isGrounded, moving, running, crouching, runningWall, stunned;
     private bool jumper;
-
     float x;
     float z;
     bool jumpPressed = false;
