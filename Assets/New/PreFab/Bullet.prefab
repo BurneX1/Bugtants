@@ -127,12 +127,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6476ed444e6272b4994879773c5ba657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modDam: 0
+  distance: 0
   angler: {x: 0, y: 0, z: 0}
+  start: {x: 0, y: 0, z: 0}
+  current: {x: 0, y: 0, z: 0}
   tagName: Enemy
   damage: 0
-  bulleters: []
-  cannon: 1
-  modifier: 10
+  shells: []
+  cannon: 0
   speed: 20
 --- !u!114 &558114720456750985
 MonoBehaviour:

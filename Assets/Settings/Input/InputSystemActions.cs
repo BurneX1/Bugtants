@@ -118,9 +118,18 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChangeWeapon"",
+                    ""name"": ""ChangeWeapon1"",
                     ""type"": ""Button"",
                     ""id"": ""9bb358b3-40a8-4102-8fb9-04fe80f19cf2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeWeapon2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b7c874a-78d9-4f63-a912-217009c79ae9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -289,18 +298,18 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeWeapon"",
+                    ""action"": ""ChangeWeapon1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""80129a2f-82f3-4134-8f70-c3fd20b979b4"",
+                    ""id"": ""312c2798-963d-4b62-976c-b4192947dc3b"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeWeapon"",
+                    ""action"": ""ChangeWeapon2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -349,7 +358,8 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_Heal = m_GamePlay.FindAction("Heal", throwIfNotFound: true);
         m_GamePlay_MeleAtack = m_GamePlay.FindAction("MeleAtack", throwIfNotFound: true);
         m_GamePlay_ChangeScene = m_GamePlay.FindAction("ChangeScene", throwIfNotFound: true);
-        m_GamePlay_ChangeWeapon = m_GamePlay.FindAction("ChangeWeapon", throwIfNotFound: true);
+        m_GamePlay_ChangeWeapon1 = m_GamePlay.FindAction("ChangeWeapon1", throwIfNotFound: true);
+        m_GamePlay_ChangeWeapon2 = m_GamePlay.FindAction("ChangeWeapon2", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -422,7 +432,8 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Heal;
     private readonly InputAction m_GamePlay_MeleAtack;
     private readonly InputAction m_GamePlay_ChangeScene;
-    private readonly InputAction m_GamePlay_ChangeWeapon;
+    private readonly InputAction m_GamePlay_ChangeWeapon1;
+    private readonly InputAction m_GamePlay_ChangeWeapon2;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -437,7 +448,8 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @Heal => m_Wrapper.m_GamePlay_Heal;
         public InputAction @MeleAtack => m_Wrapper.m_GamePlay_MeleAtack;
         public InputAction @ChangeScene => m_Wrapper.m_GamePlay_ChangeScene;
-        public InputAction @ChangeWeapon => m_Wrapper.m_GamePlay_ChangeWeapon;
+        public InputAction @ChangeWeapon1 => m_Wrapper.m_GamePlay_ChangeWeapon1;
+        public InputAction @ChangeWeapon2 => m_Wrapper.m_GamePlay_ChangeWeapon2;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -477,9 +489,12 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeScene.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeScene;
-                @ChangeWeapon.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
-                @ChangeWeapon.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
-                @ChangeWeapon.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon;
+                @ChangeWeapon1.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon1;
+                @ChangeWeapon1.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon1;
+                @ChangeWeapon1.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon1;
+                @ChangeWeapon2.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
+                @ChangeWeapon2.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
+                @ChangeWeapon2.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -514,9 +529,12 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeScene.started += instance.OnChangeScene;
                 @ChangeScene.performed += instance.OnChangeScene;
                 @ChangeScene.canceled += instance.OnChangeScene;
-                @ChangeWeapon.started += instance.OnChangeWeapon;
-                @ChangeWeapon.performed += instance.OnChangeWeapon;
-                @ChangeWeapon.canceled += instance.OnChangeWeapon;
+                @ChangeWeapon1.started += instance.OnChangeWeapon1;
+                @ChangeWeapon1.performed += instance.OnChangeWeapon1;
+                @ChangeWeapon1.canceled += instance.OnChangeWeapon1;
+                @ChangeWeapon2.started += instance.OnChangeWeapon2;
+                @ChangeWeapon2.performed += instance.OnChangeWeapon2;
+                @ChangeWeapon2.canceled += instance.OnChangeWeapon2;
             }
         }
     }
@@ -566,7 +584,8 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnHeal(InputAction.CallbackContext context);
         void OnMeleAtack(InputAction.CallbackContext context);
         void OnChangeScene(InputAction.CallbackContext context);
-        void OnChangeWeapon(InputAction.CallbackContext context);
+        void OnChangeWeapon1(InputAction.CallbackContext context);
+        void OnChangeWeapon2(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {

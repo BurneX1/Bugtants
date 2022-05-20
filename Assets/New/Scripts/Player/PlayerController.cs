@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public PlayerData playerData;
-
     private InputSystemActions inputStm;
     private FrontRayCaster c_ray;
     [HideInInspector]
@@ -16,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public Stamina c_stm;
     [HideInInspector]
     public Movement c_mov;
+    [HideInInspector]
+    public PlayerMovement c_temp_mov;
     private AtackMele c_atk;
     [HideInInspector]
     public Jump c_jmp;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         c_mp = gameObject.GetComponent<MP_System>();
         c_stm = gameObject.GetComponent<Stamina>();
         c_mov = gameObject.GetComponent<Movement>();
+        c_temp_mov= gameObject.GetComponent<PlayerMovement>();
         c_jmp = gameObject.GetComponent<Jump>();
         c_atk = gameObject.GetComponent<AtackMele>();
         //-------------------------<<<//
@@ -41,9 +43,8 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Crouch.performed += ctx => Debug.Log(ctx);
         inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
         inputStm.GamePlay.MeleAtack.performed += _ => c_atk.Attack();
-        //inputStm.GamePlay.Movement.performed += ctx => Debug.Log(ctx.ToString());//c_mov.Move();
-        inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
-        inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
+        /*inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
+        inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;*/
         inputStm.GamePlay.Jump.performed += _ => c_jmp.Jumping();
         //inputStm.GamePlay.Atack.performed += _ => c_jmp.Jumping();
 
@@ -71,22 +72,22 @@ public class PlayerController : MonoBehaviour
 
     void ModifyStamina()
     {
-        //c_stm.ConstModify(stMultiplier);
+        c_stm.ConstModify(stMultiplier);
     }
     void StaminaCondition()
     {
-        /*if (c_mov.moving && c_mov.running && !c_mov.crouching && !c_stm.empty && c_mov.runningWall)
+        if (c_temp_mov.moving && c_temp_mov.running && !c_temp_mov.crouching && !c_stm.empty && c_temp_mov.runningWall)
         {
             stMultiplier = -1;
         }
-        else if (c_mov.moving && c_mov.running && !c_mov.crouching && c_stm.empty)
+        else if (c_temp_mov.moving && c_temp_mov.running && !c_temp_mov.crouching && c_stm.empty)
         {
             stMultiplier = 0;
         }
         else
         {
             stMultiplier = 1;
-        }*/
+        }
     }
 
     public void LoadData()

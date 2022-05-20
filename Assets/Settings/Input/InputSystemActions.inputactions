@@ -96,9 +96,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeWeapon",
+                    "name": "ChangeWeapon1",
                     "type": "Button",
                     "id": "9bb358b3-40a8-4102-8fb9-04fe80f19cf2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ChangeWeapon2",
+                    "type": "Button",
+                    "id": "7b7c874a-78d9-4f63-a912-217009c79ae9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -267,18 +276,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeWeapon",
+                    "action": "ChangeWeapon1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "80129a2f-82f3-4134-8f70-c3fd20b979b4",
+                    "id": "312c2798-963d-4b62-976c-b4192947dc3b",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeWeapon",
+                    "action": "ChangeWeapon2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

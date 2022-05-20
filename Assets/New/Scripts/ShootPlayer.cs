@@ -14,6 +14,9 @@ public class ShootPlayer : MonoBehaviour
     private Vector3 rec;
     private Pause pauseScript;
     private MP_System mpScript;
+
+    [HideInInspector]
+    public bool waiting;
     // Start is called before the first frame update
     void Awake()
     {
@@ -22,6 +25,7 @@ public class ShootPlayer : MonoBehaviour
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Atack.performed += _ => Shoot();
         inputStm.GamePlay.Recharge.performed += _ => Recharge();
+        waiting = false;
     }
     void Start()
     {
@@ -31,7 +35,7 @@ public class ShootPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!pauseScript.paused)
+        if(!pauseScript.paused && !waiting)
         Delay();
     }
     void Delay()
@@ -40,7 +44,7 @@ public class ShootPlayer : MonoBehaviour
     }
     void Shoot()
     {
-        if (timer >= maxTimer&&!pauseScript.paused&&mpScript.actualMP>=10)
+        if (timer >= maxTimer&&!pauseScript.paused&&mpScript.actualMP>=10 && !waiting)
         {
             if (cannon)
                 bullet = shotbull;
@@ -74,6 +78,7 @@ public class ShootPlayer : MonoBehaviour
     }
     void Recharge()
     {
+        if(!waiting)
         mpScript.FullRecharge();
     }
     private void OnEnable()

@@ -4227,10 +4227,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: HideCanvas
+        m_MethodName: ShowCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5429494566466319443}
+          m_ObjectArgument: {fileID: 1007552663828158658}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4239,10 +4239,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: ShowCanvas
+        m_MethodName: HideCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1007552663828158658}
+          m_ObjectArgument: {fileID: 5429494566466319443}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5166,11 +5166,11 @@ RectTransform:
   m_Children:
   - {fileID: 677943478459259205}
   m_Father: {fileID: 2664766685851766429}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000079436, y: -43}
+  m_AnchoredPosition: {x: -0, y: -43}
   m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6809981165533915957
@@ -5257,10 +5257,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: HideCanvas
+        m_MethodName: ShowCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5429494566466319443}
+          m_ObjectArgument: {fileID: 3657739305979496105}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5269,10 +5269,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: ShowCanvas
+        m_MethodName: HideCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3657739305979496105}
+          m_ObjectArgument: {fileID: 5429494566466319443}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5586,8 +5586,8 @@ RectTransform:
   - {fileID: 8196793264170516891}
   - {fileID: 938289482017601029}
   - {fileID: 8708293904414643853}
-  - {fileID: 6708318181934189637}
   - {fileID: 337856391760357248}
+  - {fileID: 6708318181934189637}
   m_Father: {fileID: 6532675196872033597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6639,7 +6639,7 @@ RectTransform:
   m_Children:
   - {fileID: 6653664902502669861}
   m_Father: {fileID: 2664766685851766429}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6942,10 +6942,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: HideCanvas
+        m_MethodName: ShowCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1007552663828158658}
+          m_ObjectArgument: {fileID: 5429494566466319443}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6954,10 +6954,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: ShowCanvas
+        m_MethodName: HideCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5429494566466319443}
+          m_ObjectArgument: {fileID: 1007552663828158658}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8198,16 +8198,16 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2939095043647064874}
+  m_TargetGraphic: {fileID: 3364106164206977768}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: HideCanvas
+        m_MethodName: ShowCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3657739305979496105}
+          m_ObjectArgument: {fileID: 5429494566466319443}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8216,10 +8216,10 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7261161475685722055}
         m_TargetAssemblyTypeName: Buttoms, Assembly-CSharp
-        m_MethodName: ShowCanvas
+        m_MethodName: HideCanvas
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5429494566466319443}
+          m_ObjectArgument: {fileID: 3657739305979496105}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
