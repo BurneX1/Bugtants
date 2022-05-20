@@ -10,7 +10,7 @@ public class ShootPlayer : MonoBehaviour
     public float maxTimer, bulletSpeed;
     public float timer, bulletAngle, mod;
     public bool cannon;
-    public int damage;
+    public int damagePistol, damageShotgun;
     private Vector3 rec;
     private Pause pauseScript;
     private MP_System mpScript;
@@ -54,7 +54,10 @@ public class ShootPlayer : MonoBehaviour
             rec = (targetPosition.transform.position - transform.position).normalized;
             bullet.GetComponent<BulletTime>().speed = bulletSpeed;
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
-            bullet.GetComponent<BulletTime>().damage = damage;
+            if (cannon)
+                bullet.GetComponent<BulletTime>().damage = damageShotgun;
+            else
+                bullet.GetComponent<BulletTime>().damage = damagePistol;
             bullet.GetComponent<BulletTime>().cannon = cannon;
             bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
@@ -69,7 +72,10 @@ public class ShootPlayer : MonoBehaviour
             Instantiate(bullet);
             bullet.transform.position = new Vector3(0, 0, 0);
             bullet.transform.eulerAngles = new Vector3(0, 0, 0);
-            mpScript.BasicAttack();
+            if (cannon)
+                mpScript.Shotgun();
+            else
+                mpScript.Pistol();
             timer = 0;
             bullet.GetComponent<BulletTime>().damage = 0;
             bullet.GetComponent<BulletTime>().angler = new Vector3(0, 0, 0);

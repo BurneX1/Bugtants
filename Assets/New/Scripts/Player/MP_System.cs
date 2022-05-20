@@ -16,7 +16,8 @@ public class MP_System : MonoBehaviour
 
     }
     public void FullRecharge() { actualMP = 100; }
-    public void BasicAttack() { actualMP -= 10; }
+    public void Shotgun() { actualMP -= 10; }
+    public void Pistol() { actualMP -= 3; }
 
     public void ReduceMP(int amount)
     {

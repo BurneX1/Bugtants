@@ -22,7 +22,7 @@ public class FrontRayCaster : MonoBehaviour
         ))
         {
             realFront = hit.collider.gameObject;
-            if(Vector3.Distance(realFront.transform.position,rayBound.transform.position) < interactDistance)
+            if (Vector3.Distance(hit.point, rayBound.transform.position) < interactDistance)
             {
                 frontObj = realFront;
             }
@@ -42,9 +42,9 @@ public class FrontRayCaster : MonoBehaviour
         {
             return;
         }
-        if (frontObj)
+        if (frontObj.gameObject.GetComponent<Switcher>())
         {
-
+            frontObj.gameObject.GetComponent<Switcher>().Activation();
         }
 
         if(frontObj.gameObject.GetComponent<Interacter>())

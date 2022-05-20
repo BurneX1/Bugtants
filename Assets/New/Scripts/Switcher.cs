@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Switcher : MonoBehaviour
 {
+    [Tooltip("Lo llaman binary si se puede volver a cambiar")]
     public bool binary;
     [HideInInspector]
     public bool activated;
@@ -12,10 +13,15 @@ public class Switcher : MonoBehaviour
     {
         activated = false;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Activation()
     {
-        
+        if (!activated)
+        {
+            activated = true;
+            Debug.Log("A");
+        }
+        else if (activated && binary)
+            activated = false;
     }
+
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class ChangeWeapon : MonoBehaviour
 {
     InputSystemActions inputActions;
@@ -25,7 +24,7 @@ public class ChangeWeapon : MonoBehaviour
         B_3.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         B_4.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.5f);
         B_1.localScale = new Vector3(0f, 0f, 0f);
         B_2.localScale = new Vector3(0f, 0f, 0f);
         B_3.localScale = new Vector3(0f, 0f, 0f);
