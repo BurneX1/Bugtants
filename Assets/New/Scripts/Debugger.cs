@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Debugger : MonoBehaviour
 {
     public GameObject[] parts;
-    public InputField speedField, gravsField, jumpField, shootrtField, bulletspdField, crouchField, runField, crouchSpdField, damageField, modifierField;
+    public InputField speedField, gravsField, jumpField, shootrtField, bulletspdField, crouchField, runField, crouchSpdField, damagePistolField, damageShotgunField;
     private PlayerMovement playerMoves;
     private ShootPlayer shootPlayer;
     // Start is called before the first frame update
@@ -22,8 +22,8 @@ public class Debugger : MonoBehaviour
         crouchField.text = "" + playerMoves.crouchChange;
         runField.text = "" + playerMoves.multiplierSpeed;
         crouchSpdField.text = "" + playerMoves.dividerSpeed;
-        damageField.text = "" + shootPlayer.damage;
-        modifierField.text = "" + shootPlayer.mod;
+        damagePistolField.text = "" + shootPlayer.damagePistol;
+        damageShotgunField.text = "" + shootPlayer.damageShotgun;
 
     }
 
@@ -52,10 +52,10 @@ public class Debugger : MonoBehaviour
         playerMoves.multiplierSpeed = value;
         float.TryParse(crouchSpdField.text, out value);
         playerMoves.dividerSpeed = value;
-        int.TryParse(damageField.text, out integer);
-        shootPlayer.damage = integer;
-        float.TryParse(modifierField.text, out value);
-        shootPlayer.mod = value;
+        int.TryParse(damagePistolField.text, out integer);
+        shootPlayer.damagePistol = integer;
+        int.TryParse(damageShotgunField.text, out integer);
+        shootPlayer.damageShotgun = integer;
     }
 
 }
