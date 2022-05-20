@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         /*inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;*/
         inputStm.GamePlay.Jump.performed += _ => c_jmp.Jumping();
+        inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         //inputStm.GamePlay.Atack.performed += _ => c_jmp.Jumping();
 
         //inputStm.GamePlay.Run.performed += _ => c_mov.Move();

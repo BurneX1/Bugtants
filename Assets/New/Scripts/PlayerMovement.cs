@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         inputStm.GamePlay.Jump.performed += _ => Jumping();
         inputStm.GamePlay.Movement.performed += ctx => moving = true;
         inputStm.GamePlay.Movement.canceled += ctx => moving = false;
-
     }
     void Start()
     {

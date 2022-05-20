@@ -134,6 +134,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StaminaFull"",
+                    ""type"": ""Button"",
+                    ""id"": ""d96c90ce-1090-4ed5-ad12-51a00a4ff0af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,6 +321,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""action"": ""ChangeWeapon2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6efcdce0-ca37-45b8-92bb-596479abd02f"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StaminaFull"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -360,6 +380,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         m_GamePlay_ChangeScene = m_GamePlay.FindAction("ChangeScene", throwIfNotFound: true);
         m_GamePlay_ChangeWeapon1 = m_GamePlay.FindAction("ChangeWeapon1", throwIfNotFound: true);
         m_GamePlay_ChangeWeapon2 = m_GamePlay.FindAction("ChangeWeapon2", throwIfNotFound: true);
+        m_GamePlay_StaminaFull = m_GamePlay.FindAction("StaminaFull", throwIfNotFound: true);
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
@@ -434,6 +455,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_ChangeScene;
     private readonly InputAction m_GamePlay_ChangeWeapon1;
     private readonly InputAction m_GamePlay_ChangeWeapon2;
+    private readonly InputAction m_GamePlay_StaminaFull;
     public struct GamePlayActions
     {
         private @InputSystemActions m_Wrapper;
@@ -450,6 +472,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         public InputAction @ChangeScene => m_Wrapper.m_GamePlay_ChangeScene;
         public InputAction @ChangeWeapon1 => m_Wrapper.m_GamePlay_ChangeWeapon1;
         public InputAction @ChangeWeapon2 => m_Wrapper.m_GamePlay_ChangeWeapon2;
+        public InputAction @StaminaFull => m_Wrapper.m_GamePlay_StaminaFull;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -495,6 +518,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeWeapon2.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
                 @ChangeWeapon2.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
                 @ChangeWeapon2.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnChangeWeapon2;
+                @StaminaFull.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnStaminaFull;
+                @StaminaFull.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnStaminaFull;
+                @StaminaFull.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnStaminaFull;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -535,6 +561,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @ChangeWeapon2.started += instance.OnChangeWeapon2;
                 @ChangeWeapon2.performed += instance.OnChangeWeapon2;
                 @ChangeWeapon2.canceled += instance.OnChangeWeapon2;
+                @StaminaFull.started += instance.OnStaminaFull;
+                @StaminaFull.performed += instance.OnStaminaFull;
+                @StaminaFull.canceled += instance.OnStaminaFull;
             }
         }
     }
@@ -586,6 +615,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         void OnChangeScene(InputAction.CallbackContext context);
         void OnChangeWeapon1(InputAction.CallbackContext context);
         void OnChangeWeapon2(InputAction.CallbackContext context);
+        void OnStaminaFull(InputAction.CallbackContext context);
     }
     public interface IMenusPauseActions
     {
