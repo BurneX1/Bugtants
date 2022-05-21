@@ -29,7 +29,7 @@ public class VolumeConfiguration : MonoBehaviour
 
         for(int i = 0; i < sfxUnits.Length; i++)
         {
-            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol;
+            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol*9/10;
         }
     }
 }
