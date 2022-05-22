@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Life : MonoBehaviour
-{
-    [SerializeField]
+{    
     public int maxHealth;
-    [SerializeField]
     public int actualHealth;
-    private SoundActive sounds;
 
+    //private SoundActive sounds;
 
     private void Awake()
     {
         actualHealth = maxHealth;
-        if (gameObject.GetComponent<SoundActive>() != null)
+        /*if (gameObject.GetComponent<SoundActive>() != null)
         {
             sounds = gameObject.GetComponent<SoundActive>();
-        }
+        }*/
     }
     public void ReduceLife(int damage)
     {
         damage = Mathf.Abs(damage);
-        if(actualHealth>0)
-        {
-            actualHealth = actualHealth - damage;
-        }
+        if (actualHealth > 0) actualHealth -= damage;
+        if (actualHealth < 0) actualHealth = 0;
     }
 
     public void AddLife(int recovery)

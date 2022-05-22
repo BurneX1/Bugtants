@@ -17,7 +17,6 @@ public class EnemyLife : MonoBehaviour
     private bool damagedFeed;
     private SoundActive sounds;
 
-    // Start is called before the first frame update
     void Start()
     {
         actualMat = model.GetComponent<MeshRenderer>().material;
@@ -30,7 +29,6 @@ public class EnemyLife : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Feedback();
@@ -54,11 +52,6 @@ public class EnemyLife : MonoBehaviour
         if (value < 0)
         {
             feedTimer = feedMaxTimer;
-            /*if (sounds != null)
-            {
-                sounds.SoundStop(2,1);
-                sounds.SoundPlay(2,1);
-            }*/
         }
         if (life <= 0)
         {
