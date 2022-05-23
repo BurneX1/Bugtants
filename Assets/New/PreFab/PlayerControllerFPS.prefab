@@ -625,12 +625,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 0}
+  weapons:
+  - {fileID: 11400000, guid: 723353465306ce343b5d6c538dcbcbab, type: 2}
+  - {fileID: 11400000, guid: 4960ce231a9287f4c85c8304d697e71d, type: 2}
   c_life: {fileID: 0}
   c_mp: {fileID: 0}
   c_stm: {fileID: 0}
   c_mov: {fileID: 0}
   c_temp_mov: {fileID: 0}
   c_jmp: {fileID: 0}
+  c_chWp: {fileID: 0}
+  c_shoot: {fileID: 0}
 --- !u!114 &9024624746984558824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,9 +1087,6 @@ MonoBehaviour:
   targetPosition: {fileID: 249246881662792916}
   maxTimer: 0.2
   bulletSpeed: 20
-  timer: 0
-  bulletAngle: 0
-  mod: 10
   cannon: 1
   damagePistol: 10
   damageShotgun: 2
@@ -2113,6 +2115,10 @@ PrefabInstance:
     - target: {fileID: 5609824797939852988, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354478316240429756, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+      propertyPath: m_Name
+      value: FBX_Pistola
       objectReference: {fileID: 0}
     - target: {fileID: 7354478316240429756, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
       propertyPath: m_Layer

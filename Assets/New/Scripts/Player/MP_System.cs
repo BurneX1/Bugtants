@@ -19,6 +19,7 @@ public class MP_System : MonoBehaviour
     public void Shotgun() { actualMP -= 10; }
     public void Pistol() { actualMP -= 3; }
 
+    public void ModifyMp(float mpValue) { actualMP += mpValue; }
     public void ReduceMP(int amount)
     {
         amount = Mathf.Abs(amount);

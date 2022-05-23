@@ -154,10 +154,12 @@ public class PlayerMovement : MonoBehaviour
         if (crouching)
         {
             speed = saveSpeed / dividerSpeed;
+            Debug.Log("Crouch");
         }
         else if (running && !crouching)
         {
             speed = saveSpeed * (multiplierSpeed / divideMulti);
+            Debug.Log("Run");
         }
         else if (!running&&!crouching)
         {
@@ -172,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
             divideMulti = 1;
         }
     }
-    void HeightStat()
+    public void HeightStat()
     {
         if (tryCrouching)
         {

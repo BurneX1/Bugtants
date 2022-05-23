@@ -22,8 +22,8 @@ public class Debugger : MonoBehaviour
         crouchField.text = "" + playerMoves.crouchChange;
         runField.text = "" + playerMoves.multiplierSpeed;
         crouchSpdField.text = "" + playerMoves.dividerSpeed;
-        damagePistolField.text = "" + shootPlayer.damagePistol;
-        damageShotgunField.text = "" + shootPlayer.damageShotgun;
+        //damagePistolField.text = "" + shootPlayer.damagePistol;
+        //damageShotgunField.text = "" + shootPlayer.damageShotgun;
 
     }
 
@@ -52,10 +52,10 @@ public class Debugger : MonoBehaviour
         playerMoves.multiplierSpeed = value;
         float.TryParse(crouchSpdField.text, out value);
         playerMoves.dividerSpeed = value;
-        int.TryParse(damagePistolField.text, out integer);
-        shootPlayer.damagePistol = integer;
-        int.TryParse(damageShotgunField.text, out integer);
-        shootPlayer.damageShotgun = integer;
+        //int.TryParse(damagePistolField.text, out integer);
+        //shootPlayer.damagePistol = integer;
+        //int.TryParse(damageShotgunField.text, out integer);
+        //shootPlayer.damageShotgun = integer;
     }
 
 }

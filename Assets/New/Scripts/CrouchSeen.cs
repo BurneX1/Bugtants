@@ -9,15 +9,12 @@ public class CrouchSeen : MonoBehaviour
     public Transform startPos;
     [HideInInspector]
     public bool can;
-    void Start()
-    {
 
-    }
     void Update()
     {
         Crouch();
     }
-    void Crouch()
+    public void Crouch()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, Vector3.Distance(transform.position, startPos.position), 1 << 0))
         {
