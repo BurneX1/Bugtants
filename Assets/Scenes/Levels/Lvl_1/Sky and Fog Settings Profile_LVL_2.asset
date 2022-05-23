@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5514334503878672317
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf384b154398e341b6b29969c078198, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 2
+  intensity:
+    m_OverrideState: 1
+    m_Value: 3
+    min: 0
+  maximumVelocity:
+    m_OverrideState: 1
+    m_Value: 200
+    min: 0
+    max: 1500
+  minimumVelocity:
+    m_OverrideState: 1
+    m_Value: 2
+    min: 0
+    max: 64
+  cameraMotionBlur:
+    m_OverrideState: 1
+    m_Value: 1
+  specialCameraClampMode:
+    m_OverrideState: 1
+    m_Value: 0
+  cameraVelocityClamp:
+    m_OverrideState: 1
+    m_Value: 0.05
+    min: 0
+    max: 0.3
+  cameraTranslationVelocityClamp:
+    m_OverrideState: 1
+    m_Value: 0.05
+    min: 0
+    max: 0.3
+  cameraRotationVelocityClamp:
+    m_OverrideState: 1
+    m_Value: 0.03
+    min: 0
+    max: 0.3
+  depthComparisonExtent:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 20
+  m_SampleCount:
+    m_OverrideState: 1
+    m_Value: 12
+    min: 2
 --- !u!114 &-4457134400429439608
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -23,6 +84,197 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-4408491617519090368
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51a78e223a2e504bb88a059b55229ea, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  temperature:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -100
+    max: 100
+  tint:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -100
+    max: 100
+--- !u!114 &-2750945472346210512
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1be1b6c95cd2e41b27903b9270817f, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.2
+    min: 0
+    max: 1
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0.01
+    max: 1
+  roundness:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  rounded:
+    m_OverrideState: 1
+    m_Value: 1
+  mask:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: e68284433a3d5064392570f2f52d5ff5, type: 3}
+  opacity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &-838810625006161912
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b6af8f7ad32324cb6941c3290e5895, type: 3}
+  m_Name: MicroShadowing
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  enable:
+    m_OverrideState: 1
+    m_Value: 1
+  opacity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &-277325249160898510
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1bfcd0f0fa7b8468f281d6bbbaf320, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.267
+    min: -1
+    max: 1
+  xMultiplier:
+    m_OverrideState: 1
+    m_Value: 0.594
+    min: 0
+    max: 1
+  yMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0.01
+    max: 5
+--- !u!114 &-49423226685940903
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f077503be6ae942a1e1245dbd53ea9, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 2
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.3
+    min: 0
+    max: 1
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.7
+    min: 0
+    max: 1
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  dirtTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+  dirtIntensity:
+    m_OverrideState: 1
+    m_Value: 2.14
+    min: 0
+  anamorphic:
+    m_OverrideState: 1
+    m_Value: 1
+  m_Resolution:
+    m_OverrideState: 1
+    m_Value: 2
+  m_HighQualityPrefiltering:
+    m_OverrideState: 1
+    m_Value: 1
+  m_HighQualityFiltering:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,7 +285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Sky and Fog Settings Profile
+  m_Name: Sky and Fog Settings Profile_LVL_2
   m_EditorClassIdentifier: 
   components:
   - {fileID: -4457134400429439608}
@@ -41,7 +293,65 @@ MonoBehaviour:
   - {fileID: 6260801330027139215}
   - {fileID: 1658737752570812415}
   - {fileID: 4894212617227531099}
-  - {fileID: 4168610509430774289}
+  - {fileID: 1174769630631532660}
+  - {fileID: -5514334503878672317}
+  - {fileID: 5651601087861405306}
+  - {fileID: -4408491617519090368}
+  - {fileID: -2750945472346210512}
+  - {fileID: 6022632917303367771}
+  - {fileID: -277325249160898510}
+  - {fileID: -838810625006161912}
+  - {fileID: 6399045056315328097}
+  - {fileID: -49423226685940903}
+--- !u!114 &1174769630631532660
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ddcec8a8eb2d684d833ac8f5d26aebd, type: 3}
+  m_Name: HDShadowSettings
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  maxShadowDistance:
+    m_OverrideState: 1
+    m_Value: 200
+    min: 0
+  directionalTransmissionMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  cascadeShadowSplitCount:
+    m_OverrideState: 1
+    m_Value: 4
+    min: 1
+    max: 4
+  cascadeShadowSplit0:
+    m_OverrideState: 1
+    m_Value: 0.144
+  cascadeShadowSplit1:
+    m_OverrideState: 1
+    m_Value: 0.45042884
+  cascadeShadowSplit2:
+    m_OverrideState: 1
+    m_Value: 0.69484997
+  cascadeShadowBorder0:
+    m_OverrideState: 1
+    m_Value: 0.6785266
+  cascadeShadowBorder1:
+    m_OverrideState: 1
+    m_Value: 0.44266057
+  cascadeShadowBorder2:
+    m_OverrideState: 1
+    m_Value: 0.5855986
+  cascadeShadowBorder3:
+    m_OverrideState: 1
+    m_Value: 0.090447314
 --- !u!114 &1658737752570812415
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -199,55 +509,6 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.5
     min: 0
---- !u!114 &4168610509430774289
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ddcec8a8eb2d684d833ac8f5d26aebd, type: 3}
-  m_Name: HDShadowSettings
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  maxShadowDistance:
-    m_OverrideState: 1
-    m_Value: 300
-    min: 0
-  directionalTransmissionMultiplier:
-    m_OverrideState: 1
-    m_Value: 1
-    min: 0
-    max: 1
-  cascadeShadowSplitCount:
-    m_OverrideState: 1
-    m_Value: 4
-    min: 1
-    max: 4
-  cascadeShadowSplit0:
-    m_OverrideState: 1
-    m_Value: 0.31448364
-  cascadeShadowSplit1:
-    m_OverrideState: 1
-    m_Value: 0.4497481
-  cascadeShadowSplit2:
-    m_OverrideState: 1
-    m_Value: 0.5141058
-  cascadeShadowBorder0:
-    m_OverrideState: 1
-    m_Value: 0.42261237
-  cascadeShadowBorder1:
-    m_OverrideState: 1
-    m_Value: 0.48090523
-  cascadeShadowBorder2:
-    m_OverrideState: 1
-    m_Value: 0.46966684
-  cascadeShadowBorder3:
-    m_OverrideState: 1
-    m_Value: 0.3141251
 --- !u!114 &4894212617227531099
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -343,6 +604,90 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.5
     min: 0.001
+    max: 1
+--- !u!114 &5651601087861405306
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0775cbb206825d541bf6c0297ee524ca, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.26873755, g: 0.4392157, b: 0.38679248, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  balance:
+    m_OverrideState: 1
+    m_Value: 50
+    min: -100
+    max: 100
+--- !u!114 &6022632917303367771
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f086a068d4c5889438831b3ae9afc11c, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 1
+    m_Value: 3
+  toeStrength:
+    m_OverrideState: 1
+    m_Value: 0.4
+    min: 0
+    max: 1
+  toeLength:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+    max: 1
+  shoulderStrength:
+    m_OverrideState: 1
+    m_Value: 0.2
+    min: 0
+    max: 1
+  shoulderLength:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: 0
+  shoulderAngle:
+    m_OverrideState: 1
+    m_Value: 0.778
+    min: 0
+    max: 1
+  gamma:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0.001
+  lutTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  lutContribution:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
     max: 1
 --- !u!114 &6260801330027139215
 MonoBehaviour:
@@ -466,6 +811,36 @@ MonoBehaviour:
   rectLightShadow:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &6399045056315328097
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 2
+  spectralLut:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.4
+    min: 0
+    max: 1
+  m_MaxSamples:
+    m_OverrideState: 1
+    m_Value: 12
+    min: 3
+    max: 24
 --- !u!114 &8353975119800406966
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -503,7 +878,7 @@ MonoBehaviour:
     showEyeDropper: 1
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 5000
+    m_Value: 500
     min: 0
   mipFogMaxMip:
     m_OverrideState: 1
@@ -526,7 +901,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 12
+    m_Value: 15
     min: 1
   enableVolumetricFog:
     m_OverrideState: 1
@@ -544,11 +919,11 @@ MonoBehaviour:
     max: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 60
+    m_Value: 40
     min: 0.1
   denoisingMode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   anisotropy:
     m_OverrideState: 1
     m_Value: 0
