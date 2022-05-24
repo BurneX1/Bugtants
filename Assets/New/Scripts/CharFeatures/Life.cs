@@ -7,16 +7,11 @@ public class Life : MonoBehaviour
     public int maxHealth;
     public int actualHealth;
 
-    //private SoundActive sounds;
-
     private void Awake()
     {
         actualHealth = maxHealth;
-        /*if (gameObject.GetComponent<SoundActive>() != null)
-        {
-            sounds = gameObject.GetComponent<SoundActive>();
-        }*/
     }
+
     public void ReduceLife(int damage)
     {
         damage = Mathf.Abs(damage);
@@ -41,7 +36,7 @@ public class Life : MonoBehaviour
         maxHealth += plusLife;
     }
 
-    public void MaxLifeTest()
+    public void TotalRecovery()
     {
         actualHealth = maxHealth;
     }

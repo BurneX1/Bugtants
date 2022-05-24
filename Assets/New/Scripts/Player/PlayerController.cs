@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Interact.performed += _ => c_ray.Interact();
         //inputStm.GamePlay.Crouch.performed += ctx => c_temp_mov.HeightStat();
-        inputStm.GamePlay.Heal.performed += ctx => c_life.MaxLifeTest();
+        inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
         inputStm.GamePlay.MeleAtack.performed += ctx => c_atk.Attack();
         inputStm.GamePlay.Atack.performed += ctx => c_shoot.Shooting(currentWeapon, c_mp);
         //inputStm.GamePlay.Atack.performed += _ => c_shoot.Shoot();
