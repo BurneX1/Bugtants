@@ -3,7 +3,6 @@ public class Movement : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody rigid;
-    [HideInInspector]
     public float speed, spdBuff;
     [HideInInspector]
     public Vector2 direction;
@@ -12,10 +11,6 @@ public class Movement : MonoBehaviour
         rigid = gameObject.GetComponent<Rigidbody>();
     }
 
-    /*public void Update()
-    {
-        Move();
-    }*/
     public void Move()
     {
         Vector3 right, forward, total;

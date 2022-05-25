@@ -139,6 +139,8 @@ public class PlayerController : MonoBehaviour
         c_life.maxHealth = playerData.maxLife;
         c_stm.increaseSpd = playerData.staminaRegenSpd;
         c_mp.maxMP = playerData.maxMana;
+        c_jmp.heightJump = playerData.jumpHeigth;
+        c_mov.speed = playerData.Spd;
     }
 
     private void OnEnable()

@@ -34,7 +34,7 @@ public class Crouch : MonoBehaviour
             }
             height = 1.8f - timeCrouch * 2;
             centering = new Vector3(0, -timeCrouch, 0);
-            sight.transform.localPosition = new Vector3(0, -timeCrouch * 2, 0);
+            sight.transform.localPosition = new Vector3(0, 0.9f - timeCrouch * 2, 0);
             crouching = true;
         }
     }
@@ -55,7 +55,7 @@ public class Crouch : MonoBehaviour
         {
             height = 1.8f - timeCrouch * 2;
             centering = new Vector3(0, -timeCrouch, 0);
-            sight.transform.localPosition = new Vector3(0, -timeCrouch * 2, 0);
+            sight.transform.localPosition = new Vector3(0, 0.9f - timeCrouch * 2, 0);
             crouching = false;
             stuck = false;
         }
@@ -63,7 +63,7 @@ public class Crouch : MonoBehaviour
         {
             height = 1.8f - crouchChange * 2;
             centering = new Vector3(0, -crouchChange, 0);
-            sight.transform.localPosition = new Vector3(0, -crouchChange * 2, 0);
+            sight.transform.localPosition = new Vector3(0, 0.9f - crouchChange * 2, 0);
             crouching = true;
             stuck = true;
         }
