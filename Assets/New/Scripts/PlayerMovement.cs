@@ -101,6 +101,10 @@ public class PlayerMovement : MonoBehaviour
         jumpPressed = Input.GetButtonDown("Jump");
 
 #endif
+        Vector3 crosser = Vector3.Cross(transform.right, transform.forward);
+        Debug.Log(transform.right);
+        Debug.Log(transform.forward);
+        Debug.Log(Vector3.Normalize(transform.forward+transform.right));
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);

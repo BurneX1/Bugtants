@@ -22,17 +22,27 @@ public class ChangeWeapon : MonoBehaviour
         weapons.waiting = false;
     }
 
-    public WeaponStats WeaponChanger(int id, WeaponStats[] everyWeapon)
+    public WeaponStats WeaponChanger(int id, WeaponStats[] everyWeapon, WeaponStats oldWeapon)
     {
         everyWeapon[0].weapon = W_1;
         everyWeapon[1].weapon = W_2;
-        weapons.waiting = true;
-        foreach (WeaponStats unused in everyWeapon)
+
+        if (!weapons.waiting && number != id)
         {
-            unused.weapon.SetActive(false);
+            weapons.waiting = true;
+            foreach (WeaponStats unused in everyWeapon)
+            {
+                unused.weapon.SetActive(false);
+            }
+            StartCoroutine(ChangeWepon_Logic());
+            everyWeapon[id].weapon.SetActive(true);
+            number = id;
+            return everyWeapon[id];
         }
-        StartCoroutine(ChangeWepon_Logic());
-        everyWeapon[id].weapon.SetActive(true);
-        return everyWeapon[id];
+        else
+        {
+            return oldWeapon;
+        }
+
     }
 }

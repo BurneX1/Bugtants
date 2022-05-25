@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class VolumeConfiguration : MonoBehaviour
 {
     public Slider genSld, musSld, sndSld;
+    public Text genTxt, musTxt, sndTxt;
+
     [HideInInspector]
     public float musVol, sndVol;
-    public Text genTxt, musTxt, sndTxt;
+
+    void Start()
+    {
+        VolumeModify();
+    }
 
     public void VolumeModify()
     {
@@ -24,12 +30,14 @@ public class VolumeConfiguration : MonoBehaviour
     void SoundChange()
     {
         GameObject[] sfxUnits;
+        //GameObject[] BgmUnits;
 
         sfxUnits = GameObject.FindGameObjectsWithTag("SoundSFX");
-
-        for(int i = 0; i < sfxUnits.Length; i++)
+        //BgmUnits = GameObject.FindGameObjectsWithTag("SoundMusic");
+        for (int i = 0; i < sfxUnits.Length; i++)
         {
-            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol*9/10;
+            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol * 9 / 10;
+            //BgmUnits[i].GetComponent<AudioSource>().volume = musVol * 9 / 10;
         }
     }
 }

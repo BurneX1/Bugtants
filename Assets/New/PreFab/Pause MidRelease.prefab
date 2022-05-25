@@ -824,8 +824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5465053467462377313}
-  - component: {fileID: 7932860999139427593}
-  - component: {fileID: 3465845651338780374}
   m_Layer: 5
   m_Name: OptionsHUD
   m_TagString: Untagged
@@ -866,39 +864,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7932860999139427593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007552663828158658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3f992d477b74140b3fbc9bb146bce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  genSld: {fileID: 3975612967119524025}
-  musSld: {fileID: 1272257268891640885}
-  sndSld: {fileID: 6955403089881409811}
-  musVol: 0
-  sndVol: 0
-  genTxt: {fileID: 779449807864936152}
-  musTxt: {fileID: 7597071544052631420}
-  sndTxt: {fileID: 7854919470468623339}
---- !u!114 &3465845651338780374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007552663828158658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8aebb6becc73094baab73f0393de498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qualityDpdn: {fileID: 4732769990894553597}
 --- !u!1 &1118557721895999713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1292,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1601,6 +1566,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7616003916676247618}
   - component: {fileID: 3315685096349430190}
+  - component: {fileID: 696305768633020061}
+  - component: {fileID: 3062920858029371796}
   m_Layer: 0
   m_Name: Pause MidRelease
   m_TagString: Pause
@@ -1638,6 +1605,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   pauseHud: {fileID: 4899128415902838006}
+--- !u!114 &696305768633020061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808536634576454013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3f992d477b74140b3fbc9bb146bce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genSld: {fileID: 3975612967119524025}
+  musSld: {fileID: 1272257268891640885}
+  sndSld: {fileID: 6955403089881409811}
+  genTxt: {fileID: 779449807864936152}
+  musTxt: {fileID: 7597071544052631420}
+  sndTxt: {fileID: 7854919470468623339}
+  musVol: 0
+  sndVol: 0
+--- !u!114 &3062920858029371796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808536634576454013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8aebb6becc73094baab73f0393de498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qualityDpdn: {fileID: 4732769990894553597}
 --- !u!1 &2045598973470427405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,7 +2190,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2551,11 +2551,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7932860999139427593}
+      - m_Target: {fileID: 696305768633020061}
         m_TargetAssemblyTypeName: VolumeConfiguration, Assembly-CSharp
         m_MethodName: VolumeModify
         m_Mode: 1
@@ -3707,8 +3707,8 @@ MonoBehaviour:
   crouchField: {fileID: 6797032350341723200}
   runField: {fileID: 9128128444697778482}
   crouchSpdField: {fileID: 1441721970777802500}
-  damageField: {fileID: 4213077546282482314}
-  modifierField: {fileID: 9045219880402638437}
+  damagePistolField: {fileID: 0}
+  damageShotgunField: {fileID: 0}
 --- !u!1 &3769166961764972759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,7 +5769,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3465845651338780374}
+      - m_Target: {fileID: 3062920858029371796}
         m_TargetAssemblyTypeName: QualityConf, Assembly-CSharp
         m_MethodName: QualityChange
         m_Mode: 1
@@ -6996,8 +6996,8 @@ RectTransform:
   m_Father: {fileID: 7621294488778395721}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7355,8 +7355,8 @@ RectTransform:
   m_Father: {fileID: 8533152491838302821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8065,11 +8065,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7932860999139427593}
+      - m_Target: {fileID: 696305768633020061}
         m_TargetAssemblyTypeName: VolumeConfiguration, Assembly-CSharp
         m_MethodName: VolumeModify
         m_Mode: 1
@@ -8525,11 +8525,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7932860999139427593}
+      - m_Target: {fileID: 696305768633020061}
         m_TargetAssemblyTypeName: VolumeConfiguration, Assembly-CSharp
         m_MethodName: VolumeModify
         m_Mode: 1
@@ -8573,8 +8573,8 @@ RectTransform:
   m_Father: {fileID: 4489571500839858068}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8728,7 +8728,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
