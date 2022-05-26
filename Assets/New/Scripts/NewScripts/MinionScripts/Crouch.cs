@@ -3,7 +3,7 @@ using UnityEngine;
 public class Crouch : MonoBehaviour
 {
     [HideInInspector]
-    public float height;
+    public float height, crouchSpeed;
     [HideInInspector]
     public Vector3 centering;
     [HideInInspector]
@@ -13,6 +13,8 @@ public class Crouch : MonoBehaviour
     private GameObject sight;
     private CrouchSeen see;
     private bool stuck;
+
+
     void Awake()
     {
         height=GetComponent<CapsuleCollider>().height;
@@ -30,7 +32,7 @@ public class Crouch : MonoBehaviour
             }
             else
             {
-                timeCrouch += Time.deltaTime;
+                timeCrouch += Time.deltaTime * crouchSpeed;
             }
             height = 1.8f - timeCrouch * 2;
             centering = new Vector3(0, -timeCrouch, 0);
@@ -48,7 +50,7 @@ public class Crouch : MonoBehaviour
             }
             else
             {
-                timeCrouch -= Time.deltaTime;
+                timeCrouch -= Time.deltaTime * crouchSpeed;
             }
         }
         if (see.CrouchBool(crouchChange)) //Can get up

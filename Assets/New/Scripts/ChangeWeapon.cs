@@ -7,6 +7,13 @@ public class ChangeWeapon : MonoBehaviour
     public GameObject W_1, W_2;
     public int number;
     public ShootPlayer weapons;
+    private Pause pauseScript;
+
+    void Awake()
+    {
+        pauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
+    }
+
     IEnumerator ChangeWepon_Logic()
     {
         B_1.localScale = new Vector3(0.3f, 0.3f, 0.3f);
@@ -27,7 +34,7 @@ public class ChangeWeapon : MonoBehaviour
         everyWeapon[0].weapon = W_1;
         everyWeapon[1].weapon = W_2;
 
-        if (!weapons.waiting && number != id)
+        if (!weapons.waiting && number != id && !pauseScript.paused)
         {
             weapons.waiting = true;
             foreach (WeaponStats unused in everyWeapon)

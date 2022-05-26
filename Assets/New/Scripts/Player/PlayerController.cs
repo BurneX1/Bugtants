@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Crouch c_crouch;
     private float stMultiplier;
+    private int weaponNumber;
     private bool moving, running, crouching, runningWall;
     void Awake()
     {
@@ -58,8 +59,10 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(crouching);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
-        inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon=c_chWp.WeaponChanger(0, weapons, currentWeapon);
-        inputStm.GamePlay.ChangeWeapon2.performed += ctx => currentWeapon=c_chWp.WeaponChanger(1, weapons, currentWeapon);
+        inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
+        inputStm.GamePlay.ChangeWeapon1.performed += ctx => weaponNumber = 0;
+        inputStm.GamePlay.ChangeWeapon2.performed += ctx => currentWeapon = c_chWp.WeaponChanger(1, weapons, currentWeapon);
+        inputStm.GamePlay.ChangeWeapon2.performed += ctx => weaponNumber = 1;
         inputStm.GamePlay.Run.performed += ctx => running = true;
         inputStm.GamePlay.Run.canceled += ctx => running = false;
 
@@ -94,9 +97,9 @@ public class PlayerController : MonoBehaviour
             moving = false;
         }
         if (crouching)
-            c_crouch.Crouching(playerData.crouchHigth);
+            c_crouch.Crouching(playerData.crouchHeight);
         else
-            c_crouch.NonCrouching(playerData.crouchHigth);
+            c_crouch.NonCrouching(playerData.crouchHeight);
         if (crouching)
         {
             c_mov.spdBuff = 1 / playerData.crouchMultiplier;
@@ -139,10 +142,20 @@ public class PlayerController : MonoBehaviour
         c_life.maxHealth = playerData.maxLife;
         c_stm.increaseSpd = playerData.staminaRegenSpd;
         c_mp.maxMP = playerData.maxMana;
-        c_jmp.heightJump = playerData.jumpHeigth;
-        c_mov.speed = playerData.Spd;
+        c_jmp.heightJump = playerData.jumpHeight;
+        c_mov.speed = playerData.spd;
+        c_crouch.crouchSpeed = playerData.crouchDelaying;
     }
-
+    public void LoadWeapon()
+    {
+        for(int i=0; i < weapons.Length; i++)
+        {
+            if (i == weaponNumber)
+            {
+                currentWeapon = weapons[i];
+            }
+        }
+    }
     private void OnEnable()
     {
         inputStm.Enable();

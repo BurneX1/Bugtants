@@ -15,7 +15,7 @@ public class MP_System : MonoBehaviour
         actualMP = maxMP;
 
     }
-    public void FullRecharge() { actualMP = 100; }
+    public void FullRecharge() { actualMP = maxMP; }
     public void Shotgun() { actualMP -= 10; }
     public void Pistol() { actualMP -= 3; }
 

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     InputSystemActions inputStm;
@@ -22,13 +22,14 @@ public class Pause : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
     void Buttoners()
     {
-        Paused();
+        if (!paused)
+            Paused();
+        else
+            GoingBack();
+
+
     }
     public void Paused()
     {
@@ -44,6 +45,11 @@ public class Pause : MonoBehaviour
         pauseHud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         paused = false;
+    }
+    public void GoingBack()
+    {
+        Button exiter = GameObject.FindGameObjectWithTag("BackResume").GetComponent<Button>();
+        exiter.onClick.Invoke();
     }
     private void OnEnable()
     {
