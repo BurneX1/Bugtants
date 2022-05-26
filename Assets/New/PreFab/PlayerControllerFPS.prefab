@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f2362d050d0d048ad33d46cd0da2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
+  playerData: {fileID: 11400000, guid: e830c674b452a6d499941efb8cd9573d, type: 2}
   weapons:
   - {fileID: 11400000, guid: 723353465306ce343b5d6c538dcbcbab, type: 2}
   - {fileID: 11400000, guid: 4960ce231a9287f4c85c8304d697e71d, type: 2}
@@ -636,6 +636,7 @@ MonoBehaviour:
   c_jmp: {fileID: 0}
   c_chWp: {fileID: 0}
   c_shoot: {fileID: 0}
+  c_crouch: {fileID: 0}
 --- !u!114 &9024624746984558824
 MonoBehaviour:
   m_ObjectHideFlags: 0

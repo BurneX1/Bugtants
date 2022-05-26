@@ -12,9 +12,10 @@ public class PlayerData : ScriptablePersistentObject
 
     [Header("Player Values")]
     public float staminaRegenSpd;
-    public float Spd;
+    public float spd;
     public float runMultiplier;
-    public float jumpHeigth;
-    public float crouchHigth;
+    public float jumpHeight;
+    public float crouchHeight;
     public float crouchMultiplier;
+    public float crouchDelaying;
 }
