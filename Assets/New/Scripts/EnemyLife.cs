@@ -10,8 +10,7 @@ public class EnemyLife : MonoBehaviour
     private float feedTimer;
 
     //Feedback//
-    public bool destroyable, desperate;
-    public GameObject objectDesperate;
+    public bool destroyable;
     public GameObject model;
     private Material actualMat;
     public Material damagedMat;
@@ -19,7 +18,6 @@ public class EnemyLife : MonoBehaviour
     //State Definition//
     [HideInInspector]
     public bool dead;
-    private bool damagedFeed;
 
     //Sounds//
     private SoundActive sounds;
@@ -57,14 +55,14 @@ public class EnemyLife : MonoBehaviour
         if (value < 0)   feedTimer = feedMaxTimer;
         else if (life <= 0)
         {
-            if (desperate)
+            /*if (desperate)
             {
                 objectDesperate.transform.position = transform.position;
                 objectDesperate.GetComponent<LifeSpan>().maxTimer = timeLifeSpan;
                 Instantiate(objectDesperate);
                 desperate = false;
                 objectDesperate.transform.position = new Vector3(0, 0, 0);
-            }
+            }*/
 
             dead = true;
 
