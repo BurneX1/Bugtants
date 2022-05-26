@@ -10,7 +10,7 @@ public class CrouchSeen : MonoBehaviour
     public bool CrouchBool(float crouchChange)
     {
         bool cannie;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, Vector3.Distance(transform.position, startPos.position), 1 << 0))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, Vector3.Distance(transform.position, startPos.position), 1 << 12))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up) * hit.distance, Color.yellow);
             cannie = false;
