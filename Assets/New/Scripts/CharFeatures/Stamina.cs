@@ -54,7 +54,14 @@ public class Stamina : MonoBehaviour
         
 
     }
-
+    public void Maxed(float maxed)
+    {
+        maxStamina = maxed;
+        if (actStamina > maxStamina)
+        {
+            actStamina = maxStamina;
+        }
+    }
     public void IncreaseMaxSt(int plusST)
     {
         plusST = Mathf.Abs(plusST);
