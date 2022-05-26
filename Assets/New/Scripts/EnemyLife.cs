@@ -53,7 +53,7 @@ public class EnemyLife : MonoBehaviour
     {
         life += value;
         if (value < 0)   feedTimer = feedMaxTimer;
-        else if (life <= 0)
+        if (life <= 0)
         {
             /*if (desperate)
             {
