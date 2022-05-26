@@ -1594,6 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   height: 0
+  crouchSpeed: 0
   centering: {x: 0, y: 0, z: 0}
   crouching: 0
 --- !u!114 &7701868843168912810
@@ -2020,6 +2021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 75.041
       objectReference: {fileID: 0}
+    - target: {fileID: 5609824795846111696, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5609824795846111697, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
@@ -2058,6 +2063,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609824796420306001, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609824796420306007, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609824796969530964, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5609824796969530965, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
@@ -2092,6 +2105,10 @@ PrefabInstance:
       propertyPath: weapons
       value: 
       objectReference: {fileID: 4778401727042798303}
+    - target: {fileID: 5609824797939852962, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5609824797939852963, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
       propertyPath: m_LocalScale.x
       value: 0
