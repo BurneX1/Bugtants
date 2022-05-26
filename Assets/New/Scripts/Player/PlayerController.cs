@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             c_mov.spdBuff = 1 / playerData.crouchMultiplier;
         }
-        else if (running)
+        else if (running && !c_stm.empty)
         {
             c_mov.spdBuff = 1 * playerData.runMultiplier;
         }
