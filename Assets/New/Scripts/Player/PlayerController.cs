@@ -119,11 +119,11 @@ public class PlayerController : MonoBehaviour
     }
     void StaminaCondition()
     {
-        if (moving && running && !crouching && !c_stm.empty /*&& runningWall*/)
+        if (moving && running && !c_crouch.crouching && !c_stm.empty /*&& runningWall*/)
         {
             stMultiplier = -1;
         }
-        else if (moving && running && !crouching && c_stm.empty)
+        else if (moving && running && !c_crouch.crouching && c_stm.empty)
         {
             stMultiplier = 0;
         }
