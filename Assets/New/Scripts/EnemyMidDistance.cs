@@ -8,8 +8,8 @@ public class EnemyMidDistance : MonoBehaviour
     public float maxTimer, bulletSpeed;
     public int damage;
     public EnemyGroundMove movement;
-    private float timer, bulletAngle;
-    private Vector2 rec;
+    private float timer, bulletAngle,bulletLegion;
+    private Vector3 rec;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,22 +26,26 @@ public class EnemyMidDistance : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= maxTimer && (movement.statNumber == 2|| movement.statNumber == 3))
         {
-            Vector2 playerPointer = new Vector2(movement.radium.objetive.transform.position.x, movement.radium.objetive.transform.position.z);
-            Vector2 pointer = new Vector2(transform.position.x, transform.position.z);
             bullet.transform.position = bulletPosition.transform.position;
-            rec = (playerPointer - pointer).normalized * bulletSpeed;
-            bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, 0, rec.y);
+            rec = (movement.radium.objetive.transform.position - bulletPosition.transform.position).normalized;
+
+            bullet.GetComponent<BulletTime>().speed = bulletSpeed;
+            bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
             bullet.GetComponent<BulletTime>().damage = damage;
-            bulletAngle = Mathf.Atan2(rec.y, -rec.x);
+            
+            bulletLegion = Mathf.Atan2(rec.y, rec.z);
+            bulletLegion = bulletLegion * (180 / Mathf.PI);
+            bulletAngle = Mathf.Atan2(rec.z, rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
+
             bullet.GetComponent<BulletTime>().tagName = "Player";
+            
             if (bulletAngle < 0)
-            {
-
                 bulletAngle = 360 + bulletAngle;
+            if (bulletLegion < 0)
+                bulletLegion = 360 + bulletLegion;
 
-            }
-            bullet.transform.eulerAngles = new Vector3(0, bulletAngle-90, 0);
+            bullet.transform.LookAt(movement.radium.objetive.transform, Vector3.forward);
             Instantiate(bullet);
             bullet.transform.position = new Vector3(0, 0, 0);
             bullet.transform.eulerAngles = new Vector3(0, 0, 0);
