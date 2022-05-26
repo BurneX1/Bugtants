@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
-        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(crouching);
+        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => weaponNumber = 0;
@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
     public void LoadData()
     {
         c_life.maxHealth = playerData.maxLife;
+        c_stm.maxStamina = playerData.maxStamina;
         c_stm.increaseSpd = playerData.staminaRegenSpd;
         c_mp.maxMP = playerData.maxMana;
         c_jmp.heightJump = playerData.jumpHeight;
