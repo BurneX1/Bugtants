@@ -42,11 +42,11 @@ public class EnemySense : MonoBehaviour
     void Sensing()
     {
         tryObjetive = Vector3.Distance(transform.position, objetive.transform.position);
-        if (Physics.Linecast(transform.position, objetive.transform.position, out wall, (1 << 7)))
+        if (Physics.Linecast(transform.position, objetive.transform.position, out wall, (1 << 12)))
         {
             tryWall = Vector3.Distance(transform.position, wall.point);
         }
-        else if (Physics.Linecast(transform.position, objetive.transform.position, out floor, (1 << 6)))
+        else if (Physics.Linecast(transform.position, objetive.transform.position, out floor, (1 << 3)))
         {
             tryWall = Vector3.Distance(transform.position, floor.point);
         }
