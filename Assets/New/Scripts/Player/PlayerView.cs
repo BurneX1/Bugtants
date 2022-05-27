@@ -26,11 +26,13 @@ public class PlayerView : MonoBehaviour
 
     private PlayerController c_ctrll;
     private Stamina c_stm;
+    private Life c_life;
     private float stmTimer=0;
     private void Awake()
     {
         c_ctrll = gameObject.GetComponent<PlayerController>();
         c_stm = gameObject.GetComponent<Stamina>();
+        c_life = gameObject.GetComponent<Life>();
     }
     // Start is called before the first frame update
     void Start()
@@ -55,7 +57,7 @@ public class PlayerView : MonoBehaviour
     {
         if (c_ctrll.c_stm.actStamina>=c_ctrll.c_stm.maxStamina)
         {
-            Opac(stmBar, 1);
+            Opac(stmBar, 0);
         }
         else
         {
@@ -95,9 +97,19 @@ public class PlayerView : MonoBehaviour
         }
     }
 
+    void OnDamage()
+    {
+        //Reproducir auch
+        //Soltar Particulas
+        //Cmabiar color
+        //Pegarle a Ripheon
+
+    }
+
     private void OnEnable()
     {
         c_stm.Reduce += ResetStmTimer;
+        c_life.Damage += OnDamage;
     }
     private void OnDisable()
     {
