@@ -24,12 +24,19 @@ public class PlayerView : MonoBehaviour
     [Range(0.0f,1.0f)]
     public float opacValue;
 
+    [Header("[Audio Stuff]")]
+    public string runSnd;
+    public string walkSnd;
+    public string jumpSnd;
+
     private PlayerController c_ctrll;
     private Stamina c_stm;
     private Life c_life;
+    private AudioManager audioMng;
     private float stmTimer=0;
     private void Awake()
     {
+        audioMng = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         c_ctrll = gameObject.GetComponent<PlayerController>();
         c_stm = gameObject.GetComponent<Stamina>();
         c_life = gameObject.GetComponent<Life>();
@@ -50,7 +57,6 @@ public class PlayerView : MonoBehaviour
         BarRefresh(manaBar, c_ctrll.c_mp.actualMP, c_ctrll.c_mp.maxMP, manaTxt, "" + c_ctrll.c_mp.actualMP + "");
         BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + (int)c_ctrll.c_stm.actStamina + "");
         StmOpacity();
-
     }
 
     void StmOpacity()
@@ -94,6 +100,21 @@ public class PlayerView : MonoBehaviour
         if (box.fillAmount != act / max)
         {
             box.fillAmount = Mathf.Lerp(box.fillAmount, act / max, Time.deltaTime * uiReactSpd);
+        }
+    }
+    private void CallAudio(string name)
+    {
+        if(audioMng)
+        {
+            audioMng.PlayFx(name);
+        }
+    }
+    private void Call3DAudio(string name)
+    {
+        if (audioMng)
+        {
+
+            audioMng.Set3DSound(name,gameObject);
         }
     }
 

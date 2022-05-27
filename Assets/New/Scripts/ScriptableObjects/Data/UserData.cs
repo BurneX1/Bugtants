@@ -5,13 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New UserData", menuName = "Data/UserData")]
 public class UserData : ScriptablePersistentObject
 {
-    [Range(0.01f,100)]
-    public float GenVolume = 0.01f;
-    [Range(0.01f, 100)]
-    public float MusicVolume = 0.01f;
-    [Range(0.01f, 100)]
-    public float SndVolume = 0.01f;
-
+    [Range(0.01f,1)]
+    public float genVolume = 0.01f;
+    [Range(0.01f, 1)]
+    public float musicVolume = 0.01f;
+    [Range(0.01f, 1)]
+    public float sndVolume = 0.01f;
+    [Range(0.01f, 1)]
+    public float spatialVolume = 0.01f;
     public enum Lenguage
     {
         English,

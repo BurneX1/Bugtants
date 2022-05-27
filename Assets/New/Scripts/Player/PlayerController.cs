@@ -27,8 +27,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Crouch c_crouch;
     private float stMultiplier;
-    private int weaponNumber;
-    private bool moving, running, crouching, runningWall;
+    private int weaponNumber; 
+    [HideInInspector]
+    public bool moving, running, crouching, runningWall;
     void Awake()
     {
         //Component Settup -----------//
