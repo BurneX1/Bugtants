@@ -3,7 +3,7 @@ using UnityEngine;
 public class WaysToSound
 {
     public int whatSound, whereSound;
-    [HideInInspector]
+    //[HideInInspector]
     public SoundActive sounds;
 
     public void StopThenActive()

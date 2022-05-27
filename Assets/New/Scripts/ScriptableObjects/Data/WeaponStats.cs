@@ -7,4 +7,6 @@ public class WeaponStats : ScriptableObject
     public int damage;
     public float fireRate, bulletSpeed, mpCost;
     public GameObject weapon, bulletType;
+
+    public int soundNumber;
 }

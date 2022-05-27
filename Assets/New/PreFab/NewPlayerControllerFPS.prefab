@@ -1671,6 +1671,10 @@ MonoBehaviour:
   c_chWp: {fileID: 0}
   c_shoot: {fileID: 0}
   c_crouch: {fileID: 0}
+  shootSound:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 6322861031785718406}
 --- !u!114 &7701868843168912809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1783,7 +1787,7 @@ MonoBehaviour:
   audClip:
   - {fileID: 8300000, guid: 3a1a6ef30fc2b234b8f009f905980ebe, type: 3}
   - {fileID: 8300000, guid: 07cb320ae4024194b8ac676046c628f8, type: 3}
-  - {fileID: 8300000, guid: 0b64bf7984a36c2469c732474d8ea7a4, type: 3}
+  - {fileID: 8300000, guid: aa91b5d7546ec6d4bb08a9872332beec, type: 3}
   - {fileID: 8300000, guid: 74b05994daa9c6745a75e88da5796659, type: 3}
   - {fileID: 8300000, guid: bae0f708b9512724da2df419dc1a9148, type: 3}
   - {fileID: 8300000, guid: c15dffd76f934194185a155963d42ecf, type: 3}

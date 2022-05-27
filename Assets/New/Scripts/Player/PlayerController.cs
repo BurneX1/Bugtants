@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     private float stMultiplier;
     private int weaponNumber;
     private bool moving, running, crouching, runningWall;
+    [HideInInspector]
+    public WaysToSound shootSound;
+
+
     void Awake()
     {
         //Component Settup -----------//
@@ -45,6 +49,12 @@ public class PlayerController : MonoBehaviour
         c_shoot = GameObject.Find("Main Camera/GunPointer").GetComponent<ShootPlayer>();
         //-------------------------<<<//
 
+        //Sounds Setup -----------//
+        shootSound.sounds = gameObject.GetComponent<SoundActive>();
+
+
+
+        //-------------------------<<<//
 
         //Input System Setup----------//
         inputStm = new InputSystemActions();
@@ -53,29 +63,28 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
         inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
         inputStm.GamePlay.MeleAtack.performed += ctx => c_atk.Attack();
-        inputStm.GamePlay.Atack.performed += ctx => c_shoot.Shooting(currentWeapon, c_mp);
+        inputStm.GamePlay.Atack.performed += ctx => c_shoot.Shooting(currentWeapon, c_mp, shootSound);
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
-        inputStm.GamePlay.ChangeWeapon1.performed += ctx => weaponNumber = 0;
+        inputStm.GamePlay.ChangeWeapon1.performed += ctx => ChangedWeapon(0);
         inputStm.GamePlay.ChangeWeapon2.performed += ctx => currentWeapon = c_chWp.WeaponChanger(1, weapons, currentWeapon);
-        inputStm.GamePlay.ChangeWeapon2.performed += ctx => weaponNumber = 1;
+        inputStm.GamePlay.ChangeWeapon2.performed += ctx => ChangedWeapon(1);
         inputStm.GamePlay.Run.performed += ctx => running = true;
         inputStm.GamePlay.Run.canceled += ctx => running = false;
-
-
         //-------------------------<<<//
 
+
     }
-    // Start is called before the first frame update
-    void Start()
+
+    void ChangedWeapon(int value)
     {
-
+        weaponNumber = value;
+        c_shoot.ResetTime();
     }
-
     // Update is called once per frame
     void Update()
     {
