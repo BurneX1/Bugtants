@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2.198471, g: 2.3469286, b: 2.5088112, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -970,7 +970,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9108393841353949985, guid: f31e845d7be0e574cb8f88ab5b986a98, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9108393841353949985, guid: f31e845d7be0e574cb8f88ab5b986a98, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2327,9 +2327,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: HDRP
       objectReference: {fileID: 0}
+    - target: {fileID: 3141632294534427052, guid: 27463a4943fbaad42bee7c7175f0062a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3141632294534427053, guid: 27463a4943fbaad42bee7c7175f0062a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3141632294534427053, guid: 27463a4943fbaad42bee7c7175f0062a, type: 3}
       propertyPath: m_LocalPosition.x
