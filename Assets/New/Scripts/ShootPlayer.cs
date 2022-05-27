@@ -13,6 +13,7 @@ public class ShootPlayer : MonoBehaviour
     private Vector3 rec;
     private Pause pauseScript;
 
+
     [HideInInspector]
     public bool waiting;
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class ShootPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!pauseScript.paused && !waiting && timer <= maxTimer)
+        if (!pauseScript.paused && !waiting && timer <= 100)
             Delay();
     }
     void Delay()
@@ -38,11 +39,11 @@ public class ShootPlayer : MonoBehaviour
     }
     public void ResetTime()
     {
-
+        timer = 0;
     }
-    public void Shooting(WeaponStats weaponStat, MP_System mpScript)
+    public void Shooting(WeaponStats weaponStat, MP_System mpScript, WaysToSound shootSound)
     {
-        if (timer >= maxTimer && !pauseScript.paused && mpScript.actualMP >= weaponStat.mpCost && !waiting)
+        if (timer >= weaponStat.fireRate && !pauseScript.paused && mpScript.actualMP >= weaponStat.mpCost && !waiting)
         {
 
             bullet = weaponStat.bulletType;
@@ -62,6 +63,10 @@ public class ShootPlayer : MonoBehaviour
                 bulletAngle = 360 + bulletAngle;
             bullet.transform.eulerAngles = transform.eulerAngles;
             Instantiate(bullet);
+            
+            shootSound.whereSound = 2;
+            shootSound.whatSound = weaponStat.soundNumber;
+            shootSound.StopThenActive();
             bullet.transform.position = new Vector3(0, 0, 0);
             bullet.transform.eulerAngles = new Vector3(0, 0, 0);
 

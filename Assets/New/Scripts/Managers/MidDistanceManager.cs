@@ -86,7 +86,7 @@ public class MidDistanceManager : MonoBehaviour
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
 
-        enGrdScript.intel.speed = speed;
+        enGrdScript.saveSpeed = speed;
         enGrdScript.backSpeed = backSpeed;
         enGrdScript.patrolMaxTime = vigilanceTimer;
     }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   damage: 10
-  fireRate: 0
+  fireRate: 0.2
   bulletSpeed: 20
-  mpCost: 3
+  mpCost: 9
   weapon: {fileID: 0}
   bulletType: {fileID: 3577984631709007136, guid: d98b898500a2e574a8adce10dad9ea4b, type: 3}
+  soundNumber: 3

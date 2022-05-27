@@ -11,19 +11,20 @@ public class EnemyLife : MonoBehaviour
 
     //Feedback//
     public bool destroyable;
-    public GameObject model;
+    public GameObject model, objectDesperate;
     private Material actualMat;
     public Material damagedMat;
 
     //State Definition//
     [HideInInspector]
     public bool dead, taken;
-
+    private bool desperated;
     //Sounds//
     private SoundActive sounds;
 
     void Start()
     {
+        desperated = true;
         actualMat = model.GetComponent<MeshRenderer>().material;
         feedTimer = 0;
         takeTimer = 0;
@@ -73,14 +74,14 @@ public class EnemyLife : MonoBehaviour
         }
         if (life <= 0)
         {
-            /*if (desperate)
+            if (desperated)
             {
                 objectDesperate.transform.position = transform.position;
-                objectDesperate.GetComponent<LifeSpan>().maxTimer = timeLifeSpan;
+                
                 Instantiate(objectDesperate);
-                desperate = false;
                 objectDesperate.transform.position = new Vector3(0, 0, 0);
-            }*/
+                desperated = false;
+            }
 
             dead = true;
 

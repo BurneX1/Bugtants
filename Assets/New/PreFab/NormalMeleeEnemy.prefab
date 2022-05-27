@@ -257,6 +257,7 @@ MonoBehaviour:
   feel: 0
   hear: 0
   crash: 0
+  taken: 0
 --- !u!1 &3671106164243181549
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +471,7 @@ MonoBehaviour:
   feedbackMaxTimer: 1
   speed: 4
   vigilanceTimer: 2
+  takeMaxTimer: 3
 --- !u!114 &3671106164646871535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,10 +536,13 @@ MonoBehaviour:
   life: 4
   timeLifeSpan: 0
   feedMaxTimer: 1
+  takeMaxTimer: 0
   destroyable: 1
   model: {fileID: 3671106163826508139}
+  objectDesperate: {fileID: 8115179891492567941, guid: 9cb1ac3d9ea31ca4bac6ad5f28ec1054, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
   dead: 0
+  taken: 0
 --- !u!114 &3671106164646871522
 MonoBehaviour:
   m_ObjectHideFlags: 0

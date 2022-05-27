@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Detecter : MonoBehaviour
 {
-    public bool touch, otherTouch;
-    public GameObject registeredObject, anotherRegisteredObject;
-    public string tagName, anotherTagName;
+    public bool touch;
+    public GameObject registeredObject;
+    public string tagName;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +26,6 @@ public class Detecter : MonoBehaviour
             touch = true;
             registeredObject = col.gameObject;
         }
-        else if (col.gameObject.tag == anotherTagName)
-        {
-            otherTouch = true;
-            anotherRegisteredObject = col.gameObject;
-        }
     }
 
     void OnTriggerExit(Collider col)
@@ -40,11 +35,5 @@ public class Detecter : MonoBehaviour
             touch = false;
             registeredObject = null;
         }
-        else if (col.gameObject.tag == anotherTagName)
-        {
-            otherTouch = true;
-            anotherRegisteredObject = null;
-        }
-
     }
 }
