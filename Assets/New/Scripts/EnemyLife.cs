@@ -6,8 +6,8 @@ public class EnemyLife : MonoBehaviour
 {
     //General//
     public int life;
-    public float timeLifeSpan, feedMaxTimer;
-    private float feedTimer;
+    public float timeLifeSpan, feedMaxTimer, takeMaxTimer;
+    private float feedTimer, takeTimer;
 
     //Feedback//
     public bool destroyable;
@@ -17,7 +17,7 @@ public class EnemyLife : MonoBehaviour
 
     //State Definition//
     [HideInInspector]
-    public bool dead;
+    public bool dead, taken;
 
     //Sounds//
     private SoundActive sounds;
@@ -26,6 +26,8 @@ public class EnemyLife : MonoBehaviour
     {
         actualMat = model.GetComponent<MeshRenderer>().material;
         feedTimer = 0;
+        takeTimer = 0;
+        taken = false;
         dead = false;
         if (gameObject.GetComponent<SoundActive>() != null) sounds = gameObject.GetComponent<SoundActive>();
     }
@@ -47,12 +49,28 @@ public class EnemyLife : MonoBehaviour
             feedTimer = 0;
             model.GetComponent<MeshRenderer>().material = actualMat;
         }
+        if (takeTimer > 0)
+        {
+            takeTimer -= Time.deltaTime;
+
+            taken = true;
+        }
+        else
+        {
+            takeTimer = 0;
+
+            taken = false;
+        }
     }
 
     public void ChangeLife(int value)
     {
         life += value;
-        if (value < 0)   feedTimer = feedMaxTimer;
+        if (value < 0)
+        {
+            feedTimer = feedMaxTimer;
+            takeTimer = takeMaxTimer;
+        }
         if (life <= 0)
         {
             /*if (desperate)

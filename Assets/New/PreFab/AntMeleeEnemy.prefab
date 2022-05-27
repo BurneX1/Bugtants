@@ -510,6 +510,7 @@ MonoBehaviour:
   feedbackMaxTimer: 1
   speed: 6
   vigilanceTimer: 0
+  takeMaxTimer: 3
 --- !u!114 &7242720922725904195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,12 +575,12 @@ MonoBehaviour:
   life: 2
   timeLifeSpan: 0
   feedMaxTimer: 1
+  takeMaxTimer: 0
   destroyable: 1
-  desperate: 0
-  objectDesperate: {fileID: 0}
   model: {fileID: 7242720921808763399}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
   dead: 0
+  taken: 0
 --- !u!114 &7242720922725904221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +910,7 @@ MonoBehaviour:
   feel: 0
   hear: 0
   crash: 0
+  taken: 0
 --- !u!1 &7242720923306330673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,8 +1101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
+  otherTouch: 0
   registeredObject: {fileID: 0}
+  anotherRegisteredObject: {fileID: 0}
   tagName: PatrolPoint
+  anotherTagName: 
 --- !u!1 &7242720923719413935
 GameObject:
   m_ObjectHideFlags: 0

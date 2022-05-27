@@ -39,7 +39,15 @@ public class StunnerManager : MonoBehaviour
     public float maxTimerScarab;
     [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
     public float vigilanceTimer;
+    [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
+    public float takeMaxTimer;
 
+    void Awake()
+    {
+        enGrdScript.patrolPoint = new GameObject[patrolPoints];
+        enGrdScript.savePatrol = new GameObject[patrolPoints];
+        enGrdScript.ControlPatrol();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +65,13 @@ public class StunnerManager : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!locker)
+        {
             StatAlocate();
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.Modifying();
+        }
+
     }
 
     void StatAlocate()
@@ -65,13 +79,13 @@ public class StunnerManager : MonoBehaviour
         enSenScript.range = frontDetectRange;
         enSenScript.quietRange = attackRange;
         enSenScript.crashRange = crashRange;
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
 
         meleeScript.damage = damage;
         meleeScript.maxTimer = maxTimer;
         enGrdScript.saveSpeed = speed;
         enGrdScript.chargeDamage = damageStun;
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
+        enLifeScript.takeMaxTimer = takeMaxTimer;
 
         enScbScript.stunnerTime = stunnerTime;
         enScbScript.maxTimer = maxTimerScarab;

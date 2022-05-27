@@ -15,7 +15,7 @@ public class EnemySense : MonoBehaviour
 
     public GameObject[] rangePoints;
     [HideInInspector]
-    public bool dead, detect, feel, hear, crash;
+    public bool dead, detect, feel, hear, crash, taken;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +86,14 @@ public class EnemySense : MonoBehaviour
         else if (tryObjetive <= crashRange)
         {
             crash = true;
+        }
+        if (tryObjetive > range * 5)
+        {
+            taken = false;
+        }
+        else if(tryObjetive <= range * 5)
+        {
+            taken = true;
         }
 
 

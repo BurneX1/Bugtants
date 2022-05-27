@@ -35,7 +35,16 @@ public class MidDistanceManager : MonoBehaviour
     public float backSpeed;
     [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
     public float vigilanceTimer;
+    [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
+    public float takeMaxTimer;
 
+
+    void Awake()
+    {
+        enGrdScript.patrolPoint = new GameObject[patrolPoints];
+        enGrdScript.savePatrol = new GameObject[patrolPoints];
+        enGrdScript.ControlPatrol();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,8 +61,14 @@ public class MidDistanceManager : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if(!locker)
-        StatAlocate();
+        if (!locker)
+        {
+            StatAlocate();
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.Modifying();
+        }
+
     }
 
     void StatAlocate()
@@ -62,13 +77,14 @@ public class MidDistanceManager : MonoBehaviour
         enSenScript.quietRange = idleRange;
         enSenScript.retreatRange = retreatRange;
 
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
 
 
         enMidScript.maxTimer = maxTimer;
         enMidScript.bulletSpeed = bullSpeed;
         enMidScript.damage = damage;
+
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
+        enLifeScript.takeMaxTimer = takeMaxTimer;
 
         enGrdScript.intel.speed = speed;
         enGrdScript.backSpeed = backSpeed;

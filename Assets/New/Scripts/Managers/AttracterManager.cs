@@ -22,6 +22,11 @@ public class AttracterManager : MonoBehaviour
     public float damageRate;
     [Tooltip("Tiempo en que se muestra el estado golpeado")]
     public float feedbackMaxTimer;
+    [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
+    public float takeMaxTimer;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +56,7 @@ public class AttracterManager : MonoBehaviour
         enAttScript.damageRate = damageRate;
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
+        enLifeScript.takeMaxTimer = takeMaxTimer;
 
     }
     void DeathCondition()

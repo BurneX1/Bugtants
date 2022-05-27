@@ -101,7 +101,7 @@ public class EnemyGroundMove : MonoBehaviour
         marker = 0;
         if (stat == Status.patrolling && !touch)
         {
-            if(patrolPoint.Length == 0)
+            if (patrolPoint.Length == 0)
             {
                 moving = false;
             }
@@ -144,7 +144,7 @@ public class EnemyGroundMove : MonoBehaviour
             */
 
         }
-        else if(stat == Status.patrolling && touch)
+        else if (stat == Status.patrolling && touch)
         {
             moving = false;
             intel.speed = 0;
@@ -158,7 +158,7 @@ public class EnemyGroundMove : MonoBehaviour
             }
 
         }
-        else if(stat == Status.chasing)
+        else if (stat == Status.chasing)
         {
             moving = true;
             intel.speed = saveSpeed * charging;
@@ -183,12 +183,12 @@ public class EnemyGroundMove : MonoBehaviour
             intel.autoRepath = true;
         }
 
-        if (radium.detect && !radium.feel && !radium.hear)
+        if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken)) && !radium.feel && !radium.hear)
         {
             stat = Status.chasing;
             statNumber = 0;
         }
-        else if (!radium.detect && !radium.feel && !radium.hear)
+        else if ((!radium.detect && !radium.feel && !radium.hear) && !(radium.taken && GetComponent<EnemyLife>().taken))
         {
             stat = Status.patrolling;
             statNumber = 1;
@@ -311,7 +311,7 @@ public class EnemyGroundMove : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Modifying();
+
     }
     public void Modifying()
     {
@@ -380,7 +380,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
     }
 
-    void ControlPatrol()
+    public void ControlPatrol()
     {
         for (int i = 0; i < savePatrol.Length; i++)
         {

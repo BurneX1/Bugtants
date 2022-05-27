@@ -29,6 +29,15 @@ public class ExploderManager : MonoBehaviour
     public float timeLifeSpan;
     [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
     public float vigilanceTimer;
+    [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
+    public float takeMaxTimer;
+
+    void Awake()
+    {
+        enGrdScript.patrolPoint = new GameObject[patrolPoints];
+        enGrdScript.savePatrol = new GameObject[patrolPoints];
+        enGrdScript.ControlPatrol();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +55,13 @@ public class ExploderManager : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!locker)
+        {
             StatAlocate();
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.Modifying();
+        }
+
     }
 
     void StatAlocate()
@@ -54,8 +69,8 @@ public class ExploderManager : MonoBehaviour
         enSenScript.range = frontDetectRange;
         enSenScript.retreatRange = explodeRange;
 
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
+        enLifeScript.takeMaxTimer = takeMaxTimer;
 
         enGrdScript.intel.speed = speed;
         explodeScript.timeLifeSpan = timeLifeSpan;

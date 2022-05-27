@@ -29,7 +29,15 @@ public class MeleeManager : MonoBehaviour
     public float speed;
     [Tooltip("Tiempo en quedarse quieto luego de llegar a un punto de patrulla")]
     public float vigilanceTimer;
+    [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
+    public float takeMaxTimer;
 
+    void Awake()
+    {
+        enGrdScript.patrolPoint = new GameObject[patrolPoints];
+        enGrdScript.savePatrol = new GameObject[patrolPoints];
+        enGrdScript.ControlPatrol();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +58,7 @@ public class MeleeManager : MonoBehaviour
         {
             StatAlocate();
             enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
             enGrdScript.Modifying();
         }
 
@@ -63,6 +72,7 @@ public class MeleeManager : MonoBehaviour
             enSenScript.quietRange = attackRange;
 
             enLifeScript.feedMaxTimer = feedbackMaxTimer;
+            enLifeScript.takeMaxTimer = takeMaxTimer;
 
             meleeScript.maxTimer = maxTimer;
             meleeScript.damage = damage;
