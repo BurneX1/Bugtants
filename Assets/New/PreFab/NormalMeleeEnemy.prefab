@@ -462,7 +462,7 @@ MonoBehaviour:
   enLifeScript: {fileID: 3671106164646871529}
   meleeScript: {fileID: 3671106164646871522}
   frontDetectRange: 20
-  attackRange: 1
+  attackRange: 1.5
   patrolPoints: 0
   life: 100
   damage: 6
@@ -535,8 +535,6 @@ MonoBehaviour:
   timeLifeSpan: 0
   feedMaxTimer: 1
   destroyable: 1
-  desperate: 0
-  objectDesperate: {fileID: 0}
   model: {fileID: 3671106163826508139}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
   dead: 0
