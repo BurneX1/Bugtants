@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Stamina : MonoBehaviour
 {
+    public event Action Damaged = delegate { };
+
     [SerializeField]
     public float maxStamina;
     [SerializeField]
@@ -41,6 +44,7 @@ public class Stamina : MonoBehaviour
         {
             actStamina = actStamina - amount;
         }
+        Damaged.Invoke();
     }
 
     public void ConstModify(float upMultiplier)
@@ -49,6 +53,12 @@ public class Stamina : MonoBehaviour
         {
             upMultiplier = upMultiplier / Mathf.Abs(upMultiplier);
             actStamina = actStamina + (upMultiplier * Time.deltaTime * increaseSpd);
+
+            if(upMultiplier<0)
+            {
+                Debug.Log("Damage?");
+                Damaged.Invoke();
+            }
             
         }
         
