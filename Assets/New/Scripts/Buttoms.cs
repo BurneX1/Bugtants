@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class Buttoms : MonoBehaviour
 {
+    public AudioSource audioFont;
+    public AudioClip btmSound;
+
+    private void Start()
+    {
+        audioFont.clip = btmSound;
+    }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -35,5 +43,15 @@ public class Buttoms : MonoBehaviour
     public void DeActivateCanvas(string canvasName)
     {
         GameObject.Find(canvasName).GetComponent<Canvas>().enabled = false;
+    }
+
+    public void SetFullScreen(bool isFull)
+    {
+        Screen.fullScreen = isFull;
+    }
+
+    public void PlaySound()
+    {
+        audioFont.Play();
     }
 }
