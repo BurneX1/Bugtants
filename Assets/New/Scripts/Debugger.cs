@@ -16,7 +16,7 @@ public class Debugger : MonoBehaviour
     private int debugNumber = 0;
     void Awake()
     {
-        playerField = new InputField[10];
+        playerField = new InputField[11];
         for (int i = 0; i < playerField.Length; i++)
         {
             playerField[i] = GameObject.Find("PlayerPart/InputField " + "(" + i + ")").GetComponent<InputField>();
@@ -34,6 +34,7 @@ public class Debugger : MonoBehaviour
         playerField[7].text = "" + playerStats.crouchHeight;
         playerField[8].text = "" + playerStats.crouchMultiplier;
         playerField[9].text = "" + playerStats.crouchDelaying;
+        playerField[10].text = "" + playerStats.gravityPush;
 
         //
 
@@ -124,6 +125,8 @@ public class Debugger : MonoBehaviour
         playerStats.crouchMultiplier = value;
         float.TryParse(playerField[9].text, out value);
         playerStats.crouchDelaying = value;
+        float.TryParse(playerField[10].text, out value);
+        playerStats.gravityPush = value;
 
     }
 

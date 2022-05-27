@@ -88,12 +88,12 @@ public class PlayerController : MonoBehaviour
     {
         if (c_mov.direction != Vector2.zero)
         {
-            c_mov.Move();
+            c_mov.Move(c_jmp.isGrounded);
             moving = true;
         }
         else
         {
-            c_mov.Quiet();
+            c_mov.Quiet(c_jmp.isGrounded);
             moving = false;
         }
         if (crouching)
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         c_jmp.heightJump = playerData.jumpHeight;
         c_mov.speed = playerData.spd;
         c_crouch.crouchSpeed = playerData.crouchDelaying;
+        c_mov.gravity = playerData.gravityPush;
     }
     public void LoadWeapon()
     {

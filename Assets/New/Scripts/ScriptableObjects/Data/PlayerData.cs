@@ -18,4 +18,5 @@ public class PlayerData : ScriptablePersistentObject
     public float crouchHeight;
     public float crouchMultiplier;
     public float crouchDelaying;
+    public float gravityPush;
 }

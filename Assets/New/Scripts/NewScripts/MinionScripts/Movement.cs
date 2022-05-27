@@ -3,7 +3,7 @@ public class Movement : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody rigid;
-    public float speed, spdBuff;
+    public float speed, spdBuff, gravity;
     [HideInInspector]
     public Vector2 direction;
     void Awake()
@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
         rigid = gameObject.GetComponent<Rigidbody>();
     }
 
-    public void Move()
+    public void Move(bool grounded)
     {
         Vector3 right, forward, total;
         if (direction.x > 0.1f)
@@ -40,10 +40,28 @@ public class Movement : MonoBehaviour
         }
         total = Vector3.Normalize(right + forward);
         float tmpSpd = speed * spdBuff;
-        rigid.velocity = new Vector3(tmpSpd * total.x, rigid.velocity.y, tmpSpd * total.z);
+
+
+        if (!grounded)
+            rigid.velocity = new Vector3(tmpSpd * total.x, rigid.velocity.y, tmpSpd * total.z);
+        if (grounded)
+        {
+            float graviton = rigid.velocity.y - gravity * Time.deltaTime;
+            rigid.velocity = new Vector3(tmpSpd * total.x, graviton, tmpSpd * total.z);
+
+        }
+
     }
-    public void Quiet()
+    public void Quiet(bool grounded)
     {
-        rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+        if (!grounded)
+            rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+        if (grounded)
+        {
+            float graviton = rigid.velocity.y - gravity * Time.deltaTime;
+            rigid.velocity = new Vector3(0, graviton, 0);
+
+        }
+
     }
 }
