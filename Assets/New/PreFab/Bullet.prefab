@@ -129,14 +129,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modDam: 0
   distance: 0
-  angler: {x: 0, y: 0, z: 0}
+  angler: {x: 0.08383261, y: -0.037892606, z: -0.9957592}
   start: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
-  tagName: Enemy
-  damage: 0
+  tagName: Player
+  damage: 2
   shells: []
   cannon: 0
-  speed: 60
+  speed: 4
 --- !u!114 &558114720456750985
 MonoBehaviour:
   m_ObjectHideFlags: 0
