@@ -46,7 +46,7 @@ public class PlayerView : MonoBehaviour
     {
         BarRefresh(lifeBar, c_ctrll.c_life.actualHealth, c_ctrll.c_life.maxHealth, lifeTxt, "" + c_ctrll.c_life.actualHealth + "");
         BarRefresh(manaBar, c_ctrll.c_mp.actualMP, c_ctrll.c_mp.maxMP, manaTxt, "" + c_ctrll.c_mp.actualMP + "");
-        BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + c_ctrll.c_stm.actStamina + "");
+        BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + (int)c_ctrll.c_stm.actStamina + "");
         StmOpacity();
 
     }
@@ -97,11 +97,11 @@ public class PlayerView : MonoBehaviour
 
     private void OnEnable()
     {
-        c_stm.Damaged += ResetStmTimer;
+        c_stm.Reduce += ResetStmTimer;
     }
     private void OnDisable()
     {
-        c_stm.Damaged -= ResetStmTimer;
+        c_stm.Reduce -= ResetStmTimer;
     }
 
     void ResetStmTimer()

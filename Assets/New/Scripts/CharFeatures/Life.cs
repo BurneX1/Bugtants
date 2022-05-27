@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Life : MonoBehaviour
-{    
+{
+    public event Action Damage = delegate { };
+
     public int maxHealth;
     public int actualHealth;
 
@@ -17,6 +20,8 @@ public class Life : MonoBehaviour
         damage = Mathf.Abs(damage);
         if (actualHealth > 0) actualHealth -= damage;
         if (actualHealth < 0) actualHealth = 0;
+
+        Damage.Invoke();
     }
 
     public void AddLife(int recovery)

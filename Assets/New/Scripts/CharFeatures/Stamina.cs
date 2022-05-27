@@ -5,7 +5,7 @@ using System;
 
 public class Stamina : MonoBehaviour
 {
-    public event Action Damaged = delegate { };
+    public event Action Reduce = delegate { };
 
     [SerializeField]
     public float maxStamina;
@@ -44,7 +44,7 @@ public class Stamina : MonoBehaviour
         {
             actStamina = actStamina - amount;
         }
-        Damaged.Invoke();
+        Reduce.Invoke();
     }
 
     public void ConstModify(float upMultiplier)
@@ -57,7 +57,7 @@ public class Stamina : MonoBehaviour
             if(upMultiplier<0)
             {
                 Debug.Log("Damage?");
-                Damaged.Invoke();
+                Reduce.Invoke();
             }
             
         }
