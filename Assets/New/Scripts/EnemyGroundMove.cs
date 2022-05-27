@@ -20,7 +20,7 @@ public class EnemyGroundMove : MonoBehaviour
     public enum Status { patrolling, chasing, retreating, looking, charging };
     public Status stat;
     [HideInInspector]
-    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer, charging;
+    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1;
     private float stunnedTimer, patrolTimer;
     public EnemySense radium;
     private int pinner, marker;

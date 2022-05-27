@@ -72,7 +72,7 @@ public class ExploderManager : MonoBehaviour
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
 
-        enGrdScript.intel.speed = speed;
+        enGrdScript.saveSpeed = speed;
         explodeScript.timeLifeSpan = timeLifeSpan;
         explodeScript.damage = damage;
         enGrdScript.patrolMaxTime = vigilanceTimer;
