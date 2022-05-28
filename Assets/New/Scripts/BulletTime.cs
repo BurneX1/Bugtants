@@ -20,7 +20,7 @@ public class BulletTime : MonoBehaviour
     void Start()
     {
         start = transform.position;
-        transform.localScale = new Vector3(0.75f, 0.75f, 1);
+        transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         for (int i = 0; i < shells.Length; i++)
         {
             shells[i].tagName = tagName;
