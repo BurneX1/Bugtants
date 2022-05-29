@@ -63,7 +63,8 @@ public class AttracterManager : MonoBehaviour
     {
         if (enLifeScript.dead)
         {
-            enAttScript.player.GetComponent<PlayerMovement>().poseser = null;
+            //enAttScript.player.GetComponent<PlayerMovement>().poseser = null;
+            enAttScript.player.GetComponent<Movement>().poseser = null;
             enAttScript.enabled = false;
             enSenScript.enabled = false;
 

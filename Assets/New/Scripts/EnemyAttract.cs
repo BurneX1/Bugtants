@@ -54,7 +54,7 @@ public class EnemyAttract : MonoBehaviour
 
     void Devourer()
     {
-        player.GetComponent<PlayerMovement>().poseser = gameObject;
+        player.GetComponent<Movement>().poseser = gameObject;
         if (downing.z > 0)
         {
             downing.z -= speedSuction * Time.deltaTime;

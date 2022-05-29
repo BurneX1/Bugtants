@@ -95,7 +95,11 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerLogic()
     {
-        if (c_mov.direction != Vector2.zero)
+        if (c_mov.poseser)
+        {
+            c_mov.Posesed();
+        }
+        else if (c_mov.direction != Vector2.zero)
         {
             c_mov.Move(c_jmp.isGrounded);
             moving = true;

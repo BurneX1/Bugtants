@@ -578,7 +578,7 @@ MonoBehaviour:
   feedMaxTimer: 1
   takeMaxTimer: 0
   destroyable: 1
-  model: {fileID: 2076980586048613278}
+  model: {fileID: 2076980585628820076}
   objectDesperate: {fileID: 4991610301333956830, guid: fde29433ae3365640be2edec85384579, type: 3}
   damagedMat: {fileID: 2041237758758649350, guid: 1886526a4474c1942963b473f339e862, type: 3}
   dead: 0
@@ -670,11 +670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
-  otherTouch: 0
   registeredObject: {fileID: 0}
-  anotherRegisteredObject: {fileID: 0}
   tagName: Player
-  anotherTagName: 
 --- !u!65 &2076980586881757793
 BoxCollider:
   m_ObjectHideFlags: 0

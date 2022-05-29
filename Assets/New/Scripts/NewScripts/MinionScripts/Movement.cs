@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
     public float speed, spdBuff, gravity;
     [HideInInspector]
     public Vector2 direction;
+    [HideInInspector]
+    public GameObject poseser;
     void Awake()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
@@ -13,6 +15,7 @@ public class Movement : MonoBehaviour
 
     public void Move(bool grounded)
     {
+        rigid.useGravity = true;
         Vector3 right, forward, total;
         if (direction.x > 0.1f)
         {
@@ -54,6 +57,7 @@ public class Movement : MonoBehaviour
     }
     public void Quiet(bool grounded)
     {
+        rigid.useGravity = true;
         if (!grounded)
             rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
         if (grounded)
@@ -64,4 +68,10 @@ public class Movement : MonoBehaviour
         }
 
     }
+    public void Posesed()
+    {
+        rigid.velocity = new Vector3(0, 0, 0);
+        rigid.useGravity = false;
+    }
+
 }
