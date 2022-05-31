@@ -9,7 +9,8 @@ public class DamageOnTriger : MonoBehaviour
     public float timePerDmg;
     private float timer;
     private bool doDmg;
-
+    [Tooltip("Mantener en 0 si no desea limitar el daño en relacion a la vida")]
+    public int lifeLimiter;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +30,18 @@ public class DamageOnTriger : MonoBehaviour
             Debug.Log("Hit * to " + other.gameObject + "  " + damage);
             if(other.gameObject.GetComponent<Life>())
             {
+                if(other.gameObject.GetComponent<Life>().actualHealth - Mathf.Abs(damage) < lifeLimiter)
+                {
+                    return;
+                }
                 other.gameObject.GetComponent<Life>().ReduceLife(damage);
             }
             if(other.gameObject.GetComponent<EnemyLife>())
             {
+                if (other.gameObject.GetComponent<EnemyLife>().life - Mathf.Abs(damage) < lifeLimiter)
+                {
+                    return;
+                }
                 other.gameObject.GetComponent<EnemyLife>().ChangeLife(-damage);
             }
             timer = timePerDmg;
