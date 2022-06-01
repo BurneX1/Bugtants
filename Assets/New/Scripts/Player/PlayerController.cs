@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         c_atk = gameObject.GetComponent<AtackMele>();
         c_crouch = gameObject.GetComponent<Crouch>();
         c_chWp = GameObject.Find("Main Camera/FBX_Brazo-infectado").GetComponent<ChangeWeapon>();
-        c_shoot = GameObject.Find("Main Camera/GunPointer").GetComponent<ShootPlayer>();
+        c_shoot = GameObject.Find("Main Camera/FBX_Brazo-infectado/GunPointer").GetComponent<ShootPlayer>();
         //-------------------------<<<//
 
         //Sounds Setup -----------//
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
         //Input System Setup----------//
         inputStm = new InputSystemActions();
-        inputStm.GamePlay.Interact.performed += ctx => c_ray.Interact();
         inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
         inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
         inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();

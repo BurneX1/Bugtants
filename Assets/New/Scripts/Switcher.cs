@@ -33,13 +33,18 @@ public class Switcher : MonoBehaviour
 
             for (int i = 0; i < Status_1.Length; i++)
             { Status_1[i].SetActive(true); }
-            if (changecolor)
-            {
-                LogChangeColor();
-            }
+
         }
         else if (activated && binary)
+        {
             activated = false;
+        }
+
+        if (changecolor)
+        {
+            LogChangeColor();
+        }
+        else { Debug.Log("change color off"); }
     }
     void DoingActivate()
     {
