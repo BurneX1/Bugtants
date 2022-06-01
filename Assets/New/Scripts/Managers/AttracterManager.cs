@@ -12,6 +12,8 @@ public class AttracterManager : MonoBehaviour
     [Header("Scripts editables")]
     [Tooltip("Lineas azules, es la distancia en la que puede detectar al jugador a frente")]
     public float frontDetectRange;
+    [Tooltip("Lineas azules, es la distancia en donde destina al jugador")]
+    public float destinyRange;
     [Tooltip("Vida del enemigo")]
     public int life;
     [Tooltip("La cantidad que reduce la vida del jugador durante la succion")]
@@ -50,6 +52,7 @@ public class AttracterManager : MonoBehaviour
     void StatAlocate()
     {
         enSenScript.range = frontDetectRange;
+        enSenScript.quietRange = destinyRange;
 
         enAttScript.damage = damage;
         enAttScript.speedSuction = speedSuction;

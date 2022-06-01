@@ -101,15 +101,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (c_mov.direction != Vector2.zero)
         {
-            c_mov.Move(c_jmp.isGrounded);
+            c_mov.Move();
             moving = true;
         }
         else
         {
-            c_mov.Quiet(c_jmp.isGrounded);
+            c_mov.Quiet();
             moving = false;
         }
-        if (crouching)
+        if (crouching && !c_mov.poseser)
             c_crouch.Crouching(playerData.crouchHeight);
         else
             c_crouch.NonCrouching(playerData.crouchHeight);
@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
         {
             c_mov.spdBuff = 1;
         }
+        c_mov.grounded = c_jmp.isGrounded;
     }
     void ModifyStamina()
     {

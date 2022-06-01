@@ -83,5 +83,6 @@ public class EnemyAttract : MonoBehaviour
     {
         hitBox.center = new Vector3(0, 0, locate.range/2);
         hitBox.size = new Vector3(0.1f, 0.1f, locate.range);
+        final.transform.localPosition = new Vector3(0, 0, locate.quietRange);
     }
 }
