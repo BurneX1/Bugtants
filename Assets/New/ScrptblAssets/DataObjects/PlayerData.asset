@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3db636f872feba4f851a0c4e679d32b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxLife: 120
-  maxStamina: 101
-  maxMana: 150
+  maxLife: 100
+  maxStamina: 80
+  maxMana: 100
   staminaRegenSpd: 10
-  spd: 5
+  spd: 4
   runMultiplier: 2
-  jumpHeight: 1
+  jumpHeight: 3
   crouchHeight: 0.2
   crouchMultiplier: 2
   crouchDelaying: 1
-  gravityPush: 1
+  gravityPush: 40

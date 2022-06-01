@@ -8,8 +8,10 @@ public class Switcher : MonoBehaviour
     public bool binary;
     [HideInInspector]
     public bool activated;
+    public bool changecolor;
 
-    public Light[] LightColorChange;
+    public Light[] lightColorChange;
+    public Color[] colorList;
 
     public GameObject[] Status_0, Status_1;
     // Start is called before the first frame update
@@ -27,16 +29,26 @@ public class Switcher : MonoBehaviour
 
             for (int i = 0; i < Status_1.Length; i++)
             { Status_1[i].SetActive(true); }
-
-            if(LightColorChange.Length!= 0)
+            if (changecolor)
             {
-                for (int i = 0; i < LightColorChange.Length; i++)
-                { LightColorChange[i].color = Color.green; }
+                LogChangeColor();
             }
-            Debug.Log("A");
         }
         else if (activated && binary)
             activated = false;
     }
 
+    public void LogChangeColor ()
+    {
+        if (lightColorChange.Length != 0)
+        {
+            if (colorList.Length != 0)
+            {
+                for (int i = 0; i < lightColorChange.Length; i++)
+                { lightColorChange[i].color = colorList[i]; }
+            }
+            else { Debug.LogError("No assign Colors"); }
+        }
+        else { Debug.LogError("No LightColors"); }
+    }
 }

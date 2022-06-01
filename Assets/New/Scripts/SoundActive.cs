@@ -19,7 +19,6 @@ public class SoundActive : MonoBehaviour
                 name = "Sfx",
                 tag = "SoundSFX"
             };
-
             audines.newSound.transform.parent = audines.location.transform;
             audines.newSound.transform.position = audines.location.transform.position;
             audines.audSrc = audines.newSound.AddComponent(typeof(AudioSource)) as AudioSource;
