@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Switcher : MonoBehaviour
 {
+    private InputSystemActions inputStm;
+
     [Tooltip("Lo llaman binary si se puede volver a cambiar")]
     public bool binary;
     [HideInInspector]
-    public bool activated;
+    public bool activated, located;
     public bool changecolor;
 
     public Light[] lightColorChange;
@@ -15,9 +17,11 @@ public class Switcher : MonoBehaviour
 
     public GameObject[] Status_0, Status_1;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        inputStm = new InputSystemActions();
         activated = false;
+        inputStm.GamePlay.Interact.performed += ctx => DoingActivate();
     }
     public void Activation()
     {
@@ -37,8 +41,12 @@ public class Switcher : MonoBehaviour
         else if (activated && binary)
             activated = false;
     }
-
-    public void LogChangeColor ()
+    void DoingActivate()
+    {
+        if (located) 
+            Activation();
+    }
+    public void LogChangeColor()
     {
         if (lightColorChange.Length != 0)
         {
@@ -50,5 +58,28 @@ public class Switcher : MonoBehaviour
             else { Debug.LogError("No assign Colors"); }
         }
         else { Debug.LogError("No LightColors"); }
+    }
+    private void OnEnable()
+    {
+        inputStm.Enable();
+    }
+    private void OnDisable()
+    {
+        inputStm.Disable();
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            located = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            located = false;
+        }
     }
 }
