@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586070652100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585626069147}
@@ -534,6 +534,7 @@ MonoBehaviour:
   enSenScript: {fileID: 2076980585633062622}
   enLifeScript: {fileID: 2076980586613715907}
   frontDetectRange: 10
+  destinyRange: 2
   life: 200
   damage: 3
   speedSuction: 2
@@ -683,8 +684,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 8}
-  m_Center: {x: 0, y: 0, z: 4}
+  m_Size: {x: 0.1, y: 0.1, z: 10}
+  m_Center: {x: 0, y: 0, z: 5}
 --- !u!1 &2076980587126435938
 GameObject:
   m_ObjectHideFlags: 0

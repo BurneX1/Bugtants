@@ -179,7 +179,7 @@ MonoBehaviour:
   enLifeScript: {fileID: 3534966813682343008}
   meleeScript: {fileID: 3534966813682343019}
   frontDetectRange: 20
-  attackRange: 1
+  attackRange: 1.5
   crashRange: 6
   patrolPoints: 0
   life: 150
@@ -1290,11 +1290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
-  otherTouch: 0
   registeredObject: {fileID: 0}
-  anotherRegisteredObject: {fileID: 0}
   tagName: PatrolPoint
-  anotherTagName: 
 --- !u!1 &3534966815568700997
 GameObject:
   m_ObjectHideFlags: 0

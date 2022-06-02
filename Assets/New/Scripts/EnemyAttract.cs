@@ -8,7 +8,7 @@ public class EnemyAttract : MonoBehaviour
     public GameObject player;
     public float speedSuction, damageRate;
     public int damage;
-    private float timer;
+    private float timer, finalDestiny;
     private Rigidbody rigid;
 
     public Transform initial, final;
@@ -20,6 +20,7 @@ public class EnemyAttract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        finalDestiny = final.transform.localPosition.z;
         rigid = GetComponent<Rigidbody>();
         Vector3 result = (transform.position - initial.position).normalized;
         rigid.AddForce(result * 1000);
@@ -55,15 +56,15 @@ public class EnemyAttract : MonoBehaviour
     void Devourer()
     {
         player.GetComponent<Movement>().poseser = gameObject;
-        if (downing.z > 0)
+        if (downing.z > finalDestiny)
         {
             downing.z -= speedSuction * Time.deltaTime;
             final.localPosition = downing;
             player.transform.position = final.position;
         }
-        else if (downing.z < 0)
+        else if (downing.z < finalDestiny)
         {
-            downing.z = 0;
+            downing.z = finalDestiny;
             final.localPosition = downing;
             player.transform.position = final.position;
         }
@@ -83,5 +84,6 @@ public class EnemyAttract : MonoBehaviour
     {
         hitBox.center = new Vector3(0, 0, locate.range/2);
         hitBox.size = new Vector3(0.1f, 0.1f, locate.range);
+        final.transform.localPosition = new Vector3(0, 0, locate.quietRange);
     }
 }

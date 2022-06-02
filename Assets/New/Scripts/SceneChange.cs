@@ -12,7 +12,7 @@ public class SceneChange : MonoBehaviour
     void Awake()
     {
         inputStm = new InputSystemActions();
-        inputStm.GamePlay.ChangeScene.performed += _ => Determinate();
+        inputStm.GamePlay.Interact.performed += _ => Determinate();
     }
     void Update()
     {

@@ -8,12 +8,14 @@ public class Movement : MonoBehaviour
     public Vector2 direction;
     [HideInInspector]
     public GameObject poseser;
+    [HideInInspector]
+    public bool grounded;
     void Awake()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
     }
 
-    public void Move(bool grounded)
+    public void Move()
     {
         rigid.useGravity = true;
         Vector3 right, forward, total;
@@ -55,7 +57,7 @@ public class Movement : MonoBehaviour
         }
 
     }
-    public void Quiet(bool grounded)
+    public void Quiet()
     {
         rigid.useGravity = true;
         if (!grounded)

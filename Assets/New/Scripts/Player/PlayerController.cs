@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         c_atk = gameObject.GetComponent<AtackMele>();
         c_crouch = gameObject.GetComponent<Crouch>();
         c_chWp = GameObject.Find("Main Camera/FBX_Brazo-infectado").GetComponent<ChangeWeapon>();
-        c_shoot = GameObject.Find("Main Camera/GunPointer").GetComponent<ShootPlayer>();
+        c_shoot = GameObject.Find("Main Camera/FBX_Brazo-infectado/GunPointer").GetComponent<ShootPlayer>();
         //-------------------------<<<//
 
         //Sounds Setup -----------//
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
         //Input System Setup----------//
         inputStm = new InputSystemActions();
-        inputStm.GamePlay.Interact.performed += ctx => c_ray.Interact();
         inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
         inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
         inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
@@ -101,15 +100,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (c_mov.direction != Vector2.zero)
         {
-            c_mov.Move(c_jmp.isGrounded);
+            c_mov.Move();
             moving = true;
         }
         else
         {
-            c_mov.Quiet(c_jmp.isGrounded);
+            c_mov.Quiet();
             moving = false;
         }
-        if (crouching)
+        if (crouching && !c_mov.poseser)
             c_crouch.Crouching(playerData.crouchHeight);
         else
             c_crouch.NonCrouching(playerData.crouchHeight);
@@ -125,6 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             c_mov.spdBuff = 1;
         }
+        c_mov.grounded = c_jmp.isGrounded;
     }
     void ModifyStamina()
     {
@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
         c_mov.speed = playerData.spd;
         c_crouch.crouchSpeed = playerData.crouchDelaying;
         c_mov.gravity = playerData.gravityPush;
+        c_chWp.changeSeconds = playerData.delayChange;
     }
     public void LoadWeapon()
     {
