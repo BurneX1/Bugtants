@@ -81,17 +81,17 @@ public class BossSense : MonoBehaviour
         {
             angle -= 360;
         }
-        if (angle <= 45 && angle >= -45) //Frente
+        if (angle <= 45 && angle > -45) //Frente
         {
             firstOption = 1;
             secondOption = 2;
         }
-        else if (angle >= 45 && angle <= 135) // Izquierda
+        else if (angle <= 135 && angle > 45) // Izquierda
         {
             firstOption = 4;
             secondOption = 1;
         }
-        else if (angle <= -45 && angle >= -135) // Derecha
+        else if (angle <= -45 && angle > -135) // Derecha
         {
             firstOption = 2;
             secondOption = 3;

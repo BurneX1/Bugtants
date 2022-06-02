@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossAttacks : MonoBehaviour
 {
     public int damage;
-    public float prepareSpeed, maxDelayTime,;
+    public float prepareSpeed, maxDelayTime, attackSpeed;
     public GameObject tentacles;
 
     private float timer = 0;
@@ -38,7 +38,7 @@ public class BossAttacks : MonoBehaviour
                     locatedTentacle = location.secondOption;
                     direction = -1;
                 }
-                tentacles.transform.localEulerAngles = new Vector3(0, 0, 0);
+                tentacles.transform.localEulerAngles = new Vector3(0, 225 - 90 * locatedTentacle, 0);
                 step++;
                 break;
             case 2:
@@ -52,12 +52,13 @@ public class BossAttacks : MonoBehaviour
                 }
                 tentacles.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 1)
-                {
+                    timer = 0;
                     step++;
-                }
                 break;
             case 3:
-
+                timer += Time.deltaTime * direction;
+                Vector3 looking = tentacles.transform.localEulerAngles;
+                looking.y += timer;
                 step++;
                 break;
             case 4:
