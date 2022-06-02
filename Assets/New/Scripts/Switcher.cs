@@ -23,17 +23,40 @@ public class Switcher : MonoBehaviour
         activated = false;
         inputStm.GamePlay.Interact.performed += ctx => DoingActivate();
     }
+    void DoingActivate()
+    {
+        if (located) 
+            Activation();
+    }
     public void Activation()
     {
         if (!activated)
         {
             activated = true;
-            for (int i = 0; i < Status_0.Length; i++)
-            { Status_0[i].SetActive(false); ; }
-
-            for (int i = 0; i < Status_1.Length; i++)
-            { Status_1[i].SetActive(true); }
-
+            if (Status_0.Length != 0)
+            {
+                foreach (GameObject off in Status_0)
+                {
+                    off.SetActive(false);
+                }
+                /*
+                for (int i = 0; i < Status_0.Length; i++)
+                {
+                    Status_0[i].SetActive(false);  
+                }
+                */
+                if (Status_1.Length != 0)
+                {
+                    foreach (GameObject on in Status_1)
+                    {
+                        on.SetActive(true);
+                    }
+                    /*
+                    for (int i = 0; i < Status_1.Length; i++)
+                    { Status_1[i].SetActive(true); }
+                    */
+                }
+            }
         }
         else if (activated && binary)
         {
@@ -45,11 +68,6 @@ public class Switcher : MonoBehaviour
             LogChangeColor();
         }
         else { Debug.Log("change color off"); }
-    }
-    void DoingActivate()
-    {
-        if (located) 
-            Activation();
     }
     public void LogChangeColor()
     {

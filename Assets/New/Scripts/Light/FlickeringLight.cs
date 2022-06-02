@@ -5,10 +5,10 @@ using UnityEngine;
 public class FlickeringLight : MonoBehaviour
 {
 
-    public Light _light;
+    public Light[] _light;
 
     public float Mintime, MaxTime, Timer;
-    public AudioSource _audioS;
+    public AudioSource _audios;
     public AudioClip _lightaudio;
 
     public float _baseIntesity;
@@ -19,7 +19,10 @@ public class FlickeringLight : MonoBehaviour
     {
         off = false;
         Timer = MaxTime;
-        _baseIntesity = _light.intensity;
+        for (int i = 0; i < _light.Length; i++)
+        {
+            _baseIntesity = _light[i].intensity;
+        }
     }
 
     void Update()
@@ -38,7 +41,10 @@ public class FlickeringLight : MonoBehaviour
             else if (Timer <= 0)
             {
                 Timer = MaxTime;
-                _light.intensity = _baseIntesity;
+                for (int i = 0; i < _light.Length; i++)
+                {
+                    _light[i].intensity = _baseIntesity;
+                }
                 off = false;
             }
         }
@@ -51,11 +57,15 @@ public class FlickeringLight : MonoBehaviour
             else if (Timer <= 0)
             {
                 Timer = Mintime;
-                _audioS.PlayOneShot(_lightaudio);
-                _light.intensity = _baseIntesity / 2;
+
+                _audios.PlayOneShot(_lightaudio, 0.6f);
+                for (int i = 0; i < _light.Length; i++)
+                {
+                    _light[i].intensity = _baseIntesity / 2;
+                }
                 off = true;
             }
         }
-        
+
     }
 }
