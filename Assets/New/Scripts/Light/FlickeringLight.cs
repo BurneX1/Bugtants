@@ -57,8 +57,7 @@ public class FlickeringLight : MonoBehaviour
             else if (Timer <= 0)
             {
                 Timer = Mintime;
-
-                _audios.PlayOneShot(_lightaudio, 0.6f);
+                _audios.PlayOneShot(_lightaudio, 0.4f);
                 for (int i = 0; i < _light.Length; i++)
                 {
                     _light[i].intensity = _baseIntesity / 2;
