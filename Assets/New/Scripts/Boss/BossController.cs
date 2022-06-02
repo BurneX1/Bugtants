@@ -12,6 +12,7 @@ public class BossController : MonoBehaviour
     void Update()
     {
         Activations();
+        FinishingAttacks();
     }
 
     void Activations()
@@ -22,21 +23,31 @@ public class BossController : MonoBehaviour
                 bossAttacker.Attack_01(bossSense);
                 break;
             case 2:
-                bossAttacker.Attack_02();
+                bossAttacker.Attack_02(bossSense);
                 break;
             case 3:
                 bossAttacker.Attack_03();
                 break;
             case 4:
-                bossAttacker.Attack_04();
+                bossAttacker.Attack_04(bossSense);
                 break;
             case 5:
                 bossAttacker.Attack_05();
                 break;
             case 6:
-                bossAttacker.Attack_06();
+                bossAttacker.Attack_06(bossSense);
                 break;
 
         }
     }
+
+    void FinishingAttacks()
+    {
+        if(bossAttackPrepare.numberNow!=0&& bossAttacker.step == -1)
+        {
+            bossAttackPrepare.numberNow = 0;
+            bossAttacker.step = 0;
+        }
+    }
+    
 }

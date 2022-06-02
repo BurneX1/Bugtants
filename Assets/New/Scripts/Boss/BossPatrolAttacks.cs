@@ -8,7 +8,6 @@ public class BossPatrolAttacks : MonoBehaviour
     public bool randomFirst, randomSecond;
     public int repeatFirst, repeatSecond;
     private int contFirst, contSecond;
-    [HideInInspector]
     public int numberNow;
     // Start is called before the first frame update
     public void NumberMulligan()

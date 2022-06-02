@@ -10,7 +10,7 @@ public class EnemyLife : MonoBehaviour
     private float feedTimer, takeTimer;
 
     //Feedback//
-    public bool destroyable;
+    public bool destroyable, armor;
     public GameObject model, objectDesperate;
     private Material actualMat;
     public Material damagedMat;
@@ -69,15 +69,16 @@ public class EnemyLife : MonoBehaviour
         life += value;
         if (value < 0)
         {
+            if (armor)
+                life -= value / 2;
             feedTimer = feedMaxTimer;
             takeTimer = takeMaxTimer;
         }
         if (life <= 0)
         {
-            if (desperated)
+            if (desperated && objectDesperate != null)
             {
                 objectDesperate.transform.position = transform.position;
-                
                 Instantiate(objectDesperate);
                 objectDesperate.transform.position = new Vector3(0, 0, 0);
                 desperated = false;
