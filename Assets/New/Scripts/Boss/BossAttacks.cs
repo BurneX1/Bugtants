@@ -7,7 +7,9 @@ public class BossAttacks : MonoBehaviour
     public GameObject tentacles;
 
     private float timer = 0;
-    private int step = 0, direction, locatedTentacle;
+    private int step = 0, direction, locatedTentacle, choosedAngle;
+    [HideInInspector]
+    
     public void Attack_01(BossSense location)
     {
         switch (step)
@@ -38,7 +40,8 @@ public class BossAttacks : MonoBehaviour
                     locatedTentacle = location.secondOption;
                     direction = -1;
                 }
-                tentacles.transform.localEulerAngles = new Vector3(0, 225 - 90 * locatedTentacle, 0);
+                choosedAngle = 225 - 90 * locatedTentacle;
+                tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle, 0);
                 step++;
                 break;
             case 2:
@@ -52,34 +55,42 @@ public class BossAttacks : MonoBehaviour
                 }
                 tentacles.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 1)
+                {
                     timer = 0;
                     step++;
+                }
                 break;
             case 3:
-                timer += Time.deltaTime * direction;
-                Vector3 looking = tentacles.transform.localEulerAngles;
-                looking.y += timer;
-                step++;
+                if (timer < 90)
+                {
+                    timer += Time.deltaTime * direction * attackSpeed;
+                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                }
+                if (timer >= 90)
+                {
+                    timer = 90;
+                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    step++;
+                }
                 break;
             case 4:
-
-                step = 0;
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime * prepareSpeed;
+                }
+                else if (timer <= 0)
+                {
+                    timer = 0;
+                }
+                tentacles.transform.localScale = new Vector3(1, 1, timer);
+                if (timer == 0)
+                {
+                    timer = 0;
+                    step = 0;
+                }           
                 break;
         }
-        /*
-         Oscilación por escala 
-          Elegir que lado
-         Atacar
-
-         */
-
-
     }
-    void InProcess()
-    {
-
-    }
-
 
     public void Attack_02()
     {

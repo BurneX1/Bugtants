@@ -160,6 +160,7 @@ public class PlayerController : MonoBehaviour
         c_mov.speed = playerData.spd;
         c_crouch.crouchSpeed = playerData.crouchDelaying;
         c_mov.gravity = playerData.gravityPush;
+        c_chWp.changeSeconds = playerData.delayChange;
     }
     public void LoadWeapon()
     {

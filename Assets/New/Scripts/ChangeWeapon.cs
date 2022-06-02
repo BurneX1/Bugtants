@@ -8,10 +8,13 @@ public class ChangeWeapon : MonoBehaviour
     public int number;
     public ShootPlayer weapons;
     private Pause pauseScript;
-
+    public WaysToSound changeSound;
+    [HideInInspector]
+    public float changeSeconds;
     void Awake()
     {
         pauseScript = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
+        changeSound.sounds = GameObject.FindGameObjectWithTag("Player").GetComponent<SoundActive>();
     }
 
     IEnumerator ChangeWepon_Logic()
@@ -20,8 +23,8 @@ public class ChangeWeapon : MonoBehaviour
         B_2.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         B_3.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         B_4.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-        
-        yield return new WaitForSeconds(1.5f);
+        changeSound.StopThenActive();
+        yield return new WaitForSeconds(changeSeconds);
         B_1.localScale = new Vector3(0f, 0f, 0f);
         B_2.localScale = new Vector3(0f, 0f, 0f);
         B_3.localScale = new Vector3(0f, 0f, 0f);
