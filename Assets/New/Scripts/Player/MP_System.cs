@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MP_System : MonoBehaviour
 {
+    public PlayerView playerHUD;
+
     //--VALORES--//
     public float actualMP;
     public float maxMP;
@@ -13,13 +15,17 @@ public class MP_System : MonoBehaviour
     private void Awake()
     {
         actualMP = maxMP;
-
+        playerHUD = GetComponent<PlayerView>();
     }
     public void FullRecharge() { actualMP = maxMP; }
     public void Shotgun() { actualMP -= 10; }
     public void Pistol() { actualMP -= 3; }
 
-    public void ModifyMp(float mpValue) { actualMP += mpValue; }
+    public void ModifyMp(float mpValue)
+    { 
+        actualMP += mpValue;
+        playerHUD.activateHUD = true;
+    }
     public void ReduceMP(int amount)
     {
         amount = Mathf.Abs(amount);

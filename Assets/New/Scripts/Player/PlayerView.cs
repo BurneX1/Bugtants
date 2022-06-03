@@ -34,6 +34,14 @@ public class PlayerView : MonoBehaviour
     private Life c_life;
     private AudioManager audioMng;
     private float stmTimer=0;
+
+
+    private float alphaState = 1;
+    public float inactivitiMaxCounter = 20;
+    public float inactivityCounter;
+    public bool activateHUD = false;
+
+    public Canvas generalCanvas;
     private void Awake()
     {
         audioMng = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -48,6 +56,8 @@ public class PlayerView : MonoBehaviour
         {
             uiReactSpd = 1;
         }
+
+        inactivityCounter = inactivitiMaxCounter;
     }
 
     // Update is called once per frame
@@ -57,6 +67,8 @@ public class PlayerView : MonoBehaviour
         BarRefresh(manaBar, c_ctrll.c_mp.actualMP, c_ctrll.c_mp.maxMP, manaTxt, "" + c_ctrll.c_mp.actualMP + "");
         BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + (int)c_ctrll.c_stm.actStamina + "");
         StmOpacity();
+
+        AlternateOpacity();
     }
 
     void StmOpacity()
@@ -141,6 +153,26 @@ public class PlayerView : MonoBehaviour
     {
         Debug.Log("Reset");
         stmTimer = 0;
+    }
+
+    void AlternateOpacity()
+    {
+        if(activateHUD == false)
+        {
+            inactivityCounter -= Time.deltaTime;
+            if(inactivityCounter <= 0)
+            {
+                alphaState -= Time.deltaTime;
+                if (alphaState <= 0) alphaState = 0;
+                generalCanvas.GetComponent<CanvasGroup>().alpha = alphaState;
+            }
+        }
+
+        if(activateHUD == true)
+        {
+            inactivityCounter = inactivitiMaxCounter;
+            activateHUD = false;
+        }
     }
 
 }

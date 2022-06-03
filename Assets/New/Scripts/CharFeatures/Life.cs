@@ -5,6 +5,7 @@ using System;
 
 public class Life : MonoBehaviour
 {
+    public PlayerView playerHUD;
     public event Action Damage = delegate { };
 
     public int maxHealth;
@@ -13,6 +14,7 @@ public class Life : MonoBehaviour
     private void Awake()
     {
         actualHealth = maxHealth;
+        playerHUD = GetComponent<PlayerView>();
     }
 
     public void ReduceLife(int damage)
@@ -21,6 +23,7 @@ public class Life : MonoBehaviour
         if (actualHealth > 0) actualHealth -= damage;
         if (actualHealth < 0) actualHealth = 0;
 
+        playerHUD.activateHUD = true;
         Damage.Invoke();
     }
 
