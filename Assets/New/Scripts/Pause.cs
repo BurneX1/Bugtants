@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 public class Pause : MonoBehaviour
 {
     InputSystemActions inputStm;
@@ -38,6 +39,12 @@ public class Pause : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         paused = true;
+
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach(AudioSource a in audios)
+        {
+            a.Pause();
+        }
     }
     public void Resume()
     {
@@ -45,6 +52,12 @@ public class Pause : MonoBehaviour
         pauseHud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         paused = false;
+
+        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource a in audios)
+        {
+            a.Play();
+        }
     }
     public void GoingBack()
     {
