@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 9039540949561099495}
   - component: {fileID: 6805586277258665176}
   - component: {fileID: 6850155803343003067}
+  - component: {fileID: 8954681659375118040}
   m_Layer: 9
   m_Name: UI
   m_TagString: Untagged
@@ -683,6 +684,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &8954681659375118040
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4417676227449349756}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4980686073098183334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3ec1d205a48e641b8a22546beed5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHUD: {fileID: 0}
   actualMP: 100
   maxMP: 100
 --- !u!114 &7682530827478144371
@@ -1752,6 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711002504f1114e4d933fa99a812893c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHUD: {fileID: 0}
   maxHealth: 30
   actualHealth: 0
 --- !u!114 &2456032185187694039
@@ -1793,6 +1808,10 @@ MonoBehaviour:
   runSnd: 
   walkSnd: 
   jumpSnd: 
+  inactivitiMaxCounter: 20
+  inactivityCounter: 0
+  activateHUD: 0
+  generalCanvas: {fileID: 9039540949561099495}
 --- !u!114 &7161033232866119042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,6 +2540,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ef10770207fe42a46ae2f20425354589, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+--- !u!1 &5094320376674104622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4691466856694733948, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+  m_PrefabInstance: {fileID: 552211417072101714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5618655913750951267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5354956512130931761, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
@@ -2529,10 +2553,5 @@ Transform:
 --- !u!1 &7041802753968802798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7354478316240429756, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
-  m_PrefabInstance: {fileID: 552211417072101714}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5094320376674104622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4691466856694733948, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
   m_PrefabInstance: {fileID: 552211417072101714}
   m_PrefabAsset: {fileID: 0}
