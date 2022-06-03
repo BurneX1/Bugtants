@@ -400,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 3671106164646871528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.8212566, y: 0, z: 4.4691877}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 3671106165431524085}
   - {fileID: 3671106165231849671}
@@ -468,9 +468,9 @@ MonoBehaviour:
   attackRange: 1.5
   patrolPoints: 0
   life: 100
-  damage: 6
-  maxTimer: 0.5
-  feedbackMaxTimer: 1
+  damage: 15
+  maxTimer: 1.3
+  feedbackMaxTimer: 0.3
   speed: 4
   vigilanceTimer: 2
   takeMaxTimer: 3
