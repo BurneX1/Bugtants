@@ -362,6 +362,134 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""BossTest"",
+            ""id"": ""59ca4020-6d61-45c5-b53c-7a3448ed2d4b"",
+            ""actions"": [
+                {
+                    ""name"": ""1"",
+                    ""type"": ""Button"",
+                    ""id"": ""bea6cca7-0a23-40a3-aaef-aad1b664fc68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""2"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe2a556f-a6fa-4805-8bb7-2a74e203f020"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""3"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b2a5183-8632-436b-a21b-1ef5c659c755"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""4"",
+                    ""type"": ""Button"",
+                    ""id"": ""25c09b00-798a-49e6-905b-a93316fd1f27"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""5"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8f50f15-00b6-49eb-9389-3999979afc10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""6"",
+                    ""type"": ""Button"",
+                    ""id"": ""693900f4-d28c-4bb5-b99e-d442fb995718"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4d6c78e4-3915-4998-9e2d-353944509d6b"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd88ac04-8ab6-4b3a-bb10-07535f7275d5"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""160f6f35-2d50-4ca8-885c-f040594791d8"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ba0f6d5-31fd-446b-8eeb-07d6cb570f88"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""577767f8-9259-473d-9223-56b9a25a471c"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""361b2e52-3920-43c8-8c64-b3a46e2ee767"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -384,6 +512,14 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
+        // BossTest
+        m_BossTest = asset.FindActionMap("BossTest", throwIfNotFound: true);
+        m_BossTest__1 = m_BossTest.FindAction("1", throwIfNotFound: true);
+        m_BossTest__2 = m_BossTest.FindAction("2", throwIfNotFound: true);
+        m_BossTest__3 = m_BossTest.FindAction("3", throwIfNotFound: true);
+        m_BossTest__4 = m_BossTest.FindAction("4", throwIfNotFound: true);
+        m_BossTest__5 = m_BossTest.FindAction("5", throwIfNotFound: true);
+        m_BossTest__6 = m_BossTest.FindAction("6", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -601,6 +737,79 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         }
     }
     public MenusPauseActions @MenusPause => new MenusPauseActions(this);
+
+    // BossTest
+    private readonly InputActionMap m_BossTest;
+    private IBossTestActions m_BossTestActionsCallbackInterface;
+    private readonly InputAction m_BossTest__1;
+    private readonly InputAction m_BossTest__2;
+    private readonly InputAction m_BossTest__3;
+    private readonly InputAction m_BossTest__4;
+    private readonly InputAction m_BossTest__5;
+    private readonly InputAction m_BossTest__6;
+    public struct BossTestActions
+    {
+        private @InputSystemActions m_Wrapper;
+        public BossTestActions(@InputSystemActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @_1 => m_Wrapper.m_BossTest__1;
+        public InputAction @_2 => m_Wrapper.m_BossTest__2;
+        public InputAction @_3 => m_Wrapper.m_BossTest__3;
+        public InputAction @_4 => m_Wrapper.m_BossTest__4;
+        public InputAction @_5 => m_Wrapper.m_BossTest__5;
+        public InputAction @_6 => m_Wrapper.m_BossTest__6;
+        public InputActionMap Get() { return m_Wrapper.m_BossTest; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BossTestActions set) { return set.Get(); }
+        public void SetCallbacks(IBossTestActions instance)
+        {
+            if (m_Wrapper.m_BossTestActionsCallbackInterface != null)
+            {
+                @_1.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_1;
+                @_1.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_1;
+                @_1.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_1;
+                @_2.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_2;
+                @_2.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_2;
+                @_2.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_2;
+                @_3.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_3;
+                @_3.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_3;
+                @_3.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_3;
+                @_4.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_4;
+                @_4.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_4;
+                @_4.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_4;
+                @_5.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_5;
+                @_5.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_5;
+                @_5.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_5;
+                @_6.started -= m_Wrapper.m_BossTestActionsCallbackInterface.On_6;
+                @_6.performed -= m_Wrapper.m_BossTestActionsCallbackInterface.On_6;
+                @_6.canceled -= m_Wrapper.m_BossTestActionsCallbackInterface.On_6;
+            }
+            m_Wrapper.m_BossTestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @_1.started += instance.On_1;
+                @_1.performed += instance.On_1;
+                @_1.canceled += instance.On_1;
+                @_2.started += instance.On_2;
+                @_2.performed += instance.On_2;
+                @_2.canceled += instance.On_2;
+                @_3.started += instance.On_3;
+                @_3.performed += instance.On_3;
+                @_3.canceled += instance.On_3;
+                @_4.started += instance.On_4;
+                @_4.performed += instance.On_4;
+                @_4.canceled += instance.On_4;
+                @_5.started += instance.On_5;
+                @_5.performed += instance.On_5;
+                @_5.canceled += instance.On_5;
+                @_6.started += instance.On_6;
+                @_6.performed += instance.On_6;
+                @_6.canceled += instance.On_6;
+            }
+        }
+    }
+    public BossTestActions @BossTest => new BossTestActions(this);
     public interface IGamePlayActions
     {
         void OnAtack(InputAction.CallbackContext context);
@@ -620,5 +829,14 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     public interface IMenusPauseActions
     {
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IBossTestActions
+    {
+        void On_1(InputAction.CallbackContext context);
+        void On_2(InputAction.CallbackContext context);
+        void On_3(InputAction.CallbackContext context);
+        void On_4(InputAction.CallbackContext context);
+        void On_5(InputAction.CallbackContext context);
+        void On_6(InputAction.CallbackContext context);
     }
 }
