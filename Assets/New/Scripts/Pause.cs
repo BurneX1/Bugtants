@@ -53,11 +53,11 @@ public class Pause : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         paused = false;
 
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
+        /*AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audios)
         {
             a.Play();
-        }
+        }*/
     }
     public void GoingBack()
     {
