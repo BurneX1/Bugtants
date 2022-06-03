@@ -3,10 +3,11 @@ using UnityEngine;
 public class BossAttacks : MonoBehaviour
 {
     public int damage;
-    public float prepareSpeed, maxDelayTime, attackSpeed;
-    public GameObject slimeBall, eggBall, baronHuggers;
-    public GameObject tentacles;
-    public Transform mouth, locationer;
+    public float prepareSpeed, maxDelayTime, attackSpeed, bulletSpeed;
+    public GameObject slimeBall, eggBall, bullet, baronHuggers;
+    [Tooltip("Tentaculos")]
+    public GameObject tentaclesHor, tentaclesVer;
+    public Transform mouth, locationer, gunLocation;
     private float timer = 0;
     private int direction, locatedTentacle, choosedAngle;
     [HideInInspector]
@@ -43,7 +44,7 @@ public class BossAttacks : MonoBehaviour
                     direction = -1;
                 }
                 choosedAngle = 225 - 90 * locatedTentacle;
-                tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle, 0);
+                tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle, 0);
                 step++;
                 break;
             case 2:
@@ -55,11 +56,11 @@ public class BossAttacks : MonoBehaviour
                 {
                     timer = 1;
                 }
-                tentacles.transform.localScale = new Vector3(1, 1, timer);
+                tentaclesHor.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 1)
                 {
                     timer = 0;
-                    tentacles.transform.localScale = new Vector3(1, 1, 1);
+                    tentaclesHor.transform.localScale = new Vector3(1, 1, 1);
                     step++;
                 }
                 break;
@@ -67,18 +68,18 @@ public class BossAttacks : MonoBehaviour
                 if (timer < 90 && timer > -90)
                 {
                     timer += Time.deltaTime * direction * attackSpeed;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                 }
                 else if (timer >= 90)
                 {
                     timer = 90;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                     step++;
                 }
                 else if (timer <= -90)
                 {
                     timer = -90;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                     step++;
                 }
                 break;
@@ -98,19 +99,19 @@ public class BossAttacks : MonoBehaviour
                 {
                     timer = 0;
                 }
-                tentacles.transform.localScale = new Vector3(1, 1, timer);
+                tentaclesHor.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 0)
                 {
                     timer = 0;
-                    tentacles.transform.localScale = new Vector3(1, 1, 0);
+                    tentaclesHor.transform.localScale = new Vector3(1, 1, 0);
                     step = -1;
                 }
 
                 break;
         }
-    }
+    } // Ataque tentáculo horizontalmente
 
-    public void Attack_02(BossSense location)
+    public void Attack_02(BossSense location) // Lanza baba
     {
         switch (step)
         {
@@ -181,30 +182,30 @@ public class BossAttacks : MonoBehaviour
 
             case 1:
                 Vector3 rec;
-                /*bullet.transform.position = bulletPosition.transform.position;
-                rec = (movement.radium.objetive.transform.position - bulletPosition.transform.position).normalized;
+                bullet.transform.position = gunLocation.transform.position;
+                rec = (location.objetive.transform.position - gunLocation.transform.position).normalized;
 
                 bullet.GetComponent<BulletTime>().speed = bulletSpeed;
                 bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
                 bullet.GetComponent<BulletTime>().damage = damage;
 
-                bulletLegion = Mathf.Atan2(rec.y, rec.z);
+                /*bulletLegion = Mathf.Atan2(rec.y, rec.z);
                 bulletLegion = bulletLegion * (180 / Mathf.PI);
                 bulletAngle = Mathf.Atan2(rec.z, rec.x);
-                bulletAngle = bulletAngle * (180 / Mathf.PI);
+                bulletAngle = bulletAngle * (180 / Mathf.PI);*/
 
                 bullet.GetComponent<BulletTime>().tagName = "Player";
-
+                /*
                 if (bulletAngle < 0)
                     bulletAngle = 360 + bulletAngle;
                 if (bulletLegion < 0)
                     bulletLegion = 360 + bulletLegion;
-
-                bullet.transform.LookAt(movement.radium.objetive.transform, Vector3.forward);
+                */
+                bullet.transform.LookAt(location.objetive.transform, Vector3.forward);
                 Instantiate(bullet);
                 bullet.transform.position = new Vector3(0, 0, 0);
                 bullet.transform.eulerAngles = new Vector3(0, 0, 0);
-                */
+                
                 step = -1;
                 break;
 
@@ -213,7 +214,7 @@ public class BossAttacks : MonoBehaviour
     }
 
 
-    public void Attack_05() // Como la 2
+    public void Attack_05() // Como la 2 pero a huevos
     {
         switch (step)
         {
@@ -255,7 +256,7 @@ public class BossAttacks : MonoBehaviour
                     direction = -1;
                 }
                 choosedAngle = 225 - 90 * locatedTentacle;
-                tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle, 0);
+                tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle, 0);
                 step++;
                 break;
             case 2:
@@ -267,11 +268,11 @@ public class BossAttacks : MonoBehaviour
                 {
                     timer = 1;
                 }
-                tentacles.transform.localScale = new Vector3(1, 1, timer);
+                tentaclesHor.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 1)
                 {
                     timer = 0;
-                    tentacles.transform.localScale = new Vector3(1, 1, 1);
+                    tentaclesHor.transform.localScale = new Vector3(1, 1, 1);
                     step++;
                 }
                 break;
@@ -279,18 +280,18 @@ public class BossAttacks : MonoBehaviour
                 if (timer < 90 && timer > -90)
                 {
                     timer += Time.deltaTime * direction * attackSpeed;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                 }
                 else if (timer >= 90)
                 {
                     timer = 90;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                     step++;
                 }
                 else if (timer <= -90)
                 {
                     timer = -90;
-                    tentacles.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
+                    tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                     step++;
                 }
                 break;
@@ -310,11 +311,11 @@ public class BossAttacks : MonoBehaviour
                 {
                     timer = 0;
                 }
-                tentacles.transform.localScale = new Vector3(1, 1, timer);
+                tentaclesHor.transform.localScale = new Vector3(1, 1, timer);
                 if (timer == 0)
                 {
                     timer = 0;
-                    tentacles.transform.localScale = new Vector3(1, 1, 0);
+                    tentaclesHor.transform.localScale = new Vector3(1, 1, 0);
                     step = -1;
                 }
 

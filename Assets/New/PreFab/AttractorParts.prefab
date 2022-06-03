@@ -176,6 +176,7 @@ MonoBehaviour:
   initial: {fileID: 8428745325406053215}
   final: {fileID: 8428745325733199619}
   locate: {fileID: 8428745325297702170}
+  life: {fileID: 8428745324128778247}
   signed: {fileID: 8428745324933691812}
   hitBox: {fileID: 8428745324933691813}
 --- !u!114 &8428745324128778247
@@ -195,6 +196,7 @@ MonoBehaviour:
   feedMaxTimer: 1
   takeMaxTimer: 0
   destroyable: 1
+  armor: 0
   model: {fileID: 8428745325410904488}
   objectDesperate: {fileID: 0}
   damagedMat: {fileID: 2041237758758649350, guid: 1886526a4474c1942963b473f339e862, type: 3}
