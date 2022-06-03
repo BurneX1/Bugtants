@@ -209,7 +209,7 @@ public class EnemyGroundMove : MonoBehaviour
         moving = true;
         if (marker == 0)
         {
-            intel.speed = saveSpeed * 2 * charging;
+            intel.speed = saveSpeed * 4 * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
