@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980585570414665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 1.25}
+  m_LocalPosition: {x: 0, y: -8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980585626069144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.25}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076980585633062623}
@@ -166,7 +166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
+  - {fileID: 2100000, guid: 14f083eff0f9743419d1b31b66c7135c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 2076980585626069147}
-  range: 10
+  range: 8
   retreatRange: 0
-  quietRange: 2
+  quietRange: 0.5
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586070652100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585626069147}
@@ -399,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586297716615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 1.25}
+  m_LocalPosition: {x: -8, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586360879526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 1.25}
+  m_LocalPosition: {x: 8, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -459,7 +459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586488569592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 1.25}
+  m_LocalPosition: {x: 0, y: 8, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -494,8 +494,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586613715911}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3.802, y: 12.22, z: -10.33}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076980585626069147}
@@ -505,7 +505,7 @@ Transform:
   - {fileID: 6845693538458911223}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2076980586613715905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -534,13 +534,13 @@ MonoBehaviour:
   enAttScript: {fileID: 2076980586613715904}
   enSenScript: {fileID: 2076980585633062622}
   enLifeScript: {fileID: 2076980586613715907}
-  frontDetectRange: 10
-  destinyRange: 2
+  frontDetectRange: 9
+  destinyRange: 0.7
   life: 200
-  damage: 3
-  speedSuction: 2
-  damageRate: 2
-  feedbackMaxTimer: 1
+  damage: 5
+  speedSuction: 5
+  damageRate: 1.5
+  feedbackMaxTimer: 0.5
   takeMaxTimer: 0
 --- !u!114 &2076980586613715904
 MonoBehaviour:
@@ -555,9 +555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speedSuction: 2
-  damageRate: 2
-  damage: 3
+  speedSuction: 5
+  damageRate: 1.5
+  damage: 5
   initial: {fileID: 2076980585626069147}
   final: {fileID: 2076980586070652103}
   locate: {fileID: 2076980585633062622}
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 12
   timeLifeSpan: 0
-  feedMaxTimer: 1
+  feedMaxTimer: 0.5
   takeMaxTimer: 0
   destroyable: 1
   armor: 0
@@ -687,8 +687,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 10}
-  m_Center: {x: 0, y: 0, z: 5}
+  m_Size: {x: 0.1, y: 0.1, z: 8}
+  m_Center: {x: 0, y: 0, z: 4}
 --- !u!1 &2076980587126435938
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980587126435938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 11.25}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -778,7 +778,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 500e733574922d04ea961553b1b26a63, type: 2}
+  - {fileID: 2100000, guid: 14f083eff0f9743419d1b31b66c7135c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
