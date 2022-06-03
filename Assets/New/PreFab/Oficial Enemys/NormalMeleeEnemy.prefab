@@ -78,7 +78,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106163826508139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
   rotOrigin: {fileID: 3671106164646871532}
   range: 20
   retreatRange: 0
-  quietRange: 1
+  quietRange: 1.5
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -407,6 +407,7 @@ Transform:
   - {fileID: 3671106165423918452}
   - {fileID: 3671106164134046317}
   - {fileID: 3671106164300284847}
+  - {fileID: 831766527840707430}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -487,6 +488,7 @@ MonoBehaviour:
   intel: {fileID: 3671106164646871533}
   modelsee: {fileID: 3671106164646871528}
   patrolMaxTime: 2
+  multiplyCharge: 0
   instantChase: 0
   calm: 0
   stunned: 0
@@ -536,8 +538,9 @@ MonoBehaviour:
   life: 4
   timeLifeSpan: 0
   feedMaxTimer: 1
-  takeMaxTimer: 0
+  takeMaxTimer: 3
   destroyable: 1
+  armor: 0
   model: {fileID: 3671106163826508139}
   objectDesperate: {fileID: 8115179891492567941, guid: 9cb1ac3d9ea31ca4bac6ad5f28ec1054, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
@@ -918,11 +921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
-  otherTouch: 0
   registeredObject: {fileID: 0}
-  anotherRegisteredObject: {fileID: 0}
   tagName: PatrolPoint
-  anotherTagName: 
 --- !u!1 &3671106165423918453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,3 +1047,69 @@ Transform:
   m_Father: {fileID: 3671106163963594732}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &865181774559052941
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3671106164646871532}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4656780912420471737, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c15707e2729d3b0438dbaf239a6b9d2d, type: 2}
+    - target: {fileID: 919132149155446097, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+      propertyPath: m_Name
+      value: Mothman_Idle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+--- !u!4 &831766527840707430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
+  m_PrefabInstance: {fileID: 865181774559052941}
+  m_PrefabAsset: {fileID: 0}

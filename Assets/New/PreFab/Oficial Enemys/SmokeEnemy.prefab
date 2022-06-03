@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: d23a62f2446af4b4894348a7113d3ce6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,7 +129,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720921808763399}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -446,6 +446,7 @@ Transform:
   - {fileID: 7242720922755196210}
   - {fileID: 7242720923297581007}
   - {fileID: 7242720923484659631}
+  - {fileID: 1337989390081661726}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -526,6 +527,7 @@ MonoBehaviour:
   intel: {fileID: 7242720922725904198}
   modelsee: {fileID: 7242720922725904220}
   patrolMaxTime: 0
+  multiplyCharge: 0
   instantChase: 0
   calm: 0
   stunned: 0
@@ -575,8 +577,9 @@ MonoBehaviour:
   life: 2
   timeLifeSpan: 0
   feedMaxTimer: 1
-  takeMaxTimer: 0
+  takeMaxTimer: 3
   destroyable: 1
+  armor: 0
   model: {fileID: 7242720921808763399}
   objectDesperate: {fileID: 477317275755934554, guid: 2fba18016f6aaea4eb838e092f2ba0c6, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
@@ -891,7 +894,7 @@ MonoBehaviour:
   rotOrigin: {fileID: 7242720922725904199}
   range: 20
   retreatRange: 0
-  quietRange: 1
+  quietRange: 1.5
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -1134,3 +1137,69 @@ Transform:
   m_Father: {fileID: 7242720923279115525}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1521028375176707317
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7242720922725904199}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_Name
+      value: WitheredMothman_IdleCycle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378762246819157541, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0eb0992270911eb4183fbf24c0bd67fe, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+--- !u!4 &1337989390081661726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1d9f4256705d5242a1dbb67c5e82b8f, type: 3}
+  m_PrefabInstance: {fileID: 1521028375176707317}
+  m_PrefabAsset: {fileID: 0}
