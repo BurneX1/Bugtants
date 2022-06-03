@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980585570414665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 1}
+  m_LocalPosition: {x: 0, y: -9, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980585626069144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076980585633062623}
@@ -399,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586297716615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: 1}
+  m_LocalPosition: {x: -9, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586360879526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9, y: 0, z: 1}
+  m_LocalPosition: {x: 9, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -459,7 +459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586488569592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: 1}
+  m_LocalPosition: {x: 0, y: 9, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -535,12 +535,12 @@ MonoBehaviour:
   enSenScript: {fileID: 2076980585633062622}
   enLifeScript: {fileID: 2076980586613715907}
   frontDetectRange: 9
-  destinyRange: 0.7
-  life: 200
-  damage: 5
-  speedSuction: 5
-  damageRate: 1.5
-  feedbackMaxTimer: 0.5
+  destinyRange: 0.8
+  life: 170
+  damage: 4
+  speedSuction: 3
+  damageRate: 1.2
+  feedbackMaxTimer: 0.4
   takeMaxTimer: 0
 --- !u!114 &2076980586613715904
 MonoBehaviour:
@@ -555,8 +555,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speedSuction: 5
-  damageRate: 1.5
+  speedSuction: 3
+  damageRate: 1.3
   damage: 5
   initial: {fileID: 2076980585626069147}
   final: {fileID: 2076980586070652103}
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 12
   timeLifeSpan: 0
-  feedMaxTimer: 0.5
+  feedMaxTimer: 0.4
   takeMaxTimer: 0
   destroyable: 1
   armor: 0
@@ -713,7 +713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980587126435938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585757189900}
@@ -745,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3903300367194040632}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.502}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0019999743}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 2076980586048613273}

@@ -468,7 +468,7 @@ MonoBehaviour:
   attackRange: 1.5
   patrolPoints: 0
   life: 100
-  damage: 15
+  damage: 14
   maxTimer: 1.3
   feedbackMaxTimer: 0.3
   speed: 4
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 4
   timeLifeSpan: 0
-  feedMaxTimer: 1
+  feedMaxTimer: 0.3
   takeMaxTimer: 3
   destroyable: 1
   armor: 0
@@ -560,9 +560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 3671106164646871535}
-  maxTimer: 0.5
+  maxTimer: 1.3
   stunned: 0
-  damage: 6
+  damage: 14
   waysOnAttack:
     whatSound: 1
     whereSound: 0

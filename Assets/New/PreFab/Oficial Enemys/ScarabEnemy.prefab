@@ -187,7 +187,7 @@ MonoBehaviour:
   damageStun: 5
   maxTimer: 2
   speed: 5.2
-  chargeMultiplySpeed: 6
+  chargeMultiplySpeed: 5
   stunnerTime: 2
   feedbackMaxTimer: 0.4
   maxTimerScarab: 5
@@ -208,8 +208,8 @@ MonoBehaviour:
   movement: {fileID: 3534966813682343014}
   enemySee: {fileID: 3534966814232967143}
   chargeDamage: 0
-  stunnerTime: 1
-  maxTimer: 10
+  stunnerTime: 2
+  maxTimer: 5
 --- !u!114 &3534966813682343014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,8 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 3534966813682343012}
   modelsee: {fileID: 3534966813682343009}
-  patrolMaxTime: 0
-  multiplyCharge: 0
+  patrolMaxTime: 4
+  multiplyCharge: 5
   instantChase: 0
   calm: 0
   stunned: 0
@@ -234,14 +234,14 @@ MonoBehaviour:
   moving: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 4
+  saveSpeed: 5.2
   backSpeed: 0
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
   radium: {fileID: 3534966814232967143}
-  chargeDamage: 10
+  chargeDamage: 5
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 3534966814945068927}
@@ -274,8 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 10
   timeLifeSpan: 0
-  feedMaxTimer: 1
-  takeMaxTimer: 0
+  feedMaxTimer: 0.4
+  takeMaxTimer: 4
   destroyable: 1
   armor: 0
   model: {fileID: 3534966814405745890}
@@ -296,9 +296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 3534966813682343014}
-  maxTimer: 1
+  maxTimer: 2
   stunned: 0
-  damage: 7
+  damage: 25
   waysOnAttack:
     whatSound: 1
     whereSound: 0
@@ -435,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966814090244708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 1.46, z: 0}
+  m_LocalPosition: {x: 15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3534966814266006117}
@@ -485,9 +485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 3534966813682343013}
-  range: 20
+  range: 15
   retreatRange: 0
-  quietRange: 1
+  quietRange: 1.5
   crashRange: 6
   startLook: 0
   tryWall: 0
@@ -567,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966814336844488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -18.54, z: 0}
+  m_LocalPosition: {x: 0, y: -13.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3534966814266006117}
@@ -693,7 +693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966814603614271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.46, z: 0}
+  m_LocalPosition: {x: 0, y: 16.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3534966814266006117}
@@ -723,7 +723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966814731797475}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.46, z: 0}
+  m_LocalPosition: {x: -15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3534966814266006117}
@@ -1212,7 +1212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966815209087429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 20}
+  m_LocalPosition: {x: 0, y: 1.46, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3534966814266006117}
