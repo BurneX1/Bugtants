@@ -171,6 +171,7 @@ public class PlayerView : MonoBehaviour
         if(activateHUD == true)
         {
             inactivityCounter = inactivitiMaxCounter;
+            generalCanvas.GetComponent<CanvasGroup>().alpha = 1;
             activateHUD = false;
         }
     }
