@@ -7,11 +7,13 @@ public class BossAttacks : MonoBehaviour
     public GameObject slimeBall, eggBall, bullet, baronHuggers, randomSlime, randomEgg;
     [Tooltip("Tentaculos")]
     public GameObject tentaclesHor, tentaclesVer;
+    public Detecter tentHor, tentVer;
     public Transform mouth, locationer, gunLocation;
     private float timer = 0, choosedAngle;
     private int direction, locatedTentacle;
     [HideInInspector]
     public int step = 0;
+    private bool damaged = false;
     private GameObject baronWheel, randomBullet;
     private GameObject[] a1, a2, a3;
     private bool[] b1, b2, b3;
@@ -109,11 +111,17 @@ public class BossAttacks : MonoBehaviour
                     tentaclesHor.transform.localEulerAngles = new Vector3(0, choosedAngle + timer, 0);
                     step++;
                 }
+                if (tentHor.touch && !damaged)
+                {
+                    tentHor.registeredObject.GetComponent<Life>().ReduceLife(damage);
+                    damaged = true;
+                }
                 break;
             case 4:
                 if (timer != 1)
                 {
                     timer = 1;
+                    damaged = false;
                     step++;
                 }
                 break;
@@ -502,7 +510,7 @@ public class BossAttacks : MonoBehaviour
                 break;
             case 2:
                 float angle;
-                angle = location.transform.eulerAngles.y;
+                angle = location.transform.localEulerAngles.y;
                 tentaclesVer.transform.localEulerAngles = new Vector3(-100, angle, 0);
                 timer += Time.deltaTime;
                 if (timer >= maxDelayTime)
@@ -526,12 +534,19 @@ public class BossAttacks : MonoBehaviour
                     //Instanciar el área stuneo, que dependa la distancia y el tiempo que pasa y luego desaparece
                     step++;
                 }
+                if (tentVer.touch && !damaged)
+                {
+                    tentVer.registeredObject.GetComponent<Life>().ReduceLife(damage);
+                    damaged = true;
+                }
+
                 break;
             case 4:
                 timer += Time.deltaTime;
                 if (timer >= stunDoneMaxTime)
                 {
                     timer = 1;
+                    damaged = false;
                     step++;
                 }
                 break;

@@ -730,6 +730,8 @@ MonoBehaviour:
   randomEgg: {fileID: 2242359444860930790, guid: 18df5cc3e46d0f849bfda4fdd403f9d9, type: 3}
   tentaclesHor: {fileID: 4551498206144637879}
   tentaclesVer: {fileID: 1167906334772085980}
+  tentHor: {fileID: 218930609708414386}
+  tentVer: {fileID: 7206330591259260128}
   mouth: {fileID: 236297337968420604}
   locationer: {fileID: 4551498206057821564}
   gunLocation: {fileID: 8921460149078869244}
@@ -1155,6 +1157,7 @@ GameObject:
   - component: {fileID: 4551498205986004078}
   - component: {fileID: 4551498205986004077}
   - component: {fileID: 4551498205986004076}
+  - component: {fileID: 218930609708414386}
   m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
@@ -1238,6 +1241,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &218930609708414386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551498205986004066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0712c8c04be7e44d8ff1a1f38444436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touch: 0
+  registeredObject: {fileID: 0}
+  tagName: Player
 --- !u!1 &4551498206039009753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1758,7 @@ GameObject:
   - component: {fileID: 6149166335026508021}
   - component: {fileID: 6935862781223935865}
   - component: {fileID: 4744452453972193929}
+  - component: {fileID: 7206330591259260128}
   m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
@@ -1823,3 +1842,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7206330591259260128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832062404716318812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0712c8c04be7e44d8ff1a1f38444436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touch: 0
+  registeredObject: {fileID: 0}
+  tagName: Player
