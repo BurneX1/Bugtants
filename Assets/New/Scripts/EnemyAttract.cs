@@ -13,6 +13,7 @@ public class EnemyAttract : MonoBehaviour
 
     public Transform initial, final;
     public EnemySense locate;
+    public EnemyLife life;
     public Detecter signed;
     private bool devouring;
     private Vector3 downing;
@@ -41,6 +42,7 @@ public class EnemyAttract : MonoBehaviour
     {
         if (locate.detect && signed.touch)
         {
+            life.armor = true;
             final.position = player.transform.position;
             Vector3 localPos;
             localPos.x = 0;
@@ -55,6 +57,7 @@ public class EnemyAttract : MonoBehaviour
 
     void Devourer()
     {
+        life.armor = false;
         player.GetComponent<Movement>().poseser = gameObject;
         if (downing.z > finalDestiny)
         {

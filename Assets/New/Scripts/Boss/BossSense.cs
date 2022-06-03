@@ -84,22 +84,22 @@ public class BossSense : MonoBehaviour
         if (angle <= 45 && angle > -45) //Frente
         {
             firstOption = 1;
-            secondOption = 2;
+            secondOption = 4;
         }
         else if (angle <= 135 && angle > 45) // Izquierda
         {
             firstOption = 4;
-            secondOption = 1;
+            secondOption = 3;
         }
         else if (angle <= -45 && angle > -135) // Derecha
         {
             firstOption = 2;
-            secondOption = 3;
+            secondOption = 1;
         }
         else // Atras
         {
             firstOption = 3;
-            secondOption = 4;
+            secondOption = 2;
         }
     }
     void OnDrawGizmos()
