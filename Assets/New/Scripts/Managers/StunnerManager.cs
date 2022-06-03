@@ -31,6 +31,8 @@ public class StunnerManager : MonoBehaviour
     public float maxTimer;
     [Tooltip("Velocidad normal del enemigo.")]
     public float speed;
+    [Tooltip("Multiplicador de velocidad al embestir")]
+    public float chargeMultiplySpeed;
     [Tooltip("Tiempo en que el enemigo estará aturdido y el tiempo que da al jugador al aturdirlo")]
     public float stunnerTime;
     [Tooltip("Tiempo en que se muestra el estado golpeado")]

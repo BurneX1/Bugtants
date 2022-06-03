@@ -8,7 +8,7 @@ public class EnemyGroundMove : MonoBehaviour
     public NavMeshAgent intel;
     public GameObject modelsee;
 
-    public float patrolMaxTime;
+    public float patrolMaxTime, multiplyCharge;
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
@@ -209,7 +209,7 @@ public class EnemyGroundMove : MonoBehaviour
         moving = true;
         if (marker == 0)
         {
-            intel.speed = saveSpeed * 4 * charging;
+            intel.speed = saveSpeed * multiplyCharge * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
