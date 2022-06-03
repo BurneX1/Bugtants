@@ -63,7 +63,7 @@ public class LoadNSaveData : ScriptableObject
         }
     }
 }
-
+/*
 [CustomEditor(typeof(LoadNSaveData))]
 class DataSaverEditor: Editor
 {
@@ -88,3 +88,4 @@ class DataSaverEditor: Editor
 
 
 }
+*/
