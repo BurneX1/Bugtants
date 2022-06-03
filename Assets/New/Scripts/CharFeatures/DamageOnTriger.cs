@@ -38,10 +38,6 @@ public class DamageOnTriger : MonoBehaviour
             }
             if(other.gameObject.GetComponent<EnemyLife>())
             {
-                if (other.gameObject.GetComponent<EnemyLife>().life - Mathf.Abs(damage) < lifeLimiter)
-                {
-                    return;
-                }
                 other.gameObject.GetComponent<EnemyLife>().ChangeLife(-damage);
             }
             timer = timePerDmg;

@@ -113,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534966813682343009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.33, y: 0, z: -13.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3534966814945068924}
@@ -178,20 +178,21 @@ MonoBehaviour:
   enSenScript: {fileID: 3534966814232967143}
   enLifeScript: {fileID: 3534966813682343008}
   meleeScript: {fileID: 3534966813682343019}
-  frontDetectRange: 20
-  attackRange: 1.8
+  frontDetectRange: 15
+  attackRange: 1.5
   crashRange: 6
   patrolPoints: 0
-  life: 150
-  damage: 7
-  damageStun: 10
-  maxTimer: 1
-  speed: 4
-  stunnerTime: 1
-  feedbackMaxTimer: 1
-  maxTimerScarab: 10
-  vigilanceTimer: 0
-  takeMaxTimer: 3
+  life: 200
+  damage: 25
+  damageStun: 5
+  maxTimer: 2
+  speed: 5.2
+  chargeMultiplySpeed: 6
+  stunnerTime: 2
+  feedbackMaxTimer: 0.4
+  maxTimerScarab: 5
+  vigilanceTimer: 4
+  takeMaxTimer: 4
 --- !u!114 &3534966813682343018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +225,7 @@ MonoBehaviour:
   intel: {fileID: 3534966813682343012}
   modelsee: {fileID: 3534966813682343009}
   patrolMaxTime: 0
+  multiplyCharge: 0
   instantChase: 0
   calm: 0
   stunned: 0

@@ -316,6 +316,7 @@ MonoBehaviour:
   intel: {fileID: 2337306153023611732}
   modelsee: {fileID: 2337306153023611731}
   patrolMaxTime: 0
+  multiplyCharge: 0
   instantChase: 0
   calm: 0
   stunned: 0
@@ -324,7 +325,7 @@ MonoBehaviour:
   moving: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 0
+  saveSpeed: 7
   backSpeed: 3
   saveAcc: 0
   saveLife: 0
@@ -385,6 +386,7 @@ MonoBehaviour:
   feedMaxTimer: 1
   takeMaxTimer: 3
   destroyable: 1
+  armor: 0
   model: {fileID: 2337306152945644710}
   objectDesperate: {fileID: 8115179891492567941, guid: 9cb1ac3d9ea31ca4bac6ad5f28ec1054, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
@@ -959,11 +961,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch: 0
-  otherTouch: 0
   registeredObject: {fileID: 0}
-  anotherRegisteredObject: {fileID: 0}
   tagName: PatrolPoint
-  anotherTagName: 
 --- !u!1 &2337306154558646500
 GameObject:
   m_ObjectHideFlags: 0
