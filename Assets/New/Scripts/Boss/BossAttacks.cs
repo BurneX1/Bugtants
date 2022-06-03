@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BossAttacks : MonoBehaviour
 {
-    public int damage;
-    public float prepareSpeed, maxDelayTime, attackSpeed, bulletSpeed, stunDoneMaxTime;
-    public GameObject slimeBall, eggBall, bullet, baronHuggers;
+    public int damage, areaChoose1, areaChoose2, areaChoose3;
+    public float prepareSpeed, maxDelayTime, attackSpeed, bulletSpeed, stunDoneMaxTime, artillerySpeed, dropForce;
+    public GameObject slimeBall, eggBall, bullet, baronHuggers, randomSlime, randomEgg;
     [Tooltip("Tentaculos")]
     public GameObject tentaclesHor, tentaclesVer;
     public Transform mouth, locationer, gunLocation;
@@ -12,7 +12,34 @@ public class BossAttacks : MonoBehaviour
     private int direction, locatedTentacle;
     [HideInInspector]
     public int step = 0;
-    private GameObject baronWheel;
+    private GameObject baronWheel, randomBullet;
+    private GameObject[] a1, a2, a3;
+    private bool[] b1, b2, b3;
+    private void Awake()
+    {
+        a1 = new GameObject[8];
+        a2 = new GameObject[8];
+        a3 = new GameObject[8];
+        b1 = new bool[8];
+        b2 = new bool[8];
+        b3 = new bool[8];
+        for (int i = 0; i < a1.Length; i++)
+        {
+            a1[i] = GameObject.Find("Area1/Pos" + (i + 1));
+            Debug.Log("Area1/Pos" + (i + 1));
+            b1[i] = false;
+        }
+        for (int i = 0; i < a2.Length; i++)
+        {
+            a2[i] = GameObject.Find("Area2/Pos" + (i + 1));
+            b2[i] = false;
+        }
+        for (int i = 0; i < a3.Length; i++)
+        {
+            a3[i] = GameObject.Find("Area3/Pos" + (i + 1));
+            b3[i] = false;
+        }
+    }
     public void Attack_01(BossSense location)
     {
         switch (step)
@@ -116,7 +143,6 @@ public class BossAttacks : MonoBehaviour
         switch (step)
         {
             case 0:
-
                 timer += Time.deltaTime;
                 if (timer >= maxDelayTime)
                 {
@@ -124,17 +150,120 @@ public class BossAttacks : MonoBehaviour
                     step++;
                 }
                 break;
-
             case 1:
+                Vector3 rec;
+                randomSlime.transform.position = mouth.position;
+                Vector3 up = mouth.position;
+                up.y += 10;
+                rec = (up - mouth.position).normalized;
 
+                randomSlime.GetComponent<BulletTime>().speed = artillerySpeed;
+                randomSlime.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
+                randomSlime.GetComponent<BulletTime>().damage = damage;
+                randomSlime.GetComponent<BulletTime>().tagName = "Player";
+
+                randomSlime.transform.LookAt(location.objetive.transform, Vector3.forward);
+                randomBullet=Instantiate(bullet);
+                randomSlime.transform.position = new Vector3(0, 0, 0);
+                randomSlime.transform.eulerAngles = new Vector3(0, 0, 0);
+
+                step++;
                 break;
             case 2:
-
+                float distance=0;
+                if (randomBullet != null)
+                {
+                    distance = Vector3.Distance(mouth.position, randomBullet.transform.position);
+                }
+                if (distance >= 10)
+                {
+                    Destroy(randomBullet);
+                }
+                if (randomBullet == null)
+                {
+                    step++;
+                }
                 break;
             case 3:
-
+                for (int i = 0; i < areaChoose1; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b1[count])
+                    {
+                        b1[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                for (int i = 0; i < areaChoose2; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b2[count])
+                    {
+                        b2[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                for (int i = 0; i < areaChoose3; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b3[count])
+                    {
+                        b3[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                step++;
                 break;
-
+            case 4:
+                slimeBall.GetComponent<DropBomb>().force = dropForce;
+                slimeBall.GetComponent<DropBomb>().damage = damage;
+                for (int i = 0; i < a1.Length; i++)
+                {
+                    if (b1[i])
+                    {
+                        Vector3 look = a1[i].transform.position;
+                        look.y += 10;
+                        slimeBall.transform.position = look;
+                        Instantiate(slimeBall);
+                        b1[i] = false;
+                    }
+                }
+                for (int i = 0; i < a2.Length; i++)
+                {
+                    if (b2[i])
+                    {
+                        Vector3 look = a2[i].transform.position;
+                        look.y += 10;
+                        slimeBall.transform.position = look;
+                        Instantiate(slimeBall);
+                        b2[i] = false;
+                    }
+                }
+                for (int i = 0; i < a3.Length; i++)
+                {
+                    if (b3[i])
+                    {
+                        Vector3 look = a3[i].transform.position;
+                        look.y += 10;
+                        slimeBall.transform.position = look;
+                        Instantiate(slimeBall);
+                        b3[i] = false;
+                    }
+                }
+                step++;
+                break;
+            case 5:
+                step = -1;
+                break;
         }
     }
 
@@ -214,18 +343,132 @@ public class BossAttacks : MonoBehaviour
     }
 
 
-    public void Attack_05() // Como la 2 pero a huevos
+    public void Attack_05(BossSense location) // Como la 2 pero a huevos
     {
         switch (step)
         {
             case 0:
+                timer += Time.deltaTime;
+                if (timer >= maxDelayTime)
+                {
+                    timer = 0;
+                    step++;
+                }
+                break;
+            case 1:
+                Vector3 rec;
+                randomEgg.transform.position = mouth.position;
+                Vector3 up = mouth.position;
+                up.y += 10;
+                rec = (up - mouth.position).normalized;
+
+                randomEgg.GetComponent<BulletTime>().speed = artillerySpeed;
+                randomEgg.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
+                randomEgg.GetComponent<BulletTime>().damage = damage;
+                randomEgg.GetComponent<BulletTime>().tagName = "Player";
+
+                randomEgg.transform.LookAt(location.objetive.transform, Vector3.forward);
+                randomBullet = Instantiate(bullet);
+                randomEgg.transform.position = new Vector3(0, 0, 0);
+                randomEgg.transform.eulerAngles = new Vector3(0, 0, 0);
+
                 step++;
                 break;
-
-            case 1:
-
+            case 2:
+                float distance = 0;
+                if (randomBullet != null)
+                {
+                    distance = Vector3.Distance(mouth.position, randomBullet.transform.position);
+                }
+                if (distance >= 10)
+                {
+                    Destroy(randomBullet);
+                }
+                if (randomBullet == null)
+                {
+                    step++;
+                }
                 break;
-
+            case 3:
+                for (int i = 0; i < areaChoose1; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b1[count])
+                    {
+                        b1[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                for (int i = 0; i < areaChoose2; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b2[count])
+                    {
+                        b2[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                for (int i = 0; i < areaChoose3; i++)
+                {
+                    int count = Random.Range(0, 8);
+                    if (!b3[count])
+                    {
+                        b3[count] = true;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+                step++;
+                break;
+            case 4:
+                eggBall.GetComponent<DropBomb>().force = dropForce;
+                eggBall.GetComponent<DropBomb>().damage = damage;
+                for (int i = 0; i < a1.Length; i++)
+                {
+                    if (b1[i])
+                    {
+                        Vector3 look = a1[i].transform.position;
+                        look.y += 10;
+                        eggBall.transform.position = look;
+                        Instantiate(eggBall);
+                        b1[i] = false;
+                    }
+                }
+                for (int i = 0; i < a2.Length; i++)
+                {
+                    if (b2[i])
+                    {
+                        Vector3 look = a2[i].transform.position;
+                        look.y += 10;
+                        eggBall.transform.position = look;
+                        Instantiate(eggBall);
+                        b2[i] = false;
+                    }
+                }
+                for (int i = 0; i < a3.Length; i++)
+                {
+                    if (b3[i])
+                    {
+                        Vector3 look = a3[i].transform.position;
+                        look.y += 10;
+                        eggBall.transform.position = look;
+                        Instantiate(eggBall);
+                        b3[i] = false;
+                    }
+                }
+                step++;
+                break;
+            case 5:
+                step = -1;
+                break;
         }
 
     }

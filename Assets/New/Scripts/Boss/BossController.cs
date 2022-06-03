@@ -32,7 +32,7 @@ public class BossController : MonoBehaviour
                 bossAttacker.Attack_04(bossSense);
                 break;
             case 5:
-                bossAttacker.Attack_05();
+                bossAttacker.Attack_05(bossSense);
                 break;
             case 6:
                 bossAttacker.Attack_06(bossSense);
