@@ -46,7 +46,7 @@ public class AIMovement : MonoBehaviour
         if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y,transform.position.z), new Vector3(patrolPoints[current].x, transform.position.y, patrolPoints[current].z)) > 2.5f)
         {
             agnt.speed = movSpd;
-            Debug.Log(Vector3.Distance(new Vector3(transform.position.x, transform.position.y), new Vector3(patrolPoints[current].x, transform.position.y, patrolPoints[current].z)));
+            
         }
         else
         {
