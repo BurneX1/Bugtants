@@ -712,15 +712,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  areaChoose1: 4
+  areaChoose2: 3
+  areaChoose3: 4
   prepareSpeed: 5
   maxDelayTime: 1
   attackSpeed: 5
   bulletSpeed: 5
   stunDoneMaxTime: 2
-  slimeBall: {fileID: 0}
-  eggBall: {fileID: 0}
+  artillerySpeed: 5
+  dropForce: 5
+  slimeBall: {fileID: 7826996202663681018, guid: 23f0458a28a60914cae2546f4fc1375d, type: 3}
+  eggBall: {fileID: 6414021319713875854, guid: 7bdcc53b71aaead4f876dac1a5117b4a, type: 3}
   bullet: {fileID: 3577984631709007136, guid: d98b898500a2e574a8adce10dad9ea4b, type: 3}
   baronHuggers: {fileID: 4437731692264877842, guid: e8697199b58bd8d46997ac21edfc5746, type: 3}
+  randomSlime: {fileID: 8201378202305580011, guid: 5ac18cb95ee73434caafd655fc0da14f, type: 3}
+  randomEgg: {fileID: 2242359444860930790, guid: 18df5cc3e46d0f849bfda4fdd403f9d9, type: 3}
   tentaclesHor: {fileID: 4551498206144637879}
   tentaclesVer: {fileID: 1167906334772085980}
   mouth: {fileID: 236297337968420604}
@@ -1491,7 +1498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8921460149078869244}
   m_Layer: 0
-  m_Name: GunPoint
+  m_Name: Gunpoint
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1505,7 +1512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6119033026296032717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.68}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4551498204367644209}
