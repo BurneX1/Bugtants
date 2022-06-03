@@ -84,8 +84,11 @@ public class StunnerManager : MonoBehaviour
 
         meleeScript.damage = damage;
         meleeScript.maxTimer = maxTimer;
+
         enGrdScript.saveSpeed = speed;
+        enGrdScript.multiplyCharge = chargeMultiplySpeed;
         enGrdScript.chargeDamage = damageStun;
+
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
 
