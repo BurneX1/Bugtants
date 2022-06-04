@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerView : MonoBehaviour
 {
     [Header("[General Stuff]")]
-    [Range(1,10)]
+    [Range(1, 10)]
     public float uiReactSpd;
 
     [Header("[Life Stuff]")]
+    public Image damageBorder;
     public Image lifeBar;
     public Text lifeTxt;
 
@@ -21,7 +22,7 @@ public class PlayerView : MonoBehaviour
     public Image stmBar;
     public Text stmTxt;
     public float opacTime;
-    [Range(0.0f,1.0f)]
+    [Range(0.0f, 1.0f)]
     public float opacValue;
 
     [Header("[Audio Stuff]")]
@@ -33,7 +34,7 @@ public class PlayerView : MonoBehaviour
     private Stamina c_stm;
     private Life c_life;
     private AudioManager audioMng;
-    private float stmTimer=0;
+    private float stmTimer = 0;
 
 
     private float alphaState = 1;
@@ -52,7 +53,7 @@ public class PlayerView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(uiReactSpd <=0)
+        if (uiReactSpd <= 0)
         {
             uiReactSpd = 1;
         }
@@ -69,8 +70,22 @@ public class PlayerView : MonoBehaviour
         StmOpacity();
 
         AlternateOpacity();
+        DamageBorderOpc();
     }
 
+    void DamageBorderOpc()
+    {
+        if (c_life.actualHealth < c_life.maxHealth / 3)
+        {
+            float tmpLife = (float)c_life.actualHealth / (float)c_life.maxHealth;
+            Debug.Log(1 - tmpLife - 0.3f);
+            Opac(damageBorder, (1 - tmpLife - 0.5f));
+        }
+        else
+        {
+            Opac(damageBorder, 0);
+        }
+    }
     void StmOpacity()
     {
         if (c_ctrll.c_stm.actStamina>=c_ctrll.c_stm.maxStamina)
