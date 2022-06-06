@@ -26,12 +26,13 @@ public class PlayerController : MonoBehaviour
     public ShootPlayer c_shoot;
     [HideInInspector]
     public Crouch c_crouch;
-    private float stMultiplier;
+    [HideInInspector]
+    public float stMultiplier;
     private int weaponNumber;
-    private bool moving, running, crouching, runningWall;
+    private bool moving, running, crouching, runningWall, stunned, slowed;
     [HideInInspector]
     public WaysToSound shootSound;
-
+    private GameObject slowerings;
 
     void Awake()
     {
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
-        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching);
+        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => ChangedWeapon(0);
@@ -94,11 +95,11 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerLogic()
     {
-        if (c_mov.poseser)
+        if (c_mov.poseser || stunned)
         {
             c_mov.Posesed();
         }
-        else if (c_mov.direction != Vector2.zero)
+        else if (c_mov.direction != Vector2.zero && !stunned)
         {
             c_mov.Move();
             moving = true;
@@ -108,23 +109,32 @@ public class PlayerController : MonoBehaviour
             c_mov.Quiet();
             moving = false;
         }
-        if (crouching && !c_mov.poseser)
+        if (crouching && !c_mov.poseser && !stunned)
             c_crouch.Crouching(playerData.crouchHeight);
         else
             c_crouch.NonCrouching(playerData.crouchHeight);
-        if (crouching)
+
+        if (slowed)
         {
-            c_mov.spdBuff = 1 / playerData.crouchMultiplier;
+            c_mov.speed = playerData.slowSpeed;
+        }
+        else if (crouching)
+        {
+            c_mov.speed = playerData.crouchSpeed;
         }
         else if (running && !c_stm.empty)
         {
-            c_mov.spdBuff = 1 * playerData.runMultiplier;
+            c_mov.speed = playerData.runSpeed;
         }
         else
         {
-            c_mov.spdBuff = 1;
+            c_mov.speed = playerData.normalSpeed;
         }
         c_mov.grounded = c_jmp.isGrounded;
+        if (slowed && slowerings == null)
+        {
+            StartCoroutine(SlowTheme());
+        }
     }
     void ModifyStamina()
     {
@@ -150,6 +160,17 @@ public class PlayerController : MonoBehaviour
         GetComponent<CapsuleCollider>().height = c_crouch.height;
         GetComponent<CapsuleCollider>().center = c_crouch.centering;
     }
+    public void Stunning(float seconds)
+    {
+        StartCoroutine(StunnedPlayer(seconds));
+    }
+    IEnumerator StunnedPlayer(float timer)
+    {
+        stunned = true;
+        yield return new WaitForSeconds(timer);
+        stunned = false;
+    }
+
     public void LoadData()
     {
         c_life.maxHealth = playerData.maxLife;
@@ -157,7 +178,7 @@ public class PlayerController : MonoBehaviour
         c_stm.increaseSpd = playerData.staminaRegenSpd;
         c_mp.maxMP = playerData.maxMana;
         c_jmp.heightJump = playerData.jumpHeight;
-        c_mov.speed = playerData.spd;
+        c_mov.speed = playerData.normalSpeed;
         c_crouch.crouchSpeed = playerData.crouchDelaying;
         c_mov.gravity = playerData.gravityPush;
         c_chWp.changeSeconds = playerData.delayChange;
@@ -184,5 +205,25 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         inputStm.Disable();
+    }
+    IEnumerator SlowTheme()
+    {
+        yield return new WaitForSeconds(playerData.slowTime);
+        slowed = false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Slime")
+        {
+            slowed = true;
+            slowerings = other.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Slime")
+        {
+            slowerings = null;
+        }
     }
 }

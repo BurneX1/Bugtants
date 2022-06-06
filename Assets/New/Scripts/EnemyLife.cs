@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyLife : MonoBehaviour
 {
     //General//
-    public int life;
+    public int life, giftQuantity;
     public float timeLifeSpan, feedMaxTimer, takeMaxTimer;
     private float feedTimer, takeTimer;
 
@@ -17,13 +17,14 @@ public class EnemyLife : MonoBehaviour
 
     //State Definition//
     [HideInInspector]
-    public bool dead, taken;
+    public bool dead, taken, point;
     private bool desperated;
     //Sounds//
     private SoundActive sounds;
 
-    void Start()
+    void Awake()
     {
+        point = false;
         desperated = true;
         actualMat = model.GetComponent<MeshRenderer>().material;
         feedTimer = 0;
@@ -78,12 +79,22 @@ public class EnemyLife : MonoBehaviour
         {
             if (desperated && objectDesperate != null)
             {
-                objectDesperate.transform.position = transform.position;
+                Vector3 look = transform.position;
+                if(point)
+                look.y += 0.5f;
+                objectDesperate.transform.position = look;
+                if (objectDesperate.GetComponent<RecovMP>() != null)
+                {
+                    objectDesperate.GetComponent<RecovMP>().recovAmount = giftQuantity;
+                }
+                else if (objectDesperate.GetComponent<NegativeSpores>() != null)
+                {
+                    objectDesperate.GetComponent<NegativeSpores>().damage = giftQuantity;
+                }
                 Instantiate(objectDesperate);
                 objectDesperate.transform.position = new Vector3(0, 0, 0);
                 desperated = false;
             }
-
             dead = true;
 
             if (destroyable) Destroy(gameObject);

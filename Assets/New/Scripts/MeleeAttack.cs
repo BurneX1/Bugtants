@@ -30,11 +30,12 @@ public class MeleeAttack : MonoBehaviour
     void Attack()
     {
         timer += Time.deltaTime;
-        if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3))
+        if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3 || movement.statNumber == 5))
         {
             waysOnAttack.StopThenActive();
             Debug.Log("Attacked");
             movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
+            movement.attacking = true;
             timer = 0;
         }
     }

@@ -29,12 +29,14 @@ public class StunnerManager : MonoBehaviour
     public int damageStun;
     [Tooltip("Rango de espera entre golpes (no poner valor 0 o explota tu compu).")]
     public float maxTimer;
-    [Tooltip("Velocidad normal del enemigo.")]
+    [Tooltip("Velocidad del enemigo al patrullar.")]
     public float speed;
-    [Tooltip("Multiplicador de velocidad al embestir")]
-    public float chargeMultiplySpeed;
-    [Tooltip("Tiempo en que el enemigo estará aturdido y el tiempo que da al jugador al aturdirlo")]
-    public float stunnerTime;
+    [Tooltip("Velocidad del enemigo al perseguir.")]
+    public float chaseSpeed;
+    [Tooltip("Velocidad de embestida")]
+    public float chargeSpeed;
+    [Tooltip("Tiempo en que el enemigo estará aturdido")]
+    public float stunnedTime;
     [Tooltip("Tiempo en que se muestra el estado golpeado")]
     public float feedbackMaxTimer;
     [Tooltip("Rango de espera entre embestidas (no poner valor 0 o explota tu compu).")]
@@ -43,6 +45,12 @@ public class StunnerManager : MonoBehaviour
     public float vigilanceTimer;
     [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
     public float takeMaxTimer;
+    [Tooltip("Tiempo en que se queda quieto luego de atacar")]
+    public float quietTime;
+    [Tooltip("Tiempo en que el jugador sea stuneado luego de atacar")]
+    public float stunTime;
+    [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
+    public int giftQuantity;
 
     void Awake()
     {
@@ -86,15 +94,19 @@ public class StunnerManager : MonoBehaviour
         meleeScript.maxTimer = maxTimer;
 
         enGrdScript.saveSpeed = speed;
-        enGrdScript.multiplyCharge = chargeMultiplySpeed;
+        enGrdScript.chargeSpeed = chargeSpeed;
         enGrdScript.chargeDamage = damageStun;
+        enGrdScript.maxDelay = quietTime;
+        enGrdScript.stunTimer = stunTime;
+        enGrdScript.chaseSpeed = chaseSpeed;
+        enGrdScript.patrolMaxTime = vigilanceTimer;
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
+        enLifeScript.giftQuantity = giftQuantity;
 
-        enScbScript.stunnerTime = stunnerTime;
+        enScbScript.stunnerTime = stunnedTime;
         enScbScript.maxTimer = maxTimerScarab;
-        enGrdScript.patrolMaxTime = vigilanceTimer;
     }
     void DeathCondition()
     {

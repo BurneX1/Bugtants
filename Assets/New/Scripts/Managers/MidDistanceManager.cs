@@ -27,8 +27,10 @@ public class MidDistanceManager : MonoBehaviour
     public float maxTimer;
     [Tooltip("Velocidad de la bala.")]
     public float bullSpeed;
-    [Tooltip("Velocidad normal del enemigo.")]
+    [Tooltip("Velocidad del enemigo al patrullar.")]
     public float speed;
+    [Tooltip("Velocidad del enemigo al perseguir.")]
+    public float chaseSpeed;
     [Tooltip("Tiempo en que se muestra el estado golpeado")]
     public float feedbackMaxTimer;
     [Tooltip("Velocidad del retroceso del enemigo.")]
@@ -37,6 +39,8 @@ public class MidDistanceManager : MonoBehaviour
     public float vigilanceTimer;
     [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
     public float takeMaxTimer;
+    [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
+    public int giftQuantity;
 
 
     void Awake()
@@ -85,10 +89,13 @@ public class MidDistanceManager : MonoBehaviour
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
+        enLifeScript.giftQuantity = giftQuantity;
 
         enGrdScript.saveSpeed = speed;
         enGrdScript.backSpeed = backSpeed;
         enGrdScript.patrolMaxTime = vigilanceTimer;
+        enGrdScript.chaseSpeed = chaseSpeed;
+
     }
     void DeathCondition()
     {

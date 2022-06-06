@@ -3,7 +3,7 @@ public class Movement : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody rigid;
-    public float speed, spdBuff, gravity;
+    public float speed, spdBuff, gravity, slowRatio;
     [HideInInspector]
     public Vector2 direction;
     [HideInInspector]
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
             forward = Vector3.zero;
         }
         total = Vector3.Normalize(right + forward);
-        float tmpSpd = speed * spdBuff;
+        float tmpSpd = speed / slowRatio;
 
 
         if (!grounded)

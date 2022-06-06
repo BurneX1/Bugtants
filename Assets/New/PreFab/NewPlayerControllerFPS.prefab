@@ -1747,6 +1747,7 @@ MonoBehaviour:
   speed: 5
   spdBuff: 0
   gravity: 0
+  slowRatio: 1
   direction: {x: 0, y: 0}
   poseser: {fileID: 0}
   grounded: 0
@@ -1808,6 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiReactSpd: 2
+  damageBorder: {fileID: 8867376072114997652}
   lifeBar: {fileID: 562599379375249172}
   lifeTxt: {fileID: 5147668701512764171}
   manaBar: {fileID: 5948758851729229801}

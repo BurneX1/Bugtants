@@ -6,7 +6,7 @@ public class DropBomb : MonoBehaviour
 {
     private Rigidbody rigid;
     [HideInInspector]
-    public float force;
+    public float force, stunRate;
     [HideInInspector]
     public int damage;
     public GameObject contain;
@@ -37,6 +37,10 @@ public class DropBomb : MonoBehaviour
             if (collision.GetComponent<Life>() != null)
             {
                 collision.GetComponent<Life>().ReduceLife(damage);
+            }
+            if (collision.GetComponent<PlayerController>() != null)
+            {
+                collision.GetComponent<PlayerController>().Stunning(stunRate);
             }
             contain.transform.position = transform.position;
             Vector3 look = contain.transform.position;
