@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &323382880884539089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1727,6 +1727,7 @@ MonoBehaviour:
   c_chWp: {fileID: 0}
   c_shoot: {fileID: 0}
   c_crouch: {fileID: 0}
+  stMultiplier: 0
   shootSound:
     whatSound: 0
     whereSound: 0
@@ -1814,10 +1815,6 @@ MonoBehaviour:
   lifeTxt: {fileID: 5147668701512764171}
   manaBar: {fileID: 5948758851729229801}
   manaTxt: {fileID: 8995624609272964815}
-  stmBar: {fileID: 3997666191911583770}
-  stmTxt: {fileID: 4730758775973531443}
-  opacTime: 1
-  opacValue: 0.05
   runSnd: 
   walkSnd: 
   jumpSnd: 
@@ -2051,7 +2048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7637620189830599723
 RectTransform:
   m_ObjectHideFlags: 0

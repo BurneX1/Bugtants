@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             c_mov.speed = playerData.crouchSpeed;
         }
-        else if (running && !c_stm.empty)
+        else if (running /*&& !c_stm.empty*/)
         {
             c_mov.speed = playerData.runSpeed;
         }
