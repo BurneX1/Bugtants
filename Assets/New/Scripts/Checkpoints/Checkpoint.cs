@@ -26,7 +26,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerControl player = other.GetComponent<PlayerControl>();
+        CheckpointsPlayer player = other.GetComponent<CheckpointsPlayer>();
         if ( player != null )
         {
             Activate();

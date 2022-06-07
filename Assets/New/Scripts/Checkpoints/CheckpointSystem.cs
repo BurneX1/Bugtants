@@ -48,7 +48,7 @@ public class CheckpointSystem : MonoBehaviour
                 checkpoints[i].Activate();
             }
 
-            PlayerControl player = FindObjectOfType<PlayerControl>();
+            CheckpointsPlayer player = FindObjectOfType<CheckpointsPlayer>();
             player.SetPosition(checkpoints[currentCheckpointIndex].GetCheckpointPosition());
         }
     }
@@ -56,6 +56,7 @@ public class CheckpointSystem : MonoBehaviour
     public void DeleteData()
     {
         PlayerPrefs.DeleteKey(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        currentCheckpointIndex = -1;
     }
 
 
