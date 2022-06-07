@@ -87,6 +87,7 @@ public class EnemyGroundMove : MonoBehaviour
                     {
                         Charge();
                     }
+                    if(intel.autoRepath)
                     Look();
                 }
                 else
@@ -113,7 +114,7 @@ public class EnemyGroundMove : MonoBehaviour
             {
                 moving = true;
             }
-            intel.speed = saveSpeed;
+            intel.speed = saveSpeed * charging;
             intel.autoRepath = true;
             pinner = 0;
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
@@ -157,7 +158,7 @@ public class EnemyGroundMove : MonoBehaviour
         else if (stat == Status.chasing)
         {
             moving = true;
-            intel.speed = chaseSpeed;
+            intel.speed = chaseSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
             intel.autoRepath = true;
@@ -165,7 +166,7 @@ public class EnemyGroundMove : MonoBehaviour
         else if (stat == Status.retreating)
         {
             moving = true;
-            intel.speed = backSpeed;
+            intel.speed = backSpeed * charging;
             intel.SetDestination(radium.retreatPos.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             intel.autoRepath = true;
@@ -220,13 +221,13 @@ public class EnemyGroundMove : MonoBehaviour
         moving = true;
         if (marker == 0)
         {
-            intel.speed = chargeSpeed;
+            intel.speed = chargeSpeed * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             marker++;
         }
-        if (Vector3.Distance(intel.destination, transform.position) < 0.1f)
+        if (Vector3.Distance(intel.destination, transform.position) < 0.15f)
         {
             intel.speed = 0;
             charging = 0;

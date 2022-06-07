@@ -9,7 +9,8 @@ public class MeleeAttack : MonoBehaviour
     [HideInInspector]
     public bool stunned;
     public int damage;
-    private float timer;
+    [HideInInspector]
+    public float timer;
     public WaysToSound waysOnAttack;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,11 @@ public class MeleeAttack : MonoBehaviour
     void Attack()
     {
         timer += Time.deltaTime;
-        if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3 || movement.statNumber == 5))
+        if (movement.statNumber == 4)
+        {
+            timer = 0;
+        }
+        else if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3))
         {
             waysOnAttack.StopThenActive();
             Debug.Log("Attacked");
