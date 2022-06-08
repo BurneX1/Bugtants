@@ -542,6 +542,7 @@ MonoBehaviour:
   damageRate: 1.2
   feedbackMaxTimer: 0.4
   takeMaxTimer: 0
+  giftQuantity: 5
 --- !u!114 &2076980586613715904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 12
+  giftQuantity: 0
   timeLifeSpan: 0
   feedMaxTimer: 0.4
   takeMaxTimer: 0
@@ -587,6 +589,7 @@ MonoBehaviour:
   damagedMat: {fileID: 2041237758758649350, guid: 1886526a4474c1942963b473f339e862, type: 3}
   dead: 0
   taken: 0
+  point: 0
 --- !u!54 &2076980586613715906
 Rigidbody:
   m_ObjectHideFlags: 0

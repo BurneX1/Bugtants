@@ -24,7 +24,7 @@ public class EnemyMidDistance : MonoBehaviour
     void Shoot()
     {
         timer += Time.deltaTime;
-        if (timer >= maxTimer && (movement.statNumber == 2|| movement.statNumber == 3))
+        if (timer >= maxTimer && (movement.statNumber == 2|| movement.statNumber == 3 || movement.statNumber == 5))
         {
             bullet.transform.position = bulletPosition.transform.position;
             rec = (movement.radium.objetive.transform.position - bulletPosition.transform.position).normalized;

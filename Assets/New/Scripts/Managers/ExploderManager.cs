@@ -21,8 +21,10 @@ public class ExploderManager : MonoBehaviour
     public int life;
     [Tooltip("La cantidad que reduce la vida del jugador mediante su explosión")]
     public int damage;
-    [Tooltip("Velocidad normal del enemigo.")]
+    [Tooltip("Velocidad del enemigo al patrullar.")]
     public float speed;
+    [Tooltip("Velocidad del enemigo al perseguir.")]
+    public float chaseSpeed;
     [Tooltip("Tiempo en que se muestra el estado golpeado")]
     public float feedbackMaxTimer;
     [Tooltip("Tiempo que tendrá el charco lenteador.")]
@@ -31,6 +33,8 @@ public class ExploderManager : MonoBehaviour
     public float vigilanceTimer;
     [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
     public float takeMaxTimer;
+    [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
+    public int giftQuantity;
 
     void Awake()
     {
@@ -71,11 +75,15 @@ public class ExploderManager : MonoBehaviour
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
+        enLifeScript.giftQuantity = giftQuantity;
 
-        enGrdScript.saveSpeed = speed;
         explodeScript.timeLifeSpan = timeLifeSpan;
         explodeScript.damage = damage;
+
+        enGrdScript.saveSpeed = speed;
         enGrdScript.patrolMaxTime = vigilanceTimer;
+        enGrdScript.chaseSpeed = chaseSpeed;
+
     }
     void DeathCondition()
     {

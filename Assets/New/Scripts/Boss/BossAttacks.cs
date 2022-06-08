@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class BossAttacks : MonoBehaviour
 {
-    public int damage, areaChoose1, areaChoose2, areaChoose3;
-    public float prepareSpeed, maxDelayTime, attackSpeed, bulletSpeed, stunDoneMaxTime, artillerySpeed, dropForce;
+    public int damage, areaChoose1, areaChoose2, areaChoose3, numberShoots;
+    public float prepareSpeed, maxDelayTime, shootMaxTime, attackSpeed, bulletSpeed, stunDoneMaxTime, artillerySpeed, dropForce, stunRate, stunDrop;
     public GameObject slimeBall, eggBall, bullet, baronHuggers, randomSlime, randomEgg;
     [Tooltip("Tentaculos")]
     public GameObject tentaclesHor, tentaclesVer;
-    public Detecter tentHor, tentVer;
+    public Detecter tentHor, tentVer, stunVer;
     public Transform mouth, locationer, gunLocation;
     private float timer = 0, choosedAngle;
-    private int direction, locatedTentacle;
+    private int direction, locatedTentacle, shoots;
     [HideInInspector]
     public int step = 0;
     private bool damaged = false;
@@ -234,6 +234,7 @@ public class BossAttacks : MonoBehaviour
             case 4:
                 slimeBall.GetComponent<DropBomb>().force = dropForce;
                 slimeBall.GetComponent<DropBomb>().damage = damage;
+                slimeBall.GetComponent<DropBomb>().stunRate = stunDrop;
                 for (int i = 0; i < a1.Length; i++)
                 {
                     if (b1[i])
@@ -304,7 +305,7 @@ public class BossAttacks : MonoBehaviour
     }
 
 
-    public void Attack_04(BossSense location) // Parecido a BeetleBomb
+    public void Attack_04(BossSense location) // Parecido a BeetleBomb pero a más balas
     {
         switch (step)
         {
@@ -312,38 +313,37 @@ public class BossAttacks : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer >= maxDelayTime)
                 {
+                    Vector3 rec;
+                    bullet.transform.position = gunLocation.transform.position;
+                    rec = (location.objetive.transform.position - gunLocation.transform.position).normalized;
+
+                    bullet.GetComponent<BulletTime>().speed = bulletSpeed;
+                    bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
+                    bullet.GetComponent<BulletTime>().damage = damage;
+
+                    /*bulletLegion = Mathf.Atan2(rec.y, rec.z);
+                    bulletLegion = bulletLegion * (180 / Mathf.PI);
+                    bulletAngle = Mathf.Atan2(rec.z, rec.x);
+                    bulletAngle = bulletAngle * (180 / Mathf.PI);*/
+
+                    bullet.GetComponent<BulletTime>().tagName = "Player";
+                    /*
+                    if (bulletAngle < 0)
+                        bulletAngle = 360 + bulletAngle;
+                    if (bulletLegion < 0)
+                        bulletLegion = 360 + bulletLegion;
+                    */
+                    bullet.transform.LookAt(location.objetive.transform, Vector3.forward);
+                    Instantiate(bullet);
+                    bullet.transform.position = new Vector3(0, 0, 0);
+                    bullet.transform.eulerAngles = new Vector3(0, 0, 0);
+                    shoots++;
                     timer = 0;
-                    step++;
                 }
-                break;
-
-            case 1:
-                Vector3 rec;
-                bullet.transform.position = gunLocation.transform.position;
-                rec = (location.objetive.transform.position - gunLocation.transform.position).normalized;
-
-                bullet.GetComponent<BulletTime>().speed = bulletSpeed;
-                bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
-                bullet.GetComponent<BulletTime>().damage = damage;
-
-                /*bulletLegion = Mathf.Atan2(rec.y, rec.z);
-                bulletLegion = bulletLegion * (180 / Mathf.PI);
-                bulletAngle = Mathf.Atan2(rec.z, rec.x);
-                bulletAngle = bulletAngle * (180 / Mathf.PI);*/
-
-                bullet.GetComponent<BulletTime>().tagName = "Player";
-                /*
-                if (bulletAngle < 0)
-                    bulletAngle = 360 + bulletAngle;
-                if (bulletLegion < 0)
-                    bulletLegion = 360 + bulletLegion;
-                */
-                bullet.transform.LookAt(location.objetive.transform, Vector3.forward);
-                Instantiate(bullet);
-                bullet.transform.position = new Vector3(0, 0, 0);
-                bullet.transform.eulerAngles = new Vector3(0, 0, 0);
-                
-                step = -1;
+                if (shoots >= numberShoots)
+                {
+                    step = -1;
+                }
                 break;
 
         }
@@ -439,6 +439,7 @@ public class BossAttacks : MonoBehaviour
             case 4:
                 eggBall.GetComponent<DropBomb>().force = dropForce;
                 eggBall.GetComponent<DropBomb>().damage = damage;
+                eggBall.GetComponent<DropBomb>().stunRate = stunDrop;
                 for (int i = 0; i < a1.Length; i++)
                 {
                     if (b1[i])
@@ -542,6 +543,13 @@ public class BossAttacks : MonoBehaviour
 
                 break;
             case 4:
+                if (stunVer.touch)
+                {
+                    stunVer.registeredObject.GetComponent<PlayerController>().Stunning(stunRate);
+                }
+                step++;
+                break;
+            case 5:
                 timer += Time.deltaTime;
                 if (timer >= stunDoneMaxTime)
                 {
@@ -550,7 +558,7 @@ public class BossAttacks : MonoBehaviour
                     step++;
                 }
                 break;
-            case 5:
+            case 6:
                 if (timer > 0)
                 {
                     timer -= Time.deltaTime * prepareSpeed;

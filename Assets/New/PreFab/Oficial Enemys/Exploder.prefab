@@ -368,10 +368,12 @@ MonoBehaviour:
   life: 70
   damage: 30
   speed: 8.5
+  chaseSpeed: 9
   feedbackMaxTimer: 0.4
   timeLifeSpan: 10
   vigilanceTimer: 2.5
   takeMaxTimer: 4
+  giftQuantity: 5
 --- !u!114 &2885942110906221345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,21 +389,25 @@ MonoBehaviour:
   intel: {fileID: 2885942110906221351}
   modelsee: {fileID: 2885942110906221346}
   patrolMaxTime: 1.5
-  multiplyCharge: 0
+  stunTimer: 0
   instantChase: 0
   calm: 0
   stunned: 0
   charge: 0
   touch: 0
   moving: 0
+  attacking: 0
   statNumber: 0
   stat: 0
   saveSpeed: 8.5
   backSpeed: 0
+  chaseSpeed: 0
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
+  chargeSpeed: 0
+  maxDelay: 0
   radium: {fileID: 2885942110924576187}
   chargeDamage: 0
   moveSound: {fileID: 0}
@@ -435,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 4
+  giftQuantity: 5
   timeLifeSpan: 3
   feedMaxTimer: 0.4
   takeMaxTimer: 4
@@ -445,6 +452,7 @@ MonoBehaviour:
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
   dead: 0
   taken: 0
+  point: 0
 --- !u!114 &2885942110906221348
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,12 +18,12 @@ public class PlayerView : MonoBehaviour
     public Image manaBar;
     public Text manaTxt;
 
-    [Header("[Stamina Stuff]")]
+    /*[Header("[Stamina Stuff]")]
     public Image stmBar;
     public Text stmTxt;
     public float opacTime;
     [Range(0.0f, 1.0f)]
-    public float opacValue;
+    public float opacValue;*/
 
     [Header("[Audio Stuff]")]
     public string runSnd;
@@ -66,8 +66,8 @@ public class PlayerView : MonoBehaviour
     {
         BarRefresh(lifeBar, c_ctrll.c_life.actualHealth, c_ctrll.c_life.maxHealth, lifeTxt, "" + c_ctrll.c_life.actualHealth + "");
         BarRefresh(manaBar, c_ctrll.c_mp.actualMP, c_ctrll.c_mp.maxMP, manaTxt, "" + c_ctrll.c_mp.actualMP + "");
-        BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + (int)c_ctrll.c_stm.actStamina + "");
-        StmOpacity();
+        //BarRefresh(stmBar, c_ctrll.c_stm.actStamina, c_ctrll.c_stm.maxStamina, stmTxt, "" + (int)c_ctrll.c_stm.actStamina + "");
+        //StmOpacity();
 
         AlternateOpacity();
         DamageBorderOpc();
@@ -86,7 +86,9 @@ public class PlayerView : MonoBehaviour
             Opac(damageBorder, 0);
         }
     }
-    void StmOpacity()
+
+    ////-Funcion para Estamina en Interfaz(Fuera de Uso)-////
+    /*void StmOpacity()
     {
         if (c_ctrll.c_stm.actStamina>=c_ctrll.c_stm.maxStamina)
         {
@@ -104,7 +106,7 @@ public class PlayerView : MonoBehaviour
                 Opac(stmBar, opacValue);
             }
         }
-    }
+    }*/
 
     private void Opac(Image box, float alpha)
     {

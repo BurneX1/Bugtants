@@ -16,11 +16,13 @@ MonoBehaviour:
   maxStamina: 100
   maxMana: 100
   staminaRegenSpd: 10
-  spd: 4
-  runMultiplier: 1.6
+  normalSpeed: 5
+  runSpeed: 10
   jumpHeight: 6
   crouchHeight: 0.2
-  crouchMultiplier: 2
+  crouchSpeed: 4
   crouchDelaying: 1
   gravityPush: 40
   delayChange: 0.4
+  slowSpeed: 2
+  slowTime: 0

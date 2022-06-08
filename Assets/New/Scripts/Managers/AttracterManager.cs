@@ -26,6 +26,8 @@ public class AttracterManager : MonoBehaviour
     public float feedbackMaxTimer;
     [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
     public float takeMaxTimer;
+    [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
+    public int giftQuantity;
 
 
 
@@ -33,6 +35,7 @@ public class AttracterManager : MonoBehaviour
     void Start()
     {
         enLifeScript.life = life;
+        enLifeScript.point = true;
         locker = true;
     }
 
@@ -60,6 +63,7 @@ public class AttracterManager : MonoBehaviour
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
+        enLifeScript.giftQuantity = giftQuantity;
 
     }
     void DeathCondition()

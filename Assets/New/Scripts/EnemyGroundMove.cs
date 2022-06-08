@@ -8,20 +8,20 @@ public class EnemyGroundMove : MonoBehaviour
     public NavMeshAgent intel;
     public GameObject modelsee;
 
-    public float patrolMaxTime, multiplyCharge;
+    public float patrolMaxTime, stunTimer;
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
-    public bool calm, stunned, charge, touch, moving;
+    public bool calm, stunned, charge, touch, moving, attacking;
     [HideInInspector]
     public int statNumber;
-    // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4
+    // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4, waiting = 5
 
-    public enum Status { patrolling, chasing, retreating, looking, charging };
+    public enum Status { patrolling, chasing, retreating, looking, charging, waiting };
     public Status stat;
     [HideInInspector]
-    public float saveSpeed, backSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1;
-    private float stunnedTimer, patrolTimer;
+    public float saveSpeed, backSpeed, chaseSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1, chargeSpeed, maxDelay;
+    private float stunnedTimer, patrolTimer, waitTimer;
     public EnemySense radium;
     private int pinner, marker;
     public int chargeDamage;
@@ -44,8 +44,10 @@ public class EnemyGroundMove : MonoBehaviour
         {
             guardarVida = valores.vida;
         }*/
+        attacking = false;
         charging = 1;
         stunnedTimer = 0;
+        waitTimer = 0;
         pinner = 0;
         marker = 0;
         charge = false;
@@ -85,6 +87,7 @@ public class EnemyGroundMove : MonoBehaviour
                     {
                         Charge();
                     }
+                    if(intel.autoRepath)
                     Look();
                 }
                 else
@@ -99,6 +102,8 @@ public class EnemyGroundMove : MonoBehaviour
     void Movement()
     {
         marker = 0;
+        
+        
         if (stat == Status.patrolling && !touch)
         {
             if (patrolPoint.Length == 0)
@@ -134,14 +139,6 @@ public class EnemyGroundMove : MonoBehaviour
             {
                 intel.SetDestination(transform.position);
             }
-            /*
-            if (radar.detectar || guardarVida != valores.vida)
-            {
-                valores.pesada = false;
-                Mirar();
-                tranquilo = false;
-            }
-            */
 
         }
         else if (stat == Status.patrolling && touch)
@@ -161,7 +158,7 @@ public class EnemyGroundMove : MonoBehaviour
         else if (stat == Status.chasing)
         {
             moving = true;
-            intel.speed = saveSpeed * charging;
+            intel.speed = chaseSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
             intel.autoRepath = true;
@@ -169,7 +166,7 @@ public class EnemyGroundMove : MonoBehaviour
         else if (stat == Status.retreating)
         {
             moving = true;
-            intel.speed = backSpeed;
+            intel.speed = backSpeed * charging;
             intel.SetDestination(radium.retreatPos.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             intel.autoRepath = true;
@@ -182,8 +179,22 @@ public class EnemyGroundMove : MonoBehaviour
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             intel.autoRepath = true;
         }
-
-        if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken)) && !radium.feel && !radium.hear)
+        else if (stat == Status.waiting)
+        {
+            waitTimer += Time.deltaTime;
+            intel.speed = 0;
+            if (waitTimer >= maxDelay)
+            {
+                attacking = false;
+                waitTimer = 0;
+            }
+        }
+        if (attacking)
+        {
+            stat = Status.waiting;
+            statNumber = 5;
+        }
+        else if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken)) && !radium.feel && !radium.hear)
         {
             stat = Status.chasing;
             statNumber = 0;
@@ -203,19 +214,20 @@ public class EnemyGroundMove : MonoBehaviour
             stat = Status.looking;
             statNumber = 3;
         }
+
     }
     void Charge()
     {
         moving = true;
         if (marker == 0)
         {
-            intel.speed = saveSpeed * multiplyCharge * charging;
+            intel.speed = chargeSpeed * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
             marker++;
         }
-        if (Vector3.Distance(intel.destination, transform.position) < 0.1f)
+        if (Vector3.Distance(intel.destination, transform.position) < 0.15f)
         {
             intel.speed = 0;
             charging = 0;
@@ -230,6 +242,10 @@ public class EnemyGroundMove : MonoBehaviour
             if (radium.objetive.GetComponent<Life>() != null)
             {
                 radium.objetive.GetComponent<Life>().ReduceLife(chargeDamage);
+            }
+            if (radium.objetive.GetComponent<PlayerController>() != null)
+            {
+                radium.objetive.GetComponent<PlayerController>().Stunning(stunTimer);
             }
         }
     }

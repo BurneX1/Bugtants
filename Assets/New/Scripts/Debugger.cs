@@ -16,7 +16,7 @@ public class Debugger : MonoBehaviour
     private int debugNumber = 0;
     void Awake()
     {
-        playerField = new InputField[12];
+        playerField = new InputField[14];
         for (int i = 0; i < playerField.Length; i++)
         {
             playerField[i] = GameObject.Find("PlayerPart/InputField " + "(" + i + ")").GetComponent<InputField>();
@@ -28,14 +28,17 @@ public class Debugger : MonoBehaviour
         playerField[1].text = "" + playerStats.maxStamina;
         playerField[2].text = "" + playerStats.maxMana;
         playerField[3].text = "" + playerStats.staminaRegenSpd;
-        playerField[4].text = "" + playerStats.spd;
-        playerField[5].text = "" + playerStats.runMultiplier;
+        playerField[4].text = "" + playerStats.normalSpeed;
+        playerField[5].text = "" + playerStats.runSpeed;
         playerField[6].text = "" + playerStats.jumpHeight;
         playerField[7].text = "" + playerStats.crouchHeight;
-        playerField[8].text = "" + playerStats.crouchMultiplier;
+        playerField[8].text = "" + playerStats.crouchSpeed;
         playerField[9].text = "" + playerStats.crouchDelaying;
         playerField[10].text = "" + playerStats.gravityPush;
         playerField[11].text = "" + playerStats.delayChange;
+        playerField[12].text = "" + playerStats.slowSpeed;
+        playerField[13].text = "" + playerStats.slowTime;
+
         //
 
         shotgunField = new InputField[4];
@@ -114,21 +117,25 @@ public class Debugger : MonoBehaviour
         float.TryParse(playerField[3].text, out value);
         playerStats.staminaRegenSpd = value;
         float.TryParse(playerField[4].text, out value);
-        playerStats.spd = value;
+        playerStats.normalSpeed = value;
         float.TryParse(playerField[5].text, out value);
-        playerStats.runMultiplier = value;
+        playerStats.runSpeed = value;
         float.TryParse(playerField[6].text, out value);
         playerStats.jumpHeight = value;
         float.TryParse(playerField[7].text, out value);
         playerStats.crouchHeight = value;
         float.TryParse(playerField[8].text, out value);
-        playerStats.crouchMultiplier = value;
+        playerStats.crouchSpeed = value;
         float.TryParse(playerField[9].text, out value);
         playerStats.crouchDelaying = value;
         float.TryParse(playerField[10].text, out value);
         playerStats.gravityPush = value;
         float.TryParse(playerField[11].text, out value);
         playerStats.delayChange = value;
+        float.TryParse(playerField[12].text, out value);
+        playerStats.slowSpeed = value;
+        float.TryParse(playerField[13].text, out value);
+        playerStats.slowTime = value;
 
     }
 

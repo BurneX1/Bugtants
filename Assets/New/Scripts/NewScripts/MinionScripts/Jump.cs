@@ -11,10 +11,10 @@ public class Jump : MonoBehaviour
         groundCheck = transform.Find("GroundCheck");
     }
 
-    public void Jumping(bool crouching)
+    public void Jumping(bool crouching, bool stunned)
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.01f, 1 << 3);
-        if (isGrounded && !crouching)
+        if (isGrounded && !crouching && !stunned)
         rigid.velocity = new Vector3(rigid.velocity.y, Mathf.Sqrt(0 - (2 * -9.8f * heightJump)));
     }
 }
