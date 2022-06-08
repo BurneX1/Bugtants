@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b12202ca3318c84cb0963c4ae2fe293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enmyData: {fileID: 11400000, guid: 8ea63977076c5d74d91e1497557deb16, type: 2}
   enGrdScript: {fileID: 2885942110906221345}
   enSenScript: {fileID: 2885942110924576187}
   enLifeScript: {fileID: 2885942110906221349}
@@ -388,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 2885942110906221351}
   modelsee: {fileID: 2885942110906221346}
-  patrolMaxTime: 1.5
+  patrolMaxTime: 2.5
   stunTimer: 0
   instantChase: 0
   calm: 0
@@ -401,7 +402,7 @@ MonoBehaviour:
   stat: 0
   saveSpeed: 8.5
   backSpeed: 0
-  chaseSpeed: 0
+  chaseSpeed: 9
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0

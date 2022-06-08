@@ -234,7 +234,7 @@ MonoBehaviour:
   rotOrigin: {fileID: 2076980585626069147}
   range: 9
   retreatRange: 0
-  quietRange: 0.7
+  quietRange: 0.8
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -369,7 +369,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076980586070652100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2076980585626069147}
@@ -531,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2d2179eae0528478cd787ff85641d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enmyData: {fileID: 11400000, guid: 0f12364d8f727e545827eead37ecc817, type: 2}
   enAttScript: {fileID: 2076980586613715904}
   enSenScript: {fileID: 2076980585633062622}
   enLifeScript: {fileID: 2076980586613715907}
@@ -557,8 +558,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speedSuction: 3
-  damageRate: 1.3
-  damage: 5
+  damageRate: 1.2
+  damage: 4
   initial: {fileID: 2076980585626069147}
   final: {fileID: 2076980586070652103}
   locate: {fileID: 2076980585633062622}
@@ -578,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 12
-  giftQuantity: 0
+  giftQuantity: 5
   timeLifeSpan: 0
   feedMaxTimer: 0.4
   takeMaxTimer: 0

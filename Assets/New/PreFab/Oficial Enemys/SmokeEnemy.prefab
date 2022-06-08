@@ -499,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c3b5fedf9aad443919d579fbcea9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enmyData: {fileID: 11400000, guid: 7e373af86cda8f24a9b04d708be49fa0, type: 2}
   enGrdScript: {fileID: 7242720922725904195}
   enSenScript: {fileID: 7242720923297581006}
   enLifeScript: {fileID: 7242720922725904194}
@@ -543,13 +544,13 @@ MonoBehaviour:
   stat: 0
   saveSpeed: 6
   backSpeed: 0
-  chaseSpeed: 0
+  chaseSpeed: 6
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
   chargeSpeed: 0
-  maxDelay: 0
+  maxDelay: 2
   radium: {fileID: 7242720923297581006}
   chargeDamage: 0
   moveSound: {fileID: 0}
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
-  giftQuantity: 0
+  giftQuantity: 5
   timeLifeSpan: 0
   feedMaxTimer: 0.4
   takeMaxTimer: 4
@@ -611,6 +612,7 @@ MonoBehaviour:
   maxTimer: 1.8
   stunned: 0
   damage: 18
+  timer: 0
   waysOnAttack:
     whatSound: 0
     whereSound: 1

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf350c9141713842854835137fcfc52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enmyData: {fileID: 11400000, guid: 443692fedf706c844a1d2ba4cb481028, type: 2}
   enGrdScript: {fileID: 3534966813682343014}
   enScbScript: {fileID: 3534966813682343018}
   enSenScript: {fileID: 3534966814232967143}
@@ -229,7 +230,7 @@ MonoBehaviour:
   intel: {fileID: 3534966813682343012}
   modelsee: {fileID: 3534966813682343009}
   patrolMaxTime: 4
-  stunTimer: 0
+  stunTimer: 2
   instantChase: 0
   calm: 0
   stunned: 0
@@ -241,13 +242,13 @@ MonoBehaviour:
   stat: 0
   saveSpeed: 5.2
   backSpeed: 0
-  chaseSpeed: 0
+  chaseSpeed: 6
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
-  chargeSpeed: 0
-  maxDelay: 0
+  chargeSpeed: 5
+  maxDelay: 2
   radium: {fileID: 3534966814232967143}
   chargeDamage: 5
   moveSound: {fileID: 0}
@@ -309,6 +310,7 @@ MonoBehaviour:
   maxTimer: 2
   stunned: 0
   damage: 25
+  timer: 0
   waysOnAttack:
     whatSound: 1
     whereSound: 0
