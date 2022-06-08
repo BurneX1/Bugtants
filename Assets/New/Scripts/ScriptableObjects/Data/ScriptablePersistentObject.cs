@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using System.Reflection;
+using System;
 public abstract class ScriptablePersistentObject : ScriptableObject
 {
-
     //Path: Application.dataPath + "/Settings/Data/" + this.name + "Data.json"
     public virtual void Save()
     {
@@ -25,5 +26,89 @@ public abstract class ScriptablePersistentObject : ScriptableObject
     public virtual void ResetData()
     {
         //Save();
+    }
+    public virtual void SetVariable(string fieldName, int value)
+    {
+
+        Type theType = this.GetType();
+        FieldInfo field = theType.GetField(fieldName);
+
+        if (field.FieldType == null)
+        {
+            Debug.LogWarning("The field " + fieldName + " was not found in " + this + " script");
+            return;
+        }
+
+        if (field.FieldType != value.GetType())
+        {
+            Debug.LogWarning("The field " + fieldName + " is not the same type as the value   " + field.FieldType + "  ! " + value.GetType());
+            return;
+        }
+
+        field.SetValue(this, value);
+
+    }
+    public virtual void SetVariable(string fieldName, float value)
+    {
+
+        Type theType = this.GetType();
+        FieldInfo field = theType.GetField(fieldName);
+
+        if(field.FieldType == null)
+        {
+            Debug.LogWarning("The field " + fieldName + " was not found in " + this + " script");
+            return;
+        }
+
+        if(field.FieldType != value.GetType())
+        {
+            Debug.LogWarning("The field " + fieldName + " is not the same type as the value   " + field.FieldType + "  ! " + value.GetType());
+            return;
+        }
+
+        field.SetValue(this, value);
+
+    }
+    public virtual void SetVariable(string fieldName, string value)
+    {
+
+        Type theType = this.GetType();
+        FieldInfo field = theType.GetField(fieldName);
+
+        if (field.FieldType == null)
+        {
+            Debug.LogWarning("The field " + fieldName + " was not found in " + this + " script");
+            return;
+        }
+
+        if (field.FieldType != value.GetType())
+        {
+            Debug.LogWarning("The field " + fieldName + " is not the same type as the value   " + field.FieldType + "  ! " + value.GetType());
+            return;
+        }
+
+        field.SetValue(this, value);
+
+    }
+    public virtual void SetVariable(string fieldName, bool value)
+    {
+
+        Type theType = this.GetType();
+        FieldInfo field = theType.GetField(fieldName);
+
+        if (field.FieldType == null)
+        {
+            Debug.LogWarning("The field " + fieldName + " was not found in " + this + " script");
+            return;
+        }
+
+        if (field.FieldType != value.GetType())
+        {
+            Debug.LogWarning("The field " + fieldName + " is not the same type as the value   " + field.FieldType + "  ! " + value.GetType());
+            return;
+        }
+
+        field.SetValue(this, value);
+
     }
 }
