@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private int weaponNumber;
     private bool moving, running, crouching, runningWall, stunned, slowed;
     [HideInInspector]
-    public WaysToSound shootSound;
+    public WaysToSound shootSound, jumpSound, moveSound;
     private GameObject slowerings;
 
     void Awake()
@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour
 
         //Sounds Setup -----------//
         shootSound.sounds = gameObject.GetComponent<SoundActive>();
-
+        jumpSound.sounds = gameObject.GetComponent<SoundActive>();
+        moveSound.sounds = gameObject.GetComponent<SoundActive>();
 
 
         //-------------------------<<<//
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
-        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned);
+        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned, jumpSound);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => ChangedWeapon(0);
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
     }
     void PlayerLogic()
     {
+        c_jmp.CheckGround();
         if (c_mov.poseser || stunned)
         {
             c_mov.Posesed();
@@ -109,26 +111,46 @@ public class PlayerController : MonoBehaviour
             c_mov.Quiet();
             moving = false;
         }
-        if (crouching && !c_mov.poseser && !stunned)
+        if (crouching && !c_mov.poseser && !stunned && c_jmp.isGrounded)
             c_crouch.Crouching(playerData.crouchHeight);
         else
             c_crouch.NonCrouching(playerData.crouchHeight);
 
-        if (slowed)
+        if (slowed && (running || moving))
         {
             c_mov.speed = playerData.slowSpeed;
+
         }
         else if (crouching)
         {
             c_mov.speed = playerData.crouchSpeed;
+
         }
         else if (running /*&& !c_stm.empty*/)
         {
             c_mov.speed = playerData.runSpeed;
+            if (c_jmp.isGrounded)
+            {
+                Debug.Log("Run");
+                moveSound.whereSound = 1;
+                moveSound.whatSound = 1;
+                moveSound.ActiveWhenStopped();
+            }
         }
-        else
+        else if (moving)
         {
             c_mov.speed = playerData.normalSpeed;
+            if (c_jmp.isGrounded)
+            {
+                Debug.Log("Walk");
+                moveSound.whereSound = 1;
+                moveSound.whatSound = 0;
+                moveSound.ActiveWhenStopped();
+            }
+        }
+        if (!moving && !running)
+        {
+            moveSound.InstantStop(); //Si hay un sonido cuando el jugador esté en idle, entonces se cambiará por StopThenActive
         }
         c_mov.grounded = c_jmp.isGrounded;
         if (slowed && slowerings == null)

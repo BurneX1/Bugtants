@@ -28,7 +28,6 @@ public class BossAttacks : MonoBehaviour
         for (int i = 0; i < a1.Length; i++)
         {
             a1[i] = GameObject.Find("Area1/Pos" + (i + 1));
-            Debug.Log("Area1/Pos" + (i + 1));
             b1[i] = false;
         }
         for (int i = 0; i < a2.Length; i++)
