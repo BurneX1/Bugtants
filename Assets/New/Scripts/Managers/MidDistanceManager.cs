@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MidDistanceManager : MonoBehaviour
 {
+    public EnemyData enmyData;
+
     [Header("Scripts editables solo para programadores")]
     public EnemyMidDistance enMidScript;
     public EnemyGroundMove enGrdScript;
@@ -106,6 +108,43 @@ public class MidDistanceManager : MonoBehaviour
             enSenScript.enabled = false;
             enMidScript.enabled = false;
 
+        }
+    }
+    void LoadData()
+    {
+        if (enmyData != null)
+        {
+            life = enmyData.life;
+            damage = enmyData.damage;
+            idleRange = enmyData.attackRange;
+            frontDetectRange = enmyData.frontDetectRange;
+            speed = enmyData.speed;
+            chaseSpeed = enmyData.chaseSpd;
+            giftQuantity = enmyData.manaReward;
+
+            maxTimer = enmyData.atackTime;
+            feedbackMaxTimer = enmyData.hitFedbckTime;
+            vigilanceTimer = enmyData.patrolWaitTime;
+
+            retreatRange = enmyData.retreatRange;
+            backSpeed = enmyData.backSpeed;
+            bullSpeed = enmyData.bullSpeed;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh += LoadData;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh -= LoadData;
         }
     }
 }

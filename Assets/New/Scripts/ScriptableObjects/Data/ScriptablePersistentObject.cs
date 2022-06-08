@@ -7,6 +7,7 @@ using System.Reflection;
 using System;
 public abstract class ScriptablePersistentObject : ScriptableObject
 {
+    public event Action Refresh = delegate { };
     //Path: Application.dataPath + "/Settings/Data/" + this.name + "Data.json"
     public virtual void Save()
     {
@@ -46,7 +47,7 @@ public abstract class ScriptablePersistentObject : ScriptableObject
         }
 
         field.SetValue(this, value);
-
+        Refresh.Invoke();
     }
     public virtual void SetVariable(string fieldName, float value)
     {
@@ -67,7 +68,7 @@ public abstract class ScriptablePersistentObject : ScriptableObject
         }
 
         field.SetValue(this, value);
-
+        Refresh.Invoke();
     }
     public virtual void SetVariable(string fieldName, string value)
     {
@@ -88,7 +89,7 @@ public abstract class ScriptablePersistentObject : ScriptableObject
         }
 
         field.SetValue(this, value);
-
+        Refresh.Invoke();
     }
     public virtual void SetVariable(string fieldName, bool value)
     {
@@ -109,6 +110,6 @@ public abstract class ScriptablePersistentObject : ScriptableObject
         }
 
         field.SetValue(this, value);
-
+        Refresh.Invoke();
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StunnerManager : MonoBehaviour
 {
+    public EnemyData enmyData;
+
     [Header("Scripts editables solo para programadores")]
     public EnemyGroundMove enGrdScript;
     public EnemyScarab enScbScript;
@@ -117,6 +119,48 @@ public class StunnerManager : MonoBehaviour
             enSenScript.enabled = false;
             meleeScript.enabled = false;
             enScbScript.enabled = false;
+        }
+    }
+
+    void LoadData()
+    {
+        if (enmyData != null)
+        {
+            life = enmyData.life;
+            damage = enmyData.damage;
+            attackRange = enmyData.attackRange;
+            frontDetectRange = enmyData.frontDetectRange;
+            speed = enmyData.speed;
+            chaseSpeed = enmyData.chaseSpd;
+            giftQuantity = enmyData.manaReward;
+
+            maxTimer = enmyData.atackTime;
+            feedbackMaxTimer = enmyData.hitFedbckTime;
+            vigilanceTimer = enmyData.patrolWaitTime;
+            quietTime = enmyData.waitAtackTime;
+
+            crashRange = enmyData.crashRange;
+            damageStun = enmyData.stunDamage;
+            chargeSpeed = enmyData.chargeSpeed;
+            stunnedTime = enmyData.selfStunTime;
+            stunTime = enmyData.stunEfectTime;
+            maxTimerScarab = enmyData.chargeTime;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh += LoadData;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh -= LoadData;
         }
     }
 }

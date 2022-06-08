@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExploderManager : MonoBehaviour
 {
+    public EnemyData enmyData;
+
     [Header("Scripts editables solo para programadores")]
     public EnemyGroundMove enGrdScript;
     public EnemySense enSenScript;
@@ -94,6 +96,42 @@ public class ExploderManager : MonoBehaviour
             enSenScript.enabled = false;
             explodeScript.enabled = false;
 
+        }
+    }
+
+    void LoadData()
+    {
+        if (enmyData != null)
+        {
+            life = enmyData.life;
+            damage = enmyData.damage;
+            explodeRange = enmyData.attackRange;
+            frontDetectRange = enmyData.frontDetectRange;
+            speed = enmyData.speed;
+            chaseSpeed = enmyData.chaseSpd;
+            giftQuantity = enmyData.manaReward;
+
+
+            feedbackMaxTimer = enmyData.hitFedbckTime;
+            vigilanceTimer = enmyData.patrolWaitTime;
+
+            timeLifeSpan = enmyData.timeLifeSpan;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh += LoadData;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh -= LoadData;
         }
     }
 }

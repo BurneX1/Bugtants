@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttracterManager : MonoBehaviour
 {
+    public EnemyData enmyData;
+
     [Header("Scripts editables solo para programadores")]
     public EnemyAttract enAttScript;
     public EnemySense enSenScript;
@@ -75,6 +77,38 @@ public class AttracterManager : MonoBehaviour
             enAttScript.enabled = false;
             enSenScript.enabled = false;
 
+        }
+    }
+
+    void LoadData()
+    {
+        if (enmyData != null)
+        {
+            life = enmyData.life;
+            damage = enmyData.damage;
+            destinyRange = enmyData.attackRange;
+            frontDetectRange = enmyData.frontDetectRange;
+            speedSuction = enmyData.speed;
+            giftQuantity = enmyData.manaReward;
+
+            damageRate = enmyData.atackTime;
+            feedbackMaxTimer = enmyData.hitFedbckTime;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh += LoadData;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (enmyData != null)
+        {
+            enmyData.Refresh -= LoadData;
         }
     }
 }
