@@ -10,9 +10,22 @@ public class Movement : MonoBehaviour
     public GameObject poseser;
     [HideInInspector]
     public bool grounded;
+
+    public PlayerController playerCtrl;
+    public PlayerData playerData;
+
+    public bool antirun;
+    public float antiruntimer, antirunMaxtimer;
     void Awake()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
+        playerCtrl = gameObject.GetComponent<PlayerController>();
+        playerData = playerCtrl.playerData;
+    }
+
+    void Update()
+    {
+        AntirunCount();
     }
 
     public void Move()
@@ -75,5 +88,15 @@ public class Movement : MonoBehaviour
         rigid.velocity = new Vector3(0, 0, 0);
         rigid.useGravity = false;
     }
+
+    public void AntirunCount()
+    {
+        if(antirun == true)
+        {
+            antiruntimer += Time.deltaTime;
+        }
+    }
+
+
 
 }

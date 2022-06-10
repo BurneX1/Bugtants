@@ -104,6 +104,10 @@ public class BulletTime : MonoBehaviour
                 {
                     other.GetComponent<Life>().ReduceLife(damage);
                 }
+                else if (other.GetComponent<Eye>() != null)
+                {
+                    other.GetComponent<Eye>().ReduceHealth(damage);
+                }
                 else if (other.GetComponent<EnemyLife>() != null)
                 {
                     other.GetComponent<EnemyLife>().ChangeLife(-damage);

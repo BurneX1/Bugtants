@@ -465,19 +465,19 @@ MonoBehaviour:
   enSenScript: {fileID: 3671106164134046318}
   enLifeScript: {fileID: 3671106164646871529}
   meleeScript: {fileID: 3671106164646871522}
-  frontDetectRange: 20
+  frontDetectRange: 15
   attackRange: 1.5
   patrolPoints: 0
-  life: 100
-  damage: 14
-  maxTimer: 1.3
+  life: 25
+  damage: 15
+  maxTimer: 2.3
   feedbackMaxTimer: 0.3
-  speed: 4
-  chaseSpeed: 5
+  speed: 2.5
+  chaseSpeed: 4
   vigilanceTimer: 2
   takeMaxTimer: 3
-  quietTime: 2
-  giftQuantity: 5
+  quietTime: 2.3
+  giftQuantity: 25
 --- !u!114 &3671106164646871535
 MonoBehaviour:
   m_ObjectHideFlags: 0

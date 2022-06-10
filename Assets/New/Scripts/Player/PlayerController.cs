@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float stMultiplier;
     private int weaponNumber;
-    private bool moving, running, crouching, runningWall, stunned, slowed;
+    public bool moving, running, crouching, runningWall, stunned, slowed;
     [HideInInspector]
     public WaysToSound shootSound, jumpSound, moveSound;
     private GameObject slowerings;
