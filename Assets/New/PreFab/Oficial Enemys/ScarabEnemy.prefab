@@ -183,21 +183,21 @@ MonoBehaviour:
   attackRange: 1.5
   crashRange: 6
   patrolPoints: 0
-  life: 200
+  life: 100
   damage: 25
-  damageStun: 5
-  maxTimer: 2
-  speed: 5.2
-  chaseSpeed: 6
-  chargeSpeed: 5
+  damageStun: 35
+  maxTimer: 1.5
+  speed: 2
+  chaseSpeed: 3.2
+  chargeSpeed: 9
   stunnedTime: 2
   feedbackMaxTimer: 0.4
   maxTimerScarab: 5
-  vigilanceTimer: 4
+  vigilanceTimer: 2
   takeMaxTimer: 4
-  quietTime: 2
-  stunTime: 2
-  giftQuantity: 5
+  quietTime: 1.5
+  stunTime: 1.25
+  giftQuantity: 50
 --- !u!114 &3534966813682343018
 MonoBehaviour:
   m_ObjectHideFlags: 0
