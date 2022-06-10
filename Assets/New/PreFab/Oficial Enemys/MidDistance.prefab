@@ -294,8 +294,8 @@ MonoBehaviour:
   idleRange: 5.5
   retreatRange: 4
   patrolPoints: 0
-  life: 250
-  damage: 2
+  life: 150
+  damage: 8
   maxTimer: 1.5
   bullSpeed: 50
   speed: 7
@@ -375,7 +375,7 @@ MonoBehaviour:
   bulletPosition: {fileID: 2337306153141076752}
   maxTimer: 1.5
   bulletSpeed: 50
-  damage: 2
+  damage: 8
   movement: {fileID: 2337306153023611730}
 --- !u!114 &2337306153023611735
 MonoBehaviour:
