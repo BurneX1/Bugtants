@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyLife : MonoBehaviour
 {
+    public event Action Damage = delegate { };
+    public event Action Dead = delegate { };
     //General//
     public int life, giftQuantity;
     public float timeLifeSpan, feedMaxTimer, takeMaxTimer;
@@ -70,6 +73,7 @@ public class EnemyLife : MonoBehaviour
         life += value;
         if (value < 0)
         {
+            Damage.Invoke();
             if (armor)
                 life -= value / 2;
             feedTimer = feedMaxTimer;
@@ -77,6 +81,7 @@ public class EnemyLife : MonoBehaviour
         }
         if (life <= 0)
         {
+            Dead.Invoke();
             if (desperated && objectDesperate != null)
             {
                 Vector3 look = transform.position;
