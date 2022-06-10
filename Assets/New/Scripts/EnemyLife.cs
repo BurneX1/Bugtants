@@ -10,7 +10,7 @@ public class EnemyLife : MonoBehaviour
     private float feedTimer, takeTimer;
 
     //Feedback//
-    public bool destroyable, armor;
+    public bool destroyable, armor, grandArmor;
     public GameObject model, objectDesperate;
     private Material actualMat;
     public Material damagedMat;
@@ -68,7 +68,7 @@ public class EnemyLife : MonoBehaviour
     public void ChangeLife(int value)
     {
         life += value;
-        if (value < 0)
+        if (value < 0 && !grandArmor)
         {
             if (armor)
                 life -= value / 2;

@@ -8,11 +8,20 @@ public class BossController : MonoBehaviour
     public BossAttacks bossAttacker;
     public BossSense bossSense;
     public BossEyes bossEyes;
+    [Tooltip("Temporizador de cambio de ojo")]
+    public float eyesMaxTimer;
+    private float eyesTimer;
     // Update is called once per frame
+    void Awake()
+    {
+        eyesTimer = 0;
+    }
+
     void Update()
     {
         Activations();
         FinishingAttacks();
+        BossEyeTransgoing();
     }
 
     void Activations()
@@ -49,5 +58,18 @@ public class BossController : MonoBehaviour
             bossAttacker.step = 0;
         }
     }
-    
+    void BossEyeTransgoing()
+    {
+        if (bossEyes.deadReset)
+        {
+            eyesTimer = 0;
+        }
+        eyesTimer += Time.deltaTime;
+        if (eyesTimer >= eyesMaxTimer)
+        {
+            bossEyes.CountEyes();
+            eyesTimer = 0;
+        }
+
+    }
 }
