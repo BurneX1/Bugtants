@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class MeleeAttack : MonoBehaviour
 {
+    public event Action Atack = delegate { };
     public EnemyGroundMove movement;
     public float maxTimer;
     [HideInInspector]
@@ -39,6 +40,7 @@ public class MeleeAttack : MonoBehaviour
         {
             waysOnAttack.StopThenActive();
             Debug.Log("Attacked");
+            Atack.Invoke();
             movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
             movement.attacking = true;
             timer = 0;

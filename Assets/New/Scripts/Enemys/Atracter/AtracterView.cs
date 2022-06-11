@@ -2,39 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExploderView : MonoBehaviour
+public class AtracterView : MonoBehaviour
 {
     public Animator anim;
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
-    private EnemyGroundMove cmp_enm;
+    private EnemyAttract cmp_atr;
+
 
     private void Awake()
     {
         cmp_life = gameObject.GetComponent<EnemyLife>();
         cmp_rgdl = gameObject.GetComponent<RagdolllActivator>();
-        cmp_enm = gameObject.GetComponent<EnemyGroundMove>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (cmp_rgdl) cmp_rgdl.RagdollSetActive(false);
+        cmp_atr = gameObject.GetComponent<EnemyAttract>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        anim.SetBool("Spd", cmp_enm.moving);
-        if (cmp_enm.stat == EnemyGroundMove.Status.chasing)
-        {
-            anim.SetBool("Run", true);
-        }
-        else
-        {
-            anim.SetBool("Run", false);
-        }
-
+        anim.SetBool("Atract", cmp_atr.devouring);
     }
 
     private void Dead()
@@ -43,7 +30,14 @@ public class ExploderView : MonoBehaviour
     }
     private void Damage()
     {
-        if (anim) anim.SetTrigger("Dmg");
+        if(cmp_atr.devouring == true)
+        {
+            anim.SetTrigger("DmgClose");
+        }
+        else
+        {
+            anim.SetTrigger("DmgOpen");
+        }
     }
     private void OnEnable()
     {
@@ -52,7 +46,6 @@ public class ExploderView : MonoBehaviour
             cmp_life.Dead += Dead;
             cmp_life.Damage += Damage;
         }
-
     }
 
     private void OnDisable()
@@ -63,5 +56,4 @@ public class ExploderView : MonoBehaviour
             cmp_life.Damage -= Damage;
         }
     }
-
 }

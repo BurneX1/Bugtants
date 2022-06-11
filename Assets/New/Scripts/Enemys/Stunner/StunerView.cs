@@ -8,12 +8,14 @@ public class StunerView : MonoBehaviour
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
     private EnemyGroundMove cmp_enm;
+    private MeleeAttack cmp_atck;
 
     private void Awake()
     {
         cmp_life = gameObject.GetComponent<EnemyLife>();
         cmp_rgdl = gameObject.GetComponent<RagdolllActivator>();
         cmp_enm = gameObject.GetComponent<EnemyGroundMove>();
+        cmp_atck = gameObject.GetComponent<MeleeAttack>();
     }
     // Start is called before the first frame update
     void Start()
@@ -42,17 +44,27 @@ public class StunerView : MonoBehaviour
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
     }
+    private void Atack()
+    {
+        anim.SetTrigger("Atack");
+    }
     private void OnEnable()
     {
         if (cmp_life && cmp_rgdl)
         {
+
             cmp_life.Dead += Dead;
         }
+        if (cmp_atck) cmp_atck.Atack += Atack;
 
     }
 
     private void OnDisable()
     {
-
+        if (cmp_life && cmp_rgdl)
+        {
+            cmp_life.Dead -= Dead;
+        }
+        if (cmp_atck) cmp_atck.Atack -= Atack;
     }
 }
