@@ -342,6 +342,7 @@ public class BossAttacks : MonoBehaviour
                 if (shoots >= numberShoots)
                 {
                     step = -1;
+                    shoots = 0;
                 }
                 break;
 
