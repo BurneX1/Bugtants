@@ -15,7 +15,7 @@ public class EnemyAttract : MonoBehaviour
     public EnemySense locate;
     public EnemyLife life;
     public Detecter signed;
-    private bool devouring;
+    public bool devouring;
     private Vector3 downing;
     public BoxCollider hitBox;
     // Start is called before the first frame update
