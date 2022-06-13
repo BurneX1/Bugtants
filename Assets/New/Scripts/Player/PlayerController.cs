@@ -4,11 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    [Tooltip("Es para ver si estarán bloqueadas o no en un nivel, true significa que no ejecute")]
+    public bool runLock, hitLock, weaponLock, crouchLock;
     public PlayerData playerData;
     public WeaponStats[] weapons;
     private WeaponStats currentWeapon;
     private InputSystemActions inputStm;
     private FrontRayCaster c_ray;
+    public bool canRun, canShoot, canChange;
+
     [HideInInspector]
     public Life c_life;
     [HideInInspector]
@@ -29,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float stMultiplier;
     private int weaponNumber;
-    public bool moving, running, crouching, runningWall, stunned, slowed;
+    private bool moving, running, crouching, stunned, slowed;
     [HideInInspector]
     public WaysToSound shootSound, jumpSound, moveSound;
     private GameObject slowerings;
@@ -60,23 +64,29 @@ public class PlayerController : MonoBehaviour
 
         //Input System Setup----------//
         inputStm = new InputSystemActions();
-        inputStm.GamePlay.Crouch.performed += ctx => crouching = true;
-        inputStm.GamePlay.Crouch.canceled += ctx => crouching = false;
+        inputStm.GamePlay.Crouch.performed += ctx => CrouchLocker(crouchLock, true);
+        inputStm.GamePlay.Crouch.canceled += ctx => CrouchLocker(crouchLock, false);
         inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
-        inputStm.GamePlay.MeleAtack.performed += ctx => c_atk.Attack();
-        inputStm.GamePlay.Atack.performed += ctx => c_shoot.Shooting(currentWeapon, c_mp, shootSound);
+        inputStm.GamePlay.MeleAtack.performed += ctx => HitLocker(hitLock, true);
+        inputStm.GamePlay.Atack.performed += ctx => HitLocker(hitLock, false);
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned, jumpSound);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
-        inputStm.GamePlay.ChangeWeapon1.performed += ctx => currentWeapon = c_chWp.WeaponChanger(0, weapons, currentWeapon);
-        inputStm.GamePlay.ChangeWeapon1.performed += ctx => ChangedWeapon(0);
-        inputStm.GamePlay.ChangeWeapon2.performed += ctx => currentWeapon = c_chWp.WeaponChanger(1, weapons, currentWeapon);
-        inputStm.GamePlay.ChangeWeapon2.performed += ctx => ChangedWeapon(1);
-        inputStm.GamePlay.Run.performed += ctx => running = true;
-        inputStm.GamePlay.Run.canceled += ctx => running = false;
+        inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
+        inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
+        inputStm.GamePlay.Run.performed += ctx => RunLocker(runLock, true);
+        inputStm.GamePlay.Run.canceled += ctx => RunLocker(runLock, false);
         //-------------------------<<<//
+
+        //Unlockables Setup -----------//
+
+
+
+
+        //-------------------------<<<//
+
 
 
     }
@@ -215,6 +225,39 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    void RunLocker(bool locked, bool runner)
+    {
+        if (!locked)
+            running = runner;
+    }
+    void HitLocker(bool locked, bool melee)
+    {
+        if (!locked)
+        {
+            if (melee)
+            {
+                c_atk.Attack();
+            }
+            else
+            {
+                c_shoot.Shooting(currentWeapon, c_mp, shootSound);
+            }
+        }
+    }
+    void CrouchLocker(bool locked, bool croucher)
+    {
+        if (!locked)
+            crouching = croucher;
+    }
+    void WeaponsLocker(bool locked, int number)
+    {
+        if (!locked)
+        {
+            c_chWp.WeaponChanger(number, weapons, currentWeapon);
+            ChangedWeapon(number);
+        }
+    }
+
     private void OnEnable()
     {
         inputStm.Enable();

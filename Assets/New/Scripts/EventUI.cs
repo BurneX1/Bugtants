@@ -54,8 +54,25 @@ public class EventUI : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             tutorialScribe.GetComponent<Text>().text = tutorialDialogue;
+            switch (numberOfKey)
+            {
+                case 2:
+                    other.GetComponent<PlayerController>().hitLock = false;
+                    break;
+                case 3:
+                    other.GetComponent<PlayerController>().runLock = false;
+                    break;
+                case 4:
+                    other.GetComponent<PlayerController>().crouchLock = false;
+                    break;
+                case 6:
+                    other.GetComponent<PlayerController>().weaponLock = false;
+                    break;
+
+            }
             touched = true;
         }
+        
     }
     private void OnEnable()
     {
