@@ -5,10 +5,20 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     CheckpointSystem system;
+    InputSystemActions inputStm;
     bool checkpointActivated = false;
     int checkpointIndex;
     public GameObject objectActivated;
     public GameObject objectDeactivated;
+
+    public bool funtionactive;
+
+    void Awake()
+    {
+        inputStm = new InputSystemActions();
+
+        inputStm.GamePlay.Interact.performed += ctx => Function();
+    }
     void Start()
     {
         Deactivate();
@@ -27,12 +37,27 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CheckpointsPlayer player = other.GetComponent<CheckpointsPlayer>();
-        if ( player != null )
+        if (player != null)
+        {
+            funtionactive = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        funtionactive = false;
+    }
+
+    public void Function()
+    {
+        if (funtionactive == true)
         {
             Activate();
             system.CheckpointActivated(checkpointIndex);
         }
+        else return;
     }
+
     public void Activate()
     {
         checkpointActivated = true;
@@ -55,6 +80,15 @@ public class Checkpoint : MonoBehaviour
     public Vector3 GetCheckpointPosition()
     {
         return transform.position;
+    }
+
+    private void OnEnable()
+    {
+        inputStm.Enable();
+    }
+    private void OnDisable()
+    {
+        inputStm.Disable();
     }
 
 }
