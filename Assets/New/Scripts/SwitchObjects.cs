@@ -33,13 +33,15 @@ public class SwitchObjects : MonoBehaviour
             {
                 foreach (GameObject off in Status_0)
                 {
-                    off.SetActive(false);
+                    if (off != null)
+                        off.SetActive(false);
                 }
                 if (Status_1.Length != 0)
                 {
                     foreach (GameObject on in Status_1)
                     {
-                        on.SetActive(true);
+                        if (on != null)
+                            on.SetActive(true);
                     }
                 }
             }

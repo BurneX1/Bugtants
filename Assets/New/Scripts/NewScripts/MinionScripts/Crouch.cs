@@ -7,13 +7,12 @@ public class Crouch : MonoBehaviour
     [HideInInspector]
     public Vector3 centering;
     [HideInInspector]
-    public bool crouching;
+    public bool crouching, crouchSound, sounded;
     private float timeCrouch = 0;
 
     private GameObject sight;
     private CrouchSeen see;
     private bool stuck;
-
 
     void Awake()
     {
@@ -32,6 +31,7 @@ public class Crouch : MonoBehaviour
             }
             else
             {
+                crouchSound = true;
                 timeCrouch += Time.deltaTime * crouchSpeed;
             }
             height = 1.8f - timeCrouch * 2;
@@ -50,6 +50,8 @@ public class Crouch : MonoBehaviour
             }
             else
             {
+                sounded = false;
+                crouchSound = false;
                 timeCrouch -= Time.deltaTime * crouchSpeed;
             }
         }
@@ -70,4 +72,5 @@ public class Crouch : MonoBehaviour
             stuck = true;
         }
     }
+
 }

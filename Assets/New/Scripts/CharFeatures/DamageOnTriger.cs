@@ -30,10 +30,10 @@ public class DamageOnTriger : MonoBehaviour
             Debug.Log("Hit * to " + other.gameObject + "  " + damage);
             if(other.gameObject.GetComponent<Life>())
             {
-                if(other.gameObject.GetComponent<Life>().actualHealth - Mathf.Abs(damage) < lifeLimiter)
+                /*if(other.gameObject.GetComponent<Life>().actualHealth - Mathf.Abs(damage) < lifeLimiter)
                 {
                     return;
-                }
+                }*/
                 other.gameObject.GetComponent<Life>().ReduceLife(damage);
             }
             if(other.gameObject.GetComponent<EnemyLife>())

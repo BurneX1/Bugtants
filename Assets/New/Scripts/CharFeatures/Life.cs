@@ -7,7 +7,7 @@ public class Life : MonoBehaviour
 {
     public PlayerView playerHUD;
     public event Action Damage = delegate { };
-
+    public bool inmortal;
     public int maxHealth;
     public int actualHealth;
 
@@ -19,12 +19,18 @@ public class Life : MonoBehaviour
 
     public void ReduceLife(int damage)
     {
-        damage = Mathf.Abs(damage);
-        if (actualHealth > 0) actualHealth -= damage;
-        if (actualHealth < 0) actualHealth = 0;
+        if (!inmortal)
+        {
+            damage = Mathf.Abs(damage);
+            if (actualHealth > 0) actualHealth -= damage;
+            if (actualHealth < 0) actualHealth = 0;
 
-        playerHUD.activateHUD = true;
-        Damage.Invoke();
+            if (playerHUD != null)
+            {
+                playerHUD.activateHUD = true;
+                Damage.Invoke();
+            }
+        }
     }
 
     public void AddLife(int recovery)

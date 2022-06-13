@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private WeaponStats currentWeapon;
     private InputSystemActions inputStm;
     private FrontRayCaster c_ray;
-    public bool canRun, canShoot, canChange;
 
     [HideInInspector]
     public Life c_life;
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private int weaponNumber;
     private bool moving, running, crouching, stunned, slowed;
     [HideInInspector]
-    public WaysToSound shootSound, jumpSound, moveSound;
+    public WaysToSound shootSound, jumpSound, moveSound, crouchSound;
     private GameObject slowerings;
 
     void Awake()
@@ -58,7 +57,7 @@ public class PlayerController : MonoBehaviour
         shootSound.sounds = gameObject.GetComponent<SoundActive>();
         jumpSound.sounds = gameObject.GetComponent<SoundActive>();
         moveSound.sounds = gameObject.GetComponent<SoundActive>();
-
+        crouchSound.sounds = gameObject.GetComponent<SoundActive>();
 
         //-------------------------<<<//
 
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
-        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned, jumpSound);
+        inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned);
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
         inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
@@ -80,15 +79,40 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.Run.canceled += ctx => RunLocker(runLock, false);
         //-------------------------<<<//
 
-        //Unlockables Setup -----------//
 
 
-
-
-        //-------------------------<<<//
-
-
-
+    }
+    void RunLocker(bool locked, bool runner)
+    {
+        if (!locked)
+            running = runner;
+    }
+    void HitLocker(bool locked, bool melee)
+    {
+        if (!locked)
+        {
+            if (melee)
+            {
+                c_atk.Attack();
+            }
+            else
+            {
+                c_shoot.Shooting(currentWeapon, c_mp, shootSound);
+            }
+        }
+    }
+    void CrouchLocker(bool locked, bool croucher)
+    {
+        if (!locked)
+            crouching = croucher;
+    }
+    void WeaponsLocker(bool locked, int number)
+    {
+        if (!locked)
+        {
+            currentWeapon = c_chWp.WeaponChanger(number, weapons, currentWeapon);
+            ChangedWeapon(number);
+        }
     }
 
     void ChangedWeapon(int value)
@@ -103,6 +127,7 @@ public class PlayerController : MonoBehaviour
         ModifyStamina();
         StaminaCondition();
         PlayerStature();
+        OneTimeSound();
     }
     void PlayerLogic()
     {
@@ -134,7 +159,13 @@ public class PlayerController : MonoBehaviour
         else if (crouching)
         {
             c_mov.speed = playerData.crouchSpeed;
-
+            if (moving)
+            {
+                /*Debug.Log("Run");
+                moveSound.whereSound = 1;
+                moveSound.whatSound = 1;
+                moveSound.ActiveWhenStopped();*/
+            }
         }
         else if (running /*&& !c_stm.empty*/)
         {
@@ -171,6 +202,31 @@ public class PlayerController : MonoBehaviour
     void ModifyStamina()
     {
         c_stm.ConstModify(stMultiplier);
+    }
+    void OneTimeSound()
+    {
+        if (c_jmp.jumping)
+        {
+            JumpSound();
+            c_jmp.jumping = false;
+        }
+        if (c_crouch.crouchSound && !c_crouch.sounded)
+        {
+            CrouchingSound();
+        }
+    }
+    void JumpSound()
+    {
+        jumpSound.whereSound = 1;
+        jumpSound.whatSound = 5;
+        jumpSound.StopThenActive();
+    }
+    void CrouchingSound()
+    {
+        crouchSound.whereSound = 3;
+        crouchSound.whatSound = 8;
+        crouchSound.StopThenActive();
+        c_crouch.sounded = true;
     }
     void StaminaCondition()
     {
@@ -223,38 +279,6 @@ public class PlayerController : MonoBehaviour
             {
                 currentWeapon = weapons[i];
             }
-        }
-    }
-    void RunLocker(bool locked, bool runner)
-    {
-        if (!locked)
-            running = runner;
-    }
-    void HitLocker(bool locked, bool melee)
-    {
-        if (!locked)
-        {
-            if (melee)
-            {
-                c_atk.Attack();
-            }
-            else
-            {
-                c_shoot.Shooting(currentWeapon, c_mp, shootSound);
-            }
-        }
-    }
-    void CrouchLocker(bool locked, bool croucher)
-    {
-        if (!locked)
-            crouching = croucher;
-    }
-    void WeaponsLocker(bool locked, int number)
-    {
-        if (!locked)
-        {
-            c_chWp.WeaponChanger(number, weapons, currentWeapon);
-            ChangedWeapon(number);
         }
     }
 

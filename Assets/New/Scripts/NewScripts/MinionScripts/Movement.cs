@@ -61,8 +61,11 @@ public class Movement : MonoBehaviour
 
 
         if (!grounded)
-            rigid.velocity = new Vector3(tmpSpd * total.x, rigid.velocity.y, tmpSpd * total.z);
-        if (grounded)
+        {
+            float graviton = rigid.velocity.y - gravity * Time.deltaTime;
+            rigid.velocity = new Vector3(tmpSpd * total.x, graviton, tmpSpd * total.z);
+        }
+        else if (grounded)
         {
             float graviton = rigid.velocity.y - gravity * Time.deltaTime;
             rigid.velocity = new Vector3(tmpSpd * total.x, graviton, tmpSpd * total.z);
@@ -74,12 +77,14 @@ public class Movement : MonoBehaviour
     {
         rigid.useGravity = true;
         if (!grounded)
-            rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
-        if (grounded)
         {
             float graviton = rigid.velocity.y - gravity * Time.deltaTime;
             rigid.velocity = new Vector3(0, graviton, 0);
-
+        }
+        else if (grounded)
+        {
+            float graviton = rigid.velocity.y - gravity * Time.deltaTime;
+            rigid.velocity = new Vector3(0, graviton, 0);
         }
 
     }
