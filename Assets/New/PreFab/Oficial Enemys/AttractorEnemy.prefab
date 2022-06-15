@@ -558,13 +558,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speedSuction: 3
-  damageRate: 1.2
-  damage: 4
+  damageRate: 2
+  damage: 15
   initial: {fileID: 2076980585626069147}
   final: {fileID: 2076980586070652103}
   locate: {fileID: 2076980585633062622}
   life: {fileID: 2076980586613715907}
   signed: {fileID: 2076980586881757792}
+  devouring: 0
   hitBox: {fileID: 2076980586881757793}
 --- !u!114 &2076980586613715907
 MonoBehaviour:
@@ -579,12 +580,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 12
-  giftQuantity: 5
+  giftQuantity: 45
   timeLifeSpan: 0
   feedMaxTimer: 0.4
   takeMaxTimer: 0
   destroyable: 1
   armor: 0
+  grandArmor: 0
   model: {fileID: 2076980585628820076}
   objectDesperate: {fileID: 4991610301333956830, guid: fde29433ae3365640be2edec85384579, type: 3}
   damagedMat: {fileID: 2041237758758649350, guid: 1886526a4474c1942963b473f339e862, type: 3}
@@ -867,6 +869,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d057c21b084f6ed4c891551e2d9246db, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1f9ed5b44bc4a81469646f4782deefe4, type: 2}
     - target: {fileID: -7329976103589108146, guid: d057c21b084f6ed4c891551e2d9246db, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

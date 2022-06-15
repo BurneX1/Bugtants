@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 2337306153023611732}
   modelsee: {fileID: 2337306153023611731}
-  patrolMaxTime: 0
+  patrolMaxTime: 2
   stunTimer: 0
   instantChase: 0
   calm: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   attacking: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 7
+  saveSpeed: 4
   backSpeed: 3
   chaseSpeed: 7
   saveAcc: 0
@@ -373,9 +373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3577984631709007136, guid: d98b898500a2e574a8adce10dad9ea4b, type: 3}
   bulletPosition: {fileID: 2337306153141076752}
-  maxTimer: 1.5
+  maxTimer: 2
   bulletSpeed: 50
-  damage: 8
+  damage: 15
   movement: {fileID: 2337306153023611730}
 --- !u!114 &2337306153023611735
 MonoBehaviour:
@@ -390,12 +390,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 4
-  giftQuantity: 5
+  giftQuantity: 35
   timeLifeSpan: 0
   feedMaxTimer: 1
   takeMaxTimer: 3
   destroyable: 1
   armor: 0
+  grandArmor: 0
   model: {fileID: 2337306152945644710}
   objectDesperate: {fileID: 8115179891492567941, guid: 9cb1ac3d9ea31ca4bac6ad5f28ec1054, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
@@ -1325,9 +1326,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2a424e81a0ca2464c9b86ea2e00f64ed, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b40d1820e1600242aea39d5aea88d9e, type: 2}
     - target: {fileID: 919132149155446097, guid: 2a424e81a0ca2464c9b86ea2e00f64ed, type: 3}
       propertyPath: m_Name
       value: FBX_BeetleBomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a424e81a0ca2464c9b86ea2e00f64ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a424e81a0ca2464c9b86ea2e00f64ed, type: 3}

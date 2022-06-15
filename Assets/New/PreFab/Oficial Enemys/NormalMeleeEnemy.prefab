@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106163764397494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.46, z: 0}
+  m_LocalPosition: {x: 0, y: 16.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106164026056513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -18.54, z: 0}
+  m_LocalPosition: {x: 0, y: -13.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotOrigin: {fileID: 3671106164646871532}
-  range: 20
+  range: 15
   retreatRange: 0
   quietRange: 1.5
   crashRange: 0
@@ -282,7 +282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106164243181549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 1.46, z: 0}
+  m_LocalPosition: {x: 15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -503,15 +503,15 @@ MonoBehaviour:
   attacking: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 4
+  saveSpeed: 2.5
   backSpeed: 0
-  chaseSpeed: 5
+  chaseSpeed: 4
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
   chargeSpeed: 0
-  maxDelay: 2
+  maxDelay: 2.3
   radium: {fileID: 3671106164134046318}
   chargeDamage: 0
   moveSound: {fileID: 0}
@@ -545,12 +545,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 4
-  giftQuantity: 5
+  giftQuantity: 25
   timeLifeSpan: 0
   feedMaxTimer: 0.3
   takeMaxTimer: 3
   destroyable: 1
   armor: 0
+  grandArmor: 0
   model: {fileID: 3671106163826508139}
   objectDesperate: {fileID: 8115179891492567941, guid: 9cb1ac3d9ea31ca4bac6ad5f28ec1054, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}
@@ -570,9 +571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 3671106164646871535}
-  maxTimer: 1.3
+  maxTimer: 2.3
   stunned: 0
-  damage: 14
+  damage: 15
   timer: 0
   waysOnAttack:
     whatSound: 1
@@ -707,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106165166996556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 20}
+  m_LocalPosition: {x: 0, y: 1.46, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -1053,7 +1054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3671106165748571754}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.46, z: 0}
+  m_LocalPosition: {x: -15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3671106163963594732}
@@ -1113,7 +1114,7 @@ PrefabInstance:
     - target: {fileID: -4656780912420471737, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c15707e2729d3b0438dbaf239a6b9d2d, type: 2}
+      objectReference: {fileID: 2100000, guid: a5516060314484f4eaf97e67842b5635, type: 2}
     - target: {fileID: 919132149155446097, guid: e308d8d16fca6084ab6d4da68e9990d6, type: 3}
       propertyPath: m_Name
       value: Mothman_Idle
