@@ -34,17 +34,19 @@ public class PlayerView : MonoBehaviour
     private Stamina c_stm;
     private Life c_life;
     private AudioManager audioMng;
-    private float stmTimer = 0;
-
+    public float feedTimer;
+    private float stmTimer;
 
     private float alphaState = 1;
     public float inactivitiMaxCounter = 20;
     public float inactivityCounter;
+    public float feedMaxTimer;
     public bool activateHUD = false;
 
     public Canvas generalCanvas;
     private void Awake()
     {
+        feedTimer = feedMaxTimer;
         audioMng = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         c_ctrll = gameObject.GetComponent<PlayerController>();
         c_stm = gameObject.GetComponent<Stamina>();
@@ -75,7 +77,7 @@ public class PlayerView : MonoBehaviour
 
     void DamageBorderOpc()
     {
-        if (c_life.actualHealth < c_life.maxHealth / 3)
+        /*if (c_life.actualHealth < c_life.maxHealth / 3)
         {
             float tmpLife = (float)c_life.actualHealth / (float)c_life.maxHealth;
             Debug.Log(1 - tmpLife - 0.3f);
@@ -84,6 +86,16 @@ public class PlayerView : MonoBehaviour
         else
         {
             Opac(damageBorder, 0);
+        }*/
+        if (c_life.damaged)
+        {
+            feedTimer -= Time.deltaTime;
+            Opac(damageBorder, feedTimer / feedMaxTimer);
+            if (feedTimer <= 0)
+            {
+                Opac(damageBorder, 0 / feedMaxTimer);
+                
+            }
         }
     }
 
@@ -113,6 +125,11 @@ public class PlayerView : MonoBehaviour
         if (box.color.a != alpha)
         {
             box.color = new Color(box.color.r, box.color.g, box.color.b, Mathf.Lerp(box.color.a, alpha, Time.deltaTime * uiReactSpd));
+        }
+        if(Mathf.Lerp(box.color.a, alpha, Time.deltaTime * uiReactSpd) <= 0)
+        {
+            feedTimer = feedMaxTimer;
+            c_life.damaged = false;
         }
     }
 

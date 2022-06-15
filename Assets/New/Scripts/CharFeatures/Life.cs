@@ -10,9 +10,11 @@ public class Life : MonoBehaviour
     public bool inmortal;
     public int maxHealth;
     public int actualHealth;
-
+    [HideInInspector]
+    public bool damaged;
     private void Awake()
     {
+        damaged = false;
         actualHealth = maxHealth;
         playerHUD = GetComponent<PlayerView>();
     }
@@ -27,6 +29,7 @@ public class Life : MonoBehaviour
 
             if (playerHUD != null)
             {
+                damaged = true;
                 playerHUD.activateHUD = true;
                 Damage.Invoke();
             }
