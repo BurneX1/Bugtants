@@ -168,6 +168,7 @@ public class EnemyGroundMove : MonoBehaviour
             if (radium.detect)
             {
                 chasingTime = 0;
+                chaseMode = true;
             }
             else
             {
