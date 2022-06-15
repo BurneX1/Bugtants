@@ -480,7 +480,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922725904220}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f1ff9cf5fb4badf41b9ba4576cdcf206, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.55
@@ -590,6 +590,7 @@ MonoBehaviour:
   takeMaxTimer: 4
   destroyable: 1
   armor: 0
+  grandArmor: 0
   model: {fileID: 7242720921808763399}
   objectDesperate: {fileID: 477317275755934554, guid: 2fba18016f6aaea4eb838e092f2ba0c6, type: 3}
   damagedMat: {fileID: -8325257875444576696, guid: 70521550a1195f94a8ca98af7d21d521, type: 3}

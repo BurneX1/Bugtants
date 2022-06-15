@@ -161,9 +161,9 @@ GameObject:
   - component: {fileID: 4572823858573287667}
   - component: {fileID: 6203356120066414540}
   - component: {fileID: 3409403418507327993}
-  - component: {fileID: 804123383045948650}
+  - component: {fileID: 499414730}
   m_Layer: 9
-  m_Name: Cylinder
+  m_Name: MaxDistance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 248676041960198232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.2, z: 0.8}
+  m_LocalScale: {x: 0.8, y: 0.106494, z: 0.8}
   m_Children: []
   m_Father: {fileID: 7701868843168912818}
   m_RootOrder: 9
@@ -232,8 +232,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &804123383045948650
-CapsuleCollider:
+--- !u!64 &499414730
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -242,10 +242,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000004
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: -0.0000018477458, y: 0, z: 0.0000037252921}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1326226799967957056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,6 +2256,7 @@ MonoBehaviour:
   runSnd: 
   walkSnd: 
   jumpSnd: 
+  feedTimer: 0
   inactivitiMaxCounter: 20
   inactivityCounter: 0
   feedMaxTimer: 1
