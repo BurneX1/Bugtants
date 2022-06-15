@@ -304,6 +304,7 @@ MonoBehaviour:
   backSpeed: 3
   vigilanceTimer: 2
   takeMaxTimer: 3
+  chaseModeMaxTimer: 3
   giftQuantity: 35
 --- !u!114 &2337306153023611730
 MonoBehaviour:
@@ -321,6 +322,7 @@ MonoBehaviour:
   modelsee: {fileID: 2337306153023611731}
   patrolMaxTime: 2
   stunTimer: 0
+  chasingMaxTime: 3
   instantChase: 0
   calm: 0
   stunned: 0

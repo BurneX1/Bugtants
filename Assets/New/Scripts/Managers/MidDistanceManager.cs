@@ -41,6 +41,8 @@ public class MidDistanceManager : MonoBehaviour
     public float vigilanceTimer;
     [Tooltip("Tiempo en que se no se olvida de que lo haya disparado")]
     public float takeMaxTimer;
+    [Tooltip("Tiempo en que aun se acuerda al jugador")]
+    public float chaseModeMaxTimer;
     [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
     public int giftQuantity;
 
@@ -97,6 +99,7 @@ public class MidDistanceManager : MonoBehaviour
         enGrdScript.backSpeed = backSpeed;
         enGrdScript.patrolMaxTime = vigilanceTimer;
         enGrdScript.chaseSpeed = chaseSpeed;
+        enGrdScript.chasingMaxTime = chaseModeMaxTimer;
 
     }
     void DeathCondition()
@@ -129,6 +132,7 @@ public class MidDistanceManager : MonoBehaviour
             retreatRange = enmyData.retreatRange;
             backSpeed = enmyData.backSpeed;
             bullSpeed = enmyData.bullSpeed;
+            chaseModeMaxTimer = enmyData.chaseModeTime;
         }
     }
 

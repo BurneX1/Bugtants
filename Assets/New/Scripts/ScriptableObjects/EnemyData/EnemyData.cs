@@ -19,6 +19,7 @@ public class EnemyData : ScriptablePersistentObject
 
     public float patrolWaitTime;
     public float waitAtackTime;
+    public float chaseModeTime;
 
     [Space]
     [Space]

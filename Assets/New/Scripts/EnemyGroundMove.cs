@@ -8,7 +8,7 @@ public class EnemyGroundMove : MonoBehaviour
     public NavMeshAgent intel;
     public GameObject modelsee;
 
-    public float patrolMaxTime, stunTimer;
+    public float patrolMaxTime, stunTimer, chasingMaxTime;
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
@@ -21,7 +21,7 @@ public class EnemyGroundMove : MonoBehaviour
     public Status stat;
     [HideInInspector]
     public float saveSpeed, backSpeed, chaseSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1, chargeSpeed, maxDelay;
-    private float stunnedTimer, patrolTimer, waitTimer;
+    private float stunnedTimer, patrolTimer, waitTimer, chasingTime;
     public EnemySense radium;
     private int pinner, marker;
     public int chargeDamage;
@@ -31,6 +31,7 @@ public class EnemyGroundMove : MonoBehaviour
     private int pastPatrol, patrolNumber, proximity;
     public GameObject[] savePatrol;
     public Detecter detectPatrol;
+    private bool chaseMode;
     private bool locker = true, lockerDraw = false;
 
     public Animator animator;
@@ -44,6 +45,8 @@ public class EnemyGroundMove : MonoBehaviour
         {
             guardarVida = valores.vida;
         }*/
+        chaseMode = false;
+        chasingTime = 0;
         attacking = false;
         charging = 1;
         stunnedTimer = 0;
@@ -102,8 +105,8 @@ public class EnemyGroundMove : MonoBehaviour
     void Movement()
     {
         marker = 0;
-        
-        
+
+
         if (stat == Status.patrolling && !touch)
         {
             if (patrolPoint.Length == 0)
@@ -155,13 +158,26 @@ public class EnemyGroundMove : MonoBehaviour
             }
 
         }
-        else if (stat == Status.chasing)
+        else if (stat == Status.chasing /*&& */)
         {
             moving = true;
             intel.speed = chaseSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
             modelsee.transform.eulerAngles = gameObject.transform.eulerAngles;
             intel.autoRepath = true;
+            if (radium.detect)
+            {
+                chasingTime = 0;
+            }
+            else
+            {
+                chasingTime += Time.deltaTime;
+                if (chasingTime >= chasingMaxTime)
+                {
+                    chaseMode = false;
+                    chasingTime = 0;
+                }
+            }
         }
         else if (stat == Status.retreating)
         {
@@ -185,6 +201,7 @@ public class EnemyGroundMove : MonoBehaviour
             intel.speed = 0;
             if (waitTimer >= maxDelay)
             {
+                chaseMode = true;
                 attacking = false;
                 waitTimer = 0;
             }
@@ -194,7 +211,7 @@ public class EnemyGroundMove : MonoBehaviour
             stat = Status.waiting;
             statNumber = 5;
         }
-        else if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken)) && !radium.feel && !radium.hear)
+        else if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken) || chaseMode) && !radium.feel && !radium.hear )
         {
             stat = Status.chasing;
             statNumber = 0;

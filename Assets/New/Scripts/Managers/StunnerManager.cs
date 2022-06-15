@@ -51,6 +51,8 @@ public class StunnerManager : MonoBehaviour
     public float quietTime;
     [Tooltip("Tiempo en que el jugador sea stuneado luego de atacar")]
     public float stunTime;
+    [Tooltip("Tiempo en que aun se acuerda al jugador")]
+    public float chaseModeMaxTimer;
     [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
     public int giftQuantity;
 
@@ -102,6 +104,7 @@ public class StunnerManager : MonoBehaviour
         enGrdScript.stunTimer = stunTime;
         enGrdScript.chaseSpeed = chaseSpeed;
         enGrdScript.patrolMaxTime = vigilanceTimer;
+        enGrdScript.chasingMaxTime = chaseModeMaxTimer;
 
         enLifeScript.feedMaxTimer = feedbackMaxTimer;
         enLifeScript.takeMaxTimer = takeMaxTimer;
@@ -145,6 +148,7 @@ public class StunnerManager : MonoBehaviour
             stunnedTime = enmyData.selfStunTime;
             stunTime = enmyData.stunEfectTime;
             maxTimerScarab = enmyData.chargeTime;
+            chaseModeMaxTimer = enmyData.chaseModeTime;
         }
     }
 
