@@ -233,8 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: {fileID: 3534966813682343012}
   modelsee: {fileID: 3534966813682343009}
-  patrolMaxTime: 4
-  stunTimer: 2
+  patrolMaxTime: 2
+  stunTimer: 1.25
   chasingMaxTime: 3
   instantChase: 0
   calm: 0
@@ -245,17 +245,17 @@ MonoBehaviour:
   attacking: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 5.2
+  saveSpeed: 2
   backSpeed: 0
-  chaseSpeed: 6
+  chaseSpeed: 3.2
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
   charging: 0
-  chargeSpeed: 5
-  maxDelay: 2
+  chargeSpeed: 9
+  maxDelay: 1.5
   radium: {fileID: 3534966814232967143}
-  chargeDamage: 5
+  chargeDamage: 35
   moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 3534966814945068927}
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 10
-  giftQuantity: 5
+  giftQuantity: 50
   timeLifeSpan: 0
   feedMaxTimer: 0.4
   takeMaxTimer: 4
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 3534966813682343014}
-  maxTimer: 2
+  maxTimer: 1.5
   stunned: 0
   damage: 25
   timer: 0
@@ -1485,6 +1485,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52360ff668a9c2b44b7fc75748b1706f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3353568347036621156, guid: 52360ff668a9c2b44b7fc75748b1706f, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 52360ff668a9c2b44b7fc75748b1706f, type: 3}

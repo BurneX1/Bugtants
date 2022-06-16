@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110537819241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4599991, z: 15}
+  m_LocalPosition: {x: 0, y: 1.46, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110650883776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 1.4599991, z: 0}
+  m_LocalPosition: {x: 15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -405,9 +405,9 @@ MonoBehaviour:
   attacking: 0
   statNumber: 0
   stat: 0
-  saveSpeed: 8.5
+  saveSpeed: 4
   backSpeed: 0
-  chaseSpeed: 9
+  chaseSpeed: 7
   saveAcc: 0
   saveLife: 0
   stunnedMaxTimer: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 4
-  giftQuantity: 5
+  giftQuantity: 20
   timeLifeSpan: 3
   feedMaxTimer: 0.4
   takeMaxTimer: 4
@@ -475,7 +475,7 @@ MonoBehaviour:
   movement: {fileID: 2885942110906221345}
   suicide: {fileID: 2885942110906221349}
   suicidalBomb: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
-  timeLifeSpan: 10
+  timeLifeSpan: 12
   damage: 30
 --- !u!114 &5633346433866812195
 MonoBehaviour:
@@ -708,7 +708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942110992128317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -13.540001, z: 0}
+  m_LocalPosition: {x: 0, y: -13.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -1033,7 +1033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2885942111985338632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15, y: 1.4599991, z: 0}
+  m_LocalPosition: {x: -15, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2885942111890527149}
@@ -1400,6 +1400,10 @@ PrefabInstance:
     - target: {fileID: -7217111613685541080, guid: fb4921247aec5144d8ef3f50520e0ae7, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.096
+      objectReference: {fileID: 0}
+    - target: {fileID: -4797455752675031000, guid: fb4921247aec5144d8ef3f50520e0ae7, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fb4921247aec5144d8ef3f50520e0ae7, type: 3}
       propertyPath: m_Name
