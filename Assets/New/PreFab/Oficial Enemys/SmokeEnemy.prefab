@@ -401,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922498797553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.46, z: 20}
+  m_LocalPosition: {x: 0, y: 1.4600006, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -743,7 +743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720922776164013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1.46, z: 0}
+  m_LocalPosition: {x: -20, y: 1.4600006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -803,7 +803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923106700785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 1.46, z: 0}
+  m_LocalPosition: {x: 20, y: 1.4600006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -833,7 +833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923148518603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -18.54, z: 0}
+  m_LocalPosition: {x: 0, y: -18.539999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -863,7 +863,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7242720923230932199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 21.46, z: 0}
+  m_LocalPosition: {x: 0, y: 21.460001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7242720923414330346}
@@ -2316,10 +2316,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.073878765
-  m_Height: 0.29551506
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.14775753}
+  m_Radius: 0.09177629
+  m_Height: 0.43184
+  m_Direction: 1
+  m_Center: {x: -0.010318456, y: 0.23858283, z: -0.005967893}
 --- !u!144 &7636186936597087774
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2618,10 +2618,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.003921336
-  m_Height: 0.01960668
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.00980334}
+  m_Radius: 0.038115434
+  m_Height: 0.5175539
+  m_Direction: 0
+  m_Center: {x: 0.25248447, y: 0.5112411, z: 0.0068131997}
 --- !u!144 &8934202839267765643
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2694,10 +2694,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0033821284
-  m_Height: 0.016910642
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.008455321}
+  m_Radius: 0.04679509
+  m_Height: 0.4573003
+  m_Direction: 0
+  m_Center: {x: -0.2293665, y: 0.52454704, z: -0.0040527675}
 --- !u!144 &4426337178405721263
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2770,10 +2770,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.04899109
-  m_Height: 0.19596437
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.09798218, z: 0}
+  m_Radius: 0.06336191
+  m_Height: 0.30061698
+  m_Direction: 2
+  m_Center: {x: -0.0000013888347, y: 0.112352185, z: 0.27414787}
 --- !u!144 &6888476128349470126
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2894,10 +2894,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.048991088
-  m_Height: 0.19596435
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.097982176, z: 0}
+  m_Radius: 0.073750116
+  m_Height: 0.4388489
+  m_Direction: 2
+  m_Center: {x: -0.0000005719172, y: 0.11568426, z: 0.25273556}
 --- !u!144 &7283187946498227466
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -3046,10 +3046,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.07266335
-  m_Height: 0.2906534
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.1453267}
+  m_Radius: 0.09045339
+  m_Height: 0.43333822
+  m_Direction: 1
+  m_Center: {x: -0.0000003757054, y: 0.22190912, z: -0.008160719}
 --- !u!144 &3904723778730533681
 CharacterJoint:
   m_ObjectHideFlags: 0
