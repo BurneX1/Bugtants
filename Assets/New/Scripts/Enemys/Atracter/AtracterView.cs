@@ -18,6 +18,11 @@ public class AtracterView : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        if (cmp_rgdl) cmp_rgdl.RagdollSetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
