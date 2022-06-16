@@ -20,6 +20,7 @@ public class EnemyAttract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        life.armor = true;
         finalDestiny = final.transform.localPosition.z;
         devouring = false;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,7 +39,6 @@ public class EnemyAttract : MonoBehaviour
     {
         if (locate.detect && signed.touch)
         {
-            life.armor = true;
             final.position = player.transform.position;
             Vector3 localPos;
             localPos.x = 0;
@@ -47,6 +47,18 @@ public class EnemyAttract : MonoBehaviour
             final.localPosition = localPos;
             devouring = true;
             downing = localPos;
+        }
+        else if (locate.hear && signed.touch)
+        {
+            final.position = player.transform.position;
+            Vector3 localPos;
+            localPos.x = 0;
+            localPos.y = 0;
+            localPos.z = final.localPosition.z;
+            final.localPosition = localPos;
+            devouring = true;
+            downing = localPos;
+            downing.z = finalDestiny;
         }
     }
 
