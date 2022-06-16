@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &5362996089110608051
 Transform:
@@ -91,9 +91,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c7a47ac3db0e8164697b50ec5fd54435, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c7a47ac3db0e8164697b50ec5fd54435, type: 3}
       propertyPath: m_Name
       value: FBX_vaso_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c7a47ac3db0e8164697b50ec5fd54435, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a47ac3db0e8164697b50ec5fd54435, type: 3}
@@ -153,9 +161,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.467
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
@@ -216,12 +232,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 587227e4eb5fa2748b09a81d56f77c28, type: 2}
     - target: {fileID: 919132149155446097, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
@@ -281,9 +305,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c3acbb101853ada43b95d0a44dd23599, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c3acbb101853ada43b95d0a44dd23599, type: 3}
       propertyPath: m_Name
       value: FBX_FichaCasino_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c3acbb101853ada43b95d0a44dd23599, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3acbb101853ada43b95d0a44dd23599, type: 3}
@@ -343,9 +375,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0f8e93fb173a71447a7f00a82be5ab25, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0f8e93fb173a71447a7f00a82be5ab25, type: 3}
       propertyPath: m_Name
       value: FBX_Baba-Colgante_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f8e93fb173a71447a7f00a82be5ab25, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8e93fb173a71447a7f00a82be5ab25, type: 3}
@@ -406,12 +446,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 921f9fd36d047fa4083460a559980533, type: 2}
     - target: {fileID: 919132149155446097, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
       propertyPath: m_Name
       value: FBX_Baba-Colgante_04 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
@@ -471,9 +519,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 227db40544fb6c24f8b7982fff561ecb, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 227db40544fb6c24f8b7982fff561ecb, type: 3}
       propertyPath: m_Name
       value: FBX_vaso_08 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 227db40544fb6c24f8b7982fff561ecb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 227db40544fb6c24f8b7982fff561ecb, type: 3}
@@ -533,9 +589,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -80.407
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
       propertyPath: m_Name
       value: Fbx_MesaPoker_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
@@ -595,9 +659,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f706e62f3937b6e4fbbdfaf5091cf912, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f706e62f3937b6e4fbbdfaf5091cf912, type: 3}
       propertyPath: m_Name
       value: FBX_FichaCasino_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f706e62f3937b6e4fbbdfaf5091cf912, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f706e62f3937b6e4fbbdfaf5091cf912, type: 3}
@@ -657,9 +729,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
       propertyPath: m_Name
       value: Fbx_MesaPoker_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def34ac1c13faa24e9f07347c623ee0b, type: 3}

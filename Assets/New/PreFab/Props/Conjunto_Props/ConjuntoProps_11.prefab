@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &113327725081944549
 Transform:
@@ -90,9 +90,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5f153d5e71adafc44ae625481cfb4ad3, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5f153d5e71adafc44ae625481cfb4ad3, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_08 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f153d5e71adafc44ae625481cfb4ad3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f153d5e71adafc44ae625481cfb4ad3, type: 3}
@@ -152,9 +160,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ffb31547c89111c478e4e3f63af63386, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffb31547c89111c478e4e3f63af63386, type: 3}
       propertyPath: m_Name
       value: FBX_Columna-baba-medio_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffb31547c89111c478e4e3f63af63386, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb31547c89111c478e4e3f63af63386, type: 3}
@@ -215,12 +231,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: f79eeffdfb228cd4199d3c8d52bc19af, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f79eeffdfb228cd4199d3c8d52bc19af, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e35d5b434b34d994b9f05ea1fdf55f13, type: 2}
     - target: {fileID: 919132149155446097, guid: f79eeffdfb228cd4199d3c8d52bc19af, type: 3}
       propertyPath: m_Name
       value: FBX_Baba-colgante_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f79eeffdfb228cd4199d3c8d52bc19af, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79eeffdfb228cd4199d3c8d52bc19af, type: 3}
@@ -280,9 +304,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7590bc74413b0554986c3e4a8b425dda, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7590bc74413b0554986c3e4a8b425dda, type: 3}
       propertyPath: m_Name
       value: FBX_Sofa_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7590bc74413b0554986c3e4a8b425dda, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7590bc74413b0554986c3e4a8b425dda, type: 3}
@@ -342,9 +374,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
       propertyPath: m_Name
       value: FBX_Columna-baba-base (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
@@ -404,9 +444,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -27.735
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 097cd7e8f01459441ad449f2926750d2, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 097cd7e8f01459441ad449f2926750d2, type: 3}
       propertyPath: m_Name
       value: FBX_Sofa_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 097cd7e8f01459441ad449f2926750d2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 097cd7e8f01459441ad449f2926750d2, type: 3}
@@ -466,9 +514,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.476
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6ed2dcb6326c1d647b2b0f6aae1c24a9, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6ed2dcb6326c1d647b2b0f6aae1c24a9, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_05 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6ed2dcb6326c1d647b2b0f6aae1c24a9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed2dcb6326c1d647b2b0f6aae1c24a9, type: 3}
@@ -528,9 +584,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db306e3a86fb2748a47f33a3ce84a32, type: 3}
@@ -590,9 +654,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 18cf4e6d89f99dd44bdda3e6ef0792fa, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 18cf4e6d89f99dd44bdda3e6ef0792fa, type: 3}
       propertyPath: m_Name
       value: FBX_Sofa-de-discoteca_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18cf4e6d89f99dd44bdda3e6ef0792fa, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18cf4e6d89f99dd44bdda3e6ef0792fa, type: 3}

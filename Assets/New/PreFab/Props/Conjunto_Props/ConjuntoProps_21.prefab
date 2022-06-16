@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &2685079282449718073
 Transform:
@@ -94,9 +94,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 8.595
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf2aa20d7e3e8c644882923d0ba9cad8, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cf2aa20d7e3e8c644882923d0ba9cad8, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf2aa20d7e3e8c644882923d0ba9cad8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf2aa20d7e3e8c644882923d0ba9cad8, type: 3}
@@ -157,12 +165,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c49cda8fa413d6d409a63298804fcc81, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c49cda8fa413d6d409a63298804fcc81, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f176d62ae0f68a41a9c7579df05b8f3, type: 2}
     - target: {fileID: 919132149155446097, guid: c49cda8fa413d6d409a63298804fcc81, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c49cda8fa413d6d409a63298804fcc81, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c49cda8fa413d6d409a63298804fcc81, type: 3}
@@ -222,9 +238,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 2c25f4ce9d542cd4a8a0e9d8ccb58117, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c25f4ce9d542cd4a8a0e9d8ccb58117, type: 3}
       propertyPath: m_Name
       value: FBX_Estanteria_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c25f4ce9d542cd4a8a0e9d8ccb58117, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c25f4ce9d542cd4a8a0e9d8ccb58117, type: 3}
@@ -284,9 +308,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
@@ -347,12 +379,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 46498a329798f3e47b5b1db7bc6aa6de, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 46498a329798f3e47b5b1db7bc6aa6de, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 89b3dd6cacbaee643996371748a8492a, type: 2}
     - target: {fileID: 919132149155446097, guid: 46498a329798f3e47b5b1db7bc6aa6de, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_03 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46498a329798f3e47b5b1db7bc6aa6de, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46498a329798f3e47b5b1db7bc6aa6de, type: 3}
@@ -412,9 +452,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -31.621
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
@@ -475,12 +523,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 921f9fd36d047fa4083460a559980533, type: 2}
     - target: {fileID: 919132149155446097, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
       propertyPath: m_Name
       value: FBX_Baba-Colgante_04 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66c973dbf06304e4586641a83e44b563, type: 3}
@@ -540,9 +596,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
@@ -602,9 +666,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb9b1498925cb04da3dec252e78b867, type: 3}
@@ -664,9 +736,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6c18c606ae6b434fb2ae736a2af9a29, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f6c18c606ae6b434fb2ae736a2af9a29, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6c18c606ae6b434fb2ae736a2af9a29, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6c18c606ae6b434fb2ae736a2af9a29, type: 3}
@@ -726,9 +806,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f1a8f494504432c40b3d57834c0c40a5, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1a8f494504432c40b3d57834c0c40a5, type: 3}
       propertyPath: m_Name
       value: FBX_GrupoLibros_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1a8f494504432c40b3d57834c0c40a5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1a8f494504432c40b3d57834c0c40a5, type: 3}
@@ -788,9 +876,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.289
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
       propertyPath: m_Name
       value: FBX_Libro_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465cccb1c97ab274988a83ac70ffb8f6, type: 3}
@@ -850,9 +946,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7aee3a6e74753a74bb1b23e2af69fd1c, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7aee3a6e74753a74bb1b23e2af69fd1c, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_10 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7aee3a6e74753a74bb1b23e2af69fd1c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aee3a6e74753a74bb1b23e2af69fd1c, type: 3}
