@@ -6881,6 +6881,7 @@ MonoBehaviour:
   bossSense: {fileID: 4551498204367644210}
   bossEyes: {fileID: 4551498204382424930}
   eyesMaxTimer: 40
+  attackMaxTime: 2
 --- !u!114 &4551498204382424935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6935,12 +6936,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fa695a505b6a942a57651ce33019e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstPhase: 010000000200000003000000
-  secondPhase: 010000000200000003000000040000000500000006000000
-  randomFirst: 0
-  randomSecond: 0
-  repeatFirst: 0
-  repeatSecond: 0
+  firstPhase: 02000000
+  secondPhase: 
+  rage: 0
   numberNow: 0
 --- !u!114 &4551498204382424930
 MonoBehaviour:
