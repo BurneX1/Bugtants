@@ -9,7 +9,6 @@ public class EnemyAttract : MonoBehaviour
     public float speedSuction, damageRate;
     public int damage;
     private float timer, finalDestiny;
-    private Rigidbody rigid;
 
     public Transform initial, final;
     public EnemySense locate;
@@ -22,9 +21,6 @@ public class EnemyAttract : MonoBehaviour
     void Start()
     {
         finalDestiny = final.transform.localPosition.z;
-        rigid = GetComponent<Rigidbody>();
-        Vector3 result = (transform.position - initial.position).normalized;
-        rigid.AddForce(result * 1000);
         devouring = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -51,7 +47,6 @@ public class EnemyAttract : MonoBehaviour
             final.localPosition = localPos;
             devouring = true;
             downing = localPos;
-            rigid.isKinematic = true;
         }
     }
 
