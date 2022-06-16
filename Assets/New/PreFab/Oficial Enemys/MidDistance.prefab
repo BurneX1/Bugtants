@@ -399,7 +399,7 @@ MonoBehaviour:
   timeLifeSpan: 0
   feedMaxTimer: 1
   takeMaxTimer: 3
-  destroyable: 1
+  destroyable: 0
   armor: 0
   grandArmor: 0
   model: {fileID: 2337306152945644710}
@@ -1532,19 +1532,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4208739678575803096, guid: 1e68f156d76208e488dbad6dc9a8547c, type: 3}
   m_PrefabInstance: {fileID: 6388871417436584319}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &2894789668455848275
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 602207910933648187}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5316504826353867972
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1561,6 +1548,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &2894789668455848275
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602207910933648187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!144 &1727144364818414042
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1573,7 +1573,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.41652822, y: 0.3504135, z: -0.008267701}
+  m_ConnectedAnchor: {x: -0.41652828, y: 0.3504136, z: -0.008267701}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
