@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossPatrolAttacks : MonoBehaviour
 {
+    [Tooltip("Los primeros movientos desde que despierta")]
     public int[] firstPhase, secondPhase;
     public bool rage;
     private int contFirst, contSecond;
