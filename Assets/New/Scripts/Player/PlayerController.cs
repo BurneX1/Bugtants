@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         //Component Settup -----------//
         currentWeapon = weapons[0];
+        weaponNumber = 0;
         c_ray = gameObject.GetComponent<FrontRayCaster>();
         c_life = gameObject.GetComponent<Life>();
         c_mp = gameObject.GetComponent<MP_System>();
@@ -75,6 +76,8 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
         inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
+        inputStm.GamePlay.ChangeWeapons.performed += ctx => WeaponsLockers(weaponLock, ctx.ReadValue<float>());
+        inputStm.GamePlay.ChangeWeapons.performed += ctx => Debug.Log(ctx.ReadValue<float>());
         inputStm.GamePlay.Run.performed += ctx => RunLocker(runLock, true);
         inputStm.GamePlay.Run.canceled += ctx => RunLocker(runLock, false);
         //-------------------------<<<//
@@ -114,7 +117,31 @@ public class PlayerController : MonoBehaviour
             ChangedWeapon(number);
         }
     }
+    void WeaponsLockers(bool locked, float upDown)
+    {
+        int number = weaponNumber;
+        if (!locked)
+        {
+            if (upDown > 0)
+            {
+                number++;
+            }
+            else if (upDown < 0)
+            {
+                number--;
+            }
+            if (number < 0)
+            {
+                number = weapons.Length - 1;
+            }
+            else if (number >= weapons.Length)
+            {
+                number = 0;
+            }
 
+            WeaponsLocker(weaponLock, number);
+        }
+    }
     void ChangedWeapon(int value)
     {
         weaponNumber = value;

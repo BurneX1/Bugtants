@@ -4,11 +4,33 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    void OnTriggerEnter(Collider col)
+    private InputSystemActions inputStm;
+    public bool grab;
+    public Detecter detect;
+    void Awake()
     {
-        if (col.gameObject.tag == "Player")
+        inputStm = new InputSystemActions();
+        inputStm.GamePlay.Interact.canceled += ctx => grab = false;
+        inputStm.GamePlay.Interact.performed += ctx => grab = true;
+    }
+
+    void Update()
+    {
+        Detecting();
+    }
+    void Detecting()
+    {
+        if (detect.touch && grab)
         {
             Destroy(gameObject);
         }
+    }
+    private void OnEnable()
+    {
+        inputStm.Enable();
+    }
+    private void OnDisable()
+    {
+        inputStm.Disable();
     }
 }
