@@ -522,7 +522,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 587227e4eb5fa2748b09a81d56f77c28, type: 2}
+      objectReference: {fileID: 2100000, guid: 4112a3cefdfe3a341b3318b410a63acb, type: 2}
     - target: {fileID: 919132149155446097, guid: 99a07f9787bf3614498f00aa736d8bca, type: 3}
       propertyPath: m_Name
       value: FBX_Escombro_02 (1)
@@ -737,6 +737,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 974d7f6439222424e988158f4ff7fc7a, type: 2}
     - target: {fileID: 919132149155446097, guid: e2cd7afb5e2d2ce4dbfa0235eed431ac, type: 3}
       propertyPath: m_Name
       value: FBX_Columna-baba-base (1)
