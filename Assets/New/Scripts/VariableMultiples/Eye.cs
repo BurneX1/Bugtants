@@ -8,11 +8,11 @@ public class Eye : MonoBehaviour
     [HideInInspector]
     public float damageFeedTimer, immuneFeedTimer;
     [HideInInspector]
-    public bool grandArmor, dead;
+    public bool grandArmor, dead, rage;
     [HideInInspector]
     public Material isImmuneMat, damagedMat, immuneMat, deadMat;
     private Material vulnerableMat;
-    public BossEyes fatherEye;
+    public BossHealthy fatherEye;
     void Awake()
     {
         dead = false;
@@ -29,7 +29,7 @@ public class Eye : MonoBehaviour
                 {
                     GetComponent<MeshRenderer>().material = deadMat;
                     dead = true;
-                    fatherEye.DeadEye();
+                    fatherEye.DeadEye(rage);
                 }
                 else
                 StartCoroutine(DamageFeedback());

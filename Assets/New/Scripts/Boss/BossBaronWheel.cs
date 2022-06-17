@@ -3,6 +3,12 @@ using UnityEngine;
 public class BossBaronWheel : MonoBehaviour
 {
     public EnemyLife[] suckersLife;
+    public bool devourers;
+    void Awake()
+    {
+        devourers = false;
+    }
+
     void Update()
     {
         Conditional();
@@ -15,6 +21,10 @@ public class BossBaronWheel : MonoBehaviour
             if (suckers.dead == true)
             {
                 Destroy(gameObject);
+            }
+            else if (suckers.gameObject.GetComponent<EnemyAttract>().devouring == true)
+            {
+                devourers = true;
             }
         }
 

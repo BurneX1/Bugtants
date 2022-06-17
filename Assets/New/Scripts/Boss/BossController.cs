@@ -7,7 +7,7 @@ public class BossController : MonoBehaviour
     public BossPatrolAttacks bossAttackPrepare;
     public BossAttacks bossAttacker;
     public BossSense bossSense;
-    public BossEyes bossEyes;
+    public BossHealthy bossEyes;
     [Tooltip("Temporizador de cambio de ojo")]
     public float eyesMaxTimer;
     [Tooltip("Temporizador de ataques")]
@@ -74,7 +74,10 @@ public class BossController : MonoBehaviour
             bossEyes.CountEyes();
             eyesTimer = 0;
         }
-
+        if (bossEyes.eyes.Length == 0 && !bossAttackPrepare.rage)
+        {
+            bossAttackPrepare.rage = true;
+        }
     }
     void PreparingAttacks()
     {

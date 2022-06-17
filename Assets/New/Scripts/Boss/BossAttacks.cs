@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossAttacks : MonoBehaviour
 {
     public int damage, areaChoose1, areaChoose2, areaChoose3, numberShoots;
-    public float prepareSpeed, maxDelayTime, shootMaxTime, attackSpeed, bulletSpeed, stunDoneMaxTime, artillerySpeed, dropForce, stunRate, stunDrop;
+    public float prepareSpeed, maxDelayTime, wheelMaxTime, attackSpeed, bulletSpeed, stunDoneMaxTime, artillerySpeed, dropForce, stunRate, stunDrop;
     public GameObject slimeBall, eggBall, bullet, baronHuggers, randomSlime, randomEgg;
     [Tooltip("Tentaculos")]
     public GameObject tentaclesHor, tentaclesVer;
@@ -46,17 +46,7 @@ public class BossAttacks : MonoBehaviour
         switch (step)
         {
             case 0:
-                timer += Time.deltaTime;
-                if (timer >= maxDelayTime)
-                {
-                    timer = 0;
-                    step++;
-                }
-                else if(timer >= maxDelayTime/2&&location.feel)
-                {
-                    timer = 0;
-                    step++;
-                }
+                step++;
                 break;
             case 1:
                 int localize;
@@ -150,12 +140,7 @@ public class BossAttacks : MonoBehaviour
         switch (step)
         {
             case 0:
-                timer += Time.deltaTime;
-                if (timer >= maxDelayTime)
-                {
-                    timer = 0;
-                    step++;
-                }
+                step++;
                 break;
             case 1:
                 Vector3 rec;
@@ -275,18 +260,12 @@ public class BossAttacks : MonoBehaviour
         }
     }
 
-
     public void Attack_03() // Invoca a 8 "Huggers"
     {
         switch (step)
         {
             case 0:
-                timer += Time.deltaTime;
-                if (timer >= maxDelayTime)
-                {
-                    timer = 0;
-                    step++;
-                }
+                step++;
                 break;
             case 1:
                 baronHuggers.transform.position = locationer.position;
@@ -296,14 +275,21 @@ public class BossAttacks : MonoBehaviour
             case 2:
                 if (baronWheel == null)
                 {
+                    timer = 0;
                     step = -1;
+                }
+                else if (!baronWheel.GetComponent<BossBaronWheel>().devourers)
+                {
+                    timer += Time.deltaTime;
+                    if (timer >= wheelMaxTime)
+                    {
+                        Destroy(baronWheel);
+                    }
                 }
                 break;
         }
 
     }
-
-
     public void Attack_04(BossSense location) // Parecido a BeetleBomb pero a más balas
     {
         switch (step)
@@ -356,12 +342,7 @@ public class BossAttacks : MonoBehaviour
         switch (step)
         {
             case 0:
-                timer += Time.deltaTime;
-                if (timer >= maxDelayTime)
-                {
-                    timer = 0;
-                    step++;
-                }
+                step++;
                 break;
             case 1:
                 Vector3 rec;
