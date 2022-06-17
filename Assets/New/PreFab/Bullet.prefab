@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modDam: 0
   distance: 0
-  angler: {x: -0.8129556, y: -0.32398343, z: 0.483878}
+  angler: {x: 0.78076106, y: -0.25326052, z: 0.57120156}
   start: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
   tagName: Player
@@ -153,6 +153,7 @@ MonoBehaviour:
   dmgTagsArray:
   - Enemy
   timePerDmg: 1
+  doDmg: 0
   lifeLimiter: 0
 --- !u!1 &8977745913311820908
 GameObject:
