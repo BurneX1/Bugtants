@@ -14,9 +14,11 @@ public class AtackMele : MonoBehaviour
     private float atkTimer;
     private bool isAtacking;
     private DamageOnTriger hitScrp;
-
+    public WaysToSound meleeSound;
     private void Awake()
     {
+        meleeSound.whereSound = 4;
+        meleeSound.whatSound = 4;
         hitScrp = hitBox.AddComponent<DamageOnTriger>();
         hitScrp.damage = dmg;
         hitScrp.dmgTagsArray = dmgTagsArray;
@@ -65,6 +67,11 @@ public class AtackMele : MonoBehaviour
                     hitBox.SetActive(false);
                     dlyTimer = 0;
                     atkTimer = 0;
+                    if (hitScrp.doDmg)
+                    {
+                        meleeSound.StopThenActive();
+                        hitScrp.doDmg = false;
+                    }
                     isAtacking = false;
                 }
             }

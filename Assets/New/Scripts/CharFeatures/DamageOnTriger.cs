@@ -8,7 +8,8 @@ public class DamageOnTriger : MonoBehaviour
     public string[] dmgTagsArray;
     public float timePerDmg;
     private float timer;
-    private bool doDmg;
+    [HideInInspector]
+    public bool doDmg;
     [Tooltip("Mantener en 0 si no desea limitar el daño en relacion a la vida")]
     public int lifeLimiter;
     // Start is called before the first frame update

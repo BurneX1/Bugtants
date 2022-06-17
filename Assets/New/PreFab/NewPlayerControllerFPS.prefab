@@ -3077,6 +3077,10 @@ MonoBehaviour:
     newSound: {fileID: 0}
     location: {fileID: 7701868843168912820}
     soundDistance: {x: 0, y: 4}
+  - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
+    location: {fileID: 129421825486529235}
+    soundDistance: {x: 0, y: 2}
 --- !u!114 &5987273786970785789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3095,6 +3099,10 @@ MonoBehaviour:
   hitBox: {fileID: 6512693605806677882}
   delayStartatack: 0.5
   atkDuration: 0.3
+  meleeSound:
+    whatSound: 4
+    whereSound: 4
+    sounds: {fileID: 6322861031785718406}
 --- !u!114 &7701868843168912811
 MonoBehaviour:
   m_ObjectHideFlags: 0
