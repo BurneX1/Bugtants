@@ -106,10 +106,11 @@ public class MidDistanceManager : MonoBehaviour
     {
         if (enLifeScript.dead)
         {
-            enGrdScript.saveSpeed = 0;
+            enGrdScript.intel.speed = 0;
             enGrdScript.enabled = false;
             enSenScript.enabled = false;
             enMidScript.enabled = false;
+            enGrdScript.intel.speed = 0;
 
         }
     }

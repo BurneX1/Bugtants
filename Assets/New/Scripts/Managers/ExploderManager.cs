@@ -94,10 +94,11 @@ public class ExploderManager : MonoBehaviour
     {
         if (enLifeScript.dead)
         {
-            enGrdScript.saveSpeed = 0;
+            enGrdScript.intel.speed = 0;
             enGrdScript.enabled = false;
             enSenScript.enabled = false;
             explodeScript.enabled = false;
+            enGrdScript.intel.speed = 0;
 
         }
     }
