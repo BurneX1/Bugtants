@@ -103,6 +103,14 @@ public class EnemyLife : MonoBehaviour
             dead = true;
 
             if (destroyable) Destroy(gameObject);
+            else SetLayerRecursively(gameObject, 10);
+        }
+    }
+    public static void SetLayerRecursively(GameObject go, int layerNumber)
+    {
+        foreach (Transform trans in go.GetComponentsInChildren<Transform>(true))
+        {
+            trans.gameObject.layer = layerNumber;
         }
     }
 }

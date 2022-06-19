@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class DropBomb : MonoBehaviour
 {
-    private Rigidbody rigid;
+    [HideInInspector]
+    public Rigidbody rigid;
     [HideInInspector]
     public float force, stunRate;
     [HideInInspector]
     public int damage;
     public GameObject contain;
     // Start is called before the first frame update
-    void Start()
+    public void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         rigid.AddForce(transform.up * -10 * force);
