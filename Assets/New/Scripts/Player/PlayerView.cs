@@ -197,7 +197,7 @@ public class PlayerView : MonoBehaviour
             if(inactivityCounter <= 0)
             {
                 alphaState -= Time.deltaTime;
-                if (alphaState <= 0) alphaState = 0;
+                if (alphaState <= 0.5f) alphaState = 0.5f;
                 generalCanvas.GetComponent<CanvasGroup>().alpha = alphaState;
             }
         }
