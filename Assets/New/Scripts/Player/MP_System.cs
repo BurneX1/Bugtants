@@ -47,6 +47,7 @@ public class MP_System : MonoBehaviour
     {
         recovery = Mathf.Abs(recovery);
         actualMP = actualMP + recovery;
+        playerHUD.activateHUD = true;
 
         if (actualMP > maxMP)
         {
