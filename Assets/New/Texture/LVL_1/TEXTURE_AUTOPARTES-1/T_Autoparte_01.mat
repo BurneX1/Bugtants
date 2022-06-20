@@ -21,18 +21,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: T_Autoparte_01
-  m_Shader: {fileID: 4800000, guid: 873188af6a7b5ca49aa69929a5d863c1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _BENTNORMALMAP _DISABLE_SSR_TRANSPARENT _DISPLACEMENT_LOCK_TILING_SCALE
-    _EMISSIVE_SIMPLE _HEIGHTMAP _IS_ANGELRING_OFF _IS_OUTLINE_CLIPPING_NO _IS_TRANSCLIPPING_OFF
-    _MASKMAP _NORMALMAP _NORMALMAP_TANGENT_SPACE _OUTLINE_POS _PIXEL_DISPLACEMENT
-    _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE _SHADINGGRADEMAP _SPECULARCOLORMAP
+    _HEIGHTMAP _MASKMAP _MATERIAL_FEATURE_CLEAR_COAT _NORMALMAP _NORMALMAP_TANGENT_SPACE
+    _PIXEL_DISPLACEMENT _PIXEL_DISPLACEMENT_LOCK_OBJECT_SCALE _SPECULARCOLORMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2225
   stringTagMap:
     IgnoreProjection: False
-    RenderType: Opaque
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
@@ -252,7 +250,7 @@ Material:
     - _1st_ShadeColor_Step: 0.8
     - _2nd_ShadeColor_Feather: 0.0001
     - _2nd_ShadeColor_Step: 0.4
-    - _AORemapMax: 0
+    - _AORemapMax: 0.18227008
     - _AORemapMin: 0
     - _ARSampler_AlphaOn: 0
     - _AR_OffsetU: 0
@@ -293,10 +291,10 @@ Material:
     - _ClippingMatteMode: 0
     - _ClippingMode: 0
     - _Clipping_Level: 0
-    - _CoatMask: 0
+    - _CoatMask: 0.191
     - _ColorShift_Speed: 0
     - _ComposerMaskMode: 0
-    - _CullMode: 0
+    - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
@@ -396,12 +394,12 @@ Material:
     - _MatCap: 0
     - _MaterialID: 1
     - _Metallic: 1
-    - _MetallicRemapMax: 1
-    - _MetallicRemapMin: 0.35591447
+    - _MetallicRemapMax: 0.20912284
+    - _MetallicRemapMin: 0
     - _Mode: 0
     - _Nearest_Distance: 0.5
     - _NormalMapSpace: 0
-    - _NormalScale: 1
+    - _NormalScale: 0.2
     - _OUTLINE: 1
     - _ObjectSpaceUVMapping: 0
     - _OcclusionStrength: 1
@@ -441,7 +439,7 @@ Material:
     - _Set_SystemShadowsToBase: 1
     - _ShadeColor_Step: 0.4
     - _Smoothness: 0.5
-    - _SmoothnessRemapMax: 0.5782863
+    - _SmoothnessRemapMax: 0.22535217
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularAAScreenSpaceVariance: 0.1
