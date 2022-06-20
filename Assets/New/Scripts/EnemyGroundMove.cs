@@ -25,7 +25,6 @@ public class EnemyGroundMove : MonoBehaviour
     public EnemySense radium;
     private int pinner, marker;
     public int chargeDamage;
-    public GameObject moveSound;
     public GameObject[] patrolPoint;
     public GameObject patroller;
     private int pastPatrol, patrolNumber, proximity;
