@@ -36,7 +36,7 @@ public class VolumeConfiguration : MonoBehaviour
         //BgmUnits = GameObject.FindGameObjectsWithTag("SoundMusic");
         for (int i = 0; i < sfxUnits.Length; i++)
         {
-            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol * 9 / 10;
+            sfxUnits[i].GetComponent<AudioSource>().volume = sndVol * 10 / 10;
             //BgmUnits[i].GetComponent<AudioSource>().volume = musVol * 9 / 10;
         }
     }
