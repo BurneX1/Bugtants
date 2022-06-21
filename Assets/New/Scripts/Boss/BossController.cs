@@ -8,6 +8,8 @@ public class BossController : MonoBehaviour
     public BossAttacks bossAttacker;
     public BossSense bossSense;
     public BossHealthy bossEyes;
+    public BossSummoners bossSummon;
+    public Detecter bossDeter;
     [Tooltip("Temporizador de cambio de ojo")]
     public float eyesMaxTimer;
     [Tooltip("Temporizador de ataques")]
@@ -22,12 +24,25 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        Activations();
-        FinishingAttacks();
-        BossEyeTransgoing();
-        PreparingAttacks();
+        if (bossEyes.activated && !bossEyes.dead)
+        {
+            Activations();
+            FinishingAttacks();
+            BossEyeTransgoing();
+            PreparingAttacks();
+        }
+        else
+        {
+            Detection();
+        }
     }
-
+    void Detection()
+    {
+        if (bossDeter.touch && !bossEyes.dead)
+        {
+            bossEyes.Detect();
+        }
+    }
     void Activations()
     {
         switch (bossAttackPrepare.numberNow)
@@ -59,6 +74,7 @@ public class BossController : MonoBehaviour
         if(bossAttackPrepare.numberNow!=0&& bossAttacker.step == -1)
         {
             bossAttackPrepare.numberNow = 0;
+            bossSummon.Summoners();
             bossAttacker.step = 0;
         }
     }

@@ -1,22 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealthy : MonoBehaviour
 {
+    [Tooltip("La escena que manda luego de estar muerto")]
+    public string sceneName;
+
+    [Tooltip("Cuando el jefe lucha")]
+    public bool activated;
     [Tooltip("Salud")]
     public float eyeHealth, tumoursHealth;
     [Tooltip("Tiempo de feedback")]
     public float damageFeedTimer, immuneFeedTimer;
     [Tooltip("Feedback de estados")]
     public Material isImmuneMat, damagedMat, immuneMat, deadMat;
+    public GameObject tumoursDone, eyesDone;
     public Eye[] eyes, tumours;
     [Header("------------")]
     [Tooltip("Numero de ojos/tumores abiertos")]
     public int eyesOpen, tumoursOpen;
 
     [HideInInspector]
-    public bool deadReset;
+    public bool deadReset, dead;
     void Awake()
     {
+        dead = false;
+        activated = false;
         deadReset = false;
         foreach (Eye identifyEyes in eyes)
         {
@@ -44,12 +55,12 @@ public class BossHealthy : MonoBehaviour
             identifyEyes.rage = true;
             identifyEyes.fatherEye = gameObject.GetComponent<BossHealthy>();
         }
-
-        Detect();
+        tumoursDone.SetActive(false);
     }
 
     public void Detect()
     {
+        activated = true;
         CountEyes();
     }
 
@@ -110,8 +121,17 @@ public class BossHealthy : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            activated = false;
+            dead = true;
+        }
         if (deadReset)
             deadReset = false;
+        if (dead)
+        {
+            StartCoroutine(OnVictory());
+        }
     }
     public void DeadEye(bool rage)
     {
@@ -149,6 +169,22 @@ public class BossHealthy : MonoBehaviour
             }
             tumours = actualeye;
         }
+        if (eyes.Length == 0 && !rage)
+        {
+            tumoursDone.SetActive(true);
+            eyesDone.SetActive(false);
+        }
+        if (tumours.Length == 0 && rage)
+        {
+            tumoursDone.SetActive(false);
+        }
         CountEyes();
+    }
+    IEnumerator OnVictory()
+    {
+        Debug.Log("Boss is dead");
+        yield return new WaitForSeconds(40f);
+        SceneManager.LoadScene(sceneName);
+
     }
 }
