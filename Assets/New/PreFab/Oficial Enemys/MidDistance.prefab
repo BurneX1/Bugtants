@@ -345,7 +345,7 @@ MonoBehaviour:
   charging: 0
   chargeSpeed: 0
   maxDelay: 0
-  receiveMaxTime: 0
+  receiveMaxTime: 0.3
   radium: {fileID: 2337306152964645707}
   chargeDamage: 0
   patrolPoint: []
@@ -410,6 +410,10 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
+  deadWays:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &3445008092586068149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1380,7 @@ PrefabInstance:
     - target: {fileID: -7993702097309421543, guid: 1e68f156d76208e488dbad6dc9a8547c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: db9fc534750c6734ba9960a233dfde33, type: 2}
+      objectReference: {fileID: 2100000, guid: 7668756125df2974787997665bb03d26, type: 2}
     - target: {fileID: 919132149155446097, guid: 1e68f156d76208e488dbad6dc9a8547c, type: 3}
       propertyPath: m_Name
       value: BettleBomb_Iddle

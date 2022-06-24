@@ -12,7 +12,6 @@ public class EventSoundSeen : MonoBehaviour
     {
         GameObject obj = GameObject.Find("Whisperer");
         whisper = obj.GetComponent<AudioSource>();
-        whisper.clip = clippie;
     }
 
     // Update is called once per frame
@@ -25,6 +24,7 @@ public class EventSoundSeen : MonoBehaviour
     {
         if (soundZone.touch)
         {
+            whisper.clip = clippie;
             whisper.Play();
             Destroy(gameObject);
         }
