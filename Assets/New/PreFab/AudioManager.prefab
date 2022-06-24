@@ -81,7 +81,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0a65ede0f95347b6eca3e588254cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgms: []
+  bgms:
+  - {fileID: 8300000, guid: 630fe883e86794d4d809945c270da8f7, type: 3}
+  - {fileID: 8300000, guid: b6251c0e3072b084983d94c2f5a8364d, type: 3}
+  - {fileID: 8300000, guid: c494a0bb20ef18b4c97175637499a3cb, type: 3}
+  - {fileID: 8300000, guid: 0066b2c65edd70e4d8b289645c34d159, type: 3}
+  - {fileID: 8300000, guid: c9790179af8fd834393134d07351a296, type: 3}
 --- !u!114 &2041156179101947418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,4 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tensionSound: 0
   battleSound: 0
-  detectionNumber: 0
+  normalSound: 0
+  tensionNumber: 0
+  battleLogic: 0
+  audions: {fileID: 0}
+  sounds: {fileID: 0}

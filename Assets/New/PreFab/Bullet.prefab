@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3577984631709007137}
   - component: {fileID: 3577984631709007141}
   - component: {fileID: 5173596144054153626}
-  - component: {fileID: 558114720456750985}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -129,32 +128,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modDam: 0
   distance: 0
-  angler: {x: -0.961777, y: -0.24044012, z: -0.13104852}
+  angler: {x: 0, y: 0, z: 0}
   start: {x: 0, y: 0, z: 0}
   current: {x: 0, y: 0, z: 0}
-  tagName: Player
-  damage: 15
+  tagName: Enemy
+  damage: 0
   shells: []
   cannon: 0
   speed: 50
---- !u!114 &558114720456750985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3577984631709007136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c16c5f4bb56ff864cb76f8260e7340a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  dmgTagsArray:
-  - Enemy
-  timePerDmg: 1
-  doDmg: 0
-  lifeLimiter: 0
 --- !u!1 &8977745913311820908
 GameObject:
   m_ObjectHideFlags: 0

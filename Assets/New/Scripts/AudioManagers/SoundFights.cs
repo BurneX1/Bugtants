@@ -5,10 +5,19 @@ using UnityEngine;
 public class SoundFights : MonoBehaviour
 {
     public int tensionSound, battleSound;
-    public int tensionNumber, battleNumber;
+    [Tooltip("Son los sonidos normales del ambiente")]
+    public int normalSound;
+    public int tensionNumber;
+    public bool battleLogic;
+    private AudioSource audions;
+    private Soundtracks sounds;
     // Start is called before the first frame update
     void Awake()
     {
+        sounds = gameObject.GetComponent<Soundtracks>();
+        audions = GameObject.Find("BackGroundMusic").GetComponent<AudioSource>();
+        audions.clip = sounds.bgms[normalSound];
+        audions.Play();
         tensionNumber = 0;
     }
 
@@ -20,6 +29,17 @@ public class SoundFights : MonoBehaviour
 
     void ConditionalSounds()
     {
+        if (tensionNumber == 0)
+        {
+            battleLogic = false;
+        }
+        else if(tensionNumber > 0 && !battleLogic)
+        {
 
+        }
+        else if (tensionNumber > 0 && battleLogic)
+        {
+
+        }
     }
 }

@@ -15,7 +15,10 @@ public class Life : MonoBehaviour
     private void Awake()
     {
         damaged = false;
-        actualHealth = maxHealth;
+        if (actualHealth > maxHealth || actualHealth == 0)
+        {
+            actualHealth = maxHealth;
+        }
         playerHUD = GetComponent<PlayerView>();
     }
 
