@@ -416,7 +416,6 @@ MonoBehaviour:
   maxDelay: 0
   radium: {fileID: 2885942110924576187}
   chargeDamage: 0
-  moveSound: {fileID: 0}
   patrolPoint: []
   patroller: {fileID: 2885942110856297751}
   savePatrol: []
@@ -537,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2840730493228918516}
+  deadTime: 10
 --- !u!1 &2885942110924576180
 GameObject:
   m_ObjectHideFlags: 0
