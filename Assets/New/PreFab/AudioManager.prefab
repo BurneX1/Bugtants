@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3873540502924841274}
   - component: {fileID: 3873540502924841275}
+  - component: {fileID: 2258832002056426467}
+  - component: {fileID: 2041156179101947418}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -67,3 +69,31 @@ MonoBehaviour:
   backgroundMusicMixer: {fileID: 5794509024626110045, guid: 9cda6f0859c8b98489c2c9d9acd80668, type: 2}
   soundFxMixer: {fileID: -1001685179375363784, guid: 9cda6f0859c8b98489c2c9d9acd80668, type: 2}
   mixer3D: {fileID: -3203585120558236177, guid: 9cda6f0859c8b98489c2c9d9acd80668, type: 2}
+--- !u!114 &2258832002056426467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873540502924841269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc0a65ede0f95347b6eca3e588254cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgms: []
+--- !u!114 &2041156179101947418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873540502924841269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f5a81475cae72469bfc8ae348e6b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tensionSound: 0
+  battleSound: 0
+  detectionNumber: 0

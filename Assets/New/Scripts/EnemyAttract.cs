@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAttract : MonoBehaviour
 {
+    private SoundFights audios;
+
     [HideInInspector]
     public GameObject player;
     public float speedSuction, damageRate;
@@ -14,12 +16,14 @@ public class EnemyAttract : MonoBehaviour
     public EnemySense locate;
     public EnemyLife life;
     public Detecter signed;
-    public bool devouring;
+    public bool devouring, mySwitch;
     private Vector3 downing;
     public BoxCollider hitBox;
     // Start is called before the first frame update
     void Start()
     {
+        audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
+        mySwitch = false;
         life.armor = true;
         finalDestiny = final.transform.localPosition.z;
         devouring = false;
@@ -64,6 +68,12 @@ public class EnemyAttract : MonoBehaviour
 
     void Devourer()
     {
+        if (!mySwitch)
+        {
+            Debug.Log("+1");
+            audios.tensionNumber += 1;
+            mySwitch = true;
+        }
         life.armor = false;
         player.GetComponent<Movement>().poseser = gameObject;
         if (downing.z > finalDestiny)

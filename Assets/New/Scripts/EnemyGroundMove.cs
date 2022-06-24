@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyGroundMove : MonoBehaviour
 {
+    private SoundFights audios;
+
     public NavMeshAgent intel;
     public GameObject modelsee;
 
@@ -12,16 +14,15 @@ public class EnemyGroundMove : MonoBehaviour
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
-    public bool calm, stunned, charge, touch, moving, attacking;
+    public bool calm, stunned, charge, touch, moving, attacking, mySwitch;
     [HideInInspector]
     public int statNumber;
-    // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4, waiting = 5
-
-    public enum Status { patrolling, chasing, retreating, looking, charging, waiting };
+    // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4, waiting = 5, receiving = 6
+    public enum Status { patrolling, chasing, retreating, looking, charging, waiting, reached };
     public Status stat;
     [HideInInspector]
-    public float saveSpeed, backSpeed, chaseSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1, chargeSpeed, maxDelay;
-    private float stunnedTimer, patrolTimer, waitTimer, chasingTime;
+    public float saveSpeed, backSpeed, chaseSpeed, saveAcc, saveLife, stunnedMaxTimer, charging = 1, chargeSpeed, maxDelay, receiveMaxTime;
+    private float stunnedTimer, patrolTimer, waitTimer, chasingTime, receiveTimer;
     public EnemySense radium;
     private int pinner, marker;
     public int chargeDamage;
@@ -39,11 +40,13 @@ public class EnemyGroundMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
         /*
         if (valores != null)
         {
             guardarVida = valores.vida;
         }*/
+        mySwitch = false;
         chaseMode = false;
         chasingTime = 0;
         attacking = false;
@@ -108,6 +111,12 @@ public class EnemyGroundMove : MonoBehaviour
 
         if (stat == Status.patrolling && !touch)
         {
+            if (mySwitch)
+            {
+                Debug.Log("-1");
+                audios.tensionNumber -= 1;
+                mySwitch = false;
+            }
             if (patrolPoint.Length == 0)
             {
                 moving = false;
@@ -145,6 +154,12 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if (stat == Status.patrolling && touch)
         {
+            if (mySwitch)
+            {
+                Debug.Log("-1");
+                audios.tensionNumber -= 1;
+                mySwitch = false;
+            }
             moving = false;
             intel.speed = 0;
             patrolTimer += Time.deltaTime;
@@ -159,6 +174,12 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else if (stat == Status.chasing /*&& */)
         {
+            if (!mySwitch)
+            {
+                Debug.Log("+1");
+                audios.tensionNumber += 1;
+                mySwitch = true;
+            }
             moving = true;
             intel.speed = chaseSpeed * charging;
             intel.SetDestination(radium.objetive.transform.position);
@@ -206,7 +227,24 @@ public class EnemyGroundMove : MonoBehaviour
                 waitTimer = 0;
             }
         }
-        if (attacking)
+        else if (stat == Status.reached)
+        {
+            receiveTimer += Time.deltaTime;
+            intel.speed = 0;
+            if (receiveTimer >= receiveMaxTime)
+            {
+                chaseMode = true;
+                gameObject.GetComponent<EnemyLife>().reached = false;
+                receiveTimer = 0;
+            }
+        }
+
+        if (gameObject.GetComponent<EnemyLife>().reached)
+        {
+            stat = Status.reached;
+            statNumber = 6;
+        }
+        else if (attacking)
         {
             stat = Status.waiting;
             statNumber = 5;

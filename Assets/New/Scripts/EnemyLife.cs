@@ -5,6 +5,7 @@ using System;
 
 public class EnemyLife : MonoBehaviour
 {
+    private SoundFights audios;
     public event Action Damage = delegate { };
     public event Action Dead = delegate { };
     //General//
@@ -20,13 +21,15 @@ public class EnemyLife : MonoBehaviour
 
     //State Definition//
     [HideInInspector]
-    public bool dead, taken, point;
+    public bool dead, taken, point, reached;
     private bool desperated;
     //Sounds//
     private SoundActive sounds;
 
     void Awake()
     {
+        audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
+        reached = false;
         point = false;
         desperated = true;
         actualMat = model.GetComponent<MeshRenderer>().material;
@@ -78,6 +81,7 @@ public class EnemyLife : MonoBehaviour
                 life -= value / 2;
             feedTimer = feedMaxTimer;
             takeTimer = takeMaxTimer;
+            reached = true;
         }
         if (life <= 0)
         {
@@ -101,7 +105,8 @@ public class EnemyLife : MonoBehaviour
                 desperated = false;
             }
             dead = true;
-
+            Debug.Log("-1");
+            audios.tensionNumber -= 1;
             if (destroyable) Destroy(gameObject);
             else SetLayerRecursively(gameObject, 10);
         }
@@ -113,4 +118,5 @@ public class EnemyLife : MonoBehaviour
             trans.gameObject.layer = layerNumber;
         }
     }
+
 }

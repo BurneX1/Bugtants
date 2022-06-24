@@ -41,6 +41,8 @@ public class MeleeManager : MonoBehaviour
     public float chaseModeMaxTimer;
     [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere, en caso ser Withered Mothman, entonces el daño que da su humo")]
     public int giftQuantity;
+    [Tooltip("Tiempo en que el enemigo se aturde al recibir ataque, recomendable en decimales")]
+    public float receiveMaxTimer;
 
     void Awake()
     {
@@ -93,6 +95,7 @@ public class MeleeManager : MonoBehaviour
             enGrdScript.maxDelay = quietTime;
             enGrdScript.chaseSpeed = chaseSpeed;
             enGrdScript.chasingMaxTime = chaseModeMaxTimer;
+            enGrdScript.receiveMaxTime = receiveMaxTimer;
 
         }
     }
@@ -126,6 +129,8 @@ public class MeleeManager : MonoBehaviour
             vigilanceTimer = enmyData.patrolWaitTime;
             quietTime = enmyData.waitAtackTime;
             chaseModeMaxTimer = enmyData.chaseModeTime;
+            receiveMaxTimer = enmyData.receiveMaxTime;
+
         }
     }
 

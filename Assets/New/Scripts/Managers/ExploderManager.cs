@@ -39,7 +39,8 @@ public class ExploderManager : MonoBehaviour
     public float chaseModeMaxTimer;
     [Tooltip("Cantidad de MP que da al jugador cuando el enemigo muere")]
     public int giftQuantity;
-
+    [Tooltip("Tiempo en que el enemigo se aturde al recibir ataque, recomendable en decimales")]
+    public float receiveMaxTimer;
     void Awake()
     {
         enGrdScript.patrolPoint = new GameObject[patrolPoints];
@@ -88,6 +89,8 @@ public class ExploderManager : MonoBehaviour
         enGrdScript.patrolMaxTime = vigilanceTimer;
         enGrdScript.chaseSpeed = chaseSpeed;
         enGrdScript.chasingMaxTime = chaseModeMaxTimer;
+        enGrdScript.receiveMaxTime = receiveMaxTimer;
+;
 
     }
     void DeathCondition()
@@ -121,6 +124,8 @@ public class ExploderManager : MonoBehaviour
 
             timeLifeSpan = enmyData.timeLifeSpan;
             chaseModeMaxTimer = enmyData.chaseModeTime;
+            receiveMaxTimer = enmyData.receiveMaxTime;
+
         }
     }
 
