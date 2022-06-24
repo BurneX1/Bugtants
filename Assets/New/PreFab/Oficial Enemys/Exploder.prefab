@@ -379,7 +379,7 @@ MonoBehaviour:
   takeMaxTimer: 4
   chaseModeMaxTimer: 3
   giftQuantity: 20
-  receiveMaxTimer: 0
+  receiveMaxTimer: 0.05
 --- !u!114 &2885942110906221345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2840730493228918516}
+  deadTime: 25
 --- !u!1 &2885942110924576180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1662,20 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5063260301417786880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934512128130111145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612927a31ed303a4f96c01d81acdf11c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultView: 0
+  objetive: {fileID: 0}
 --- !u!54 &2194141154786742669
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1984,20 +1999,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &5063260301417786880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934512128130111145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612927a31ed303a4f96c01d81acdf11c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultView: 0
-  objetive: {fileID: 0}
 --- !u!54 &2219925520731465759
 Rigidbody:
   m_ObjectHideFlags: 0

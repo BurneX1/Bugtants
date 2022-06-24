@@ -69,18 +69,18 @@ public class BulletTime : MonoBehaviour
                 multiScale = 1;
                 break;
         }*/
-        if (distance <= 1)
+        if (distance <= 5)
         {
             damage = (int)(modDam * 1.5f);
             multiScale = 0;
         }
-        else if (distance <= 3 && distance > 1)
+        else if (distance <= 10 && distance > 5)
         {
             damage = modDam;
             multiScale = 0.5f;
 
         }
-        else if (distance <= 7 && distance > 3)
+        else if (distance <= 15 && distance > 10)
         {
             damage = modDam / 2;
             multiScale = 1;
@@ -90,7 +90,7 @@ public class BulletTime : MonoBehaviour
             shellers.damage = damage;
         }
         transform.localScale = new Vector3(0.75f + multiScale, 0.75f + multiScale, 1);
-        if (distance >= 8)
+        if (distance >= 16)
             Destroy(gameObject);
     }
 

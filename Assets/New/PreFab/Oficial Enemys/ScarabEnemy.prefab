@@ -202,7 +202,7 @@ MonoBehaviour:
   stunTime: 1.25
   chaseModeMaxTimer: 3
   giftQuantity: 50
-  receiveMaxTimer: 0
+  receiveMaxTimer: 0.3
 --- !u!114 &3534966813682343018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2101947550998754337}
+  deadTime: 25
 --- !u!114 &5867671037169146462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,20 +1922,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3321448100508243168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5000053879759418116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612927a31ed303a4f96c01d81acdf11c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultView: 0
-  objetive: {fileID: 0}
 --- !u!54 &5559968989762518137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2087,6 +2074,20 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3321448100508243168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000053879759418116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612927a31ed303a4f96c01d81acdf11c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultView: 0
+  objetive: {fileID: 0}
 --- !u!54 &7157981197129369090
 Rigidbody:
   m_ObjectHideFlags: 0
