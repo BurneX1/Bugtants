@@ -23,7 +23,7 @@ public class EnemyLife : MonoBehaviour
     [HideInInspector]
     public bool dead, taken, point, reached;
     private bool desperated;
-    public WaysToSound deadWays;
+    public WaysToSound waysDead;
     //Sounds//
     private SoundActive sounds;
 
@@ -38,6 +38,7 @@ public class EnemyLife : MonoBehaviour
         takeTimer = 0;
         taken = false;
         dead = false;
+        waysDead.sounds = gameObject.GetComponent<SoundActive>();
         if (gameObject.GetComponent<SoundActive>() != null) sounds = gameObject.GetComponent<SoundActive>();
     }
 
@@ -108,6 +109,7 @@ public class EnemyLife : MonoBehaviour
             dead = true;
             Debug.Log("-1");
             audios.tensionNumber -= 1;
+            waysDead.ActiveWhenStopped();
 
             if (destroyable) Destroy(gameObject);
             else SetLayerRecursively(gameObject, 10);

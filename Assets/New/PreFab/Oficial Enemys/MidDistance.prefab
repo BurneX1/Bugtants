@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 2337306153023611731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.55, y: 0, z: -7.79}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 2337306153180776052}
   - {fileID: 2337306154416741596}
@@ -354,11 +354,11 @@ MonoBehaviour:
   detectPatrol: {fileID: 2337306154416741599}
   animator: {fileID: 0}
   waysWalk:
-    whatSound: 0
+    whatSound: 1
     whereSound: 1
     sounds: {fileID: 0}
   waysIdle:
-    whatSound: 0
+    whatSound: 1
     whereSound: 1
     sounds: {fileID: 0}
   waysCharge:
@@ -410,8 +410,8 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
-  deadWays:
-    whatSound: 0
+  waysDead:
+    whatSound: 3
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &3445008092586068149

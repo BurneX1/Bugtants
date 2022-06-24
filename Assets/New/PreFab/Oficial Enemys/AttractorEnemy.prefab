@@ -493,7 +493,7 @@ MonoBehaviour:
   enLifeScript: {fileID: 2076980586613715907}
   frontDetectRange: 9
   destinyRange: 0.8
-  life: 30
+  life: 90
   damage: 15
   speedSuction: 3
   damageRate: 2
@@ -551,8 +551,8 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
-  deadWays:
-    whatSound: 0
+  waysDead:
+    whatSound: 2
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &4419835821366994620
@@ -568,10 +568,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audClip:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 18396e3ceb6a85a4fa2938fa20cb333a, type: 3}
+  - {fileID: 8300000, guid: 66738247566a2d941beff7e7277c5b06, type: 3}
+  - {fileID: 8300000, guid: cfb7e8ed0f4f513418887ec81cc76203, type: 3}
+  - {fileID: 8300000, guid: 64eeb48b8b3f8aa4089a2ed025bfd24c, type: 3}
+  - {fileID: 8300000, guid: 44c124666dccca540bdd06057b710902, type: 3}
+  - {fileID: 8300000, guid: c39038bac4b3dc048b96bce005b4fd8c, type: 3}
+  - {fileID: 8300000, guid: d5295d88b8f811c4e8a1e6b1594dc62b, type: 3}
+  - {fileID: 8300000, guid: 3592dd79d8105b642a580227ce1e7fda, type: 3}
+  - {fileID: 8300000, guid: abed554796a1ca44b8ad64ed41cb526e, type: 3}
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}

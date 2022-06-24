@@ -518,7 +518,7 @@ MonoBehaviour:
   takeMaxTimer: 4
   quietTime: 1
   chaseModeMaxTimer: 3
-  giftQuantity: 15
+  giftQuantity: 35
   receiveMaxTimer: 0.3
 --- !u!114 &7242720922725904195
 MonoBehaviour:
@@ -565,12 +565,12 @@ MonoBehaviour:
   detectPatrol: {fileID: 7242720923550980238}
   animator: {fileID: 0}
   waysWalk:
-    whatSound: 0
+    whatSound: 2
     whereSound: 1
     sounds: {fileID: 0}
   waysIdle:
     whatSound: 0
-    whereSound: 0
+    whereSound: 1
     sounds: {fileID: 0}
   waysCharge:
     whatSound: 0
@@ -603,8 +603,8 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
-  deadWays:
-    whatSound: 0
+  waysDead:
+    whatSound: 4
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &7242720922725904221
@@ -625,8 +625,8 @@ MonoBehaviour:
   damage: 20
   timer: 0
   waysOnAttack:
-    whatSound: 0
-    whereSound: 1
+    whatSound: 5
+    whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &6851071659835633764
 MonoBehaviour:
@@ -641,10 +641,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audClip:
-  - {fileID: 8300000, guid: ca89eb452580aa24bbb094531a112cc9, type: 3}
-  - {fileID: 8300000, guid: ea43a5f8b23f13d42979222aa6f0a409, type: 3}
-  - {fileID: 8300000, guid: fa5177742132a2c498fc706406db6888, type: 3}
-  - {fileID: 8300000, guid: 829b0ed830bcb004aa8f742631514011, type: 3}
+  - {fileID: 8300000, guid: 5cf600a7c550e9a49881a2daf6c5a2d0, type: 3}
+  - {fileID: 8300000, guid: 96d825c22cc1262459ceb739c3e872a3, type: 3}
+  - {fileID: 8300000, guid: 105519c8a4b6ce24c9f918134a736dea, type: 3}
+  - {fileID: 8300000, guid: 7d9e165f3c5c2d340a27e60fad81fa9e, type: 3}
+  - {fileID: 8300000, guid: 1272faa5768fcd34ab5b3a02a519798d, type: 3}
+  - {fileID: 8300000, guid: 0f080e869ae0eb148a1027e09a83a656, type: 3}
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}

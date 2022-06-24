@@ -256,7 +256,7 @@ MonoBehaviour:
   charging: 0
   chargeSpeed: 9
   maxDelay: 1.5
-  receiveMaxTime: 0
+  receiveMaxTime: 0.3
   radium: {fileID: 3534966814232967143}
   chargeDamage: 35
   patrolPoint: []
@@ -265,15 +265,15 @@ MonoBehaviour:
   detectPatrol: {fileID: 3534966815282597195}
   animator: {fileID: 0}
   waysWalk:
-    whatSound: 0
-    whereSound: 1
-    sounds: {fileID: 0}
-  waysIdle:
     whatSound: 2
     whereSound: 1
     sounds: {fileID: 0}
+  waysIdle:
+    whatSound: 0
+    whereSound: 1
+    sounds: {fileID: 0}
   waysCharge:
-    whatSound: 4
+    whatSound: 1
     whereSound: 1
     sounds: {fileID: 0}
 --- !u!114 &3534966813682343008
@@ -303,6 +303,10 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
+  waysDead:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &3534966813682343019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +325,7 @@ MonoBehaviour:
   damage: 25
   timer: 0
   waysOnAttack:
-    whatSound: 1
+    whatSound: 4
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &3340401676893160659
@@ -337,12 +341,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audClip:
-  - {fileID: 8300000, guid: 547998969becbb64bb60fc5e8140019d, type: 3}
-  - {fileID: 8300000, guid: 04ccacb725714724abaf0731ed2d5842, type: 3}
-  - {fileID: 8300000, guid: 278bc1f1c23b96d4d98e730f47df8d92, type: 3}
-  - {fileID: 8300000, guid: bf7cfbae070927a4c872207b9582072d, type: 3}
-  - {fileID: 8300000, guid: b649bbebb9df10840a62e6fe1d60a58a, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: bbb2e44c081290a458f77a402517f37f, type: 3}
+  - {fileID: 8300000, guid: 5f4034eabd473c248b57de1049616038, type: 3}
+  - {fileID: 8300000, guid: 96853c2704aa4cf4a805c514cf5f32ea, type: 3}
+  - {fileID: 8300000, guid: 8e830f92427bea144b1b8d4e06ab7a86, type: 3}
+  - {fileID: 8300000, guid: 25a07db50ca6a5c4cb09d2b6c4cd1750, type: 3}
+  - {fileID: 8300000, guid: 110e3d4722f1eb8439a03d7598d4a05a, type: 3}
+  - {fileID: 8300000, guid: 7b37e7f0c23e8c0428b296ea7a7504e6, type: 3}
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}

@@ -416,7 +416,7 @@ MonoBehaviour:
   charging: 0
   chargeSpeed: 0
   maxDelay: 0
-  receiveMaxTime: 0
+  receiveMaxTime: 0.05
   radium: {fileID: 2885942110924576187}
   chargeDamage: 0
   patrolPoint: []
@@ -425,11 +425,11 @@ MonoBehaviour:
   detectPatrol: {fileID: 2885942111430252237}
   animator: {fileID: 0}
   waysWalk:
-    whatSound: 0
+    whatSound: 2
     whereSound: 1
     sounds: {fileID: 0}
   waysIdle:
-    whatSound: 3
+    whatSound: 0
     whereSound: 1
     sounds: {fileID: 0}
   waysCharge:
@@ -463,6 +463,10 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
+  waysDead:
+    whatSound: 4
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &2885942110906221348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,10 +497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audClip:
-  - {fileID: 8300000, guid: f630ea1d399510f418a52e952947f02a, type: 3}
-  - {fileID: 8300000, guid: 0b6ec7b574cd2994f8652431019e86b2, type: 3}
-  - {fileID: 8300000, guid: 321faa29fb6b8a847835101e8816fa77, type: 3}
-  - {fileID: 8300000, guid: 1eca118db3d57e74ea8e1c33577379ab, type: 3}
+  - {fileID: 8300000, guid: d6695ce977daf6942b55a1ea750cc188, type: 3}
+  - {fileID: 8300000, guid: 1af672a35525d5b43b1ce7ca537d7bf7, type: 3}
+  - {fileID: 8300000, guid: 53d3de47fe8bfdd4597beddfbafbb2a7, type: 3}
+  - {fileID: 8300000, guid: 431daae18c27eb84ea67f9c44a23d871, type: 3}
+  - {fileID: 8300000, guid: 8ad696158e6e0634dbea88bc923ee64c, type: 3}
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
