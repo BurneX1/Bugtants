@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExploderView : MonoBehaviour
 {
     public Animator anim;
+    public float deadTime;
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
     private EnemyGroundMove cmp_enm;
@@ -40,6 +41,7 @@ public class ExploderView : MonoBehaviour
     private void Dead()
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
+        StartCoroutine(DesactiveOnTime(deadTime));
     }
     private void Damage()
     {
@@ -63,5 +65,9 @@ public class ExploderView : MonoBehaviour
             cmp_life.Damage -= Damage;
         }
     }
-
+    IEnumerator DesactiveOnTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
+    }
 }

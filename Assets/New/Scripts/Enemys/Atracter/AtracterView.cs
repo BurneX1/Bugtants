@@ -5,6 +5,7 @@ using UnityEngine;
 public class AtracterView : MonoBehaviour
 {
     public Animator anim;
+    public float deadTime;
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
     private EnemyAttract cmp_atr;
@@ -32,6 +33,7 @@ public class AtracterView : MonoBehaviour
     private void Dead()
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
+        StartCoroutine(DesactiveOnTime(deadTime));
     }
     private void Damage()
     {
@@ -60,5 +62,10 @@ public class AtracterView : MonoBehaviour
             cmp_life.Dead -= Dead;
             cmp_life.Damage -= Damage;
         }
+    }
+    IEnumerator DesactiveOnTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
     }
 }

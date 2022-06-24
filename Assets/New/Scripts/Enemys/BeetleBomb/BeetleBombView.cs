@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeetleBombView : MonoBehaviour
 {
     public Animator anim;
+    public float deadTime;
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
     private EnemyGroundMove cmp_enm;
@@ -51,6 +52,7 @@ public class BeetleBombView : MonoBehaviour
     private void Dead()
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
+        StartCoroutine(DesactiveOnTime(deadTime));
     }
     private void OnEnable()
     {
@@ -68,5 +70,9 @@ public class BeetleBombView : MonoBehaviour
             cmp_life.Dead -= Dead;
         }
     }
-
+    IEnumerator DesactiveOnTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false);
+    }
 }

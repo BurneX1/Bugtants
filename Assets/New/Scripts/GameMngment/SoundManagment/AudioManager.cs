@@ -50,7 +50,6 @@ public class AudioManager : MonoBehaviour
             spatialVolume = userData.spatialVolume;
         }
 
-
         _sndFxAudioSource = gameObject.AddComponent<AudioSource>();
         _sndFxAudioSource.outputAudioMixerGroup = soundFxMixer;
 
@@ -149,7 +148,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"Fx {fxName} does not exists.");
             return;
         }
-
+        
         var clip = _fxSounds[fxName].Clip;
         var volume = _fxSounds[fxName].Volume;
         _sndFxAudioSource.PlayOneShot(clip, volume);
@@ -195,7 +194,6 @@ public class AudioManager : MonoBehaviour
         Debug.LogError($"Music {musicName} does not exists.");
         return false;
     }
-
     public void ChangeVolTo(string musicName, float value, float changeSpd)
     {
         if (!_audioSources.ContainsKey(musicName))
