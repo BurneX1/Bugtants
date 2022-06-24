@@ -205,7 +205,10 @@ public class EnemyGroundMove : MonoBehaviour
             moving = true;
             intel.speed = backSpeed * charging;
             intel.SetDestination(radium.retreatPos.transform.position);
-            modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            Vector3 looker = radium.gameObject.transform.eulerAngles;
+            looker.x = 0;
+            looker.z = 0;
+            modelsee.transform.eulerAngles = looker;
             intel.autoRepath = true;
         }
         else if (stat == Status.looking)
@@ -213,7 +216,10 @@ public class EnemyGroundMove : MonoBehaviour
             moving = false;
             intel.speed = 0;
             intel.SetDestination(transform.position);
-            modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            Vector3 looker = radium.gameObject.transform.eulerAngles;
+            looker.x = 0;
+            looker.z = 0;
+            modelsee.transform.eulerAngles = looker;
             intel.autoRepath = true;
         }
         else if (stat == Status.waiting)
@@ -279,7 +285,10 @@ public class EnemyGroundMove : MonoBehaviour
             intel.speed = chargeSpeed * charging;
             intel.autoRepath = false;
             intel.SetDestination(radium.objetive.transform.position);
-            modelsee.transform.eulerAngles = radium.gameObject.transform.eulerAngles;
+            Vector3 looker = radium.gameObject.transform.eulerAngles;
+            looker.x = 0;
+            looker.z = 0;
+            modelsee.transform.eulerAngles = looker;
             marker++;
         }
         if (Vector3.Distance(intel.destination, transform.position) < 0.15f)
@@ -332,7 +341,7 @@ public class EnemyGroundMove : MonoBehaviour
             Vector3 mira = (objetivoO - vistaO).normalized;
             float rotacion = Mathf.Atan2(mira.x, mira.z);
             rotacion = rotacion * (180 / Mathf.PI);
-            transform.localEulerAngles = new Vector3(0, rotacion, 0);
+            transform.eulerAngles = new Vector3(0, rotacion, 0);
         }
         else
         {
@@ -345,7 +354,7 @@ public class EnemyGroundMove : MonoBehaviour
                 Vector3 mira = (objetivoO - vistaO).normalized;
                 float rotacion = Mathf.Atan2(mira.x, mira.z);
                 rotacion = rotacion * (180 / Mathf.PI);
-                transform.localEulerAngles = new Vector3(0, rotacion, 0);
+                transform.eulerAngles = new Vector3(0, rotacion, 0);
             }
         }
     }
