@@ -518,7 +518,7 @@ MonoBehaviour:
   takeMaxTimer: 4
   quietTime: 1
   chaseModeMaxTimer: 3
-  giftQuantity: 35
+  giftQuantity: 15
   receiveMaxTimer: 0.3
 --- !u!114 &7242720922725904195
 MonoBehaviour:
@@ -603,6 +603,10 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
+  deadWays:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &7242720922725904221
 MonoBehaviour:
   m_ObjectHideFlags: 0

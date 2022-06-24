@@ -493,7 +493,7 @@ MonoBehaviour:
   enLifeScript: {fileID: 2076980586613715907}
   frontDetectRange: 9
   destinyRange: 0.8
-  life: 90
+  life: 30
   damage: 15
   speedSuction: 3
   damageRate: 2
@@ -551,6 +551,10 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
+  deadWays:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &4419835821366994620
 MonoBehaviour:
   m_ObjectHideFlags: 0

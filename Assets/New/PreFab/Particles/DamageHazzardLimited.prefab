@@ -108,8 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16c5f4bb56ff864cb76f8260e7340a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 15
   dmgTagsArray:
   - Player
   timePerDmg: 0.5
+  doDmg: 0
   lifeLimiter: 30

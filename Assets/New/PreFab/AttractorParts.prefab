@@ -151,7 +151,7 @@ MonoBehaviour:
   enLifeScript: {fileID: 8428745324128778247}
   frontDetectRange: 10
   destinyRange: 2
-  life: 200
+  life: 20
   damage: 3
   speedSuction: 2
   damageRate: 2
@@ -180,6 +180,7 @@ MonoBehaviour:
   life: {fileID: 8428745324128778247}
   signed: {fileID: 8428745324933691812}
   devouring: 0
+  mySwitch: 0
   hitBox: {fileID: 8428745324933691813}
 --- !u!114 &8428745324128778247
 MonoBehaviour:
@@ -207,6 +208,11 @@ MonoBehaviour:
   dead: 0
   taken: 0
   point: 0
+  reached: 0
+  deadWays:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &6159913439468744056
 MonoBehaviour:
   m_ObjectHideFlags: 0
