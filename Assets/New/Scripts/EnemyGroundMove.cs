@@ -330,7 +330,7 @@ public class EnemyGroundMove : MonoBehaviour
     }
     void Look()
     {
-        if (stat == Status.retreating || stat == Status.chasing || stat == Status.looking)
+        if (stat == Status.retreating || stat == Status.chasing || stat == Status.looking || stat == Status.waiting || stat == Status.reached)
         {
             pinner++;
 
