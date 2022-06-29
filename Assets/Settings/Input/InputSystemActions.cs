@@ -367,6 +367,15 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadCheckpoint"",
+                    ""type"": ""Button"",
+                    ""id"": ""10413766-72d7-466f-b00c-0cded61c9c24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -378,6 +387,17 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60c0a5ae-1c38-449d-849f-13682776ac8f"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadCheckpoint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -533,6 +553,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
         // Menus&Pause
         m_MenusPause = asset.FindActionMap("Menus&Pause", throwIfNotFound: true);
         m_MenusPause_Pause = m_MenusPause.FindAction("Pause", throwIfNotFound: true);
+        m_MenusPause_ReloadCheckpoint = m_MenusPause.FindAction("ReloadCheckpoint", throwIfNotFound: true);
         // BossTest
         m_BossTest = asset.FindActionMap("BossTest", throwIfNotFound: true);
         m_BossTest__1 = m_BossTest.FindAction("1", throwIfNotFound: true);
@@ -738,11 +759,13 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MenusPause;
     private IMenusPauseActions m_MenusPauseActionsCallbackInterface;
     private readonly InputAction m_MenusPause_Pause;
+    private readonly InputAction m_MenusPause_ReloadCheckpoint;
     public struct MenusPauseActions
     {
         private @InputSystemActions m_Wrapper;
         public MenusPauseActions(@InputSystemActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_MenusPause_Pause;
+        public InputAction @ReloadCheckpoint => m_Wrapper.m_MenusPause_ReloadCheckpoint;
         public InputActionMap Get() { return m_Wrapper.m_MenusPause; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -755,6 +778,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnPause;
+                @ReloadCheckpoint.started -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnReloadCheckpoint;
+                @ReloadCheckpoint.performed -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnReloadCheckpoint;
+                @ReloadCheckpoint.canceled -= m_Wrapper.m_MenusPauseActionsCallbackInterface.OnReloadCheckpoint;
             }
             m_Wrapper.m_MenusPauseActionsCallbackInterface = instance;
             if (instance != null)
@@ -762,6 +788,9 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ReloadCheckpoint.started += instance.OnReloadCheckpoint;
+                @ReloadCheckpoint.performed += instance.OnReloadCheckpoint;
+                @ReloadCheckpoint.canceled += instance.OnReloadCheckpoint;
             }
         }
     }
@@ -859,6 +888,7 @@ public partial class @InputSystemActions : IInputActionCollection2, IDisposable
     public interface IMenusPauseActions
     {
         void OnPause(InputAction.CallbackContext context);
+        void OnReloadCheckpoint(InputAction.CallbackContext context);
     }
     public interface IBossTestActions
     {

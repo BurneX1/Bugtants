@@ -7,8 +7,10 @@ public class PlayerData : ScriptablePersistentObject
 {
     [Header("Player Properties")]
     public int maxLife;
+    public int actualLife;
     public float maxStamina;
     public int maxMana;
+    public int actualMana;
 
     [Header("Player Values")]
     public float staminaRegenSpd;
