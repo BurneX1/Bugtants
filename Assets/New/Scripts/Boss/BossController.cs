@@ -9,7 +9,7 @@ public class BossController : MonoBehaviour
     public BossSense bossSense;
     public BossHealthy bossEyes;
     public BossSummoners bossSummon;
-    public Detecter bossDeter;
+    public Detecter bossDeter, itemDestroyer;
     [Tooltip("Temporizador de cambio de ojo")]
     public float eyesMaxTimer;
     [Tooltip("Temporizador de ataques")]
@@ -30,6 +30,7 @@ public class BossController : MonoBehaviour
             FinishingAttacks();
             BossEyeTransgoing();
             PreparingAttacks();
+            ItemChecker();
         }
         else
         {
@@ -45,6 +46,7 @@ public class BossController : MonoBehaviour
     }
     void Activations()
     {
+        bossSummon.BossBell();
         switch (bossAttackPrepare.numberNow)
         {
             case 1:
@@ -106,6 +108,13 @@ public class BossController : MonoBehaviour
                 attackTime = 0;
             }
         }
-
+    }
+    void ItemChecker()
+    {
+        if (itemDestroyer.touch)
+        {
+            itemDestroyer.registeredObject.transform.gameObject.tag = "Untagged";
+            bossSummon.items.Checker(itemDestroyer.registeredObject);
+        }
     }
 }

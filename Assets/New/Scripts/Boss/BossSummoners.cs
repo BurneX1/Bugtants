@@ -13,6 +13,7 @@ public class BossSummoners : MonoBehaviour
     public GameObject moth, beetle, wMoth, exp, stun;
     public GameObject eggBall;
     public GameObject mpEgg, lifeEgg;
+    public ItemDetectors items, enemies;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,7 +48,6 @@ public class BossSummoners : MonoBehaviour
         }
         probability = Random.Range(0, 10);
         currency[probability] = eggBall;
-
         Vector3 looker = area[probability].transform.position;
         looker.y += 10;
         currency[probability].transform.position = looker;
@@ -80,10 +80,10 @@ public class BossSummoners : MonoBehaviour
                 {
                     currency[count].GetComponent<DropBomb>().contain = stun;
                 }
-                Vector3 look = area[i].transform.position;
+                Vector3 look = area[count].transform.position;
                 look.y += 10;
-                currency[i].transform.position = look;
-                Instantiate(currency[i]);
+                currency[count].transform.position = look;
+                Instantiate(currency[count]);
                 stock[count] = true;
             }
             else
@@ -91,7 +91,7 @@ public class BossSummoners : MonoBehaviour
                 i--;
             }
         }
-
+        
         for (int i = 0; i < area.Length; i++)
         {
             if (stock[i])
@@ -100,7 +100,16 @@ public class BossSummoners : MonoBehaviour
             }
         }
 
-
-
+    }
+    public void BossBell()
+    {
+        for (int i = 0; i < enemies.TouchingObjects.Count; i++)
+        {
+            enemies.TouchingObjects[i].GetComponent<EnemyGroundMove>().ChaseActivate();
+        }
+        for(int i = 0; i < items.TouchingObjects.Count; i++)
+        {
+            items.TouchingObjects[i].GetComponent<ItemMagnet>().bell = true;
+        }
     }
 }

@@ -16,7 +16,19 @@ public class Detecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckRegisteredObject();
+    }
 
+    void CheckRegisteredObject()
+    {
+        if (registeredObject != null)
+        {
+            if (registeredObject.tag != tagName)
+            {
+                touch = false;
+                registeredObject = null;
+            }
+        }
     }
 
     void OnTriggerEnter(Collider col)

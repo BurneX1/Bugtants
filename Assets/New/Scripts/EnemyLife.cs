@@ -107,9 +107,10 @@ public class EnemyLife : MonoBehaviour
                 desperated = false;
             }
             dead = true;
+            transform.gameObject.tag = "Untagged";
             Debug.Log("-1");
             audios.tensionNumber -= 1;
-            waysDead.ActiveWhenStopped();
+            waysDead.StopThenActive();
 
             if (destroyable) Destroy(gameObject);
             else SetLayerRecursively(gameObject, 10);
@@ -123,5 +124,4 @@ public class EnemyLife : MonoBehaviour
             trans.gameObject.layer = layerNumber;
         }
     }
-
 }

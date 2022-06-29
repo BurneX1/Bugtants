@@ -14,7 +14,7 @@ public class EnemyGroundMove : MonoBehaviour
     //public ValorSalud valores;
     public bool instantChase;
     [HideInInspector]
-    public bool calm, stunned, charge, touch, moving, attacking, mySwitch;
+    public bool calm, stunned, charge, touch, moving, attacking, mySwitch, chaseBell;
     [HideInInspector]
     public int statNumber;
     // chasing = 0, patrolling = 1, retreating = 2, looking = 3, charging = 4, waiting = 5, receiving = 6
@@ -244,18 +244,23 @@ public class EnemyGroundMove : MonoBehaviour
                 receiveTimer = 0;
             }
         }
-
+        if (radium.detect || radium.feel || radium.hear)
+        {
+            chaseBell = false;
+        }
         if (gameObject.GetComponent<EnemyLife>().reached)
         {
             stat = Status.reached;
             statNumber = 6;
+            chaseBell = false;
         }
         else if (attacking)
         {
             stat = Status.waiting;
             statNumber = 5;
+            chaseBell = false;
         }
-        else if ((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken) || chaseMode) && !radium.feel && !radium.hear )
+        else if (((radium.detect || (radium.taken && GetComponent<EnemyLife>().taken) || chaseMode) && !radium.feel && !radium.hear) || chaseBell)
         {
             stat = Status.chasing;
             statNumber = 0;
@@ -276,6 +281,10 @@ public class EnemyGroundMove : MonoBehaviour
             statNumber = 3;
         }
 
+    }
+    public void ChaseActivate()
+    {
+        chaseBell = true;
     }
     void Charge()
     {

@@ -9,7 +9,6 @@ public class EnemySense : MonoBehaviour
     private RaycastHit wall, floor;
     [HideInInspector]
     public float startLook, tryWall, tryObjetive, totalRange, angle;
-    [HideInInspector]
     public GameObject objetive;
     public GameObject retreatPos;
 
