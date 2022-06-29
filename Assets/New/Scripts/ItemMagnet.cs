@@ -11,7 +11,7 @@ public class ItemMagnet : MonoBehaviour
     [HideInInspector]
     public bool bell;
     [Header("Untouchables")]
-    public SphereCollider collider;
+    public SphereCollider collideObj;
     public Detecter detectPlayer;
     private Rigidbody rigid;
 
@@ -72,6 +72,6 @@ public class ItemMagnet : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        collider.radius = radius;
+        collideObj.radius = radius;
     }
 }
