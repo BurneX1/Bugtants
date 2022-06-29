@@ -9,15 +9,38 @@ public class Buttoms : MonoBehaviour
     public AudioSource audioFont;
     public AudioClip btmSound;
 
+    public Animator animator;
+    public float timer;
+    public bool actvOn = false;
+
     private void Start()
     {
         audioFont.clip = btmSound;
+    }
+
+    private void Update()
+    {
+        if(actvOn)
+        {
+            animator.Play("FadeOut_Black");
+            timer += Time.deltaTime;
+            if (timer >= 3)
+            {
+                SceneManager.LoadScene("TestMenu");
+            }
+        }
     }
 
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void SceneChangeMenu()
+    {
+        actvOn = true;
+    }
+
 
     public void ShowCanvas(GameObject on)
     {
