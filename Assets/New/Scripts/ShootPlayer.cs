@@ -8,7 +8,8 @@ public class ShootPlayer : MonoBehaviour
     private GameObject bullet;
     public float maxTimer, bulletSpeed;
     private float timer, bulletAngle;
-    public bool cannon;
+    [HideInInspector]
+    public bool shoot;
     public int damagePistol, damageShotgun;
     private Vector3 rec;
     private Pause pauseScript;
@@ -45,7 +46,7 @@ public class ShootPlayer : MonoBehaviour
     {
         if (timer >= weaponStat.fireRate && !pauseScript.paused && mpScript.actualMP >= weaponStat.mpCost && !waiting)
         {
-
+            shoot = true;
             bullet = weaponStat.bulletType;
             bullet.transform.position = transform.position;
             rec = (targetPosition.transform.position - transform.position).normalized;
@@ -75,7 +76,6 @@ public class ShootPlayer : MonoBehaviour
             timer = 0;
             bullet.GetComponent<BulletTime>().damage = 0;
             bullet.GetComponent<BulletTime>().angler = new Vector3(0, 0, 0);
-        
         }
     }
     public void Recharge(MP_System mpScript)

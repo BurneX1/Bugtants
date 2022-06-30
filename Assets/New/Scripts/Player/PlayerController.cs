@@ -31,8 +31,10 @@ public class PlayerController : MonoBehaviour
     public Crouch c_crouch;
     [HideInInspector]
     public float stMultiplier;
-    private int weaponNumber;
-    private bool moving, running, crouching, stunned, slowed;
+    [HideInInspector]
+    public int weaponNumber, numberMove;
+    [HideInInspector]
+    public bool moving, running, crouching, stunned, slowed;
     [HideInInspector]
     public WaysToSound shootSound, jumpSound, moveSound, crouchSound;
     private GameObject slowerings;
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
             if (melee)
             {
                 c_atk.Attack();
+                numberMove = 2;
             }
             else
             {
@@ -159,6 +162,11 @@ public class PlayerController : MonoBehaviour
     void PlayerLogic()
     {
         c_jmp.CheckGround();
+        if (c_shoot.shoot)
+        {
+            numberMove = 1;
+            c_shoot.shoot = false;
+        }
         if (c_mov.poseser || stunned)
         {
             c_mov.Posesed();
