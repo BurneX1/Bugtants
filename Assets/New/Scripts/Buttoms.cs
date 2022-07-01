@@ -13,6 +13,10 @@ public class Buttoms : MonoBehaviour
     public float timer;
     public bool actvOn = false;
 
+    public bool activeDelay = false;
+    public string actualCanva;
+    public float delayTimer = 0;
+
     private void Start()
     {
         audioFont.clip = btmSound;
@@ -29,6 +33,8 @@ public class Buttoms : MonoBehaviour
                 SceneManager.LoadScene("TestMenu");
             }
         }
+
+        Delay();
     }
 
     public void LoadScene(string sceneName)
@@ -67,6 +73,27 @@ public class Buttoms : MonoBehaviour
     {
         GameObject.Find(canvasName).GetComponent<Canvas>().enabled = false;
     }
+    public void ActivateCanvasDelay(string canvasName)
+    {
+        activeDelay = true;
+        actualCanva = canvasName;
+    }
+
+    private void Delay()
+    {
+        if (activeDelay)
+        {
+            delayTimer += Time.deltaTime;
+
+            if(delayTimer >= 1.1f)
+            {
+                GameObject.Find(actualCanva).GetComponent<Canvas>().enabled = true;
+                delayTimer = 0;
+                activeDelay = false;
+            }
+        }
+    }
+
 
     public void SetFullScreen(bool isFull)
     {
