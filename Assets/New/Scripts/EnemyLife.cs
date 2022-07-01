@@ -23,7 +23,7 @@ public class EnemyLife : MonoBehaviour
     [HideInInspector]
     public bool dead, taken, point, reached;
     private bool desperated;
-    public WaysToSound waysDead;
+    public WaysToSound waysDead, waysDamaged;
     //Sounds//
     private SoundActive sounds;
 
@@ -39,7 +39,7 @@ public class EnemyLife : MonoBehaviour
         taken = false;
         dead = false;
         waysDead.sounds = gameObject.GetComponent<SoundActive>();
-        if (gameObject.GetComponent<SoundActive>() != null) sounds = gameObject.GetComponent<SoundActive>();
+        waysDamaged.sounds = gameObject.GetComponent<SoundActive>();
     }
 
     void Update()
@@ -84,6 +84,7 @@ public class EnemyLife : MonoBehaviour
             feedTimer = feedMaxTimer;
             takeTimer = takeMaxTimer;
             reached = true;
+            waysDamaged.StopThenActive();
         }
         if (life <= 0)
         {

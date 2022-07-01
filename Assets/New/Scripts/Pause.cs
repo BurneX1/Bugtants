@@ -9,6 +9,7 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject pauseHud;
     private MP_System mpScript;
+    public AudioSource pauseMusic;
     // Start is called before the first frame update
 
     void Awake()
@@ -38,26 +39,34 @@ public class Pause : MonoBehaviour
         pauseHud.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        if (!paused)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource a in audios)
+            {
+                a.Pause();
+            }
+        }
+        pauseMusic.Play();
         paused = true;
 
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
-        foreach(AudioSource a in audios)
-        {
-            a.Pause();
-        }
     }
     public void Resume()
     {
         Time.timeScale = 1;
         pauseHud.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        if (paused)
+        {
+            AudioSource[] audios = FindObjectsOfType<AudioSource>();
+            foreach (AudioSource a in audios)
+            {
+                a.UnPause();
+            }
+        }
+        pauseMusic.Pause();
         paused = false;
 
-        AudioSource[] audios = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource a in audios)
-        {
-            a.UnPause();
-        }
     }
     public void GoingBack()
     {

@@ -9,6 +9,8 @@ public class Exploder : MonoBehaviour
     public GameObject suicidalBomb;
     public float timeLifeSpan;
     public int damage;
+    [Tooltip("El sonido cuando es abierto")]
+    public int whatExplodeSound;
     private bool done;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,7 @@ public class Exploder : MonoBehaviour
         {
             suicidalBomb.transform.position = transform.position;
             suicidalBomb.GetComponent<LifeSpan>().maxTimer = timeLifeSpan;
+            suicide.waysDead.whatSound = whatExplodeSound;
             suicide.ChangeLife(-suicide.life);
             if (!done)
             {

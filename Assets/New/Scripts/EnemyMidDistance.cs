@@ -10,9 +10,11 @@ public class EnemyMidDistance : MonoBehaviour
     public EnemyGroundMove movement;
     private float timer, bulletAngle,bulletLegion;
     private Vector3 rec;
+    public WaysToSound waysShoot;
     // Start is called before the first frame update
     void Start()
     {
+        waysShoot.sounds = gameObject.GetComponent<SoundActive>();
         timer = 0;
     }
 
@@ -46,6 +48,7 @@ public class EnemyMidDistance : MonoBehaviour
                 bulletLegion = 360 + bulletLegion;
 
             bullet.transform.LookAt(movement.radium.objetive.transform, Vector3.forward);
+            waysShoot.StopThenActive();
             Instantiate(bullet);
             bullet.transform.position = new Vector3(0, 0, 0);
             bullet.transform.eulerAngles = new Vector3(0, 0, 0);

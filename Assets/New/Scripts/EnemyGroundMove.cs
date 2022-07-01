@@ -36,7 +36,7 @@ public class EnemyGroundMove : MonoBehaviour
 
     public Animator animator;
 
-    public WaysToSound waysWalk, waysIdle, waysCharge;
+    public WaysToSound waysWalk, waysIdle, waysCharge, waysChase, waysStopper;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +72,8 @@ public class EnemyGroundMove : MonoBehaviour
             waysWalk.sounds = gameObject.GetComponent<SoundActive>();
             waysIdle.sounds = gameObject.GetComponent<SoundActive>();
             waysCharge.sounds = gameObject.GetComponent<SoundActive>();
+            waysChase.sounds = gameObject.GetComponent<SoundActive>();
+            waysStopper.sounds = gameObject.GetComponent<SoundActive>();
         }
     }
 
@@ -172,7 +174,7 @@ public class EnemyGroundMove : MonoBehaviour
             }
 
         }
-        else if (stat == Status.chasing /*&& */)
+        else if (stat == Status.chasing)
         {
             if (!mySwitch)
             {
@@ -306,6 +308,7 @@ public class EnemyGroundMove : MonoBehaviour
             charging = 0;
             stunned = true;
             Debug.Log("Failed");
+            waysStopper.StopThenActive();
         }
         else if (radium.hear)
         {
@@ -320,6 +323,7 @@ public class EnemyGroundMove : MonoBehaviour
             {
                 radium.objetive.GetComponent<PlayerController>().Stunning(stunTimer);
             }
+            waysStopper.StopThenActive();
         }
     }
     void Stunned()
@@ -370,18 +374,17 @@ public class EnemyGroundMove : MonoBehaviour
 
     void Animate()
     {
-        if (moving)
+        if ((stat == Status.retreating || stat == Status.patrolling) && !stunned)
         {
-            //animator.SetBool("Moving", true);
-            if (!charge && !stunned)
-            {
-                waysWalk.ActiveWhenStopped();
-            }
-            else if (charge && !stunned)
-            {
-                waysCharge.ActiveWhenStopped();
-            }
-
+            waysWalk.ActiveWhenStopped();
+        }
+        else if (stat == Status.chasing && !stunned)
+        {
+            waysChase.ActiveWhenStopped();
+        }
+        else if(stat == Status.charging && !stunned)
+        {
+            waysCharge.ActiveWhenStopped();
         }
         else
         {
@@ -389,8 +392,6 @@ public class EnemyGroundMove : MonoBehaviour
             {
                 waysIdle.ActiveWhenStopped();
             }
-
-            //animator.SetBool("Moving", false);
         }
     }
 

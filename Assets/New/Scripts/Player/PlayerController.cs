@@ -253,13 +253,13 @@ public class PlayerController : MonoBehaviour
     void JumpSound()
     {
         jumpSound.whereSound = 1;
-        jumpSound.whatSound = 5;
+        jumpSound.whatSound = 2;
         jumpSound.StopThenActive();
     }
     void CrouchingSound()
     {
         crouchSound.whereSound = 3;
-        crouchSound.whatSound = 8;
+        crouchSound.whatSound = 3;
         crouchSound.StopThenActive();
         c_crouch.sounded = true;
     }

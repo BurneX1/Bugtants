@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class SoundActive : MonoBehaviour
 {
-    [Tooltip("Numero de sonidos de cuanto podra tener")]
-    public AudioClip[] audClip;
+    [Tooltip("Numero de sonidos de cuanto podra tener y modificar la cantidad de volumen")]
+    public AudioClipComponent[] audClips;
     [Tooltip("Numero de Audiosources")]
     public AudioSourceComponent[] audComp;
-
+    public Pause pauseDoner;
     // Start is called before the first frame update
     void Awake()
     {
+        pauseDoner = GameObject.FindGameObjectWithTag("Pause").GetComponent<Pause>();
         foreach (AudioSourceComponent audines in audComp)
         {
             audines.newSound = new GameObject
@@ -21,6 +22,7 @@ public class SoundActive : MonoBehaviour
             };
             audines.newSound.transform.parent = audines.location.transform;
             audines.newSound.transform.position = audines.location.transform.position;
+            audines.newSound.AddComponent<VolumeValue>();
             audines.audSrc = audines.newSound.AddComponent(typeof(AudioSource)) as AudioSource;
             audines.audSrc.rolloffMode = AudioRolloffMode.Linear;
             audines.audSrc.spatialBlend = 1;
@@ -34,9 +36,10 @@ public class SoundActive : MonoBehaviour
     // SoundPlay() Reproduce el sonido
     public void SoundPlay(int value, int clip)
     {
-        if (!audComp[value].audSrc.isPlaying)
+        if (!audComp[value].audSrc.isPlaying && !pauseDoner.paused)
         {
-            audComp[value].audSrc.clip = audClip[clip];
+            audComp[value].audSrc.clip = audClips[clip].clip;
+            //audComp[value].audSrc.volume = totalVolume;
             audComp[value].audSrc.Play();
         }
     }
@@ -45,7 +48,8 @@ public class SoundActive : MonoBehaviour
     {
         if (audComp[value].audSrc.isPlaying)
         {
-            audComp[value].audSrc.clip = audClip[clip];
+            audComp[value].audSrc.clip = audClips[clip].clip;
+            audComp[value].audSrc.volume = audComp[value].newSound.GetComponent<VolumeValue>().volValue * audClips[clip].capVolume;
             audComp[value].audSrc.Stop();
         }
     }

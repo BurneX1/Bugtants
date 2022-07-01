@@ -526,14 +526,22 @@ MonoBehaviour:
   detectPatrol: {fileID: 3671106165231849666}
   animator: {fileID: 0}
   waysWalk:
-    whatSound: 0
+    whatSound: 2
     whereSound: 1
     sounds: {fileID: 0}
   waysIdle:
-    whatSound: 4
+    whatSound: 0
     whereSound: 1
     sounds: {fileID: 0}
   waysCharge:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
+  waysChase:
+    whatSound: 1
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysStopper:
     whatSound: 0
     whereSound: 0
     sounds: {fileID: 0}
@@ -565,7 +573,11 @@ MonoBehaviour:
   point: 0
   reached: 0
   waysDead:
-    whatSound: 3
+    whatSound: 5
+    whereSound: 0
+    sounds: {fileID: 0}
+  waysDamaged:
+    whatSound: 4
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &3671106164646871522
@@ -586,7 +598,7 @@ MonoBehaviour:
   damage: 15
   timer: 0
   waysOnAttack:
-    whatSound: 1
+    whatSound: 3
     whereSound: 0
     sounds: {fileID: 0}
 --- !u!114 &6474423816826379705
@@ -601,12 +613,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audClip:
-  - {fileID: 8300000, guid: c7542ebcefa755f49aab57d1e5ff8b77, type: 3}
-  - {fileID: 8300000, guid: 606d4a6724bd61e4ba15ef656943f0fd, type: 3}
-  - {fileID: 8300000, guid: a3fa1a78130b52043aa1a7c0617c2bc8, type: 3}
-  - {fileID: 8300000, guid: f407b0f916d6c4841893feab1f66a2b8, type: 3}
-  - {fileID: 8300000, guid: 6690ad8a355b33443903f9e23d8f9362, type: 3}
+  audClips:
+  - clip: {fileID: 8300000, guid: 10d2fec1f020de64f92d4a4379fdc0bf, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: 47d44d18b8a59ba4aad0e79252990b5e, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: fd45770615efa2442b60c057cfa2510b, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: a593a9ed8c04dfa4696f9e573808c33b, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: e6fd70228d97df54491b2075fd628930, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: bde74129e3a9c9249a909eaa8a8cd948, type: 3}
+    capVolume: 1
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
@@ -616,6 +635,7 @@ MonoBehaviour:
     newSound: {fileID: 0}
     location: {fileID: 3671106164646871528}
     soundDistance: {x: 0, y: 20}
+  pauseDoner: {fileID: 0}
 --- !u!114 &168414242557799944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,7 +1326,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000063737398, y: 0.014072682, z: 0.000000035390233}
+  m_ConnectedAnchor: {x: 0.0000000077998275, y: 0.014072682, z: 0.000000040046846}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1382,7 +1402,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000046566133, y: 0.020977456, z: 0.000000003725291}
+  m_ConnectedAnchor: {x: -0.000000032596294, y: 0.02097747, z: 0.000000005587937}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -1458,7 +1478,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000037252894, y: 0.029333165, z: -0.0000000037252903}
+  m_ConnectedAnchor: {x: -0.000000044703473, y: 0.029333178, z: 0.0000000037252903}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1534,7 +1554,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000011641532, y: 0.029900428, z: 0}
+  m_ConnectedAnchor: {x: -0.000000051455572, y: 0.029900424, z: -0.0000000037252907}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1624,7 +1644,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.014322352, y: -0.0055506476, z: 0.027058195}
+  m_ConnectedAnchor: {x: -0.014322291, y: -0.0055506476, z: 0.027058195}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1700,7 +1720,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0064180708, y: 0.0018814562, z: -0.00088163407}
+  m_ConnectedAnchor: {x: 0.0064181155, y: 0.0018814562, z: -0.00088163407}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1776,7 +1796,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000000055879354, y: 0.020977477, z: 0.000000003725291}
+  m_ConnectedAnchor: {x: -0.000000031664968, y: 0.020977465, z: -9.313228e-10}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -1927,7 +1947,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0064180708, y: 0.0018814562, z: -0.00088163104}
+  m_ConnectedAnchor: {x: -0.0064181155, y: 0.0018814562, z: -0.00088163104}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2032,7 +2052,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.014322352, y: -0.0055506476, z: 0.027058195}
+  m_ConnectedAnchor: {x: 0.014322291, y: -0.0055506476, z: 0.027058195}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:

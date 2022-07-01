@@ -10,6 +10,8 @@ public class EnemyAttract : MonoBehaviour
     public GameObject player;
     public float speedSuction, damageRate;
     public int damage;
+    [Tooltip("El sonido cuando es abierto")]
+    public int whatOpenSound;
     private float timer, finalDestiny;
 
     public Transform initial, final;
@@ -19,6 +21,7 @@ public class EnemyAttract : MonoBehaviour
     public bool devouring, mySwitch;
     private Vector3 downing;
     public BoxCollider hitBox;
+    public WaysToSound waysIdle, waysStartVacuum, waysVacuum, waysAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,13 @@ public class EnemyAttract : MonoBehaviour
         finalDestiny = final.transform.localPosition.z;
         devouring = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        if (gameObject.GetComponent<SoundActive>() != null)
+        {
+            waysIdle.sounds = gameObject.GetComponent<SoundActive>();
+            waysStartVacuum.sounds = gameObject.GetComponent<SoundActive>();
+            waysVacuum.sounds = gameObject.GetComponent<SoundActive>();
+            waysAttack.sounds = gameObject.GetComponent<SoundActive>();
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +61,8 @@ public class EnemyAttract : MonoBehaviour
             final.localPosition = localPos;
             devouring = true;
             downing = localPos;
+            waysIdle.InstantStop();
+            waysStartVacuum.ActiveWhenStopped();
         }
         else if (locate.hear && signed.touch)
         {
@@ -64,6 +76,10 @@ public class EnemyAttract : MonoBehaviour
             downing = localPos;
             downing.z = finalDestiny;
         }
+        else
+        {
+            waysIdle.ActiveWhenStopped();
+        }
     }
 
     void Devourer()
@@ -74,13 +90,19 @@ public class EnemyAttract : MonoBehaviour
             audios.tensionNumber += 1;
             mySwitch = true;
         }
-        life.armor = false;
+        if (life.armor)
+        {
+            life.waysDamaged.whatSound = whatOpenSound;
+            life.armor = false;
+        }
         player.GetComponent<Movement>().poseser = gameObject;
+        
         if (downing.z > finalDestiny)
         {
             downing.z -= speedSuction * Time.deltaTime;
             final.localPosition = downing;
             player.transform.position = final.position;
+            waysVacuum.ActiveWhenStopped();
         }
         else if (downing.z < finalDestiny)
         {
@@ -90,10 +112,12 @@ public class EnemyAttract : MonoBehaviour
         }
         else
         {
+            waysVacuum.InstantStop();
             timer += Time.deltaTime;
             if (timer >= damageRate)
             {
                 player.GetComponent<Life>().ReduceLife(damage);
+                waysAttack.StopThenActive();
                 timer = 0;
             }
 

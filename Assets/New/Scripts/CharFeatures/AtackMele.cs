@@ -18,7 +18,7 @@ public class AtackMele : MonoBehaviour
     private void Awake()
     {
         meleeSound.whereSound = 4;
-        meleeSound.whatSound = 4;
+        meleeSound.whatSound = 6;
         hitScrp = hitBox.AddComponent<DamageOnTriger>();
         hitScrp.damage = dmg;
         hitScrp.dmgTagsArray = dmgTagsArray;
