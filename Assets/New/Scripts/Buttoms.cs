@@ -12,13 +12,11 @@ public class Buttoms : MonoBehaviour
     public Animator animator;
     public float timer;
     public bool actvOn = false;
-
-    public bool activeDelay = false;
-    public string actualCanva;
-    public float delayTimer = 0;
-
+    private string actualScene;
     private void Start()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        actualScene = scene.name;
         audioFont.clip = btmSound;
     }
 
@@ -36,7 +34,10 @@ public class Buttoms : MonoBehaviour
 
         Delay();
     }
-
+    public void Restart()
+    {
+        SceneManager.LoadScene(actualScene);
+    }
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
