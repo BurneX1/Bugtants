@@ -12,9 +12,11 @@ public class Buttoms : MonoBehaviour
     public Animator animator;
     public float timer;
     public bool actvOn = false;
-
+    private string actualScene;
     private void Start()
     {
+        Scene scene = SceneManager.GetActiveScene();
+        actualScene = scene.name;
         audioFont.clip = btmSound;
     }
 
@@ -30,7 +32,10 @@ public class Buttoms : MonoBehaviour
             }
         }
     }
-
+    public void Restart()
+    {
+        SceneManager.LoadScene(actualScene);
+    }
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
