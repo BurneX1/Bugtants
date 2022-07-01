@@ -720,6 +720,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 119
       objectReference: {fileID: 0}
+    - target: {fileID: 8566143788387295074, guid: dee9f13b5f6275c4f8fa7cf0632b2a95, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee9f13b5f6275c4f8fa7cf0632b2a95, type: 3}
 --- !u!4 &3179105700516711932 stripped
@@ -1158,6 +1162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5383017019662385138}
     m_Modifications:
+    - target: {fileID: 3451850249533319519, guid: fde776060c52922459e7c1d5b95c3cdb, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3451850249533319519, guid: fde776060c52922459e7c1d5b95c3cdb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
