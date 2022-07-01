@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 68b539395c696114ebf43f19d7d45811, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 47a463085cdf3ca4a980b88e541ce22d, type: 2}
     - target: {fileID: 919132149155446097, guid: 68b539395c696114ebf43f19d7d45811, type: 3}
       propertyPath: m_Name
       value: FBX_BancoMall_01 (1)
@@ -324,6 +328,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e8d1604cd78d2c943afe769e5024ec44, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb8d2cb69990dfd498580cf87994f3b6, type: 2}
     - target: {fileID: 919132149155446097, guid: e8d1604cd78d2c943afe769e5024ec44, type: 3}
       propertyPath: m_Name
       value: FBX_BancoMall_02 (1)
@@ -468,6 +476,14 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59ff31649aab2014a8565666d749f6e4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b010e7361d4b2a459536c88c38dca03, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 59ff31649aab2014a8565666d749f6e4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4974743385540655839, guid: ad49a25b5c2d71345a49a5ee7822b03e, type: 3}
     - target: {fileID: 919132149155446097, guid: 59ff31649aab2014a8565666d749f6e4, type: 3}
       propertyPath: m_Name
       value: FBX_Carro_Souveniers_2_2 (1)

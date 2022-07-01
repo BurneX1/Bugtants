@@ -381,6 +381,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8136397708094412466}
     m_Modifications:
+    - target: {fileID: 1034594074550560604, guid: 0670d791bae95604a9d84eac1a2d77c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7617d917638da794ca33acce3a2b85e1, type: 2}
     - target: {fileID: 1538931056741238409, guid: 0670d791bae95604a9d84eac1a2d77c4, type: 3}
       propertyPath: m_Name
       value: FBX_BancoMall_03
