@@ -13,6 +13,10 @@ public class Buttoms : MonoBehaviour
     public float timer;
     public bool actvOn = false;
     private string actualScene;
+
+    public bool activeDelay = false;
+    public string actualCanva;
+    public float delayTimer = 0;
     private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
