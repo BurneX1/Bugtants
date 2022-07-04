@@ -93,7 +93,7 @@ public class Pause : MonoBehaviour
         {
             lifeScript.inmortal = true;
         }
-        if (lifeScript.inmortal && deadTime >= deadMaxTime && lifeScript.actualHealth == 0)
+        if ((lifeScript.inmortal && deadTime >= deadMaxTime && lifeScript.actualHealth == 0) || lifeScript.actualHealth == lifeScript.maxHealth)
         {
             deadScreen.SetActive(false);
             Time.timeScale = 1;

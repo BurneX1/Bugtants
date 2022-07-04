@@ -46,7 +46,6 @@ public class BossController : MonoBehaviour
     }
     void Activations()
     {
-        bossSummon.BossBell();
         switch (bossAttackPrepare.numberNow)
         {
             case 1:
@@ -77,6 +76,7 @@ public class BossController : MonoBehaviour
         {
             bossAttackPrepare.numberNow = 0;
             bossSummon.Summoners();
+            bossSummon.BossBell();
             bossAttacker.step = 0;
         }
     }

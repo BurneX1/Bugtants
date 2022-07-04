@@ -63,7 +63,7 @@ public class ItemMagnet : MonoBehaviour
         bell = false;
         rigid.velocity = new Vector3(angler.x * speedBoss, angler.y * speedBoss, angler.z * speedBoss);
         yield return new WaitForSeconds(time);
-        if (!detectPlayer)
+        if (!detectPlayer.touch)
             rigid.velocity = new Vector3(0, 0, 0);
     }
     void StopVacuum()

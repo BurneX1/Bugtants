@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
             if (melee)
             {
                 c_atk.Attack();
-                numberMove = 2;
             }
             else
             {
@@ -162,6 +161,11 @@ public class PlayerController : MonoBehaviour
     void PlayerLogic()
     {
         c_jmp.CheckGround();
+        if (c_atk.attacked)
+        {
+            numberMove = 2;
+            c_atk.attacked = false;
+        }
         if (c_shoot.shoot)
         {
             numberMove = 1;

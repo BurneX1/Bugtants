@@ -150,7 +150,7 @@ MonoBehaviour:
   enSenScript: {fileID: 8428745325297702170}
   enLifeScript: {fileID: 8428745324128778247}
   frontDetectRange: 10
-  destinyRange: 2
+  destinyRange: 1
   life: 20
   damage: 3
   speedSuction: 2
@@ -174,6 +174,7 @@ MonoBehaviour:
   speedSuction: 2
   damageRate: 2
   damage: 3
+  whatOpenSound: 2
   initial: {fileID: 8428745325406053215}
   final: {fileID: 8428745325733199619}
   locate: {fileID: 8428745325297702170}
@@ -182,6 +183,22 @@ MonoBehaviour:
   devouring: 0
   mySwitch: 0
   hitBox: {fileID: 8428745324933691813}
+  waysIdle:
+    whatSound: 2
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysStartVacuum:
+    whatSound: 2
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysVacuum:
+    whatSound: 2
+    whereSound: 1
+    sounds: {fileID: 0}
+  waysAttack:
+    whatSound: 2
+    whereSound: 1
+    sounds: {fileID: 0}
 --- !u!114 &8428745324128778247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a21e5e9a3af3042a70599611bfec47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 12
+  life: 20
   giftQuantity: 0
   timeLifeSpan: 0
   feedMaxTimer: 1
@@ -209,7 +226,11 @@ MonoBehaviour:
   taken: 0
   point: 0
   reached: 0
-  deadWays:
+  waysDead:
+    whatSound: 1
+    whereSound: 0
+    sounds: {fileID: 0}
+  waysDamaged:
     whatSound: 0
     whereSound: 0
     sounds: {fileID: 0}
@@ -225,11 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audClip:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  audClips:
+  - clip: {fileID: 8300000, guid: c2a0258b58b0f684786ac1223bd1b2f1, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: ec47536087504324390620e71e478e3c, type: 3}
+    capVolume: 0.5
+  - clip: {fileID: 8300000, guid: 99ea1ded9a42c0e489a58fa8036a97b4, type: 3}
+    capVolume: 0.5
   audComp:
   - audSrc: {fileID: 0}
     newSound: {fileID: 0}
@@ -239,6 +262,7 @@ MonoBehaviour:
     newSound: {fileID: 0}
     location: {fileID: 8428745325696475226}
     soundDistance: {x: 0, y: 20}
+  pauseDoner: {fileID: 0}
 --- !u!1 &8428745324414906978
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +533,7 @@ MonoBehaviour:
   rotOrigin: {fileID: 8428745325406053215}
   range: 10
   retreatRange: 0
-  quietRange: 2
+  quietRange: 1
   crashRange: 0
   startLook: 0
   tryWall: 0
@@ -753,7 +777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8428745325733199616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8428745325406053215}

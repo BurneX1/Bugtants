@@ -48,11 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossVacuum: {fileID: 0}
   radius: 5
-  speedBoss: 1
+  speedBoss: 2.5
   speedPlayer: 5
   time: 5
   bell: 0
-  collider: {fileID: 2775766439076403313}
+  collideObj: {fileID: 0}
   detectPlayer: {fileID: 1182925803502406939}
 --- !u!54 &3919461454275692414
 Rigidbody:
@@ -225,7 +225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0eb0992270911eb4183fbf24c0bd67fe, type: 2}
+  - {fileID: 2100000, guid: 27bc0d122c84a9744b7334fad1df76eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

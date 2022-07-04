@@ -10,6 +10,8 @@ public class AtackMele : MonoBehaviour
     public float delayStartatack;
     public float atkDuration;
 
+    [HideInInspector]
+    public bool attacked;
     private float dlyTimer;
     private float atkTimer;
     private bool isAtacking;
@@ -52,7 +54,8 @@ public class AtackMele : MonoBehaviour
             }
             else
             {
-                if(hitBox.activeSelf == false)
+                
+                if (hitBox.activeSelf == false)
                 {
                     hitBox.SetActive(true);
                 }
@@ -60,7 +63,7 @@ public class AtackMele : MonoBehaviour
                 if (atkTimer < atkDuration)
                 {
                     atkTimer += Time.deltaTime;
-
+                    attacked = true;
                 }
                 else
                 {
