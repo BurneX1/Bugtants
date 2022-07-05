@@ -13,6 +13,7 @@ public class SoundsCapingVolume : MonoBehaviour
     void Awake()
     {
         audSrc = GetComponent<AudioSource>();
+        volumeScript = GetComponent<VolumeValue>();
     }
 
     // Update is called once per frame
