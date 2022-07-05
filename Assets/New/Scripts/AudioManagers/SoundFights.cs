@@ -9,12 +9,17 @@ public class SoundFights : MonoBehaviour
     public int normalSound;
     public int tensionNumber;
     public bool battleLogic;
+    [Range(0, 1)]
+    public float capVolume;
+
     private AudioSource audions;
+    private VolumeValue volumeScript;
     private Soundtracks sounds;
     // Start is called before the first frame update
     void Awake()
     {
         sounds = gameObject.GetComponent<Soundtracks>();
+        volumeScript = GameObject.Find("BackGroundMusic").GetComponent<VolumeValue>();
         audions = GameObject.Find("BackGroundMusic").GetComponent<AudioSource>();
         audions.clip = sounds.bgms[normalSound];
         audions.Play();
@@ -29,6 +34,9 @@ public class SoundFights : MonoBehaviour
 
     void ConditionalSounds()
     {
+        if (audions.volume != volumeScript.volValue * capVolume)
+        audions.volume = volumeScript.volValue * capVolume;
+
         if (tensionNumber == 0)
         {
             battleLogic = false;

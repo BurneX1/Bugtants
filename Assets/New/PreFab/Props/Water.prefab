@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5866579789220180078}
   - component: {fileID: 4745962881200381586}
+  - component: {fileID: 1214527917492563221}
+  - component: {fileID: 142704313648935110}
   m_Layer: 3
   m_Name: Music
-  m_TagString: "M\xFAsica"
+  m_TagString: SoundCaping
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +129,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1214527917492563221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953808002471832018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b715374de2ee4fb78956619795134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volValue: 0
+--- !u!114 &142704313648935110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953808002471832018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926cc00ca24cafc4a8f63c22a961e79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capVolume: 1
 --- !u!1 &3274358268343858507
 GameObject:
   m_ObjectHideFlags: 0
