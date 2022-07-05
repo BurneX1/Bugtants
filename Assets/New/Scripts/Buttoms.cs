@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(VolumeValue))]
 public class Buttoms : MonoBehaviour
 {
     public AudioSource audioFont;
     public AudioClip btmSound;
 
     public Animator animator;
+    [Range(0, 1)]
+    public float capVolume;
     public float timer;
     public bool actvOn = false;
     private string actualScene;
@@ -17,16 +19,21 @@ public class Buttoms : MonoBehaviour
     public bool activeDelay = false;
     public string actualCanva;
     public float delayTimer = 0;
+
+    private VolumeValue volumeScript;
     private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         actualScene = scene.name;
         audioFont.clip = btmSound;
+        volumeScript = GetComponent<VolumeValue>();
     }
 
     private void Update()
     {
-        if(actvOn)
+        if (audioFont.volume != volumeScript.volValue * capVolume)
+            audioFont.volume = volumeScript.volValue * capVolume;
+        if (actvOn)
         {
             animator.Play("FadeOut_Black");
             timer += Time.deltaTime;

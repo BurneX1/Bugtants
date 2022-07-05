@@ -20,28 +20,36 @@ public class VolumeConfiguration : MonoBehaviour
     {
         musVol = genSld.value * musSld.value / 10000;
         sndVol = genSld.value * sndSld.value / 10000;
-        //sdcpVol = genSld.value * sdcpSld.value / 10000;
+        sdcpVol = genSld.value * sdcpSld.value / 10000;
         
         genTxt.text = genSld.value + "%";
         musTxt.text = musSld.value + "%";
         sndTxt.text = sndSld.value + "%";
-        //sdcpTxt.text = sdcpSld.value + "%";
+        sdcpTxt.text = sdcpSld.value + "%";
         SoundChange();
     }
 
     void SoundChange()
     {
-        GameObject[] sfxUnits;
-        //GameObject[] BgmUnits;
+        GameObject[] sfxUnits, bgmUnits, sdcpUnits;
 
         sfxUnits = GameObject.FindGameObjectsWithTag("SoundSFX");
-        //BgmUnits = GameObject.FindGameObjectsWithTag("SoundMusic");
+        bgmUnits = GameObject.FindGameObjectsWithTag("SoundMusic");
+        sdcpUnits = GameObject.FindGameObjectsWithTag("SoundCaping");
         for (int i = 0; i < sfxUnits.Length; i++)
         {
-            //sfxUnits[i].GetComponent<AudioSource>().volume = sndVol * 10 / 10;
             if (sfxUnits[i].GetComponent<VolumeValue>() != null)
-            sfxUnits[i].GetComponent<VolumeValue>().volValue = sndVol;
-            //BgmUnits[i].GetComponent<AudioSource>().volume = musVol * 9 / 10;
+                sfxUnits[i].GetComponent<VolumeValue>().volValue = sndVol;
+        }
+        for (int i = 0; i < bgmUnits.Length; i++)
+        {
+            if (bgmUnits[i].GetComponent<VolumeValue>() != null)
+                bgmUnits[i].GetComponent<VolumeValue>().volValue = musVol;
+        }
+        for (int i = 0; i < sdcpUnits.Length; i++)
+        {
+            if (sdcpUnits[i].GetComponent<VolumeValue>() != null)
+                sdcpUnits[i].GetComponent<VolumeValue>().volValue = sdcpVol;
         }
     }
 }
