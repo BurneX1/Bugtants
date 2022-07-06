@@ -19,7 +19,14 @@ public class UserData : ScriptablePersistentObject
         Español
     }
 
+    public enum Display
+    {
+        FullScreen,
+        Windowed
+    }
+
     public Lenguage actLeng;
+    public Display displayMode;
     [Range(0.01f, 10)]
     public float aimSens=1;
 }
