@@ -15,12 +15,11 @@ public class BulletTime : MonoBehaviour
     public Shells[] shells;
     [HideInInspector]
     public bool cannon;
-    public float speed;
+    public float speed, lifeSpan;
     // Start is called before the first frame update
     void Start()
     {
         start = transform.position;
-        transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
         for (int i = 0; i < shells.Length; i++)
         {
             shells[i].tagName = tagName;
@@ -43,7 +42,7 @@ public class BulletTime : MonoBehaviour
     void NormalBullet()
     {
         timer += Time.deltaTime;
-        if (timer > 3)
+        if (timer > lifeSpan)
         {
             Destroy(gameObject);
         }

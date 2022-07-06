@@ -136,6 +136,7 @@ MonoBehaviour:
   shells: []
   cannon: 0
   speed: 5
+  lifeSpan: 0
 --- !u!114 &2242359444860930791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,4 +153,5 @@ MonoBehaviour:
   dmgTagsArray:
   - Enemy
   timePerDmg: 1
+  doDmg: 0
   lifeLimiter: 0
