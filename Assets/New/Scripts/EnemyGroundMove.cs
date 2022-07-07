@@ -419,7 +419,7 @@ public class EnemyGroundMove : MonoBehaviour
         }
         else
         {
-            if (stat != Status.looking)
+            if (stat != Status.looking && stat != Status.reached)
             {
                 waysIdle.ActiveWhenStopped();
             }

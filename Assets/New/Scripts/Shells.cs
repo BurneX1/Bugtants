@@ -4,11 +4,21 @@ public class Shells : MonoBehaviour
 {
     public string tagName;
     public int damage;
-    [HideInInspector]
+    [Range(0, 1)]
+    public float capVolume;
+    public AudioClip clip;
+    public GameObject soundInstancer;
     // Start is called before the first frame update
     void Start()
     {
-
+        soundInstancer.GetComponent<SpawneableSFX>().capVolume = capVolume;
+        soundInstancer.GetComponent<SpawneableSFX>().clippie = clip;
+    }
+    void Destroyed()
+    {
+        soundInstancer.transform.position = transform.position;
+        Instantiate(soundInstancer);
+        Destroy(gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -27,12 +37,12 @@ public class Shells : MonoBehaviour
                 other.GetComponent<EnemyLife>().ChangeLife(-damage);
             }
             damage = 0;
-            Destroy(gameObject);
+            Destroyed();
         }
         else if (other.CompareTag("FloorAndWall"))
         {
             damage = 0;
-            Destroy(gameObject);
+            Destroyed();
         }
 
     }

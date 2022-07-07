@@ -16,9 +16,19 @@ public class BulletTime : MonoBehaviour
     [HideInInspector]
     public bool cannon;
     public float speed, lifeSpan;
+    [Range(0, 1)]
+    public float capVolume;
+    public AudioClip clip;
+    public GameObject soundInstancer;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (soundInstancer != null)
+        {
+            soundInstancer.GetComponent<SpawneableSFX>().capVolume = capVolume;
+            soundInstancer.GetComponent<SpawneableSFX>().clippie = clip;
+        }
         start = transform.position;
         for (int i = 0; i < shells.Length; i++)
         {
@@ -28,7 +38,12 @@ public class BulletTime : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(angler.x * speed, angler.y * speed, angler.z * speed);
     }
-
+    void Destroyed()
+    {
+        soundInstancer.transform.position = transform.position;
+        Instantiate(soundInstancer);
+        Destroy(gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -112,12 +127,12 @@ public class BulletTime : MonoBehaviour
                     other.GetComponent<EnemyLife>().ChangeLife(-damage);
                 }
                 damage = 0;
-                Destroy(gameObject);
+                Destroyed();
             }
             else if (other.CompareTag("FloorAndWall"))
             {
                 damage = 0;
-                Destroy(gameObject);
+                Destroyed();
             }
         }
         
