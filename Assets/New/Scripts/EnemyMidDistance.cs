@@ -26,10 +26,12 @@ public class EnemyMidDistance : MonoBehaviour
     void Shoot()
     {
         timer += Time.deltaTime;
-        if (timer >= maxTimer && (movement.statNumber == 2|| movement.statNumber == 3 || movement.statNumber == 5))
+        if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3 || movement.statNumber == 5))
         {
+            Vector3 playerStat = movement.radium.objetive.transform.position;
+            playerStat.y += 1f;
             bullet.transform.position = bulletPosition.transform.position;
-            rec = (movement.radium.objetive.transform.position - bulletPosition.transform.position).normalized;
+            rec = (playerStat - bulletPosition.transform.position).normalized;
 
             bullet.GetComponent<BulletTime>().speed = bulletSpeed;
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
