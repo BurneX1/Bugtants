@@ -37,10 +37,17 @@ public class EnemyGroundMove : MonoBehaviour
     public Animator animator;
 
     public WaysToSound waysWalk, waysIdle, waysCharge, waysChase, waysStopper;
+
+    public bool saveblocker = false;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
+        GameObject allobj = GameObject.FindGameObjectWithTag("All");
         /*
         if (valores != null)
         {
@@ -57,14 +64,23 @@ public class EnemyGroundMove : MonoBehaviour
         marker = 0;
         charge = false;
         stunned = false;
-        if (patrolPoint.Length != 0)
+        if (patrolPoint.Length != 0 && !saveblocker)
         {
             ControlPatrol();
         }
+        saveblocker = true;
         lockerDraw = true;
         patrolNumber = 0;
         saveAcc = intel.acceleration;
-        patroller.transform.parent = null;
+
+        if (allobj != null)
+        {
+            patroller.transform.parent = allobj.transform;
+        }
+        else {
+            patroller.transform.parent = null;
+        }
+
         locker = true;
         patrolTimer = 0;
         if (gameObject.GetComponent<SoundActive>() != null)
@@ -405,7 +421,7 @@ public class EnemyGroundMove : MonoBehaviour
     }
     public void Modifying()
     {
-        if (lockerDraw == false)
+        if (lockerDraw == false && !saveblocker)
         {
             if (locker)
             {
@@ -472,7 +488,8 @@ public class EnemyGroundMove : MonoBehaviour
 
     public void ControlPatrol()
     {
-        for (int i = 0; i < savePatrol.Length; i++)
+        savePatrol = patrolPoint;
+        for (int i = 0; i < patrolPoint.Length; i++)
         {
             patrolPoint[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
             savePatrol[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);

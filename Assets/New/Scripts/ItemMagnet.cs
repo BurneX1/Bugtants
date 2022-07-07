@@ -14,11 +14,13 @@ public class ItemMagnet : MonoBehaviour
     public SphereCollider collideObj;
     public Detecter detectPlayer;
     private Rigidbody rigid;
+    private bool lockers = false;
 
     // Start is called before the first frame update
     void Awake()
     {
         //transform.gameObject.tag = "Item";
+        lockers = true;
         rigid = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
         bossVacuum = GameObject.Find("Boss");
@@ -28,8 +30,6 @@ public class ItemMagnet : MonoBehaviour
             rec.y = 0;
             angler = new Vector3(rec.x, rec.y, rec.z);
         }
-
-
     }
 
     // Update is called once per frame
@@ -72,6 +72,7 @@ public class ItemMagnet : MonoBehaviour
     }
     void OnDrawGizmos()
     {
+        if(!lockers)
         collideObj.radius = radius;
     }
 }

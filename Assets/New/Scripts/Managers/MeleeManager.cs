@@ -44,11 +44,17 @@ public class MeleeManager : MonoBehaviour
     [Tooltip("Tiempo en que el enemigo se aturde al recibir ataque, recomendable en decimales")]
     public float receiveMaxTimer;
 
+    public bool saveBlocker = false;
+
     void Awake()
     {
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
-        enGrdScript.savePatrol = new GameObject[patrolPoints];
-        enGrdScript.ControlPatrol();
+        if (!saveBlocker)
+        {
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.ControlPatrol();
+        }
+        saveBlocker = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -68,6 +74,7 @@ public class MeleeManager : MonoBehaviour
     {
         if (!locker)
         {
+            saveBlocker = false;
             StatAlocate();
             enGrdScript.patrolPoint = new GameObject[patrolPoints];
             enGrdScript.savePatrol = new GameObject[patrolPoints];
