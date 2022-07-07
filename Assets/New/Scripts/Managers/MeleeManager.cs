@@ -11,7 +11,7 @@ public class MeleeManager : MonoBehaviour
     public EnemySense enSenScript;
     public EnemyLife enLifeScript;
     public MeleeAttack meleeScript;
-    private bool locker = false;
+    public bool locker = false;
     [Header("Scripts editables")]
     [Tooltip("Lineas azules, es la distancia en la que puede detectar al jugador a frente")]
     public float frontDetectRange;
@@ -45,8 +45,27 @@ public class MeleeManager : MonoBehaviour
     public float receiveMaxTimer;
 
     public bool saveBlocker = false;
-
+    private bool updateStarter, awakeStarted;
     void Awake()
+    {
+        awakeStarted = false;
+        updateStarter = false;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (enGrdScript.loaded && updateStarter)
+        {
+            StatAlocate();
+            DeathCondition();
+        }
+        if (enGrdScript.loaded && !awakeStarted)
+        {
+            StartCoroutine(WhenLoading());
+            awakeStarted = true;
+        }
+    }
+    IEnumerator WhenLoading()
     {
         if (!saveBlocker)
         {
@@ -54,22 +73,19 @@ public class MeleeManager : MonoBehaviour
             enGrdScript.savePatrol = new GameObject[patrolPoints];
             enGrdScript.ControlPatrol();
         }
+        else
+        {
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.CheckpointControlPatrol();
+        }
         saveBlocker = true;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        yield return new WaitForSeconds(0.01f);
         enLifeScript.life = life;
         locker = true;
+        yield return new WaitForSeconds(0.01f);
+        updateStarter = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        StatAlocate();
-        DeathCondition();
-    }
-
     void OnDrawGizmos()
     {
         if (!locker)
@@ -115,7 +131,7 @@ public class MeleeManager : MonoBehaviour
             enSenScript.enabled = false;
             meleeScript.enabled = false;
             enGrdScript.intel.speed = 0;
-
+            enLifeScript.enabled = false;
         }
     }
 

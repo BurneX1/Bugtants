@@ -26,8 +26,7 @@ public class EnemyLife : MonoBehaviour
     public WaysToSound waysDead, waysDamaged;
     //Sounds//
     private SoundActive sounds;
-
-    void Awake()
+    void Start()
     {
         audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
         reached = false;

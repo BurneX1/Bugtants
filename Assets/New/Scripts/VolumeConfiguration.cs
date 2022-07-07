@@ -29,7 +29,7 @@ public class VolumeConfiguration : MonoBehaviour
         SoundChange();
     }
 
-    void SoundChange()
+    public void SoundChange()
     {
         GameObject[] sfxUnits, bgmUnits, sdcpUnits;
 

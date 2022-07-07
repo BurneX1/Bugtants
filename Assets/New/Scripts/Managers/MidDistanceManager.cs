@@ -48,30 +48,53 @@ public class MidDistanceManager : MonoBehaviour
     [Tooltip("Tiempo en que el enemigo se aturde al recibir ataque, recomendable en decimales")]
     public float receiveMaxTimer;
 
+    public bool saveBlocker = false;
+    private bool updateStarter, awakeStarted;
     void Awake()
     {
-        enGrdScript.patrolPoint = new GameObject[patrolPoints];
-        enGrdScript.savePatrol = new GameObject[patrolPoints];
-        enGrdScript.ControlPatrol();
+        awakeStarted = false;
+        updateStarter = false;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        enLifeScript.life = life;
-        locker = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        StatAlocate();
-        DeathCondition();
+        if (enGrdScript.loaded && updateStarter)
+        {
+            StatAlocate();
+            DeathCondition();
+        }
+        if (enGrdScript.loaded && !awakeStarted)
+        {
+            StartCoroutine(WhenLoading());
+            awakeStarted = true;
+        }
     }
-
+    IEnumerator WhenLoading()
+    {
+        if (!saveBlocker)
+        {
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.ControlPatrol();
+        }
+        else
+        {
+            enGrdScript.patrolPoint = new GameObject[patrolPoints];
+            enGrdScript.savePatrol = new GameObject[patrolPoints];
+            enGrdScript.CheckpointControlPatrol();
+        }
+        saveBlocker = true;
+        yield return new WaitForSeconds(0.01f);
+        enLifeScript.life = life;
+        locker = true;
+        yield return new WaitForSeconds(0.01f);
+        updateStarter = true;
+    }
     void OnDrawGizmos()
     {
         if (!locker)
         {
+            saveBlocker = false;
             StatAlocate();
             enGrdScript.patrolPoint = new GameObject[patrolPoints];
             enGrdScript.savePatrol = new GameObject[patrolPoints];
@@ -113,6 +136,7 @@ public class MidDistanceManager : MonoBehaviour
             enSenScript.enabled = false;
             enMidScript.enabled = false;
             enGrdScript.intel.speed = 0;
+            enLifeScript.enabled = false;
 
         }
     }

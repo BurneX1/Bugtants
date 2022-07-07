@@ -3277,6 +3277,7 @@ GameObject:
   - component: {fileID: 3315685096349430190}
   - component: {fileID: 696305768633020061}
   - component: {fileID: 3062920858029371796}
+  - component: {fileID: 8821307866946152802}
   m_Layer: 0
   m_Name: Pause MidRelease
   m_TagString: Pause
@@ -3355,6 +3356,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qualityDpdn: {fileID: 4732769990894553597}
+--- !u!114 &8821307866946152802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808536634576454013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c452a56cc529c043a3249ad0f3e3790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrollins: []
+  initiate: 0
 --- !u!1 &1933522248280436569
 GameObject:
   m_ObjectHideFlags: 0

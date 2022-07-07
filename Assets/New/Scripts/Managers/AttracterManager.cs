@@ -76,7 +76,7 @@ public class AttracterManager : MonoBehaviour
             enAttScript.player.GetComponent<Movement>().poseser = null;
             enAttScript.enabled = false;
             enSenScript.enabled = false;
-
+            enLifeScript.enabled = false;
         }
     }
 

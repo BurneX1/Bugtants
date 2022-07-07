@@ -33,21 +33,34 @@ public class EnemyGroundMove : MonoBehaviour
     public Detecter detectPatrol;
     private bool chaseMode;
     private bool locker = true, lockerDraw = false;
-
+    private GameObject patrolSaving;
     public Animator animator;
 
     public WaysToSound waysWalk, waysIdle, waysCharge, waysChase, waysStopper;
-
-    public bool saveblocker = false;
-    // Start is called before the first frame update
-    private void Awake()
+    public bool saveBlocker = false;
+    [HideInInspector]
+    public bool loaded;
+    void OnDisable()
     {
-        
+        if (patroller.activeSelf)
+            patroller.SetActive(false);
     }
+    void OnEnable()
+    {
+        if (!patroller.activeSelf)
+            patroller.SetActive(true);
+    }
+    // Start is called before the first frame update
     void Start()
     {
-        audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
+        loaded = false;
+        StartCoroutine(Starting());
+    }
+    IEnumerator Starting()
+    {
+        yield return new WaitForSeconds(0.15f);
         GameObject allobj = GameObject.FindGameObjectWithTag("All");
+        audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
         /*
         if (valores != null)
         {
@@ -64,23 +77,22 @@ public class EnemyGroundMove : MonoBehaviour
         marker = 0;
         charge = false;
         stunned = false;
-        if (patrolPoint.Length != 0 && !saveblocker)
-        {
-            ControlPatrol();
-        }
-        saveblocker = true;
-        lockerDraw = true;
-        patrolNumber = 0;
-        saveAcc = intel.acceleration;
-
         if (allobj != null)
         {
             patroller.transform.parent = allobj.transform;
         }
-        else {
+        else
+        {
             patroller.transform.parent = null;
         }
-
+        /*if (patrolPoint.Length != 0)
+        {
+            ControlPatrol();
+        }*/
+        saveBlocker = true;
+        lockerDraw = true;
+        patrolNumber = 0;
+        saveAcc = intel.acceleration;
         locker = true;
         patrolTimer = 0;
         if (gameObject.GetComponent<SoundActive>() != null)
@@ -91,12 +103,12 @@ public class EnemyGroundMove : MonoBehaviour
             waysChase.sounds = gameObject.GetComponent<SoundActive>();
             waysStopper.sounds = gameObject.GetComponent<SoundActive>();
         }
+        loaded = true;
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (radium != null)
+        if (radium != null && loaded)
         {
             if (radium.objetive != null)
             {
@@ -180,13 +192,16 @@ public class EnemyGroundMove : MonoBehaviour
             }
             moving = false;
             intel.speed = 0;
-            patrolTimer += Time.deltaTime;
-            if (patrolTimer >= patrolMaxTime)
+            if (patrolPoint.Length != 1)
             {
-                patrolNumber += 1;
-                patrolTimer = 0;
-                charging = 1;
-                touch = false;
+                patrolTimer += Time.deltaTime;
+                if (patrolTimer >= patrolMaxTime)
+                {
+                    patrolNumber += 1;
+                    patrolTimer = 0;
+                    charging = 1;
+                    touch = false;
+                }
             }
 
         }
@@ -417,11 +432,12 @@ public class EnemyGroundMove : MonoBehaviour
 
     void OnDrawGizmos()
     {
-
+        if (lockerDraw == false)
+            saveBlocker = false;
     }
     public void Modifying()
     {
-        if (lockerDraw == false && !saveblocker)
+        if (lockerDraw == false && !saveBlocker)
         {
             if (locker)
             {
@@ -488,14 +504,21 @@ public class EnemyGroundMove : MonoBehaviour
 
     public void ControlPatrol()
     {
-        savePatrol = patrolPoint;
-        for (int i = 0; i < patrolPoint.Length; i++)
+        for (int i = 0; i < savePatrol.Length; i++)
         {
             patrolPoint[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
             savePatrol[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
         }
+        CheckpointControlPatrol();
     }
-
+    public void CheckpointControlPatrol()
+    {
+        for (int i = 0; i < savePatrol.Length; i++)
+        {
+            patrolPoint[i] = GameObject.Find(patroller.name + "/PatrolPoint " + i);
+            savePatrol[i] = GameObject.Find(patroller.name + "/PatrolPoint " + i);
+        }
+    }
     void AddPoints(int number)
     {
         NewPoints();
