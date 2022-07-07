@@ -29,7 +29,7 @@ public class EnemyMidDistance : MonoBehaviour
         if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3 || movement.statNumber == 5))
         {
             Vector3 playerStat = movement.radium.objetive.transform.position;
-            playerStat.y += 1f;
+            playerStat.y += 5f;
             bullet.transform.position = bulletPosition.transform.position;
             rec = (playerStat - bulletPosition.transform.position).normalized;
 
