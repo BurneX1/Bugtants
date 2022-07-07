@@ -111,6 +111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &610250404403870093
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &2249484468697425190
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &2433902982480461514
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +453,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &2600294931816451381
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +541,9 @@ MonoBehaviour:
   cannon: 1
   speed: 50
   lifeSpan: 3
+  capVolume: 0
+  clip: {fileID: 0}
+  soundInstancer: {fileID: 0}
 --- !u!54 &-3155013064375826232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -656,6 +671,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &2939120863953189033
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +785,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &3521211569245092805
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +899,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &4068656310399267504
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +1013,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &4972469291907023916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &5860733015824613593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &6484533257728147332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1355,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &6576024622406139666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &6728057060543657820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &8776552374034494134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1697,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1 &8916258902335808755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagName: 
   damage: 0
+  capVolume: 0.1
+  clip: {fileID: 8300000, guid: 6a315c38b6b22224d8c6f6fc046bbdb6, type: 3}
+  soundInstancer: {fileID: 9185089373507533280, guid: 799d1d7090903974f8f7c99bc0b734ce, type: 3}
 --- !u!1001 &269935657270285569
 PrefabInstance:
   m_ObjectHideFlags: 0
