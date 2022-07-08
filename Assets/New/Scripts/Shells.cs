@@ -11,13 +11,20 @@ public class Shells : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundInstancer.GetComponent<SpawneableSFX>().capVolume = capVolume;
-        soundInstancer.GetComponent<SpawneableSFX>().clippie = clip;
+        if(soundInstancer)
+        {
+            soundInstancer.GetComponent<SpawneableSFX>().capVolume = capVolume;
+            soundInstancer.GetComponent<SpawneableSFX>().clippie = clip;
+        }
+        
     }
     void Destroyed()
     {
-        soundInstancer.transform.position = transform.position;
-        Instantiate(soundInstancer);
+        if (soundInstancer)
+        {
+            soundInstancer.transform.position = transform.position;
+            Instantiate(soundInstancer);
+        }
         Destroy(gameObject);
     }
     void OnTriggerEnter(Collider other)
