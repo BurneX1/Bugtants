@@ -42,13 +42,13 @@ public class EnemyGroundMove : MonoBehaviour
     public bool loaded;
     void OnDisable()
     {
-        if (patroller.activeSelf)
-            patroller.SetActive(false);
+        //if (patroller.activeSelf)
+        //    patroller.SetActive(false);
     }
     void OnEnable()
     {
-        if (!patroller.activeSelf)
-            patroller.SetActive(true);
+        //if (!patroller.activeSelf)
+        //    patroller.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()
@@ -77,14 +77,15 @@ public class EnemyGroundMove : MonoBehaviour
         marker = 0;
         charge = false;
         stunned = false;
-        if (allobj != null)
+        /*if (allobj != null)
         {
             patroller.transform.parent = allobj.transform;
         }
         else
         {
             patroller.transform.parent = null;
-        }
+        }*/
+        patroller.transform.parent = null;
         /*if (patrolPoint.Length != 0)
         {
             ControlPatrol();
