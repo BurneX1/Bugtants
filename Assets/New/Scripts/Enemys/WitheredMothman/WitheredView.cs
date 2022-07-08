@@ -10,6 +10,7 @@ public class WitheredView : MonoBehaviour
     private EnemyLife cmp_life;
     private EnemyGroundMove cmp_enm;
     private MeleeAttack cmp_atck;
+    private MaterialChanger cmp_mat;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class WitheredView : MonoBehaviour
         cmp_rgdl = gameObject.GetComponent<RagdolllActivator>();
         cmp_enm = gameObject.GetComponent<EnemyGroundMove>();
         cmp_atck = gameObject.GetComponent<MeleeAttack>();
+        cmp_mat = gameObject.GetComponent<MaterialChanger>();
     }
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,7 @@ public class WitheredView : MonoBehaviour
     private void Dead()
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
+        if (cmp_mat) cmp_mat.ExpossureChange(1);
         StartCoroutine(DesactiveOnTime(deadTime));
     }
 

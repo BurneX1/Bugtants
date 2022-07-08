@@ -9,13 +9,14 @@ public class AtracterView : MonoBehaviour
     private RagdolllActivator cmp_rgdl;
     private EnemyLife cmp_life;
     private EnemyAttract cmp_atr;
-
+    private MaterialChanger cmp_mat;
 
     private void Awake()
     {
         cmp_life = gameObject.GetComponent<EnemyLife>();
         cmp_rgdl = gameObject.GetComponent<RagdolllActivator>();
         cmp_atr = gameObject.GetComponent<EnemyAttract>();
+        cmp_mat = gameObject.GetComponent<MaterialChanger>();
 
     }
 
@@ -33,6 +34,7 @@ public class AtracterView : MonoBehaviour
     private void Dead()
     {
         if (cmp_rgdl) cmp_rgdl.RagdollSetActive(true);
+        if (cmp_mat) cmp_mat.ExpossureChange(1);
         StartCoroutine(DesactiveOnTime(deadTime));
     }
     private void Damage()
