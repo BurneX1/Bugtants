@@ -85,6 +85,10 @@ public class EnemyGroundMove : MonoBehaviour
         {
             patroller.transform.parent = null;
         }*/
+        if (patrolPoint.Length != 0)
+        {
+            ControlPatrol();
+        }
         patroller.transform.parent = null;
         /*if (patrolPoint.Length != 0)
         {
