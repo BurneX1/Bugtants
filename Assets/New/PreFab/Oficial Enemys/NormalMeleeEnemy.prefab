@@ -386,7 +386,6 @@ GameObject:
   - component: {fileID: 6474423816826379705}
   - component: {fileID: 168414242557799944}
   - component: {fileID: 7742334652099261746}
-  - component: {fileID: 1263911868307786174}
   m_Layer: 0
   m_Name: NormalMeleeEnemy
   m_TagString: Enemy
@@ -676,19 +675,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4875002997431985918}
   deadTime: 25
---- !u!114 &1263911868307786174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3671106164646871528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c6f9e26dc2d48f46ace7fa17ebfeec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modifyObject: {fileID: 4606248512619794628}
 --- !u!1 &3671106164771048709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1249,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc8129998d568b44bbb82983d6471024, type: 3}
   m_PrefabInstance: {fileID: 1038814631877351734}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8094749936840037511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9096365564891254193, guid: fc8129998d568b44bbb82983d6471024, type: 3}
+  m_PrefabInstance: {fileID: 1038814631877351734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8056722143106753545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: fc8129998d568b44bbb82983d6471024, type: 3}
@@ -1276,11 +1267,6 @@ GameObject:
 --- !u!1 &5439663631871492470 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4978462377655195712, guid: fc8129998d568b44bbb82983d6471024, type: 3}
-  m_PrefabInstance: {fileID: 1038814631877351734}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8094749936840037511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9096365564891254193, guid: fc8129998d568b44bbb82983d6471024, type: 3}
   m_PrefabInstance: {fileID: 1038814631877351734}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &4875002997431985918

@@ -3316,7 +3316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
-  deadMaxTime: 0
+  deadMaxTime: 1
   pauseHud: {fileID: 5429494566466319443}
   deadScreen: {fileID: 6230117674079459221}
   pauseMusic: {fileID: 3448564177630750118}
@@ -3368,7 +3368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c452a56cc529c043a3249ad0f3e3790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrollins: []
   initiate: 0
 --- !u!1 &1933522248280436569
 GameObject:

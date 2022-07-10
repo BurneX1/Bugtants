@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool moving, running, crouching, stunned, slowed;
     [HideInInspector]
-    public WaysToSound shootSound, jumpSound, moveSound, crouchSound;
+    public WaysToSound shootSound, jumpSound, moveSound, crouchSound, deadSound;
     private GameObject slowerings;
-
+    private bool dead;
     void Awake()
     {
         //Component Settup -----------//
@@ -57,10 +57,12 @@ public class PlayerController : MonoBehaviour
         //-------------------------<<<//
 
         //Sounds Setup -----------//
+
         shootSound.sounds = gameObject.GetComponent<SoundActive>();
         jumpSound.sounds = gameObject.GetComponent<SoundActive>();
         moveSound.sounds = gameObject.GetComponent<SoundActive>();
         crouchSound.sounds = gameObject.GetComponent<SoundActive>();
+        deadSound.sounds = gameObject.GetComponent<SoundActive>();
 
         //-------------------------<<<//
 
@@ -89,60 +91,83 @@ public class PlayerController : MonoBehaviour
     }
     void RunLocker(bool locked, bool runner)
     {
-        if (!locked)
-            running = runner;
+        if (c_life.actualHealth != 0)
+        {
+            if (!locked)
+                running = runner;
+        }
     }
     void HitLocker(bool locked, bool melee)
     {
-        if (!locked)
+        if (c_life.actualHealth != 0)
         {
-            if (melee)
+            if (!locked)
             {
-                c_atk.Attack();
+                if (melee)
+                {
+                    c_atk.Attack();
+                }
+                else
+                {
+                    c_shoot.Shooting(currentWeapon, c_mp, shootSound);
+                }
             }
-            else
-            {
-                c_shoot.Shooting(currentWeapon, c_mp, shootSound);
-            }
+
         }
+
     }
     void CrouchLocker(bool locked, bool croucher)
     {
-        if (!locked)
-            crouching = croucher;
+        if (c_life.actualHealth != 0)
+        {
+            if (!locked)
+                crouching = croucher;
+
+        }
+
     }
     void WeaponsLocker(bool locked, int number)
     {
-        if (!locked)
+        if (c_life.actualHealth != 0)
         {
-            currentWeapon = c_chWp.WeaponChanger(number, weapons, currentWeapon);
-            ChangedWeapon(number);
+            if (!locked)
+            {
+                currentWeapon = c_chWp.WeaponChanger(number, weapons, currentWeapon);
+                ChangedWeapon(number);
+            }
+
         }
+
     }
     void WeaponsLockers(bool locked, float upDown)
     {
-        int number = weaponNumber;
-        if (!locked)
+        if (c_life.actualHealth != 0)
         {
-            if (upDown > 0)
+            int number = weaponNumber;
+            if (!locked)
             {
-                number++;
-            }
-            else if (upDown < 0)
-            {
-                number--;
-            }
-            if (number < 0)
-            {
-                number = weapons.Length - 1;
-            }
-            else if (number >= weapons.Length)
-            {
-                number = 0;
+                if (upDown > 0)
+                {
+                    number++;
+                }
+                else if (upDown < 0)
+                {
+                    number--;
+                }
+                if (number < 0)
+                {
+                    number = weapons.Length - 1;
+                }
+                else if (number >= weapons.Length)
+                {
+                    number = 0;
+                }
+
+                WeaponsLocker(weaponLock, number);
             }
 
-            WeaponsLocker(weaponLock, number);
         }
+
     }
     void ChangedWeapon(int value)
     {
@@ -152,15 +177,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerLogic();
-        ModifyStamina();
-        StaminaCondition();
-        PlayerStature();
-        OneTimeSound();
+        if (c_life.actualHealth != 0)
+        {
+            PlayerLogic();
+            ModifyStamina();
+            StaminaCondition();
+            PlayerStature();
+            OneTimeSound();
+        }
+        else
+        {
+            DeadPlayer();
+        }
     }
     void PlayerLogic()
     {
         c_jmp.CheckGround();
+        if (dead)
+            dead = false;
         if (c_atk.attacked)
         {
             numberMove = 2;
@@ -200,10 +234,9 @@ public class PlayerController : MonoBehaviour
             c_mov.speed = playerData.crouchSpeed;
             if (moving)
             {
-                /*Debug.Log("Run");
                 moveSound.whereSound = 1;
-                moveSound.whatSound = 1;
-                moveSound.ActiveWhenStopped();*/
+                moveSound.whatSound = 9;
+                moveSound.ActiveWhenStopped();
             }
         }
         else if (running /*&& !c_stm.empty*/)
@@ -211,7 +244,6 @@ public class PlayerController : MonoBehaviour
             c_mov.speed = playerData.runSpeed;
             if (c_jmp.isGrounded)
             {
-                Debug.Log("Run");
                 moveSound.whereSound = 1;
                 moveSound.whatSound = 1;
                 moveSound.ActiveWhenStopped();
@@ -252,6 +284,17 @@ public class PlayerController : MonoBehaviour
         if (c_crouch.crouchSound && !c_crouch.sounded)
         {
             CrouchingSound();
+        }
+    }
+    void DeadPlayer()
+    {
+        c_mov.Quiet();
+        if (!dead)
+        {
+            deadSound.whereSound = 3;
+            deadSound.whatSound = 5;
+            deadSound.StopThenActive();
+            dead = true;
         }
     }
     void JumpSound()
