@@ -10,7 +10,7 @@ public class ElementChecker : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("DataElementCounter: " + elmntList.ElementCount(false));
+        
 
     }
     public void DelayCheck(float delay)
@@ -24,7 +24,7 @@ public class ElementChecker : MonoBehaviour
         {
             if(actionChecks[i].num <= count)
             {
-                Debug.Log("Count: " + count + ", num: " + actionChecks[i].num);
+               
                 actionChecks[i].actions.Invoke();
             }
         }
