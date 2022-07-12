@@ -3658,6 +3658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1617150673029523826}
   - component: {fileID: 4962454239032327459}
+  - component: {fileID: 1224694590058581388}
   m_Layer: 0
   m_Name: Whisperer
   m_TagString: SoundSFX
@@ -3775,6 +3776,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1224694590058581388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8792459810925213400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156b715374de2ee4fb78956619795134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volValue: 0
 --- !u!1 &8865364035430095705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,11 +3932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f56ac875c40b884cab1dfde7d7f5557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5618655913750951267 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5354956512130931761, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
-  m_PrefabInstance: {fileID: 552211417072101714}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1507698450087729678 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1388712439886754652, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
@@ -3939,6 +3948,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f56ac875c40b884cab1dfde7d7f5557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5618655913750951267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5354956512130931761, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
+  m_PrefabInstance: {fileID: 552211417072101714}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &3651569412296084801 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3820497599709340691, guid: e55107c7cd542a84a93e53c690ab5b30, type: 3}
