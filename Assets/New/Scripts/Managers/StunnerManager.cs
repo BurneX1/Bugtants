@@ -91,7 +91,6 @@ public class StunnerManager : MonoBehaviour
         {
             enGrdScript.patrolPoint = new GameObject[patrolPoints];
             enGrdScript.savePatrol = new GameObject[patrolPoints];
-            enGrdScript.CheckpointControlPatrol();
         }
 
         saveBlocker = true;

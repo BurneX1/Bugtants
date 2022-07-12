@@ -40,6 +40,7 @@ public class EnemyGroundMove : MonoBehaviour
     public bool saveBlocker = false;
     [HideInInspector]
     public bool loaded;
+    private Vector3 fixPatrolPos, fixPatrolRotation;
     void OnDisable()
     {
         //if (patroller.activeSelf)
@@ -58,6 +59,8 @@ public class EnemyGroundMove : MonoBehaviour
     }
     IEnumerator Starting()
     {
+        fixPatrolPos = patroller.transform.position;
+        fixPatrolRotation = patroller.transform.eulerAngles;
         yield return new WaitForSeconds(0.15f);
         GameObject allobj = GameObject.FindGameObjectWithTag("All");
         audios = GameObject.Find("AudioManager").GetComponent<SoundFights>();
@@ -84,13 +87,13 @@ public class EnemyGroundMove : MonoBehaviour
         else
         {
             patroller.transform.parent = null;
-        }*/
+        }
         if (patrolPoint.Length != 0)
         {
             ControlPatrol();
         }
         patroller.transform.parent = null;
-        /*if (patrolPoint.Length != 0)
+        if (patrolPoint.Length != 0)
         {
             ControlPatrol();
         }*/
@@ -136,9 +139,14 @@ public class EnemyGroundMove : MonoBehaviour
                 }
                 Animate();
             }
+            PatrolDoing();
         }
     }
-
+    void PatrolDoing()
+    {
+        patroller.transform.position = fixPatrolPos;
+        patroller.transform.eulerAngles = fixPatrolRotation;
+    }
     void Movement()
     {
         marker = 0;
@@ -513,15 +521,6 @@ public class EnemyGroundMove : MonoBehaviour
         {
             patrolPoint[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
             savePatrol[i] = GameObject.Find(gameObject.name + "/" + patroller.name + "/PatrolPoint " + i);
-        }
-        CheckpointControlPatrol();
-    }
-    public void CheckpointControlPatrol()
-    {
-        for (int i = 0; i < savePatrol.Length; i++)
-        {
-            patrolPoint[i] = GameObject.Find(patroller.name + "/PatrolPoint " + i);
-            savePatrol[i] = GameObject.Find(patroller.name + "/PatrolPoint " + i);
         }
     }
     void AddPoints(int number)
