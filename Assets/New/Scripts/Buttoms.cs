@@ -39,7 +39,7 @@ public class Buttoms : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= 3)
             {
-                SceneManager.LoadScene("TestMenu");
+                SceneManager.LoadScene("PreIntroduction");
             }
         }
 
