@@ -4,7 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource),typeof(VolumeValue))]
 public class SoundsCapingVolume : MonoBehaviour
 {
-    private AudioSource audSrc;
+    [HideInInspector]
+    public AudioSource audSrc;
     private VolumeValue volumeScript;
     [Range(0, 1)]
     public float capVolume;

@@ -39,7 +39,7 @@ public class SoundActive : MonoBehaviour
         if (!audComp[value].audSrc.isPlaying && !pauseDoner.paused)
         {
             audComp[value].audSrc.clip = audClips[clip].clip;
-            //audComp[value].audSrc.volume = totalVolume;
+            audComp[value].audSrc.volume = audComp[value].newSound.GetComponent<VolumeValue>().volValue * audClips[clip].capVolume;
             audComp[value].audSrc.Play();
         }
     }

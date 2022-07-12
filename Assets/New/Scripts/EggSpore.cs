@@ -12,9 +12,25 @@ public class EggSpore : MonoBehaviour
     public GameObject spore;
     public MeshRenderer mesh;
     private Material actualMat;
+    [HideInInspector]
+    public WaysToSound waysTaken;
+    public SoundsCapingVolume soundCapingOne;
+    public AudioClip actClip, inactClip;
+    [Header("On mortal egg")]
+    [Range(0, 1)]
+    public float capVolume;
+    public AudioClip destroyedClip;
+    public GameObject soundInstancer;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (soundInstancer != null)
+        {
+            soundInstancer.GetComponent<SpawneableSFX>().capVolume = capVolume;
+            soundInstancer.GetComponent<SpawneableSFX>().clippie = destroyedClip;
+        }
+        waysTaken.sounds = gameObject.GetComponent<SoundActive>();
         c_life = gameObject.GetComponent<Life>();
         actualMat = mesh.material;
     }
@@ -36,20 +52,32 @@ public class EggSpore : MonoBehaviour
             {
                 mesh.material = matEgg;
                 spore.SetActive(false);
+                soundCapingOne.audSrc.clip = inactClip;
+                soundCapingOne.audSrc.Play();
             }
             timeRevive += Time.deltaTime;
             if (timeRevive >= maxTimeRevive)
             {
-                timeRevive = 0;
                 mesh.material = actualMat;
                 spore.SetActive(true);
                 c_life.AddLife(c_life.maxHealth);
+                soundCapingOne.audSrc.clip = actClip;
+                soundCapingOne.audSrc.Play();
+                timeRevive = 0;
             }
 
         }
         else
         {
+            soundInstancer.transform.position = transform.position;
+            Instantiate(soundInstancer);
             gameObject.SetActive(false);
         }
+    }
+    public void Damaged()
+    {
+        waysTaken.whereSound = 0;
+        waysTaken.whatSound = 0;
+        waysTaken.StopThenActive();
     }
 }

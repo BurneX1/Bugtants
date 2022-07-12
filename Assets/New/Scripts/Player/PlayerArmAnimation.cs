@@ -32,7 +32,7 @@ public class PlayerArmAnimation : MonoBehaviour
     }
     void ChooseWeapon(Animator anim)
     {
-        anim.SetInteger("Attack", playerControl.numberMove);
+        //anim.SetInteger("Attack", playerControl.numberMove);
         if (playerControl.numberMove == 1)
         {
             anim.SetTrigger("Shoot");

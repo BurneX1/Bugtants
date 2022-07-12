@@ -37,8 +37,8 @@ public class Life : MonoBehaviour
                 damaged = true;
                 playerHUD.activateHUD = true;
                 Damage.Invoke();
-                damageTaken.Invoke();
             }
+            damageTaken.Invoke();
         }
     }
 

@@ -301,7 +301,7 @@ public class PlayerController : MonoBehaviour
     }
     void CoughPlayer()
     {
-        if (badSporeObj != null && badSporeObj.activeSelf)
+        if (badSporeObj != null && badSporeObj.activeInHierarchy)
         {
             coughSound.whereSound = 6;
             coughSound.whatSound = 10;
