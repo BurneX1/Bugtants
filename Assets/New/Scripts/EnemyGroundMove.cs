@@ -410,7 +410,7 @@ public class EnemyGroundMove : MonoBehaviour
 
     void Animate()
     {
-        if ((stat == Status.retreating || stat == Status.patrolling) && !stunned)
+        if ((stat == Status.retreating || (stat == Status.patrolling && patrolPoint.Length != 0 && !touch)) && !stunned)
         {
             waysWalk.ActiveWhenStopped();
         }

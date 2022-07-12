@@ -3009,6 +3009,18 @@ MonoBehaviour:
     whatSound: 0
     whereSound: 0
     sounds: {fileID: 0}
+  deadSound:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
+  damagedSound:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
+  coughSound:
+    whatSound: 0
+    whereSound: 0
+    sounds: {fileID: 0}
 --- !u!114 &5995389240191071640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3080,6 +3092,21 @@ MonoBehaviour:
   maxHealth: 100
   actualHealth: 0
   damaged: 0
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1245761243738973160}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: DamagedPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2456032185187694039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3196,6 +3223,14 @@ MonoBehaviour:
     newSound: {fileID: 0}
     location: {fileID: 129421825486529235}
     soundDistance: {x: 0, y: 2}
+  - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
+    location: {fileID: 7701868843168912820}
+    soundDistance: {x: 0, y: 4}
+  - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
+    location: {fileID: 7701868843168912820}
+    soundDistance: {x: 0, y: 4}
   pauseDoner: {fileID: 0}
 --- !u!114 &5987273786970785789
 MonoBehaviour:

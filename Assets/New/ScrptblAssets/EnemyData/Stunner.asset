@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189446849e53b8848bdece57d667fbc4, type: 3}
   m_Name: Stunner
   m_EditorClassIdentifier: 
-  life: 200
+  life: 100
   damage: 25
   attackRange: 1.5
   frontDetectRange: 15
-  manaReward: 5
-  speed: 5.2
-  chaseSpd: 6
+  manaReward: 50
+  speed: 2
+  chaseSpd: 3.2
   atackTime: 2
   hitFedbckTime: 0.4
   patrolWaitTime: 4
@@ -28,10 +28,10 @@ MonoBehaviour:
   retreatRange: 0
   backSpeed: 0
   bullSpeed: 0
-  stunDamage: 5
+  stunDamage: 35
   selfStunTime: 2
   stunEfectTime: 2
   crashRange: 6
-  chargeSpeed: 5
+  chargeSpeed: 9
   chargeTime: 5
   timeLifeSpan: 0

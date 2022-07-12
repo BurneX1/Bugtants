@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public class Life : MonoBehaviour
@@ -12,6 +13,7 @@ public class Life : MonoBehaviour
     public int actualHealth;
     [HideInInspector]
     public bool damaged;
+    public UnityEvent damageTaken;
     private void Awake()
     {
         damaged = false;
@@ -35,6 +37,7 @@ public class Life : MonoBehaviour
                 damaged = true;
                 playerHUD.activateHUD = true;
                 Damage.Invoke();
+                damageTaken.Invoke();
             }
         }
     }

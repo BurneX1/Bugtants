@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189446849e53b8848bdece57d667fbc4, type: 3}
   m_Name: Atractor
   m_EditorClassIdentifier: 
-  life: 170
-  damage: 4
+  life: 60
+  damage: 15
   attackRange: 0.8
   frontDetectRange: 9
   manaReward: 5
   speed: 3
   chaseSpd: 0
-  atackTime: 1.2
+  atackTime: 2
   hitFedbckTime: 0.4
   patrolWaitTime: 0
   waitAtackTime: 0

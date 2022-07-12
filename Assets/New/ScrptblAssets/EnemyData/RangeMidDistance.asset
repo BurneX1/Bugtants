@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189446849e53b8848bdece57d667fbc4, type: 3}
   m_Name: RangeMidDistance
   m_EditorClassIdentifier: 
-  life: 150
-  damage: 8
+  life: 40
+  damage: 15
   attackRange: 5.5
   frontDetectRange: 15
   manaReward: 5
-  speed: 7
+  speed: 4
   chaseSpd: 7
-  atackTime: 1.5
+  atackTime: 2
   hitFedbckTime: 1
   patrolWaitTime: 0
   waitAtackTime: 0
   chaseModeTime: 3
   receiveMaxTime: 2
   retreatRange: 4
-  backSpeed: 3
+  backSpeed: 5
   bullSpeed: 50
   stunDamage: 0
   selfStunTime: 0

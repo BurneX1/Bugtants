@@ -79,7 +79,7 @@ public class EnemyLife : MonoBehaviour
         {
             Damage.Invoke();
             if (armor)
-                life -= value / 2;
+                life -= (int)(value / 1.5f);
             feedTimer = feedMaxTimer;
             takeTimer = takeMaxTimer;
             reached = true;

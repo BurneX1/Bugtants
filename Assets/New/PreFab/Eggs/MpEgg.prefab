@@ -113,9 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHUD: {fileID: 0}
   inmortal: 0
-  maxHealth: 1
+  maxHealth: 15
   actualHealth: 0
   damaged: 0
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6945324170282443356
 MonoBehaviour:
   m_ObjectHideFlags: 0

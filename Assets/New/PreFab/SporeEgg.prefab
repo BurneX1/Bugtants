@@ -104,6 +104,9 @@ MonoBehaviour:
   maxHealth: 20
   actualHealth: 0
   damaged: 0
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &6017646052329384181
 Rigidbody:
   m_ObjectHideFlags: 0

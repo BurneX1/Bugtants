@@ -370,11 +370,11 @@ MonoBehaviour:
   explodeRange: 1.5
   patrolPoints: 0
   life: 10
-  damage: 30
+  damage: 5
   speed: 4
   chaseSpeed: 7
   feedbackMaxTimer: 0.4
-  timeLifeSpan: 12
+  timeLifeSpan: 8
   vigilanceTimer: 2.5
   takeMaxTimer: 4
   chaseModeMaxTimer: 3
@@ -499,7 +499,7 @@ MonoBehaviour:
   suicide: {fileID: 2885942110906221349}
   suicidalBomb: {fileID: 5003988244655817073, guid: 0715593eac5a7db44bb0891c1ab7e51e, type: 3}
   timeLifeSpan: 12
-  damage: 30
+  damage: 5
   whatExplodeSound: 4
 --- !u!114 &5633346433866812195
 MonoBehaviour:

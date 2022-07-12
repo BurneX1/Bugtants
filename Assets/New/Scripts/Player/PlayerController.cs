@@ -36,9 +36,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool moving, running, crouching, stunned, slowed;
     [HideInInspector]
-    public WaysToSound shootSound, jumpSound, moveSound, crouchSound, deadSound;
-    private GameObject slowerings;
-    private bool dead;
+    public WaysToSound shootSound, jumpSound, moveSound, crouchSound, deadSound, damagedSound, coughSound;
+    private GameObject slowerings, badSporeObj;
+    private bool dead, coughing;
+    private float coughTime;
     void Awake()
     {
         //Component Settup -----------//
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour
         moveSound.sounds = gameObject.GetComponent<SoundActive>();
         crouchSound.sounds = gameObject.GetComponent<SoundActive>();
         deadSound.sounds = gameObject.GetComponent<SoundActive>();
+        damagedSound.sounds = gameObject.GetComponent<SoundActive>();
+        coughSound.sounds = gameObject.GetComponent<SoundActive>();
 
         //-------------------------<<<//
 
@@ -174,6 +177,15 @@ public class PlayerController : MonoBehaviour
         weaponNumber = value;
         c_shoot.ResetTime();
     }
+    public void DamagedPlayer()
+    {
+        if (c_life.actualHealth != 0)
+        {
+            damagedSound.whereSound = 4;
+            damagedSound.whatSound = 4;
+            damagedSound.StopThenActive();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -184,6 +196,7 @@ public class PlayerController : MonoBehaviour
             StaminaCondition();
             PlayerStature();
             OneTimeSound();
+            CoughPlayer();
         }
         else
         {
@@ -286,14 +299,29 @@ public class PlayerController : MonoBehaviour
             CrouchingSound();
         }
     }
+    void CoughPlayer()
+    {
+        if (badSporeObj != null && badSporeObj.activeSelf)
+        {
+            coughSound.whereSound = 6;
+            coughSound.whatSound = 10;
+            coughSound.ActiveWhenStopped();
+        }
+        else
+        {
+            coughSound.InstantStop();
+            badSporeObj = null;
+        }
+    }
     void DeadPlayer()
     {
         c_mov.Quiet();
         if (!dead)
         {
-            deadSound.whereSound = 3;
+            deadSound.whereSound = 4;
             deadSound.whatSound = 5;
             deadSound.StopThenActive();
+            coughSound.InstantStop();
             dead = true;
         }
     }
@@ -389,12 +417,21 @@ public class PlayerController : MonoBehaviour
             slowed = true;
             slowerings = other.gameObject;
         }
+        if (other.gameObject.tag == "BadSpore" && c_life.actualHealth != 0)
+        {
+            badSporeObj = other.gameObject;
+        }
+
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Slime")
         {
             slowerings = null;
+        }
+        if (other.gameObject.tag == "BadSpore")
+        {
+            badSporeObj = null;
         }
     }
 }
