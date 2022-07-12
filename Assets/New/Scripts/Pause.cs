@@ -58,7 +58,7 @@ public class Pause : MonoBehaviour
                 a.Pause();
             }
         }
-        pauseMusic.Play();
+        //pauseMusic.Play();
         paused = true;
 
     }
@@ -75,7 +75,7 @@ public class Pause : MonoBehaviour
                 a.UnPause();
             }
         }
-        pauseMusic.Pause();
+        //pauseMusic.Pause();
         paused = false;
     }
     public void GoingBack()
@@ -107,7 +107,7 @@ public class Pause : MonoBehaviour
                 }
             }
             lifeScript.actualHealth = lifeScript.maxHealth;
-            pauseMusic.Pause();
+            //pauseMusic.Pause();
             //deadMusic.Pause();
             paused = false;
 

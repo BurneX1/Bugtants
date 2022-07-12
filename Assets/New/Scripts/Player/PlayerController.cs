@@ -73,14 +73,14 @@ public class PlayerController : MonoBehaviour
         inputStm = new InputSystemActions();
         inputStm.GamePlay.Crouch.performed += ctx => CrouchLocker(crouchLock, true);
         inputStm.GamePlay.Crouch.canceled += ctx => CrouchLocker(crouchLock, false);
-        inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
+        //inputStm.GamePlay.Heal.performed += ctx => c_life.TotalRecovery();
         inputStm.GamePlay.MeleAtack.performed += ctx => HitLocker(hitLock, true);
         inputStm.GamePlay.Atack.performed += ctx => HitLocker(hitLock, false);
-        inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
+        //inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
         inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned);
-        inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
+        //inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
         inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
         inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
         inputStm.GamePlay.ChangeWeapons.performed += ctx => WeaponsLockers(weaponLock, ctx.ReadValue<float>());
