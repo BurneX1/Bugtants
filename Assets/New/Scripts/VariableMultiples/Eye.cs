@@ -13,8 +13,11 @@ public class Eye : MonoBehaviour
     public Material isImmuneMat, damagedMat, immuneMat, deadMat;
     private Material vulnerableMat;
     public BossHealthy fatherEye;
+    [HideInInspector]
+    public WaysToSound waysEyes;
     void Awake()
     {
+        waysEyes.sounds = GetComponent<SoundActive>();
         dead = false;
         vulnerableMat = GetComponent<MeshRenderer>().material;
     }
@@ -29,6 +32,9 @@ public class Eye : MonoBehaviour
                 {
                     GetComponent<MeshRenderer>().material = deadMat;
                     dead = true;
+                    waysEyes.whatSound = 1;
+                    waysEyes.whereSound = 0;
+                    waysEyes.StopThenActive();
                     fatherEye.DeadEye(rage);
                 }
                 else
@@ -62,12 +68,18 @@ public class Eye : MonoBehaviour
     IEnumerator DamageFeedback()
     {
         GetComponent<MeshRenderer>().material = damagedMat;
+        waysEyes.whatSound = 0;
+        waysEyes.whereSound = 0;
+        waysEyes.StopThenActive();
         yield return new WaitForSeconds(damageFeedTimer);
         if(!dead)
         GetComponent<MeshRenderer>().material = vulnerableMat;
     }
     IEnumerator ImmuneFeedback()
     {
+        /*waysEyes.whatSound = 0;
+        waysEyes.whereSound = 0;
+        waysEyes.StopThenActive();*/
         GetComponent<MeshRenderer>().material = immuneMat;
         yield return new WaitForSeconds(immuneFeedTimer);
         GetComponent<MeshRenderer>().material = isImmuneMat;

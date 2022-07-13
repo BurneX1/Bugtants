@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7331053465665745217}
   - component: {fileID: 7331053465665745222}
   - component: {fileID: 7331053465665745218}
+  - component: {fileID: 2505774971899482480}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7331053465665745223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.81, y: 15.7, z: -61.58}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -41,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331053465665745223}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 1537454224837844645, guid: 75931bd0470d00d4d885eb50e5bedaf3, type: 3}
 --- !u!23 &7331053465665745217
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0cd1f77aff69e3f4a933b6aa4e666bc6, type: 2}
+  - {fileID: 2100000, guid: b78ffce85913cd945bbc4622c65b0428, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +95,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7331053465665745218
 MonoBehaviour:
@@ -113,8 +114,32 @@ MonoBehaviour:
   immuneFeedTimer: 0
   grandArmor: 0
   dead: 0
+  rage: 0
   isImmuneMat: {fileID: 0}
   damagedMat: {fileID: 0}
   immuneMat: {fileID: 0}
   deadMat: {fileID: 0}
   fatherEye: {fileID: 0}
+--- !u!114 &2505774971899482480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331053465665745223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3629c3d95888e64f9b7bb1c91e1765e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audClips:
+  - clip: {fileID: 8300000, guid: 6d7cc064ddcbb934989fef321508aa94, type: 3}
+    capVolume: 1
+  - clip: {fileID: 8300000, guid: 83be8b335c873644286cbe08c5dbe0b2, type: 3}
+    capVolume: 1
+  audComp:
+  - audSrc: {fileID: 0}
+    newSound: {fileID: 0}
+    location: {fileID: 7331053465665745223}
+    soundDistance: {x: 0, y: 10}
+  pauseDoner: {fileID: 0}

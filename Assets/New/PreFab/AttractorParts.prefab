@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bc9f947b0ac2cc445a30e4e9a123bec9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be7025d5336c7d64389e1bf6f1aa86d5, type: 2}
     - target: {fileID: 919132149155446097, guid: bc9f947b0ac2cc445a30e4e9a123bec9, type: 3}
       propertyPath: m_Name
       value: FBX_Succionador_conMedidasDelExcell
