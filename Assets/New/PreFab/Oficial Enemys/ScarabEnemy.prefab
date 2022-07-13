@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3340401676893160659}
   - component: {fileID: 5489382590494254770}
   - component: {fileID: 5867671037169146462}
+  - component: {fileID: 7183871758852582090}
   m_Layer: 0
   m_Name: ScarabEnemy
   m_TagString: Enemy
@@ -432,6 +433,19 @@ MonoBehaviour:
   clasicRB:
   - {fileID: 3534966815282597192}
   - {fileID: 3534966815106683008}
+--- !u!114 &7183871758852582090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534966813682343009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6f9e26dc2d48f46ace7fa17ebfeec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modifyObject: {fileID: 5000053879759418116}
 --- !u!1 &3534966813952926774
 GameObject:
   m_ObjectHideFlags: 0

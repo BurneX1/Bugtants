@@ -502,6 +502,7 @@ GameObject:
   - component: {fileID: 6851071659835633764}
   - component: {fileID: 6792390945788502532}
   - component: {fileID: 2932580057704359330}
+  - component: {fileID: 2372116717925471284}
   m_Layer: 0
   m_Name: SmokeEnemy
   m_TagString: Enemy
@@ -794,6 +795,19 @@ MonoBehaviour:
   clasicRB:
   - {fileID: 7242720923550980239}
   - {fileID: 7242720923550980239}
+--- !u!114 &2372116717925471284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7242720922725904220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6f9e26dc2d48f46ace7fa17ebfeec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modifyObject: {fileID: 776563210550070284}
 --- !u!1 &7242720922755196109
 GameObject:
   m_ObjectHideFlags: 0
