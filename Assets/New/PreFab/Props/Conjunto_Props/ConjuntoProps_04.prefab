@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 21de31c1b7284714292d603e695966f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fef404dcecfce0a4f877111bf58149fe, type: 2}
     - target: {fileID: 919132149155446097, guid: 21de31c1b7284714292d603e695966f5, type: 3}
       propertyPath: m_Name
       value: FBX_TachoBasura_02 (1)
@@ -616,6 +620,10 @@ PrefabInstance:
       value: FBX_Gorro_01 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: abc084932d46ff44397277c520d06c18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: abc084932d46ff44397277c520d06c18, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 119
       objectReference: {fileID: 0}
@@ -906,6 +914,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 44a00200be7cb3847bc187d2697ebf9e, type: 3}
       propertyPath: m_Name
       value: FBX_Balde_v2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44a00200be7cb3847bc187d2697ebf9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 44a00200be7cb3847bc187d2697ebf9e, type: 3}
       propertyPath: m_StaticEditorFlags

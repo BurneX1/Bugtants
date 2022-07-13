@@ -102,6 +102,10 @@ PrefabInstance:
       value: FBX_Gorro_02 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dc3d9a1f40e1a034989246469d7cc174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc3d9a1f40e1a034989246469d7cc174, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 119
       objectReference: {fileID: 0}
@@ -787,6 +791,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b8cedb81cad34804a8799f433aff9699, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fe0cee56a501d54989cb6eca719acbb, type: 2}
     - target: {fileID: 919132149155446097, guid: b8cedb81cad34804a8799f433aff9699, type: 3}
       propertyPath: m_Name
       value: FBX_RecipienteComida_01 (1)

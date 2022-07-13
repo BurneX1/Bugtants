@@ -512,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.949
+      value: 0.655
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_LocalPosition.y
@@ -520,40 +520,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.376
+      value: -1.122
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69924855
+      value: 0.9888865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.69924855
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.10512611
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.10512611
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
+      propertyPath: m_LocalRotation.y
+      value: 0.14867245
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 17.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_CastShadows
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5652a01be7332fa45ac449015611658d, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4545423930167495100, guid: 39a8a641bc2f03f44b1fcb18cfdc2c64, type: 3}
     - target: {fileID: 919132149155446097, guid: 7725808a5d373c7499fc578c895c7272, type: 3}
       propertyPath: m_Name
       value: FBX_Carrito de chimichangas (1)
