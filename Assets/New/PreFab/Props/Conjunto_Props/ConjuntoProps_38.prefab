@@ -1095,6 +1095,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4041112884346594076}
     m_Modifications:
+    - target: {fileID: 5492911147338145617, guid: f86fcb309cea56b4b8447084d98eb3fc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 099942d411359dd429ebceb8dc386410, type: 2}
     - target: {fileID: 6285408684997623428, guid: f86fcb309cea56b4b8447084d98eb3fc, type: 3}
       propertyPath: m_Name
       value: FBX_Estanteria_2
