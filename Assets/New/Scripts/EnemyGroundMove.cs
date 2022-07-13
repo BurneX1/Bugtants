@@ -34,7 +34,6 @@ public class EnemyGroundMove : MonoBehaviour
     private bool chaseMode;
     private bool locker = true, lockerDraw = false;
     private GameObject patrolSaving;
-    public Animator animator;
 
     public WaysToSound waysWalk, waysIdle, waysCharge, waysChase, waysStopper;
     public bool saveBlocker = false;

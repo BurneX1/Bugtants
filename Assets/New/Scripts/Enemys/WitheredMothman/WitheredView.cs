@@ -32,7 +32,7 @@ public class WitheredView : MonoBehaviour
     {
         anim.SetBool("Spd", cmp_enm.moving);
 
-        anim.SetBool("Atack", cmp_enm.attacking);
+        //anim.SetBool("Atack", cmp_enm.attacking);
     }
 
     private void Dead()
