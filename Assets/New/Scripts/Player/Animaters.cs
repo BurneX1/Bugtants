@@ -1,16 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Animaters : MonoBehaviour
 {
-    private PlayerController playerControl;
-    void Awake()
-    {
-        playerControl = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
+    public UnityEvent animationPoint;
     public void Playing()
     {
-
+        animationPoint.Invoke();
     }
 }

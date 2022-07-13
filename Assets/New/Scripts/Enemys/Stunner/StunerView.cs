@@ -40,7 +40,7 @@ public class StunerView : MonoBehaviour
             anim.SetBool("Run", false);
         }
 
-        anim.SetBool("Atack", cmp_enm.attacking);
+        //anim.SetBool("Atack", cmp_enm.attacking);
     }
 
     private void Dead()

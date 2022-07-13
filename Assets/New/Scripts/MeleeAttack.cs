@@ -8,14 +8,16 @@ public class MeleeAttack : MonoBehaviour
     public EnemyGroundMove movement;
     public float maxTimer;
     [HideInInspector]
-    public bool stunned;
+    public bool stunned, attacking;
     public int damage;
     [HideInInspector]
     public float timer;
     public WaysToSound waysOnAttack;
+    public Detecter attackDoner;
     // Start is called before the first frame update
     void Start()
     {
+        attacking = false;
         stunned = false;
         if (gameObject.GetComponent<SoundActive>() != null)
         {
@@ -31,19 +33,28 @@ public class MeleeAttack : MonoBehaviour
     }
     void Attack()
     {
-        timer += Time.deltaTime;
+        if (!attacking)
+            timer += Time.deltaTime;
         if (movement.statNumber == 4)
         {
             timer = 0;
         }
-        else if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3))
+        else if (timer >= maxTimer && (movement.statNumber == 2 || movement.statNumber == 3) && !attacking)
         {
             waysOnAttack.StopThenActive();
-            Debug.Log("Attacked");
             Atack.Invoke();
-            movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
-            movement.attacking = true;
-            timer = 0;
+            attacking = true;
         }
+    }
+    public void AttackPoint()
+    {
+        movement.attacking = true;
+        if (attackDoner.touch)
+        {
+            movement.radium.objetive.GetComponent<Life>().ReduceLife(damage);
+        }
+        timer = 0;
+        attacking = false;
+
     }
 }
