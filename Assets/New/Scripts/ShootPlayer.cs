@@ -13,10 +13,11 @@ public class ShootPlayer : MonoBehaviour
     public int damagePistol, damageShotgun;
     private Vector3 rec;
     private Pause pauseScript;
-
-
     [HideInInspector]
     public bool waiting;
+
+    public WaysToSound waysOutAmmo;
+    public PlayerArmAnimation arms;
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,14 +47,15 @@ public class ShootPlayer : MonoBehaviour
     {
         if (timer >= weaponStat.fireRate && !pauseScript.paused && mpScript.actualMP >= weaponStat.mpCost && !waiting)
         {
+            arms.Shooting();
             shoot = true;
             bullet = weaponStat.bulletType;
             bullet.transform.position = transform.position;
             rec = (targetPosition.transform.position - transform.position).normalized;
-            
+
             bullet.GetComponent<BulletTime>().speed = weaponStat.bulletSpeed;
             bullet.GetComponent<BulletTime>().angler = new Vector3(rec.x, rec.y, rec.z);
-            
+
             bullet.GetComponent<BulletTime>().damage = weaponStat.damage;
             bulletAngle = Mathf.Atan2(rec.y, -rec.x);
             bulletAngle = bulletAngle * (180 / Mathf.PI);
@@ -64,7 +66,7 @@ public class ShootPlayer : MonoBehaviour
                 bulletAngle = 360 + bulletAngle;
             bullet.transform.eulerAngles = transform.eulerAngles;
             Instantiate(bullet);
-            
+
             shootSound.whereSound = 2;
             shootSound.whatSound = weaponStat.soundNumber;
             shootSound.StopThenActive();
@@ -77,11 +79,15 @@ public class ShootPlayer : MonoBehaviour
             bullet.GetComponent<BulletTime>().damage = 0;
             bullet.GetComponent<BulletTime>().angler = new Vector3(0, 0, 0);
         }
+        else if (mpScript.actualMP < weaponStat.mpCost)
+        {
+            waysOutAmmo.StopThenActive();
+        }
     }
     public void Recharge(MP_System mpScript)
     {
-        if(!waiting)
-        mpScript.FullRecharge();
+        if (!waiting)
+            mpScript.FullRecharge();
     }
 
 }

@@ -77,12 +77,12 @@ public class PlayerController : MonoBehaviour
         inputStm.GamePlay.MeleAtack.performed += ctx => HitLocker(hitLock, true);
         inputStm.GamePlay.Atack.performed += ctx => HitLocker(hitLock, false);
         //inputStm.GamePlay.Recharge.performed += ctx => c_shoot.Recharge(c_mp);
-        inputStm.GamePlay.Movement.performed += ctx => c_mov.direction=ctx.ReadValue<Vector2>();
+        inputStm.GamePlay.Movement.performed += ctx => c_mov.direction = ctx.ReadValue<Vector2>();
         inputStm.GamePlay.Movement.canceled += ctx => c_mov.direction = Vector2.zero;
         inputStm.GamePlay.Jump.performed += ctx => c_jmp.Jumping(c_crouch.crouching, stunned);
         //inputStm.GamePlay.StaminaFull.performed += ctx => c_stm.actStamina = c_stm.maxStamina;
-        inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
-        inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
+        //inputStm.GamePlay.ChangeWeapon1.performed += ctx => WeaponsLocker(weaponLock, 0);
+        //inputStm.GamePlay.ChangeWeapon2.performed += ctx => WeaponsLocker(weaponLock, 1);
         inputStm.GamePlay.ChangeWeapons.performed += ctx => WeaponsLockers(weaponLock, ctx.ReadValue<float>());
         inputStm.GamePlay.ChangeWeapons.performed += ctx => Debug.Log(ctx.ReadValue<float>());
         inputStm.GamePlay.Run.performed += ctx => RunLocker(runLock, true);
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (melee)
                 {
-                    c_atk.Attack();
+                    c_atk.Attacking();
                 }
                 else
                 {
@@ -129,22 +129,19 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    void WeaponsLocker(bool locked, int number)
+    void WeaponsLocker(int number)
     {
         if (c_life.actualHealth != 0)
         {
-            if (!locked)
-            {
-                currentWeapon = c_chWp.WeaponChanger(number, weapons, currentWeapon);
-                ChangedWeapon(number);
-            }
+            currentWeapon = c_chWp.WeaponChanger(number, weapons, currentWeapon);
+            ChangedWeapon(number);
 
         }
 
     }
     void WeaponsLockers(bool locked, float upDown)
     {
-        if (c_life.actualHealth != 0)
+        if (c_life.actualHealth != 0 && !c_shoot.waiting)
         {
             int number = weaponNumber;
             if (!locked)
@@ -165,16 +162,15 @@ public class PlayerController : MonoBehaviour
                 {
                     number = 0;
                 }
-
-                WeaponsLocker(weaponLock, number);
+                ChangedWeapon(number);
             }
-
         }
 
     }
     void ChangedWeapon(int value)
     {
         weaponNumber = value;
+        currentWeapon = c_chWp.WeaponChanger(weaponNumber, weapons, currentWeapon);
         c_shoot.ResetTime();
     }
     public void DamagedPlayer()
@@ -208,7 +204,7 @@ public class PlayerController : MonoBehaviour
         c_jmp.CheckGround();
         if (dead)
             dead = false;
-        if (c_atk.attacked)
+        /*if (c_atk.attacked)
         {
             numberMove = 2;
             c_atk.attacked = false;
@@ -217,7 +213,7 @@ public class PlayerController : MonoBehaviour
         {
             numberMove = 1;
             c_shoot.shoot = false;
-        }
+        }*/
         if (c_mov.poseser || stunned)
         {
             c_mov.Posesed();
@@ -383,7 +379,7 @@ public class PlayerController : MonoBehaviour
     }
     public void LoadWeapon()
     {
-        for(int i=0; i < weapons.Length; i++)
+        for (int i = 0; i < weapons.Length; i++)
         {
             if (i == weaponNumber)
             {
@@ -396,7 +392,7 @@ public class PlayerController : MonoBehaviour
     {
         inputStm.Enable();
 
-        if(playerData)
+        if (playerData)
         {
             LoadData();
         }

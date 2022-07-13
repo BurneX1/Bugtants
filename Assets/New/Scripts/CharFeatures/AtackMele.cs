@@ -7,7 +7,7 @@ public class AtackMele : MonoBehaviour
     public string[] dmgTagsArray;
     public int dmg;
     public GameObject hitBox;
-    public float delayStartatack;
+    public float maxDlyTimer;
     public float atkDuration;
 
     [HideInInspector]
@@ -17,8 +17,13 @@ public class AtackMele : MonoBehaviour
     private bool isAtacking;
     private DamageOnTriger hitScrp;
     public WaysToSound meleeSound;
+    public bool prepared, confirm;
+    private PlayerArmAnimation arms;
     private void Awake()
     {
+        arms = GetComponent<PlayerArmAnimation>();
+        confirm = false;
+        prepared = false;
         meleeSound.whereSound = 4;
         meleeSound.whatSound = 6;
         hitScrp = hitBox.AddComponent<DamageOnTriger>();
@@ -35,26 +40,27 @@ public class AtackMele : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        DelayAtack();
+        //DelayAtack();
+        PrepareAttack();
     }
 
     void DelayAtack()
     {
-        if(isAtacking== true)
+        if (isAtacking == true)
         {
-            if(dlyTimer < delayStartatack)
+            if (dlyTimer < maxDlyTimer)
             {
                 dlyTimer += Time.deltaTime;
             }
             else
             {
-                
+
                 if (hitBox.activeSelf == false)
                 {
                     hitBox.SetActive(true);
@@ -80,12 +86,47 @@ public class AtackMele : MonoBehaviour
             }
         }
     }
-
+    void PrepareAttack()
+    {
+        if (dlyTimer < maxDlyTimer)
+        {
+            dlyTimer += Time.deltaTime;
+        }
+        else if (!prepared && !confirm)
+        {
+            prepared = true;
+        }
+    }
+    public void Attacking()
+    {
+        if (prepared && !confirm)
+        {
+            confirm = true;
+            arms.MeleeDoing();
+        }
+    }
     public void Attack()
     {
         isAtacking = true;
     }
-
+    public void ProcessAttack()
+    {
+        StartCoroutine(AttackerResult());
+    }
+    IEnumerator AttackerResult()
+    {
+        hitBox.SetActive(true);
+        yield return new WaitForSeconds(atkDuration);
+        hitBox.SetActive(false);
+        confirm = false;
+        prepared = false;
+        if (hitScrp.doDmg)
+        {
+            meleeSound.StopThenActive();
+            hitScrp.doDmg = false;
+        }
+        dlyTimer = 0;
+    }
     public void CancelAtk()
     {
         if (hitBox.activeSelf == true)

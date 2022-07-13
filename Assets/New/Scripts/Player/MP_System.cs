@@ -15,7 +15,6 @@ public class MP_System : MonoBehaviour
 
     private void Awake()
     {
-        actualMP = maxMP;
         playerHUD = GetComponent<PlayerView>();
         c_mov = GetComponent<Movement>();
     }

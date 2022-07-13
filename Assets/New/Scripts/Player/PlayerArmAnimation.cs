@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerArmAnimation : MonoBehaviour
 {
-    public Animator pistol, shotgun;
+    public Animator pistol, shotgun, leftArm;
     public Animaters animatonsShotgun, animatonsPistol;
     private Animator anim;
     private PlayerController playerControl;
@@ -25,9 +25,9 @@ public class PlayerArmAnimation : MonoBehaviour
         {
             ChooseWeapon(shotgun);
         }
-        else if(playerControl.weaponNumber == 1)
+        else if (playerControl.weaponNumber == 1)
         {
-            ChooseWeapon(pistol); 
+            ChooseWeapon(pistol);
         }
     }
     void ChooseWeapon(Animator anim)
@@ -44,13 +44,41 @@ public class PlayerArmAnimation : MonoBehaviour
             anim.SetTrigger("Melee");
             playerControl.numberMove = 0;
         }
-        if (playerControl.running)
+            if (playerControl.running)
         {
+            leftArm.SetBool("Running", true);
             anim.SetBool("Running", true);
         }
         else
         {
+            leftArm.SetBool("Running", false);
             anim.SetBool("Running", false);
         }
     }
+    public void Shooting()
+    {
+        leftArm.SetTrigger("Shoot");
+        if (playerControl.weaponNumber == 0)
+        {
+            shotgun.SetTrigger("Shoot");
+        }
+        else if (playerControl.weaponNumber == 1)
+        {
+            pistol.SetTrigger("Shoot");
+        }
+    }
+    public void MeleeDoing()
+    {
+        leftArm.SetTrigger("Melee");
+        if (playerControl.weaponNumber == 0)
+        {
+            shotgun.SetTrigger("Melee");
+        }
+        else if (playerControl.weaponNumber == 1)
+        {
+            pistol.SetTrigger("Melee");
+        }
+
+    }
 }
+
