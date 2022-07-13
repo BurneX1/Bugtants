@@ -60,9 +60,9 @@ public class ItemMagnet : MonoBehaviour
     }
     IEnumerator VacuumTime()
     {
-        bell = false;
         rigid.velocity = new Vector3(angler.x * speedBoss, angler.y * speedBoss, angler.z * speedBoss);
         yield return new WaitForSeconds(time);
+        bell = false;
         if (!detectPlayer.touch)
             rigid.velocity = new Vector3(0, 0, 0);
     }

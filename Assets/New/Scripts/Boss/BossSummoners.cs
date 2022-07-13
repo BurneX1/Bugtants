@@ -111,5 +111,6 @@ public class BossSummoners : MonoBehaviour
         {
             items.TouchingObjects[i].GetComponent<ItemMagnet>().bell = true;
         }
+        Debug.Log("Bell");
     }
 }

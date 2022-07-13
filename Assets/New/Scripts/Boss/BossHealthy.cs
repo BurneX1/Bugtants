@@ -21,11 +21,17 @@ public class BossHealthy : MonoBehaviour
     [Header("------------")]
     [Tooltip("Numero de ojos/tumores abiertos")]
     public int eyesOpen, tumoursOpen;
-
+    [HideInInspector]
+    public WaysToSound statusWays;
     [HideInInspector]
     public bool deadReset, dead;
+    private bool confirmedDead, confirmedRage;
+    public Animator anim;
     void Awake()
     {
+        confirmedRage = false;
+        confirmedDead = false;
+        statusWays.sounds = GetComponent<SoundActive>();
         dead = false;
         activated = false;
         deadReset = false;
@@ -128,8 +134,13 @@ public class BossHealthy : MonoBehaviour
         }
         if (deadReset)
             deadReset = false;
-        if (dead)
+        if (dead && !confirmedDead)
         {
+            confirmedDead = true;
+            statusWays.whatSound = 0;
+            statusWays.whereSound = 0;
+            statusWays.StopThenActive();
+            anim.SetBool("Dead", true);
             StartCoroutine(OnVictory());
         }
     }
@@ -171,6 +182,13 @@ public class BossHealthy : MonoBehaviour
         }
         if (eyes.Length == 0 && !rage)
         {
+            if (!confirmedRage)
+            {
+                statusWays.whatSound = 1;
+                statusWays.whereSound = 0;
+                statusWays.StopThenActive();
+                confirmedRage = true;
+            }
             tumoursDone.SetActive(true);
             eyesDone.SetActive(false);
         }
@@ -183,7 +201,7 @@ public class BossHealthy : MonoBehaviour
     IEnumerator OnVictory()
     {
         Debug.Log("Boss is dead");
-        yield return new WaitForSeconds(40f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(sceneName);
 
     }
