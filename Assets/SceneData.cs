@@ -22,7 +22,7 @@ public class SceneData : MonoBehaviour
     public MP_System playerMp;
     
 
-    private void Awake()
+    /*private void Awake()
     {
         inputStm = new InputSystemActions();
         inputStm.MenusPause.ReloadCheckpoint.canceled += ctx => grab = false;
@@ -105,5 +105,5 @@ public class SceneData : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerPosition = GameObject.FindGameObjectWithTag("Player");
         SetPlayer();
-    }
+    }*/
 }
